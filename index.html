@@ -77,7 +77,6 @@ p {
     justify-content: center;
     align-items: center;
     height: 70px;
-    position: relative;
 }
 
 button {
@@ -96,7 +95,6 @@ button {
 }
 
 #yes.center {
-    margin: 0 auto;
     transform: scale(1.2);
 }
 
@@ -131,25 +129,14 @@ button {
         opacity: 0;
     }
 }
-
-/* 📱 MOBILE EXTRA */
-@media (max-width: 420px) {
-    .container {
-        padding: 35px 22px;
-    }
-
-    .buttons {
-        gap: 15px;
-    }
-
-    button {
-        width: 100%;
-        max-width: 160px;
-    }
-}
 </style>
 </head>
 <body>
+
+<!-- 🎵 MUZYKA -->
+<audio id="music" loop>
+    <source src="love.mp3" type="audio/mpeg">
+</audio>
 
 <div class="hearts">
     <span style="left:10%">💗</span>
@@ -160,7 +147,7 @@ button {
 </div>
 
 <div class="container">
-    <h1>Czy Olusiu zostaniesz moją walentynką? 💕</h1>
+    <h1>Olusiu czy zostaniesz moją walentynką? 💕</h1>
     <p>Obiecuję dużo uśmiechu i ciepłych chwil ✨</p>
 
     <div class="buttons">
@@ -170,7 +157,17 @@ button {
 </div>
 
 <script>
+let musicStarted = false;
+
+function startMusic() {
+    if (!musicStarted) {
+        document.getElementById("music").play();
+        musicStarted = true;
+    }
+}
+
 function yes() {
+    startMusic();
     document.querySelector('.container').innerHTML = `
         <h1>TAKKK 🥹💖</h1>
         <p>To oficjalnie najlepsze walentynki ever 💫</p>
@@ -178,6 +175,8 @@ function yes() {
 }
 
 function explodeNo(e) {
+    startMusic();
+
     const no = e.target;
     const yes = document.getElementById("yes");
     const parent = no.parentElement;
