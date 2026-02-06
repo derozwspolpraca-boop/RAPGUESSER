@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💘 Walentynki</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Tło */
+.hearts span {
+    position: absolute;
+    bottom: -50px;
+    font-size: 20px;
+    animation: float 6s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) scale(1); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+}
+
+/* Karta */
+.container {
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(20px);
+    padding: 50px 40px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+    animation: fadeIn 1.2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+h1 {
+    color: #fff;
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+}
+
+p {
+    color: #fff;
+    margin-bottom: 35px;
+}
+
+/* Przyciski */
+.buttons {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+    height: 70px; /* 🔒 BLOKADA wysokości = zero ucieczek */
+    position: relative;
+}
+
+button {
+    padding: 15px 35px;
+    border-radius: 50px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+#yes {
+    background: #fff;
+    color: #ff5f8a;
+    font-weight: 600;
+}
+
+#yes.center {
+    margin: 0 auto;
+    transform: scale(1.2);
+}
+
+#no {
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+/* Wybuch */
+.explode {
+    animation: explode 0.6s ease forwards;
+}
+
+@keyframes explode {
+    to { transform: scale(0); opacity: 0; }
+}
+
+.particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: particle 0.7s ease-out forwards;
+}
+
+@keyframes particle {
+    to {
+        transform: translate(var(--x), var(--y)) scale(0);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="hearts">
+    <span style="left:10%">💗</span>
+    <span style="left:30%">💖</span>
+    <span style="left:50%">💘</span>
+    <span style="left:70%">💓</span>
+    <span style="left:90%">💞</span>
+</div>
+
+<div class="container">
+    <h1>Czy Oluś zostaniesz moją walentynką? 💕</h1>
+    <p>Obiecuję dużo uśmiechu i ciepłych chwil ✨</p>
+
+    <div class="buttons">
+        <button id="yes" onclick="yes()">TAK 💘</button>
+        <button id="no" onclick="explodeNo(event)">NIE 🙃</button>
+    </div>
+</div>
+
+<script>
+function yes() {
+    document.querySelector('.container').innerHTML = `
+        <h1>TAKK 🥹💖</h1>
+        <p>To oficjalnie najlepsze walentynki💫</p>
+    `;
+}
+
+function explodeNo(e) {
+    const no = e.target;
+    const yes = document.getElementById("yes");
+    const parent = no.parentElement;
+
+    for (let i = 0; i < 10; i++) {
+        const p = document.createElement("div");
+        p.className = "particle";
+        p.style.left = no.offsetLeft + no.offsetWidth / 2 + "px";
+        p.style.top = no.offsetTop + no.offsetHeight / 2 + "px";
+        p.style.setProperty("--x", `${Math.random()*160-80}px`);
+        p.style.setProperty("--y", `${Math.random()*160-80}px`);
+        parent.appendChild(p);
+        setTimeout(() => p.remove(), 700);
+    }
+
+    no.classList.add("explode");
+
+    setTimeout(() => {
+        no.remove();
+        yes.classList.add("center"); // smooth centering
+    }, 500);
+}
+</script>
+
+</body>
+</html>
