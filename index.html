@@ -16,19 +16,20 @@
 }
 
 body {
-    height: 100vh;
+    min-height: 100vh;
     background: linear-gradient(135deg, #ff758c, #ff7eb3);
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    padding: 20px;
 }
 
-/* Tło */
+/* Serduszka */
 .hearts span {
     position: absolute;
     bottom: -50px;
-    font-size: 20px;
+    font-size: 18px;
     animation: float 6s linear infinite;
     opacity: 0.7;
 }
@@ -36,14 +37,16 @@ body {
 @keyframes float {
     0% { transform: translateY(0) scale(1); opacity: 0; }
     50% { opacity: 1; }
-    100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+    100% { transform: translateY(-110vh) scale(1.4); opacity: 0; }
 }
 
 /* Karta */
 .container {
+    width: 100%;
+    max-width: 420px;
     background: rgba(255,255,255,0.2);
     backdrop-filter: blur(20px);
-    padding: 50px 40px;
+    padding: 40px 30px;
     border-radius: 25px;
     text-align: center;
     box-shadow: 0 30px 60px rgba(0,0,0,0.2);
@@ -51,38 +54,39 @@ body {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.9); }
+    from { opacity: 0; transform: scale(0.95); }
     to { opacity: 1; transform: scale(1); }
 }
 
 h1 {
     color: #fff;
-    font-size: 2.2rem;
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
     margin-bottom: 15px;
 }
 
 p {
     color: #fff;
-    margin-bottom: 35px;
+    font-size: clamp(1rem, 4vw, 1.1rem);
+    margin-bottom: 30px;
 }
 
 /* Przyciski */
 .buttons {
     display: flex;
-    gap: 25px;
+    gap: 20px;
     justify-content: center;
     align-items: center;
-    height: 70px; /* 🔒 BLOKADA wysokości = zero ucieczek */
+    height: 70px;
     position: relative;
 }
 
 button {
-    padding: 15px 35px;
+    padding: 16px 34px;
     border-radius: 50px;
     border: none;
     font-size: 1rem;
     cursor: pointer;
-    transition: all 0.5s ease;
+    transition: all 0.4s ease;
 }
 
 #yes {
@@ -104,7 +108,7 @@ button {
 
 /* Wybuch */
 .explode {
-    animation: explode 0.6s ease forwards;
+    animation: explode 0.5s ease forwards;
 }
 
 @keyframes explode {
@@ -113,18 +117,34 @@ button {
 
 .particle {
     position: absolute;
-    width: 8px;
-    height: 8px;
+    width: 7px;
+    height: 7px;
     background: white;
     border-radius: 50%;
     pointer-events: none;
-    animation: particle 0.7s ease-out forwards;
+    animation: particle 0.6s ease-out forwards;
 }
 
 @keyframes particle {
     to {
         transform: translate(var(--x), var(--y)) scale(0);
         opacity: 0;
+    }
+}
+
+/* 📱 MOBILE EXTRA */
+@media (max-width: 420px) {
+    .container {
+        padding: 35px 22px;
+    }
+
+    .buttons {
+        gap: 15px;
+    }
+
+    button {
+        width: 100%;
+        max-width: 160px;
     }
 }
 </style>
@@ -140,7 +160,7 @@ button {
 </div>
 
 <div class="container">
-    <h1>Czy Oluś zostaniesz moją walentynką? 💕</h1>
+    <h1>Czy Olusiu zostaniesz moją walentynką? 💕</h1>
     <p>Obiecuję dużo uśmiechu i ciepłych chwil ✨</p>
 
     <div class="buttons">
@@ -152,8 +172,8 @@ button {
 <script>
 function yes() {
     document.querySelector('.container').innerHTML = `
-        <h1>TAKK 🥹💖</h1>
-        <p>To oficjalnie najlepsze walentynki💫</p>
+        <h1>TAKKK 🥹💖</h1>
+        <p>To oficjalnie najlepsze walentynki ever 💫</p>
     `;
 }
 
@@ -167,18 +187,18 @@ function explodeNo(e) {
         p.className = "particle";
         p.style.left = no.offsetLeft + no.offsetWidth / 2 + "px";
         p.style.top = no.offsetTop + no.offsetHeight / 2 + "px";
-        p.style.setProperty("--x", `${Math.random()*160-80}px`);
-        p.style.setProperty("--y", `${Math.random()*160-80}px`);
+        p.style.setProperty("--x", `${Math.random()*140-70}px`);
+        p.style.setProperty("--y", `${Math.random()*140-70}px`);
         parent.appendChild(p);
-        setTimeout(() => p.remove(), 700);
+        setTimeout(() => p.remove(), 600);
     }
 
     no.classList.add("explode");
 
     setTimeout(() => {
         no.remove();
-        yes.classList.add("center"); // smooth centering
-    }, 500);
+        yes.classList.add("center");
+    }, 450);
 }
 </script>
 
