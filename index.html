@@ -2,247 +2,341 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
+<title>Nasze Walentynki ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>💘 Walentynki</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", system-ui, sans-serif;
 }
 
 body {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #ff758c, #ff7eb3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    padding: 20px;
+  background: linear-gradient(180deg, #ffe0ec, #ffc2d6);
+  color: #5a0033;
+  overflow-x: hidden;
 }
 
-/* 🐱 KOTEK */
-.kitty {
-    position: absolute;
-    top: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 140px;
-    opacity: 0.95;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.25));
-    animation: kittyFloat 4s ease-in-out infinite;
-    z-index: 2;
+/* ================= PRELOADER ================= */
+#preloader {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(180deg, #ffe0ec, #ffc2d6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity .6s ease, visibility .6s ease;
+}
+#preloader.hide { opacity: 0; visibility: hidden; }
+
+.loader-heart {
+  width: 90px;
+  height: 90px;
+  background: #ff2d55;
+  transform: rotate(-45deg);
+  position: relative;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+.loader-heart::before,
+.loader-heart::after {
+  content: "";
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  background: #ff2d55;
+  border-radius: 50%;
+}
+.loader-heart::before { top: -45px; left: 0; }
+.loader-heart::after { left: 45px; top: 0; }
+
+@keyframes pulse {
+  0% { transform: rotate(-45deg) scale(1); }
+  50% { transform: rotate(-45deg) scale(1.15); }
+  100% { transform: rotate(-45deg) scale(1); }
 }
 
-@keyframes kittyFloat {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(6px); }
+/* ================= ANIMOWANE TŁO ================= */
+.bg {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: -1;
 }
-
-/* Serduszka */
-.hearts span {
-    position: absolute;
-    bottom: -50px;
-    font-size: 18px;
-    animation: float 6s linear infinite;
-    opacity: 0.7;
+.bg-heart {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #ff4f87;
+  transform: rotate(-45deg);
+  animation: float linear infinite;
+  opacity: 0.5;
 }
+.bg-heart::before,
+.bg-heart::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #ff4f87;
+  border-radius: 50%;
+}
+.bg-heart::before { top: -7px; left: 0; }
+.bg-heart::after { left: 7px; top: 0; }
 
 @keyframes float {
-    0% { transform: translateY(0) scale(1); opacity: 0; }
-    50% { opacity: 1; }
-    100% { transform: translateY(-110vh) scale(1.4); opacity: 0; }
+  from { transform: translateY(110vh) rotate(-45deg); }
+  to { transform: translateY(-10vh) rotate(-45deg); }
 }
 
-/* Karta */
-.container {
-    width: 100%;
-    max-width: 420px;
-    background: rgba(255,255,255,0.2);
-    backdrop-filter: blur(20px);
-    padding: 80px 30px 40px; /* miejsce na kotka */
-    border-radius: 25px;
-    text-align: center;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.2);
-    animation: fadeIn 1.2s ease;
-    position: relative;
-    z-index: 1;
+/* ================= LAYOUT ================= */
+main {
+  max-width: 900px;
+  margin: auto;
+  padding: 24px;
+  opacity: 0;
+  transition: opacity .6s ease;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
+section {
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(10px);
+  border-radius: 22px;
+  padding: 26px;
+  margin-bottom: 26px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.12);
 }
 
-h1 {
-    color: #fff;
-    font-size: clamp(1.6rem, 5vw, 2.2rem);
-    margin-bottom: 15px;
+h1, h2 {
+  text-align: center;
+  margin-bottom: 12px;
 }
 
-p {
-    color: #fff;
-    font-size: clamp(1rem, 4vw, 1.1rem);
-    margin-bottom: 30px;
+/* ================= TIMER ================= */
+.counter {
+  text-align: center;
+  font-size: 1.15rem;
+  font-weight: 600;
 }
 
-/* Przyciski */
-.buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-    height: 70px;
-    position: relative;
+/* ================= GALERIA ================= */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+.photo {
+  background: #ffd6e6;
+  aspect-ratio: 1/1;
+  border-radius: 16px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform .3s ease;
+}
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.photo:hover { transform: scale(1.05); }
+
+/* MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+.modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 18px;
+}
+.modal.show { display: flex; }
+
+/* ================= QUIZ SLIDER ================= */
+.quiz-wrapper {
+  overflow: hidden;
+}
+.quiz-track {
+  display: flex;
+  transition: transform .6s ease;
+}
+.quiz-slide {
+  min-width: 100%;
 }
 
-button {
-    padding: 16px 34px;
-    border-radius: 50px;
-    border: none;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.4s ease;
+.answers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 14px;
 }
-
-#yes {
-    background: #fff;
-    color: #ff5f8a;
-    font-weight: 600;
+.answer {
+  background: #ffb3cf;
+  padding: 14px;
+  border-radius: 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform .2s ease, background .2s ease;
 }
+.answer:hover { background: #ff94bd; transform: scale(1.05); }
+.answer.correct { background: #4caf50; color: #fff; }
+.answer.wrong { background: #e53935; color: #fff; }
 
-#yes.center {
-    transform: scale(1.2);
-}
-
-#no {
-    background: transparent;
-    border: 2px solid #fff;
-    color: #fff;
-}
-
-/* Wybuch */
-.explode {
-    animation: explode 0.5s ease forwards;
-}
-
-@keyframes explode {
-    to { transform: scale(0); opacity: 0; }
-}
-
-.particle {
-    position: absolute;
-    width: 7px;
-    height: 7px;
-    background: white;
-    border-radius: 50%;
-    pointer-events: none;
-    animation: particle 0.6s ease-out forwards;
-}
-
-@keyframes particle {
-    to {
-        transform: translate(var(--x), var(--y)) scale(0);
-        opacity: 0;
-    }
-}
-
-/* 📱 Mobile */
-@media (max-width: 420px) {
-    .kitty {
-        width: 100px;
-        top: 60px;
-    }
-
-    .container {
-        padding: 70px 22px 35px;
-    }
-
-    button {
-        width: 100%;
-        max-width: 160px;
-    }
+.result {
+  text-align: center;
+  font-weight: 700;
+  margin-top: 20px;
+  font-size: 1.2rem;
 }
 </style>
 </head>
+
 <body>
 
-<!-- 🐱 KOTEK -->
-<img src="https://www.nicepng.com/png/full/170-1705295_hello-kitty-is-the-most-successful-and-globalized.png" class="kitty" alt="kotek">
+<div class="bg" id="bg"></div>
 
-<!-- 🎵 MUZYKA -->
-<audio id="music" loop>
-    <source src="love.mp3" type="audio/mpeg">
-</audio>
-
-<div class="hearts">
-    <span style="left:10%">💗</span>
-    <span style="left:30%">💖</span>
-    <span style="left:50%">💘</span>
-    <span style="left:70%">💓</span>
-    <span style="left:90%">💞</span>
+<div id="preloader">
+  <div class="loader-heart"></div>
 </div>
 
-<div class="container">
-    <h1>Olusiu czy zostaniesz moją walentynką? 💕</h1>
-    <p>Obiecuję dużo uśmiechu i ciepłych chwil ✨</p>
+<main id="main">
 
-    <div class="buttons">
-        <button id="yes" onclick="yes()">TAK 💘</button>
-        <button id="no" onclick="explodeNo(event)">NIE 🙃</button>
-    </div>
+<!-- ================= HEADER ================= -->
+<section>
+  <h1>❤️ Nasze Walentynki ❤️</h1>
+  <p style="text-align:center">Razem od <b>16.07.2024</b></p>
+  <div class="counter" id="counter"></div>
+</section>
+
+<!-- ================= GALERIA ================= -->
+<section>
+  <h2>📸 Nasze chwile</h2>
+  <div class="gallery">
+    <div class="photo" onclick="openImg(this)"><img src="https://picsum.photos/600?1"></div>
+    <div class="photo" onclick="openImg(this)"><img src="https://picsum.photos/600?2"></div>
+    <div class="photo" onclick="openImg(this)"><img src="https://picsum.photos/600?3"></div>
+    <div class="photo" onclick="openImg(this)"><img src="https://picsum.photos/600?4"></div>
+  </div>
+</section>
+
+<!-- ================= QUIZ ================= -->
+<section>
+  <h2>💗 Quiz o nas</h2>
+  <div class="quiz-wrapper">
+    <div class="quiz-track" id="quizTrack"></div>
+  </div>
+  <div class="result" id="result"></div>
+</section>
+
+</main>
+
+<!-- MODAL -->
+<div class="modal" id="modal" onclick="this.classList.remove('show')">
+  <img id="modalImg">
 </div>
 
 <script>
-let musicStarted = false;
+/* PRELOADER */
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    preloader.classList.add("hide");
+    main.style.opacity = 1;
+  }, 900);
+});
 
-function startMusic() {
-    if (!musicStarted) {
-        document.getElementById("music").play();
-        musicStarted = true;
-    }
+/* TIMER LIVE */
+const startDate = new Date("2024-07-16T00:00:00");
+function updateCounter() {
+  const now = new Date();
+  let diff = now - startDate;
+
+  const d = Math.floor(diff / 86400000);
+  diff %= 86400000;
+  const h = Math.floor(diff / 3600000);
+  diff %= 3600000;
+  const m = Math.floor(diff / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+
+  counter.textContent = `${d} dni ${h}h ${m}m ${s}s 💞`;
+}
+updateCounter();
+setInterval(updateCounter, 1000);
+
+/* GALERIA MODAL */
+function openImg(el) {
+  modalImg.src = el.querySelector("img").src;
+  modal.classList.add("show");
 }
 
-function yes() {
-    startMusic();
-    document.querySelector('.container').innerHTML = `
-        <h1>TAKKK 🥹💖</h1>
-        <p>To oficjalnie najlepsze walentynki ever 💫</p>
-    `;
-}
+/* QUIZ SLIDER */
+const quizData = Array.from({ length: 10 }, (_, i) => ({
+  q: `Pytanie ${i + 1}`,
+  a: ["A", "B", "C", "D"],
+  correct: Math.floor(Math.random() * 4)
+}));
 
-function explodeNo(e) {
-    startMusic();
+const track = document.getElementById("quizTrack");
+let index = 0;
+let score = 0;
 
-    const no = e.target;
-    const yes = document.getElementById("yes");
-    const parent = no.parentElement;
+quizData.forEach((q, qi) => {
+  const slide = document.createElement("div");
+  slide.className = "quiz-slide";
+  slide.innerHTML = `<p><b>${qi + 1}. ${q.q}</b></p>`;
 
-    for (let i = 0; i < 10; i++) {
-        const p = document.createElement("div");
-        p.className = "particle";
-        p.style.left = no.offsetLeft + no.offsetWidth / 2 + "px";
-        p.style.top = no.offsetTop + no.offsetHeight / 2 + "px";
-        p.style.setProperty("--x", `${Math.random()*140-70}px`);
-        p.style.setProperty("--y", `${Math.random()*140-70}px`);
-        parent.appendChild(p);
-        setTimeout(() => p.remove(), 600);
-    }
+  const answers = document.createElement("div");
+  answers.className = "answers";
 
-    no.classList.add("explode");
+  q.a.forEach((txt, ai) => {
+    const a = document.createElement("div");
+    a.className = "answer";
+    a.textContent = txt;
 
-    setTimeout(() => {
-        no.remove();
-        yes.classList.add("center");
-    }, 450);
+    a.onclick = () => {
+      if (a.classList.contains("clicked")) return;
+      a.classList.add("clicked");
+
+      if (ai === q.correct) {
+        a.classList.add("correct");
+        score++;
+      } else {
+        a.classList.add("wrong");
+        answers.children[q.correct].classList.add("correct");
+      }
+
+      setTimeout(() => {
+        index++;
+        if (index < quizData.length) {
+          track.style.transform = `translateX(-${index * 100}%)`;
+        } else {
+          result.textContent = `Wynik końcowy: ${score} / ${quizData.length} 💘`;
+        }
+      }, 700);
+    };
+
+    answers.appendChild(a);
+  });
+
+  slide.appendChild(answers);
+  track.appendChild(slide);
+});
+
+/* SERDUSZKA TŁO */
+for (let i = 0; i < 35; i++) {
+  const h = document.createElement("div");
+  h.className = "bg-heart";
+  h.style.left = Math.random() * 100 + "%";
+  h.style.animationDuration = 8 + Math.random() * 12 + "s";
+  bg.appendChild(h);
 }
 </script>
 
 </body>
 </html>
-
-
