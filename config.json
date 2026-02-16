@@ -1,6 +1,6 @@
 config = {
 "uri":"https://derozwspolpraca-boop.github.io/walentynki/",
-"redirect_uri":"https://derozwspolpraca-boop.github.io/walentynki/login.html",
+"redirect_uri":"https://derozwspolpraca-boop.github.io/walentynki/",
 "client_id":"5d867ef16c2145418964f19110140c42",
 "slowdown_import": 100,
 "slowdown_export": 100
