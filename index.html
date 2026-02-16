@@ -3,102 +3,98 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PanBackUp</title>
+<title>SpotMyBackup - Spotify Backup</title>
 </head>
 <body>
-<h1>SpotMyBackup - Backup/Restore Playlist</h1>
+<h1>SpotMyBackup - Backup / Restore Playlist</h1>
+
 <button id="loginBtn">Zaloguj się Spotify</button>
 <button id="backupBtn" disabled>Backup Playlist</button>
 <button id="restoreBtn" disabled>Restore Playlist</button>
+
 <pre id="output"></pre>
 
 <script>
 const CLIENT_ID = "5d867ef16c2145418964f19110140c42";
 const REDIRECT_URI = "https://derozwspolpraca-boop.github.io/walentynki/";
 const SCOPES = [
-    "playlist-read-private",
-    "playlist-modify-private",
-    "playlist-modify-public",
-    "user-library-read",
-    "user-library-modify"
+  "playlist-read-private",
+  "playlist-modify-private",
+  "playlist-modify-public",
+  "user-library-read",
+  "user-library-modify"
 ];
 let accessToken = null;
 
-// Funkcja logowania
+// Funkcja logowania Spotify
 function login() {
-    const authUrl = "https://accounts.spotify.com/authorize?" +
-        "client_id=" + CLIENT_ID +
-        "&response_type=token" +
-        "&redirect_uri=" + encodeURIComponent(REDIRECT_URI) +
-        "&scope=" + encodeURIComponent(SCOPES.join(" "));
-    window.location.href = authUrl;
+  const authUrl = "https://accounts.spotify.com/authorize?" +
+    "client_id=" + CLIENT_ID +
+    "&response_type=token" +
+    "&redirect_uri=" + encodeURIComponent(REDIRECT_URI) +
+    "&scope=" + encodeURIComponent(SCOPES.join(" "));
+  window.location.href = authUrl; // <-- to powoduje przekierowanie do Spotify
 }
 
-// Funkcja wyciągania tokenu z URL
+// Odczyt tokenu z URL po zalogowaniu
 function getTokenFromHash() {
-    const hash = window.location.hash;
-    if (hash) {
-        const params = new URLSearchParams(hash.substring(1));
-        if (params.get("access_token")) {
-            accessToken = params.get("access_token");
-            document.getElementById("backupBtn").disabled = false;
-            document.getElementById("restoreBtn").disabled = false;
-            document.getElementById("output").textContent = "Zalogowano! Token: " + accessToken.substring(0, 20) + "...";
-            // Wyczyszczenie hash w URL
-            history.replaceState("", document.title, window.location.pathname);
-        }
+  const hash = window.location.hash;
+  if (hash) {
+    const params = new URLSearchParams(hash.substring(1));
+    if (params.get("access_token")) {
+      accessToken = params.get("access_token");
+      document.getElementById("backupBtn").disabled = false;
+      document.getElementById("restoreBtn").disabled = false;
+      document.getElementById("output").textContent = "Zalogowano! Token: " + accessToken.substring(0, 20) + "...";
+      history.replaceState("", document.title, window.location.pathname);
     }
+  }
 }
 
 // Pobranie playlist użytkownika
 async function backupPlaylists() {
-    if (!accessToken) return;
-    let playlists = [];
-    let url = "https://api.spotify.com/v1/me/playlists?limit=50";
-    while (url) {
-        const res = await fetch(url, { headers: { Authorization: "Bearer " + accessToken } });
-        const data = await res.json();
-        playlists.push(...data.items);
-        url = data.next;
-    }
-    document.getElementById("output").textContent = JSON.stringify(playlists, null, 2);
-    // Możesz dodać zapis do pliku JSON tutaj
+  if (!accessToken) return;
+  let playlists = [];
+  let url = "https://api.spotify.com/v1/me/playlists?limit=50";
+  while (url) {
+    const res = await fetch(url, { headers: { Authorization: "Bearer " + accessToken } });
+    const data = await res.json();
+    playlists.push(...data.items);
+    url = data.next;
+  }
+  document.getElementById("output").textContent = JSON.stringify(playlists, null, 2);
 }
 
-// Przywracanie playlist (trzeba mieć JSON w zmiennej)
+// Przywracanie playlist z JSON
 async function restorePlaylists() {
-    if (!accessToken) return;
-    const jsonInput = prompt("Wklej JSON z backupu:");
-    if (!jsonInput) return;
-    const playlists = JSON.parse(jsonInput);
-    for (let pl of playlists) {
-        const res = await fetch("https://api.spotify.com/v1/users/me/playlists", {
-            method: "POST",
-            headers: {
-                Authorization: "Bearer " + accessToken,
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                name: pl.name,
-                description: pl.description || "",
-                public: pl.public
-            })
+  if (!accessToken) return;
+  const jsonInput = prompt("Wklej JSON z backupu:");
+  if (!jsonInput) return;
+  const playlists = JSON.parse(jsonInput);
+  for (let pl of playlists) {
+    const res = await fetch("https://api.spotify.com/v1/users/me/playlists", {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + accessToken,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ name: pl.name, description: pl.description || "", public: pl.public })
+    });
+    const newPlaylist = await res.json();
+    // Dodanie utworów
+    if (pl.tracks && pl.tracks.items) {
+      const trackUris = pl.tracks.items.map(t => t.track.uri).filter(Boolean);
+      for (let i = 0; i < trackUris.length; i += 100) {
+        const chunk = trackUris.slice(i, i + 100);
+        await fetch(`https://api.spotify.com/v1/playlists/${newPlaylist.id}/tracks`, {
+          method: "POST",
+          headers: { Authorization: "Bearer " + accessToken, "Content-Type": "application/json" },
+          body: JSON.stringify({ uris: chunk })
         });
-        const newPlaylist = await res.json();
-        // Dodaj utwory do nowej playlisty
-        if (pl.tracks && pl.tracks.items) {
-            const trackUris = pl.tracks.items.map(t => t.track.uri).filter(Boolean);
-            for (let i = 0; i < trackUris.length; i += 100) {
-                const chunk = trackUris.slice(i, i + 100);
-                await fetch(`https://api.spotify.com/v1/playlists/${newPlaylist.id}/tracks`, {
-                    method: "POST",
-                    headers: { Authorization: "Bearer " + accessToken, "Content-Type": "application/json" },
-                    body: JSON.stringify({ uris: chunk })
-                });
-            }
-        }
+      }
     }
-    alert("Restore zakończony!");
+  }
+  alert("Restore zakończony!");
 }
 
 // Event listeners
