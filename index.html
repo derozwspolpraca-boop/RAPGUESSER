@@ -3,13 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SpotMyBackup PKCE</title>
+<title>0SpotMyBackup PKCE</title>
+<style>
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+</style>
 </head>
 <body>
-<h1>SpotMyBackup PKCE</h1>
+<h1>SpotMyBackup</h1>
+
 <button id="loginBtn">Zaloguj się Spotify</button>
 <button id="backupBtn" disabled>Backup Playlist</button>
 <button id="restoreBtn" disabled>Restore Playlist</button>
+
 <pre id="output"></pre>
 
 <script>
@@ -91,7 +99,14 @@ async function getTokenFromCode() {
     accessToken = data.access_token;
     document.getElementById("backupBtn").disabled = false;
     document.getElementById("restoreBtn").disabled = false;
+
+    // ✅ Zmiana przycisku logowania
+    const loginBtn = document.getElementById("loginBtn");
+    loginBtn.textContent = "Zalogowany";
+    loginBtn.disabled = true;
+
     document.getElementById("output").textContent = "Zalogowano! Token: " + accessToken.substring(0,20) + "...";
+
     // wyczyść query params
     history.replaceState("", document.title, window.location.pathname);
   } else {
@@ -102,11 +117,13 @@ async function getTokenFromCode() {
 // =============== BACKUP ===================
 async function backupPlaylists() {
   if (!accessToken) return alert("Nie jesteś zalogowany!");
+  document.getElementById("output").textContent = "Pobieranie playlist...";
   let playlists = [];
   let url = "https://api.spotify.com/v1/me/playlists?limit=50";
   while(url) {
     const res = await fetch(url, { headers: { Authorization: "Bearer " + accessToken } });
     const data = await res.json();
+    if (!data.items) break; // zabezpieczenie
     playlists.push(...data.items);
     url = data.next;
   }
