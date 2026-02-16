@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>8SpotMyBackup PKCE</title>
+<title>SpotMyBackup PKCE</title>
 <style>
 button:disabled { background: #ccc; cursor: not-allowed; }
+body { font-family: sans-serif; padding: 20px; }
+pre { background: #f0f0f0; padding: 10px; max-height: 400px; overflow: auto; }
 </style>
 </head>
 <body>
@@ -19,97 +21,130 @@ button:disabled { background: #ccc; cursor: not-allowed; }
 <pre id="output"></pre>
 
 <script>
+// ================= CONFIG =================
 const CLIENT_ID = "5d867ef16c2145418964f19110140c42";
 const REDIRECT_URI = "https://derozwspolpraca-boop.github.io/walentynki/";
 const SCOPES = ["playlist-read-private","playlist-modify-private","playlist-modify-public"];
 let accessToken = null;
 let backupData = [];
 
-// PKCE helpers
+// ================= PKCE HELPERS =================
 function base64URLEncode(str){return btoa(String.fromCharCode.apply(null,new Uint8Array(str))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');}
 async function sha256(plain){return await crypto.subtle.digest('SHA-256', new TextEncoder().encode(plain));}
 function generateRandomString(length){const charset='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~'; let r=''; for(let i=0;i<length;i++){r+=charset.charAt(Math.floor(Math.random()*charset.length));} return r;}
 
-// Login
+// ================= LOGIN / AUTH =================
 async function login(){
   const codeVerifier = generateRandomString(128);
   localStorage.setItem('code_verifier', codeVerifier);
   const codeChallenge = base64URLEncode(await sha256(codeVerifier));
-  const authUrl=`https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=${encodeURIComponent(SCOPES.join(' '))}&code_challenge_method=S256&code_challenge=${codeChallenge}`;
+  const authUrl = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}`+
+    `&response_type=code`+
+    `&redirect_uri=${encodeURIComponent(REDIRECT_URI)}`+
+    `&scope=${encodeURIComponent(SCOPES.join(' '))}`+
+    `&code_challenge_method=S256&code_challenge=${codeChallenge}`;
   window.location.href = authUrl;
 }
 
-// Get token from code
+// ================= GET TOKEN =================
 async function getTokenFromCode(){
   const params = new URLSearchParams(window.location.search);
   const code = params.get('code'); if(!code) return;
   const codeVerifier = localStorage.getItem('code_verifier'); if(!codeVerifier) return;
-  const body = new URLSearchParams({grant_type:'authorization_code', code:code, redirect_uri:REDIRECT_URI, client_id:CLIENT_ID, code_verifier:codeVerifier});
+  const body = new URLSearchParams({
+    grant_type:'authorization_code',
+    code:code,
+    redirect_uri:REDIRECT_URI,
+    client_id:CLIENT_ID,
+    code_verifier:codeVerifier
+  });
+
   try{
-    const res=await fetch('https://accounts.spotify.com/api/token',{method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:body.toString()});
-    const data=await res.json();
+    const res = await fetch('https://accounts.spotify.com/api/token',{
+      method:'POST',
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body:body.toString()
+    });
+    const data = await res.json();
     if(data.access_token){
-      accessToken=data.access_token;
-      document.getElementById("backupBtn").disabled=false;
-      document.getElementById("restoreBtn").disabled=false;
-      document.getElementById("loginBtn").textContent="Zalogowany";
-      document.getElementById("loginBtn").disabled=true;
-      document.getElementById("output").textContent="Zalogowano! Token OK.";
+      accessToken = data.access_token;
+      document.getElementById("backupBtn").disabled = false;
+      document.getElementById("restoreBtn").disabled = false;
+      const loginBtn = document.getElementById("loginBtn");
+      loginBtn.textContent = "Zalogowany";
+      loginBtn.disabled = true;
+      document.getElementById("output").textContent = "Zalogowano! Token OK.";
       history.replaceState("", document.title, window.location.pathname);
-    }else{document.getElementById("output").textContent="Błąd logowania: "+JSON.stringify(data);}
-  }catch(e){document.getElementById("output").textContent="Błąd fetch token: "+e;}
+    } else {
+      document.getElementById("output").textContent = "Błąd logowania: "+JSON.stringify(data);
+    }
+  }catch(e){
+    document.getElementById("output").textContent = "Błąd fetch token: "+e;
+  }
 }
 
-// Backup playlists (tylko podstawowe info)
+// ================= BACKUP =================
 async function backupPlaylists(){
-  if(!accessToken)return alert("Nie jesteś zalogowany!");
+  if(!accessToken) return alert("Nie jesteś zalogowany!");
   document.getElementById("output").textContent="Pobieranie playlist...";
-  backupData=[];
+  backupData = [];
   let url="https://api.spotify.com/v1/me/playlists?limit=50";
   try{
     while(url){
-      const res=await fetch(url,{headers:{Authorization:"Bearer "+accessToken}});
-      if(!res.ok){document.getElementById("output").textContent="Błąd: "+res.status+" "+res.statusText; return;}
-      const data=await res.json();
+      const res = await fetch(url,{headers:{Authorization:"Bearer "+accessToken}});
+      if(!res.ok){
+        document.getElementById("output").textContent = "Błąd: "+res.status+" "+res.statusText+" (CORS lub brak scope)";
+        return;
+      }
+      const data = await res.json();
       if(!data.items) break;
       backupData.push(...data.items.map(pl=>({name:pl.name,id:pl.id,tracks:pl.tracks.total})));
-      url=data.next;
+      url = data.next;
     }
     document.getElementById("output").textContent="Playlisty pobrane:\n"+backupData.map(p=>p.name+" ("+p.tracks+" utworów)").join("\n");
     document.getElementById("downloadBtn").disabled=false;
-  }catch(e){document.getElementById("output").textContent="Błąd fetch: "+e;}
+  }catch(e){
+    document.getElementById("output").textContent="Błąd fetch: "+e;
+  }
 }
 
-// Pobierz JSON backup
+// ================= DOWNLOAD JSON =================
 function downloadJSON(){
-  const blob=new Blob([JSON.stringify(backupData,null,2)],{type:'application/json'});
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob);
-  a.download="spotify_backup.json";
+  if(!backupData.length) return alert("Brak danych do pobrania!");
+  const blob = new Blob([JSON.stringify(backupData,null,2)],{type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = "spotify_backup.json";
   a.click();
 }
 
-// Restore (wklej JSON)
+// ================= RESTORE =================
 async function restorePlaylists(){
-  if(!accessToken)return alert("Nie jesteś zalogowany!");
-  const jsonInput=prompt("Wklej JSON z backupu:");
+  if(!accessToken) return alert("Nie jesteś zalogowany!");
+  const jsonInput = prompt("Wklej JSON z backupu:");
   if(!jsonInput) return;
-  const playlists=JSON.parse(jsonInput);
+  const playlists = JSON.parse(jsonInput);
   for(let pl of playlists){
-    const res=await fetch("https://api.spotify.com/v1/users/me/playlists",{method:'POST', headers:{Authorization:"Bearer "+accessToken,"Content-Type":"application/json"}, body:JSON.stringify({name:pl.name,description:"",public:false})});
-    const newPl=await res.json();
+    const res = await fetch("https://api.spotify.com/v1/users/me/playlists",{
+      method:'POST',
+      headers:{Authorization:"Bearer "+accessToken,"Content-Type":"application/json"},
+      body:JSON.stringify({name:pl.name,description:"",public:false})
+    });
+    const newPl = await res.json();
     console.log("Przywrócono:",newPl.name);
   }
   alert("Restore zakończony!");
 }
 
-// Event listeners
+// ================= EVENTS =================
 document.getElementById("loginBtn").addEventListener("click",login);
 document.getElementById("backupBtn").addEventListener("click",backupPlaylists);
 document.getElementById("restoreBtn").addEventListener("click",restorePlaylists);
 document.getElementById("downloadBtn").addEventListener("click",downloadJSON);
 
-window.onload=getTokenFromCode;
+// ================= INIT =================
+window.onload = getTokenFromCode;
+
 </script>
 </body>
 </html>
