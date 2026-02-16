@@ -3,12 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>0SpotMyBackup PKCE</title>
+<title>8SpotMyBackup PKCE</title>
 <style>
-button:disabled {
-  background: #ccc;
-  cursor: not-allowed;
-}
+button:disabled { background: #ccc; cursor: not-allowed; }
 </style>
 </head>
 <body>
@@ -17,157 +14,102 @@ button:disabled {
 <button id="loginBtn">Zaloguj się Spotify</button>
 <button id="backupBtn" disabled>Backup Playlist</button>
 <button id="restoreBtn" disabled>Restore Playlist</button>
+<button id="downloadBtn" disabled>Pobierz JSON</button>
 
 <pre id="output"></pre>
 
 <script>
-// ================= CONFIG =================
 const CLIENT_ID = "5d867ef16c2145418964f19110140c42";
 const REDIRECT_URI = "https://derozwspolpraca-boop.github.io/walentynki/";
-const SCOPES = [
-  "playlist-read-private",
-  "playlist-modify-private",
-  "playlist-modify-public",
-  "user-library-read",
-  "user-library-modify"
-];
+const SCOPES = ["playlist-read-private","playlist-modify-private","playlist-modify-public"];
 let accessToken = null;
+let backupData = [];
 
-// =============== PKCE HELPERS ===================
-function base64URLEncode(str) {
-  return btoa(String.fromCharCode.apply(null, new Uint8Array(str)))
-    .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-}
+// PKCE helpers
+function base64URLEncode(str){return btoa(String.fromCharCode.apply(null,new Uint8Array(str))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');}
+async function sha256(plain){return await crypto.subtle.digest('SHA-256', new TextEncoder().encode(plain));}
+function generateRandomString(length){const charset='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~'; let r=''; for(let i=0;i<length;i++){r+=charset.charAt(Math.floor(Math.random()*charset.length));} return r;}
 
-async function sha256(plain) {
-  const encoder = new TextEncoder();
-  const data = encoder.encode(plain);
-  const hash = await crypto.subtle.digest('SHA-256', data);
-  return hash;
-}
-
-function generateRandomString(length) {
-  const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~';
-  let result = '';
-  for (let i = 0; i < length; i++) {
-    result += charset.charAt(Math.floor(Math.random() * charset.length));
-  }
-  return result;
-}
-
-// =============== LOGIN / AUTH ===================
-async function login() {
+// Login
+async function login(){
   const codeVerifier = generateRandomString(128);
   localStorage.setItem('code_verifier', codeVerifier);
-  const hashed = await sha256(codeVerifier);
-  const codeChallenge = base64URLEncode(hashed);
-
-  const authUrl = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}` +
-    `&response_type=code` +
-    `&redirect_uri=${encodeURIComponent(REDIRECT_URI)}` +
-    `&scope=${encodeURIComponent(SCOPES.join(' '))}` +
-    `&code_challenge_method=S256&code_challenge=${codeChallenge}`;
-  
+  const codeChallenge = base64URLEncode(await sha256(codeVerifier));
+  const authUrl=`https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=${encodeURIComponent(SCOPES.join(' '))}&code_challenge_method=S256&code_challenge=${codeChallenge}`;
   window.location.href = authUrl;
 }
 
-// =============== GET TOKEN ===================
-async function getTokenFromCode() {
+// Get token from code
+async function getTokenFromCode(){
   const params = new URLSearchParams(window.location.search);
-  const code = params.get('code');
-  if (!code) return;
-
-  const codeVerifier = localStorage.getItem('code_verifier');
-  if (!codeVerifier) return;
-
-  const body = new URLSearchParams({
-    grant_type: 'authorization_code',
-    code: code,
-    redirect_uri: REDIRECT_URI,
-    client_id: CLIENT_ID,
-    code_verifier: codeVerifier
-  });
-
-  const res = await fetch('https://accounts.spotify.com/api/token', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: body.toString()
-  });
-
-  const data = await res.json();
-  if (data.access_token) {
-    accessToken = data.access_token;
-    document.getElementById("backupBtn").disabled = false;
-    document.getElementById("restoreBtn").disabled = false;
-
-    // ✅ Zmiana przycisku logowania
-    const loginBtn = document.getElementById("loginBtn");
-    loginBtn.textContent = "Zalogowany";
-    loginBtn.disabled = true;
-
-    document.getElementById("output").textContent = "Zalogowano! Token: " + accessToken.substring(0,20) + "...";
-
-    // wyczyść query params
-    history.replaceState("", document.title, window.location.pathname);
-  } else {
-    document.getElementById("output").textContent = "Błąd logowania: " + JSON.stringify(data);
-  }
+  const code = params.get('code'); if(!code) return;
+  const codeVerifier = localStorage.getItem('code_verifier'); if(!codeVerifier) return;
+  const body = new URLSearchParams({grant_type:'authorization_code', code:code, redirect_uri:REDIRECT_URI, client_id:CLIENT_ID, code_verifier:codeVerifier});
+  try{
+    const res=await fetch('https://accounts.spotify.com/api/token',{method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:body.toString()});
+    const data=await res.json();
+    if(data.access_token){
+      accessToken=data.access_token;
+      document.getElementById("backupBtn").disabled=false;
+      document.getElementById("restoreBtn").disabled=false;
+      document.getElementById("loginBtn").textContent="Zalogowany";
+      document.getElementById("loginBtn").disabled=true;
+      document.getElementById("output").textContent="Zalogowano! Token OK.";
+      history.replaceState("", document.title, window.location.pathname);
+    }else{document.getElementById("output").textContent="Błąd logowania: "+JSON.stringify(data);}
+  }catch(e){document.getElementById("output").textContent="Błąd fetch token: "+e;}
 }
 
-// =============== BACKUP ===================
-async function backupPlaylists() {
-  if (!accessToken) return alert("Nie jesteś zalogowany!");
-  document.getElementById("output").textContent = "Pobieranie playlist...";
-  let playlists = [];
-  let url = "https://api.spotify.com/v1/me/playlists?limit=50";
-  while(url) {
-    const res = await fetch(url, { headers: { Authorization: "Bearer " + accessToken } });
-    const data = await res.json();
-    if (!data.items) break; // zabezpieczenie
-    playlists.push(...data.items);
-    url = data.next;
-  }
-  document.getElementById("output").textContent = JSON.stringify(playlists, null, 2);
-}
-
-// =============== RESTORE ===================
-async function restorePlaylists() {
-  if (!accessToken) return alert("Nie jesteś zalogowany!");
-  const jsonInput = prompt("Wklej JSON z backupu:");
-  if (!jsonInput) return;
-  const playlists = JSON.parse(jsonInput);
-
-  for(let pl of playlists) {
-    const res = await fetch("https://api.spotify.com/v1/users/me/playlists", {
-      method: "POST",
-      headers: { Authorization: "Bearer " + accessToken, "Content-Type": "application/json" },
-      body: JSON.stringify({ name: pl.name, description: pl.description || "", public: pl.public })
-    });
-    const newPlaylist = await res.json();
-
-    if (pl.tracks && pl.tracks.items) {
-      const trackUris = pl.tracks.items.map(t => t.track.uri).filter(Boolean);
-      for (let i=0; i<trackUris.length; i+=100) {
-        const chunk = trackUris.slice(i,i+100);
-        await fetch(`https://api.spotify.com/v1/playlists/${newPlaylist.id}/tracks`, {
-          method: 'POST',
-          headers: { Authorization: "Bearer " + accessToken, "Content-Type": "application/json" },
-          body: JSON.stringify({ uris: chunk })
-        });
-      }
+// Backup playlists (tylko podstawowe info)
+async function backupPlaylists(){
+  if(!accessToken)return alert("Nie jesteś zalogowany!");
+  document.getElementById("output").textContent="Pobieranie playlist...";
+  backupData=[];
+  let url="https://api.spotify.com/v1/me/playlists?limit=50";
+  try{
+    while(url){
+      const res=await fetch(url,{headers:{Authorization:"Bearer "+accessToken}});
+      if(!res.ok){document.getElementById("output").textContent="Błąd: "+res.status+" "+res.statusText; return;}
+      const data=await res.json();
+      if(!data.items) break;
+      backupData.push(...data.items.map(pl=>({name:pl.name,id:pl.id,tracks:pl.tracks.total})));
+      url=data.next;
     }
+    document.getElementById("output").textContent="Playlisty pobrane:\n"+backupData.map(p=>p.name+" ("+p.tracks+" utworów)").join("\n");
+    document.getElementById("downloadBtn").disabled=false;
+  }catch(e){document.getElementById("output").textContent="Błąd fetch: "+e;}
+}
+
+// Pobierz JSON backup
+function downloadJSON(){
+  const blob=new Blob([JSON.stringify(backupData,null,2)],{type:'application/json'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download="spotify_backup.json";
+  a.click();
+}
+
+// Restore (wklej JSON)
+async function restorePlaylists(){
+  if(!accessToken)return alert("Nie jesteś zalogowany!");
+  const jsonInput=prompt("Wklej JSON z backupu:");
+  if(!jsonInput) return;
+  const playlists=JSON.parse(jsonInput);
+  for(let pl of playlists){
+    const res=await fetch("https://api.spotify.com/v1/users/me/playlists",{method:'POST', headers:{Authorization:"Bearer "+accessToken,"Content-Type":"application/json"}, body:JSON.stringify({name:pl.name,description:"",public:false})});
+    const newPl=await res.json();
+    console.log("Przywrócono:",newPl.name);
   }
   alert("Restore zakończony!");
 }
 
-// =============== EVENT LISTENERS ===================
-document.getElementById("loginBtn").addEventListener("click", login);
-document.getElementById("backupBtn").addEventListener("click", backupPlaylists);
-document.getElementById("restoreBtn").addEventListener("click", restorePlaylists);
+// Event listeners
+document.getElementById("loginBtn").addEventListener("click",login);
+document.getElementById("backupBtn").addEventListener("click",backupPlaylists);
+document.getElementById("restoreBtn").addEventListener("click",restorePlaylists);
+document.getElementById("downloadBtn").addEventListener("click",downloadJSON);
 
-// =============== INIT ===================
-window.onload = getTokenFromCode;
-
+window.onload=getTokenFromCode;
 </script>
 </body>
 </html>
