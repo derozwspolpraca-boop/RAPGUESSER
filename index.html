@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>HitQuiz 🎵</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080810;
+  --s1:#0f0f1a;
+  --s2:#161625;
+  --s3:#1e1e30;
+  --s4:#26263a;
+  --gold:#f5c842;
+  --gold2:#e8a800;
+  --red:#ff3a3a;
+  --green:#00e676;
+  --blue:#4fc3f7;
+  --text:#f0f0fa;
+  --text2:#9090b0;
+  --text3:#505070;
+  --border:rgba(245,200,66,0.15);
+  --border2:rgba(245,200,66,0.35);
+  --r:10px;
+}
+html,body{height:100%;font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--s1)}
+::-webkit-scrollbar-thumb{background:var(--gold2);border-radius:3px}
+
+/* ─── LAYOUT ─── */
+#app{display:flex;flex-direction:column;min-height:100vh;max-width:700px;margin:0 auto;padding:0 12px}
+
+/* ─── HEADER ─── */
+.header{display:flex;align-items:center;justify-content:space-between;padding:18px 0 14px;border-bottom:1px solid var(--border)}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:2px;color:var(--gold);line-height:1}
+.logo span{color:var(--text2);font-size:13px;display:block;letter-spacing:4px;font-family:'Barlow Condensed',sans-serif;font-weight:600}
+.header-right{display:flex;gap:8px;align-items:center}
+.icon-btn{background:var(--s2);border:1px solid var(--border);border-radius:8px;padding:8px 10px;cursor:pointer;color:var(--text2);font-size:14px;transition:all .2s}
+.icon-btn:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ─── SCOREBAR ─── */
+.scorebar{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:14px 0}
+.score-cell{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:10px;text-align:center}
+.score-cell .val{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--gold);line-height:1.1}
+.score-cell .lbl{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+
+/* ─── VINYL ─── */
+.vinyl-area{display:flex;justify-content:center;align-items:center;padding:20px 0 10px;position:relative}
+.vinyl{width:130px;height:130px;border-radius:50%;background:conic-gradient(from 0deg,#1a1a1a 0%,#111 10%,#2a2000 20%,#f5c842 22%,#2a2000 24%,#111 40%,#f0a000 55%,#111 57%,#1a1a1a 80%,#333 90%,#1a1a1a 100%);position:relative;transition:all .3s;box-shadow:0 0 0 3px #333,0 0 0 6px #1a1a1a,0 0 30px rgba(245,200,66,.2)}
+.vinyl.spin{animation:vspin 2.5s linear infinite}
+.vinyl::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:28px;height:28px;border-radius:50%;background:radial-gradient(circle,#f5c842 0%,#e8a800 40%,#c87800 100%);box-shadow:0 0 8px rgba(245,200,66,.5)}
+@keyframes vspin{to{transform:rotate(360deg)}}
+.vinyl-glow{position:absolute;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(245,200,66,.08) 0%,transparent 70%);pointer-events:none}
+
+/* ─── WAVEFORM ─── */
+.waveform{display:flex;align-items:flex-end;justify-content:center;gap:3px;height:40px;padding:0 0 6px;opacity:.4;transition:opacity .3s}
+.waveform.active{opacity:1}
+.wv{width:4px;background:var(--gold);border-radius:2px 2px 0 0;height:5px;transition:height .08s}
+.wv.pulse{animation:wpulse .6s ease-in-out infinite}
+@keyframes wpulse{0%,100%{height:5px}50%{height:32px}}
+
+/* ─── PROGRESS DOTS ─── */
+.attempts-row{display:flex;gap:7px;justify-content:center;padding:6px 0 14px}
+.adot{width:40px;height:40px;border-radius:9px;border:2px solid var(--s4);background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:18px;transition:all .3s;flex-shrink:0}
+.adot.active{border-color:var(--gold);box-shadow:0 0 12px rgba(245,200,66,.3);animation:glow 1.2s ease-in-out infinite}
+.adot.hit{border-color:var(--green);background:rgba(0,230,118,.12);color:var(--green)}
+.adot.miss{border-color:var(--red);background:rgba(255,58,58,.12);color:var(--red)}
+.adot.skip{border-color:var(--text3);background:var(--s1);color:var(--text3)}
+@keyframes glow{0%,100%{box-shadow:0 0 8px rgba(245,200,66,.25)}50%{box-shadow:0 0 20px rgba(245,200,66,.5)}}
+
+/* ─── CLUE STRIP ─── */
+.clue-strip{background:var(--s2);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:0 var(--r) var(--r) 0;padding:10px 14px;font-size:13px;color:var(--text2);margin-bottom:12px;min-height:40px;transition:all .3s}
+.clue-strip strong{color:var(--gold)}
+
+/* ─── PLAY BUTTON ─── */
+.play-btn{width:100%;padding:15px;background:var(--gold);border:none;border-radius:var(--r);font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:#000;cursor:pointer;transition:all .2s;margin-bottom:14px;position:relative;overflow:hidden}
+.play-btn::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.15) 0%,transparent 50%)}
+.play-btn:hover{background:#ffe066;transform:translateY(-1px);box-shadow:0 6px 24px rgba(245,200,66,.35)}
+.play-btn:active{transform:translateY(0)}
+.play-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+
+/* ─── DURATION BAR ─── */
+.dur-bar-wrap{background:var(--s3);border-radius:4px;height:5px;margin:-8px 0 14px;overflow:hidden}
+.dur-bar{height:100%;background:linear-gradient(90deg,var(--gold2),var(--gold));border-radius:4px;width:0%;transition:none}
+
+/* ─── SEARCH ─── */
+.search-wrap{position:relative;margin-bottom:10px}
+.search-input{width:100%;padding:13px 16px;background:var(--s2);border:1.5px solid var(--border);border-radius:var(--r);color:var(--text);font-size:14px;font-family:'Barlow',sans-serif;outline:none;transition:border-color .2s}
+.search-input:focus{border-color:var(--gold)}
+.search-input::placeholder{color:var(--text3)}
+.search-input:disabled{opacity:.5;cursor:not-allowed}
+.dropdown{position:absolute;top:calc(100% + 4px);left:0;right:0;background:var(--s2);border:1.5px solid var(--border2);border-radius:var(--r);max-height:240px;overflow-y:auto;z-index:100;display:none;box-shadow:0 8px 32px rgba(0,0,0,.5)}
+.dropdown.open{display:block}
+.di{padding:10px 16px;cursor:pointer;border-bottom:1px solid var(--s3);transition:background .15s}
+.di:last-child{border-bottom:none}
+.di:hover,.di.selected{background:var(--s3)}
+.di .dt{font-size:14px;font-weight:600}
+.di .da{font-size:12px;color:var(--text2);margin-top:2px}
+.di .dy{font-size:11px;color:var(--text3)}
+
+/* ─── ACTION ROW ─── */
+.action-row{display:flex;gap:8px;margin-bottom:18px}
+.btn-skip{flex:1;padding:12px;background:var(--s2);border:1.5px solid var(--border);border-radius:var(--r);color:var(--text2);font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Barlow',sans-serif;letter-spacing:.5px}
+.btn-skip:hover{border-color:var(--text3);color:var(--text)}
+.btn-confirm{flex:2;padding:12px;background:transparent;border:1.5px solid var(--gold);border-radius:var(--r);color:var(--gold);font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Barlow',sans-serif;letter-spacing:.5px;text-transform:uppercase}
+.btn-confirm:hover{background:var(--gold);color:#000}
+.btn-confirm:disabled{opacity:.4;cursor:not-allowed;pointer-events:none}
+
+/* ─── RESULT CARD ─── */
+.result-card{background:var(--s2);border:1px solid var(--border2);border-radius:14px;padding:22px;text-align:center;margin-bottom:14px;animation:fadeUp .4s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.result-emoji{font-size:52px;margin-bottom:8px}
+.result-status{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;margin-bottom:4px}
+.result-status.win{color:var(--green)}
+.result-status.lose{color:var(--red)}
+.result-song{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;margin-bottom:4px;color:var(--gold)}
+.result-artist{font-size:14px;color:var(--text2);margin-bottom:12px}
+.result-pts{font-size:13px;color:var(--text3)}
+.result-links{display:flex;gap:8px;justify-content:center;margin-top:12px}
+.result-link{padding:7px 16px;border-radius:8px;font-size:12px;font-weight:700;text-decoration:none;transition:opacity .2s}
+.result-link:hover{opacity:.8}
+.rl-yt{background:#ff0000;color:#fff}
+.rl-mp3{background:var(--s4);color:var(--gold);border:1px solid var(--border2)}
+
+.btn-next{width:100%;padding:14px;background:var(--gold);border:none;border-radius:var(--r);font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:#000;cursor:pointer;transition:all .2s}
+.btn-next:hover{background:#ffe066;transform:translateY(-1px);box-shadow:0 4px 20px rgba(245,200,66,.3)}
+
+/* ─── YOUTUBE PLAYER (hidden) ─── */
+#yt-container{position:fixed;bottom:-200px;left:0;width:1px;height:1px;opacity:0;pointer-events:none}
+
+/* ─── AUDIO CONTROLS (MP3) ─── */
+#audio-el{display:none}
+
+/* ─── ADMIN PANEL ─── */
+.admin-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:500;display:none;overflow-y:auto}
+.admin-overlay.open{display:block}
+.admin-panel{max-width:720px;margin:0 auto;background:var(--s1);min-height:100vh;padding:20px}
+.admin-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.admin-title{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--gold);letter-spacing:2px}
+.close-btn{background:var(--s3);border:1px solid var(--border);border-radius:8px;padding:8px 14px;color:var(--text2);cursor:pointer;font-size:14px;transition:all .2s}
+.close-btn:hover{border-color:var(--red);color:var(--red)}
+
+.admin-tabs{display:flex;gap:4px;margin-bottom:20px;background:var(--s2);border-radius:10px;padding:4px}
+.atab{flex:1;padding:9px;border:none;background:transparent;color:var(--text2);font-size:13px;font-weight:600;cursor:pointer;border-radius:8px;transition:all .2s;font-family:'Barlow',sans-serif}
+.atab.active{background:var(--gold);color:#000}
+
+.add-form{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:16px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.form-row.full{grid-template-columns:1fr}
+.form-group label{display:block;font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px}
+.form-group input,.form-group select{width:100%;padding:10px 12px;background:var(--s3);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px;font-family:'Barlow',sans-serif;outline:none;transition:border-color .2s}
+.form-group input:focus,.form-group select:focus{border-color:var(--gold)}
+.form-group input::placeholder{color:var(--text3)}
+.form-group select option{background:var(--s3)}
+.btn-add{width:100%;padding:12px;background:var(--gold);border:none;border-radius:8px;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px;color:#000;cursor:pointer;transition:all .2s;margin-top:4px}
+.btn-add:hover{background:#ffe066}
+
+.songs-list{display:flex;flex-direction:column;gap:6px;max-height:450px;overflow-y:auto;padding-right:4px}
+.song-item{background:var(--s2);border:1px solid var(--border);border-radius:8px;padding:11px 14px;display:flex;align-items:center;gap:10px}
+.si-num{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--text3);width:28px;flex-shrink:0;text-align:right}
+.si-info{flex:1;min-width:0}
+.si-title{font-weight:700;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.si-artist{font-size:11px;color:var(--text2)}
+.si-badge{font-size:10px;padding:2px 7px;border-radius:4px;font-weight:700;flex-shrink:0}
+.si-badge.yt{background:rgba(255,0,0,.15);color:#ff6b6b;border:1px solid rgba(255,0,0,.3)}
+.si-badge.mp3{background:rgba(245,200,66,.1);color:var(--gold);border:1px solid var(--border)}
+.si-del{background:none;border:none;color:var(--text3);cursor:pointer;font-size:16px;padding:4px;border-radius:4px;transition:color .2s;flex-shrink:0}
+.si-del:hover{color:var(--red)}
+
+.bulk-area{margin-bottom:12px}
+.bulk-area textarea{width:100%;min-height:160px;background:var(--s2);border:1px solid var(--border);border-radius:var(--r);color:var(--text);font-size:12px;font-family:'Barlow Condensed',monospace;padding:12px;outline:none;resize:vertical;transition:border-color .2s}
+.bulk-area textarea:focus{border-color:var(--gold)}
+.bulk-hint{font-size:11px;color:var(--text3);margin-top:6px;line-height:1.6}
+.btn-bulk{width:100%;padding:11px;background:var(--s3);border:1px solid var(--border2);border-radius:8px;color:var(--gold);font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Barlow',sans-serif;margin-top:8px}
+.btn-bulk:hover{background:var(--s4)}
+
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.stat-box{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:14px;text-align:center}
+.stat-box .v{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--gold)}
+.stat-box .l{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:1px}
+
+.history-list{display:flex;flex-direction:column;gap:5px;max-height:400px;overflow-y:auto}
+.hist-item{background:var(--s2);border:1px solid var(--border);border-radius:8px;padding:9px 12px;display:flex;align-items:center;gap:10px}
+.hist-icon{font-size:18px;flex-shrink:0}
+.hist-info{flex:1;min-width:0}
+.hist-title{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hist-sub{font-size:11px;color:var(--text2)}
+.hist-pts{font-size:12px;font-weight:700;color:var(--gold)}
+
+.badge-count{background:var(--red);color:#fff;font-size:10px;font-weight:700;border-radius:6px;padding:1px 5px;margin-left:4px;vertical-align:middle}
+
+.search-filter{width:100%;padding:10px 12px;background:var(--s2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px;font-family:'Barlow',sans-serif;outline:none;margin-bottom:10px;transition:border-color .2s}
+.search-filter:focus{border-color:var(--gold)}
+.search-filter::placeholder{color:var(--text3)}
+
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--s2);border:1px solid var(--border2);border-radius:10px;padding:11px 20px;font-size:13px;font-weight:600;color:var(--gold);z-index:1000;transition:transform .3s cubic-bezier(.34,1.56,.64,1);white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.toast.error{color:var(--red);border-color:rgba(255,58,58,.4)}
+
+.empty-state{text-align:center;padding:40px 20px;color:var(--text3)}
+.empty-state .em{font-size:40px;margin-bottom:12px}
+.empty-state p{font-size:14px;line-height:1.6}
+
+.mode-tabs{display:flex;gap:4px;background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:4px;margin-bottom:16px}
+.mtab{flex:1;padding:9px 6px;border:none;background:transparent;color:var(--text2);font-size:12px;font-weight:600;cursor:pointer;border-radius:7px;transition:all .2s;font-family:'Barlow',sans-serif;text-align:center}
+.mtab.active{background:var(--gold);color:#000}
+.mtab:hover:not(.active){color:var(--text)}
+
+footer{text-align:center;padding:20px 0;color:var(--text3);font-size:12px;border-top:1px solid var(--border);margin-top:auto}
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="header">
+    <div class="logo">HitQuiz<span>HIP-HOP EDITION</span></div>
+    <div class="header-right">
+      <button class="icon-btn" onclick="openAdmin('lista')" title="Zarządzaj piosenkami">⚙ ADMIN</button>
+      <button class="icon-btn" onclick="openAdmin('historia')" title="Historia gier">📊</button>
+    </div>
+  </div>
+
+  <div class="scorebar">
+    <div class="score-cell"><div class="val" id="sc-score">0</div><div class="lbl">Punkty</div></div>
+    <div class="score-cell"><div class="val" id="sc-streak">0</div><div class="lbl">Seria 🔥</div></div>
+    <div class="score-cell"><div class="val" id="sc-total">0</div><div class="lbl">Zagrane</div></div>
+  </div>
+
+  <div class="mode-tabs">
+    <button class="mtab active" onclick="setMode('classic',this)">🎯 Klasyczny<br><small style="font-weight:400;font-size:10px">6 prób</small></button>
+    <button class="mtab" onclick="setMode('blitz',this)">⚡ Blitz<br><small style="font-weight:400;font-size:10px">3 próby</small></button>
+    <button class="mtab" onclick="setMode('chill',this)">♾️ Relax<br><small style="font-weight:400;font-size:10px">nielimitowane</small></button>
+  </div>
+
+  <div class="vinyl-area">
+    <div class="vinyl-glow"></div>
+    <div class="vinyl" id="vinyl"></div>
+  </div>
+
+  <div class="waveform" id="waveform">
+    <div class="wv"></div><div class="wv"></div><div class="wv"></div>
+    <div class="wv"></div><div class="wv"></div><div class="wv"></div>
+    <div class="wv"></div><div class="wv"></div><div class="wv"></div>
+    <div class="wv"></div><div class="wv"></div><div class="wv"></div>
+    <div class="wv"></div><div class="wv"></div><div class="wv"></div>
+  </div>
+
+  <div class="attempts-row" id="attempts-row"></div>
+
+  <div class="clue-strip" id="clue-strip">🎧 Naciśnij <strong>GRAJ FRAGMENT</strong> aby zacząć</div>
+
+  <button class="play-btn" id="play-btn" onclick="playFragment()">▶ GRAJ FRAGMENT</button>
+  <div class="dur-bar-wrap"><div class="dur-bar" id="dur-bar"></div></div>
+
+  <div id="game-area">
+    <div class="search-wrap">
+      <input class="search-input" id="search" type="text" placeholder="🔍 Wpisz tytuł lub wykonawcę..." autocomplete="off"
+        oninput="onSearch(this.value)" onkeydown="onSearchKey(event)" disabled/>
+      <div class="dropdown" id="dropdown"></div>
+    </div>
+    <div class="action-row">
+      <button class="btn-skip" onclick="doSkip()">⏭ POMIŃ</button>
+      <button class="btn-confirm" id="btn-confirm" onclick="doConfirm()" disabled>✓ POTWIERDŹ</button>
+    </div>
+  </div>
+
+  <div id="result-area" style="display:none"></div>
+
+  <footer>🎵 HitQuiz &mdash; Twoja własna gra muzyczna</footer>
+</div>
+
+<!-- YouTube player (invisible) -->
+<div id="yt-container">
+  <div id="yt-player"></div>
+</div>
+<audio id="audio-el" preload="auto"></audio>
+
+<!-- ADMIN PANEL -->
+<div class="admin-overlay" id="admin-overlay">
+  <div class="admin-panel">
+    <div class="admin-header">
+      <div class="admin-title">⚙ PANEL ADMINA</div>
+      <button class="close-btn" onclick="closeAdmin()">✕ ZAMKNIJ</button>
+    </div>
+    <div class="admin-tabs">
+      <button class="atab active" onclick="switchTab('lista',this)">📋 Lista piosenek <span class="badge-count" id="badge-count">0</span></button>
+      <button class="atab" onclick="switchTab('dodaj',this)">➕ Dodaj</button>
+      <button class="atab" onclick="switchTab('bulk',this)">📦 Bulk import</button>
+      <button class="atab" onclick="switchTab('historia',this)">📊 Historia</button>
+    </div>
+    <div id="tab-lista" class="tab-content"></div>
+    <div id="tab-dodaj" class="tab-content" style="display:none"></div>
+    <div id="tab-bulk" class="tab-content" style="display:none"></div>
+    <div id="tab-historia" class="tab-content" style="display:none"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+//  BAZA PIOSENEK — EDYTUJ TUTAJ LUB PRZEZ PANEL ADMINA
+// ═══════════════════════════════════════════════════════
+const DEFAULT_SONGS = [
+  {id:'1',title:'HUMBLE.',artist:'Kendrick Lamar',year:2017,type:'yt',src:'https://www.youtube.com/watch?v=tvTRZJ-4EyI'},
+  {id:'2',title:'God\'s Plan',artist:'Drake',year:2018,type:'yt',src:'https://www.youtube.com/watch?v=xpVfcZ0ZcFM'},
+  {id:'3',title:'Sicko Mode',artist:'Travis Scott',year:2018,type:'yt',src:'https://www.youtube.com/watch?v=6ONRf7h3Mdk'},
+  {id:'4',title:'Rockstar',artist:'Post Malone',year:2017,type:'yt',src:'https://www.youtube.com/watch?v=UceaB4D0jpo'},
+  {id:'5',title:'Lucid Dreams',artist:'Juice WRLD',year:2018,type:'yt',src:'https://www.youtube.com/watch?v=mzB1VGEGcSU'},
+  {id:'6',title:'HIGHEST IN THE ROOM',artist:'Travis Scott',year:2019,type:'yt',src:'https://www.youtube.com/watch?v=Hip4g30VGzM'},
+  {id:'7',title:'Blinding Lights',artist:'The Weeknd',year:2019,type:'yt',src:'https://www.youtube.com/watch?v=4NRXx6U8ABQ'},
+  {id:'8',title:'Mo Bamba',artist:'Sheck Wes',year:2018,type:'yt',src:'https://www.youtube.com/watch?v=va6y6PDEzGg'},
+  {id:'9',title:'Old Town Road',artist:'Lil Nas X',year:2019,type:'yt',src:'https://www.youtube.com/watch?v=r7qovpFAGrQ'},
+  {id:'10',title:'BAD GUY',artist:'Billie Eilish',year:2019,type:'yt',src:'https://www.youtube.com/watch?v=DyDfgMOUjCI'},
+];
+
+// ═══════════════════════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════════════════════
+let S = {
+  songs: [],
+  current: null,
+  attempt: 0,
+  maxAttempts: 6,
+  results: [],
+  score: 0,
+  streak: 0,
+  totalPlayed: 0,
+  gameOver: false,
+  playing: false,
+  guess: null,
+  played: new Set(),
+  history: [],
+  mode: 'classic',
+  ytReady: false,
+  ytPlayer: null,
+  ytSeekTo: 0,
+  playStartTime: 0,
+  playDuration: 0,
+  playTimer: null,
+};
+
+const DURATIONS = [0.5, 1, 2, 4, 7, 11];
+
+function dur() { return DURATIONS[Math.min(S.attempt, DURATIONS.length-1)]; }
+
+// ═══════════════════════════════════════════════════════
+//  LOCALSTORAGE
+// ═══════════════════════════════════════════════════════
+function loadData() {
+  try {
+    const saved = localStorage.getItem('hq_songs');
+    S.songs = saved ? JSON.parse(saved) : [...DEFAULT_SONGS];
+    const stats = localStorage.getItem('hq_stats');
+    if(stats) { const d=JSON.parse(stats); S.score=d.score||0; S.streak=d.streak||0; S.totalPlayed=d.total||0; }
+    const hist = localStorage.getItem('hq_history');
+    if(hist) S.history = JSON.parse(hist);
+  } catch(e) { S.songs=[...DEFAULT_SONGS]; }
+  updateStats();
+}
+function saveSongs() {
+  localStorage.setItem('hq_songs', JSON.stringify(S.songs));
+  document.getElementById('badge-count').textContent = S.songs.length;
+}
+function saveStats() {
+  localStorage.setItem('hq_stats', JSON.stringify({score:S.score,streak:S.streak,total:S.totalPlayed}));
+  localStorage.setItem('hq_history', JSON.stringify(S.history.slice(-100)));
+}
+function updateStats() {
+  document.getElementById('sc-score').textContent = S.score;
+  document.getElementById('sc-streak').textContent = S.streak;
+  document.getElementById('sc-total').textContent = S.totalPlayed;
+  document.getElementById('badge-count').textContent = S.songs.length;
+}
+
+// ═══════════════════════════════════════════════════════
+//  YOUTUBE API
+// ═══════════════════════════════════════════════════════
+function loadYTApi() {
+  const tag = document.createElement('script');
+  tag.src = 'https://www.youtube.com/iframe_api';
+  document.head.appendChild(tag);
+}
+window.onYouTubeIframeAPIReady = function() {
+  S.ytPlayer = new YT.Player('yt-player', {
+    height:'1', width:'1',
+    playerVars:{autoplay:0,controls:0,rel:0,iv_load_policy:3,modestbranding:1},
+    events:{
+      onReady: ()=>{ S.ytReady=true; },
+      onStateChange: (e)=>{
+        if(e.data===YT.PlayerState.PLAYING) {
+          const elapsed = (Date.now()-S.playStartTime)/1000;
+          if(elapsed >= S.playDuration-0.1) stopPlayback();
+        }
+      },
+      onError: ()=>{ showToast('Błąd YouTube – sprawdź link',true); stopPlayback(); }
+    }
+  });
+};
+
+function extractYTId(url) {
+  const m = url.match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([a-zA-Z0-9_-]{11})/);
+  return m ? m[1] : null;
+}
+
+// ═══════════════════════════════════════════════════════
+//  PLAYBACK
+// ═══════════════════════════════════════════════════════
+function playFragment() {
+  if(S.gameOver || S.playing) return;
+  if(!S.current) return;
+  if(S.songs.length===0) { showToast('Brak piosenek! Dodaj je w panelu admina',true); return; }
+
+  S.playing = true;
+  const btn = document.getElementById('play-btn');
+  btn.disabled = true;
+  btn.textContent = '⏸ GRANIE...';
+  document.getElementById('vinyl').classList.add('spin');
+  setWave(true);
+
+  const d = dur();
+  S.playDuration = d;
+  S.playStartTime = Date.now();
+  animateDurBar(d);
+
+  if(S.current.type==='mp3') {
+    const audio = document.getElementById('audio-el');
+    audio.src = S.current.src;
+    audio.currentTime = 0;
+    audio.play().catch(()=>{ showToast('Błąd MP3 – sprawdź plik',true); stopPlayback(); });
+    S.playTimer = setTimeout(stopPlayback, d*1000);
+  } else {
+    const vid = extractYTId(S.current.src);
+    if(!vid) { showToast('Błędny link YouTube',true); stopPlayback(); return; }
+    const seekTo = S.ytSeekTo || 30;
+    if(S.ytReady && S.ytPlayer) {
+      S.ytPlayer.loadVideoById({videoId:vid,startSeconds:seekTo});
+      S.ytPlayer.setVolume(100);
+    }
+    S.playTimer = setTimeout(stopPlayback, d*1000);
+  }
+}
+
+function stopPlayback() {
+  S.playing = false;
+  clearTimeout(S.playTimer);
+  const btn = document.getElementById('play-btn');
+  const d = dur();
+  btn.disabled = false;
+  btn.textContent = '▶ GRAJ PONOWNIE (' + d + 's)';
+  document.getElementById('vinyl').classList.remove('spin');
+  setWave(false);
+  if(S.current && S.current.type==='mp3') {
+    const audio = document.getElementById('audio-el');
+    audio.pause();
+  } else if(S.ytPlayer && S.ytReady) {
+    try { S.ytPlayer.pauseVideo(); } catch(e){}
+  }
+  // enable search after first play
+  document.getElementById('search').disabled = false;
+  document.getElementById('btn-confirm').disabled = false;
+}
+
+function animateDurBar(d) {
+  const bar = document.getElementById('dur-bar');
+  bar.style.transition='none'; bar.style.width='0%';
+  requestAnimationFrame(()=>{
+    requestAnimationFrame(()=>{
+      bar.style.transition='width '+d+'s linear';
+      bar.style.width='100%';
+    });
+  });
+}
+
+function setWave(on) {
+  const wf = document.getElementById('waveform');
+  wf.classList.toggle('active', on);
+  document.querySelectorAll('.wv').forEach((b,i)=>{
+    if(on) { b.classList.add('pulse'); b.style.animationDelay=(i*0.06)+'s'; }
+    else { b.classList.remove('pulse'); b.style.height='5px'; }
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+//  GAME LOGIC
+// ═══════════════════════════════════════════════════════
+function pickSong() {
+  if(S.songs.length===0) return null;
+  let pool = S.songs.filter(s=>!S.played.has(s.id));
+  if(pool.length===0) { S.played.clear(); pool=[...S.songs]; }
+  return pool[Math.floor(Math.random()*pool.length)];
+}
+
+function startGame() {
+  if(S.songs.length===0) { renderEmptyState(); return; }
+  S.current = pickSong();
+  if(!S.current) return;
+  S.played.add(S.current.id);
+  S.attempt=0; S.results=[]; S.gameOver=false; S.guess=null; S.playing=false; S.ytSeekTo=30;
+  const btn=document.getElementById('play-btn');
+  btn.textContent='▶ GRAJ FRAGMENT';
+  btn.disabled=false;
+  document.getElementById('search').value='';
+  document.getElementById('search').disabled=true;
+  document.getElementById('btn-confirm').disabled=true;
+  document.getElementById('dropdown').classList.remove('open');
+  document.getElementById('dur-bar').style.width='0%';
+  document.getElementById('result-area').style.display='none';
+  document.getElementById('game-area').style.display='block';
+  setWave(false);
+  document.getElementById('vinyl').classList.remove('spin');
+  renderAttempts();
+  updateClue();
+}
+
+function renderAttempts() {
+  const row=document.getElementById('attempts-row'); row.innerHTML='';
+  const icons=['🎤','🎵','🎸','🥁','🎹','🎺'];
+  const max = Math.min(S.maxAttempts,6);
+  for(let i=0;i<max;i++) {
+    const d=document.createElement('div');
+    let cls='adot';
+    if(i<S.attempt) cls+=' '+(S.results[i]==='hit'?'hit':S.results[i]==='skip'?'skip':'miss');
+    else if(i===S.attempt&&!S.gameOver) cls+=' active';
+    d.className=cls;
+    d.textContent = i<S.attempt ? (S.results[i]==='hit'?'✓':S.results[i]==='skip'?'—':'✗') : icons[i];
+    row.appendChild(d);
+  }
+}
+
+function updateClue() {
+  const strip=document.getElementById('clue-strip');
+  const d=dur();
+  if(S.attempt===0) {
+    strip.innerHTML='🎧 Naciśnij <strong>GRAJ FRAGMENT</strong> aby zacząć';
+  } else {
+    let hints=[];
+    if(S.attempt>=2) hints.push('Rok: <strong>'+S.current.year+'</strong>');
+    if(S.attempt>=3) hints.push('Inicjały: <strong>'+initials(S.current.artist)+'</strong>');
+    if(S.attempt>=5) hints.push('Artysta: <strong>'+S.current.artist+'</strong>');
+    const base='⏱ Fragment: <strong>'+d+'s</strong>';
+    strip.innerHTML=base+(hints.length?' &nbsp;|&nbsp; '+hints.join(' &nbsp;|&nbsp; '):'');
+  }
+}
+
+function initials(name) {
+  return name.split(' ').map(w=>w[0]).join('').toUpperCase();
+}
+
+function onSearch(val) {
+  S.guess=null;
+  const dd=document.getElementById('dropdown');
+  if(!val.trim()||S.songs.length===0){dd.classList.remove('open');return;}
+  const v=val.toLowerCase();
+  const res=S.songs.filter(s=>
+    s.title.toLowerCase().includes(v)||s.artist.toLowerCase().includes(v)
+  ).slice(0,10);
+  if(!res.length){dd.classList.remove('open');return;}
+  dd.innerHTML=res.map(s=>
+    `<div class="di" onclick="selectSong('${esc(s.id)}')">
+      <div class="dt">${s.title}</div>
+      <div class="da">${s.artist} <span class="dy">• ${s.year}</span></div>
+    </div>`
+  ).join('');
+  dd.classList.add('open');
+}
+
+function esc(s){ return String(s).replace(/'/g,"\\'"); }
+
+function selectSong(id) {
+  const song=S.songs.find(s=>s.id===id);
+  if(!song) return;
+  S.guess=song;
+  document.getElementById('search').value=song.title+' – '+song.artist;
+  document.getElementById('dropdown').classList.remove('open');
+}
+
+function onSearchKey(e) {
+  if(e.key==='Enter') doConfirm();
+}
+
+function doSkip() {
+  if(S.gameOver||S.playing) return;
+  S.results[S.attempt]='skip';
+  S.attempt++;
+  renderAttempts();
+  updateClue();
+  checkEnd(false, true);
+}
+
+function doConfirm() {
+  if(S.gameOver||!S.guess) {
+    if(!S.guess){ document.getElementById('search').style.outline='2px solid var(--red)'; setTimeout(()=>document.getElementById('search').style.outline='',600); }
+    return;
+  }
+  const correct = S.guess.id===S.current.id;
+  S.results[S.attempt]=correct?'hit':'miss';
+  S.attempt++;
+  renderAttempts();
+  updateClue();
+  document.getElementById('search').value=''; S.guess=null;
+  document.getElementById('dropdown').classList.remove('open');
+  checkEnd(correct, false);
+}
+
+function checkEnd(correct, skipped) {
+  const over = correct || S.attempt>=S.maxAttempts;
+  if(!over) {
+    document.getElementById('play-btn').textContent='▶ GRAJ FRAGMENT ('+dur()+'s)';
+    return;
+  }
+  S.gameOver=true;
+  S.totalPlayed++;
+  if(correct) {
+    const pts = Math.max(150-(S.attempt-1)*20, 10);
+    S.score+=pts; S.streak++;
+    S.history.unshift({title:S.current.title,artist:S.current.artist,won:true,pts,attempt:S.attempt,date:new Date().toLocaleDateString('pl')});
+  } else {
+    S.streak=0;
+    S.history.unshift({title:S.current.title,artist:S.current.artist,won:false,pts:0,attempt:S.attempt,date:new Date().toLocaleDateString('pl')});
+  }
+  updateStats(); saveStats();
+  renderResult(correct);
+}
+
+function renderResult(correct) {
+  stopPlayback();
+  document.getElementById('game-area').style.display='none';
+  const area=document.getElementById('result-area');
+  area.style.display='block';
+  const pts = S.history[0]?.pts||0;
+  area.innerHTML=`
+    <div class="result-card">
+      <div class="result-emoji">${correct?'🏆':'💀'}</div>
+      <div class="result-status ${correct?'win':'lose'}">${correct?'TRAFIONY!':'MISS!'}</div>
+      <div class="result-song">${S.current.title}</div>
+      <div class="result-artist">${S.current.artist} &bull; ${S.current.year}</div>
+      <div class="result-pts">${correct?'+ '+pts+' punktów &nbsp;|&nbsp; ':''} Próba ${S.attempt}</div>
+      <div class="result-links">
+        ${S.current.type==='yt'?`<a href="${S.current.src}" target="_blank" class="result-link rl-yt">▶ YouTube</a>`:''}
+        ${S.current.type==='mp3'?`<a href="${S.current.src}" target="_blank" class="result-link rl-mp3">🎵 Plik</a>`:''}
+      </div>
+    </div>
+    <button class="btn-next" onclick="startGame()">NASTĘPNA PIOSENKA →</button>
+  `;
+}
+
+function renderEmptyState() {
+  document.getElementById('game-area').style.display='none';
+  document.getElementById('result-area').innerHTML=`
+    <div class="empty-state">
+      <div class="em">🎵</div>
+      <p>Brak piosenek w bazie!<br>Otwórz <strong>ADMIN</strong> i dodaj swoje utwory.</p>
+    </div>`;
+  document.getElementById('result-area').style.display='block';
+}
+
+function setMode(m, el) {
+  S.mode=m;
+  if(m==='classic') S.maxAttempts=6;
+  else if(m==='blitz') S.maxAttempts=3;
+  else S.maxAttempts=999;
+  document.querySelectorAll('.mtab').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  startGame();
+}
+
+// ═══════════════════════════════════════════════════════
+//  ADMIN PANEL
+// ═══════════════════════════════════════════════════════
+let currentTab='lista';
+function openAdmin(tab) {
+  document.getElementById('admin-overlay').classList.add('open');
+  switchTab(tab||'lista', document.querySelector(`.atab:${tab==='historia'?'last-child':'first-child'}`));
+}
+function closeAdmin() { document.getElementById('admin-overlay').classList.remove('open'); }
+
+function switchTab(tab, el) {
+  currentTab=tab;
+  document.querySelectorAll('.tab-content').forEach(t=>t.style.display='none');
+  document.getElementById('tab-'+tab).style.display='block';
+  document.querySelectorAll('.atab').forEach(b=>b.classList.remove('active'));
+  if(el) el.classList.add('active');
+  renderTab(tab);
+}
+
+function renderTab(tab) {
+  if(tab==='lista') renderListTab();
+  else if(tab==='dodaj') renderAddTab();
+  else if(tab==='bulk') renderBulkTab();
+  else if(tab==='historia') renderHistoryTab();
+}
+
+let filterVal='';
+function renderListTab() {
+  const el=document.getElementById('tab-lista');
+  const filtered=S.songs.filter(s=>
+    s.title.toLowerCase().includes(filterVal.toLowerCase())||
+    s.artist.toLowerCase().includes(filterVal.toLowerCase())
+  );
+  el.innerHTML=`
+    <div class="stats-grid">
+      <div class="stat-box"><div class="v">${S.songs.length}</div><div class="l">Piosenek</div></div>
+      <div class="stat-box"><div class="v">${S.songs.filter(s=>s.type==='yt').length}</div><div class="l">YouTube</div></div>
+      <div class="stat-box"><div class="v">${S.songs.filter(s=>s.type==='mp3').length}</div><div class="l">MP3</div></div>
+    </div>
+    <input class="search-filter" type="text" placeholder="🔍 Szukaj w bazie..." value="${filterVal}" oninput="filterVal=this.value;renderListTab()"/>
+    ${filtered.length===0?'<div class="empty-state"><div class="em">🎵</div><p>Brak wyników</p></div>':''}
+    <div class="songs-list">
+      ${filtered.map((s,i)=>`
+        <div class="song-item">
+          <div class="si-num">${i+1}</div>
+          <div class="si-info">
+            <div class="si-title">${s.title}</div>
+            <div class="si-artist">${s.artist} &bull; ${s.year}</div>
+          </div>
+          <div class="si-badge ${s.type}">${s.type==='yt'?'YT':'MP3'}</div>
+          <button class="si-del" onclick="deleteSong('${esc(s.id)}')" title="Usuń">🗑</button>
+        </div>
+      `).join('')}
+    </div>
+    <div style="margin-top:12px;display:flex;gap:8px">
+      <button class="btn-bulk" onclick="exportSongs()">⬇ Eksportuj JSON</button>
+      <button class="btn-bulk" style="border-color:rgba(255,58,58,.4);color:var(--red)" onclick="clearAll()">🗑 Wyczyść wszystko</button>
+    </div>
+  `;
+}
+
+function renderAddTab() {
+  document.getElementById('tab-dodaj').innerHTML=`
+    <div class="add-form">
+      <div class="form-row">
+        <div class="form-group"><label>Tytuł *</label><input id="f-title" type="text" placeholder="np. HUMBLE."/></div>
+        <div class="form-group"><label>Artysta *</label><input id="f-artist" type="text" placeholder="np. Kendrick Lamar"/></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Rok</label><input id="f-year" type="number" placeholder="2023" min="1950" max="2099"/></div>
+        <div class="form-group"><label>Typ źródła</label>
+          <select id="f-type" onchange="updateSrcLabel()">
+            <option value="yt">YouTube</option>
+            <option value="mp3">Plik MP3 (URL)</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row full">
+        <div class="form-group"><label id="src-label">Link YouTube *</label>
+          <input id="f-src" type="text" placeholder="https://www.youtube.com/watch?v=..."/>
+        </div>
+      </div>
+      <button class="btn-add" onclick="addSong()">+ DODAJ PIOSENKĘ</button>
+    </div>
+    <div style="font-size:12px;color:var(--text3);line-height:1.7;padding:4px 0">
+      <strong style="color:var(--text2)">Wskazówka YouTube:</strong> Kliknij prawym na film → "Kopiuj adres URL" lub wklej dowolny link youtube.com/watch?v=...<br>
+      <strong style="color:var(--text2)">Wskazówka MP3:</strong> Wklej bezpośredni link do pliku .mp3 (np. z dysku Google, Dropbox, własnego serwera)
+    </div>
+  `;
+}
+
+function updateSrcLabel() {
+  const t=document.getElementById('f-type').value;
+  document.getElementById('src-label').textContent=t==='yt'?'Link YouTube *':'URL do pliku MP3 *';
+  document.getElementById('f-src').placeholder=t==='yt'?'https://www.youtube.com/watch?v=...':'https://twojserwer.pl/piosenka.mp3';
+}
+
+function addSong() {
+  const title=document.getElementById('f-title').value.trim();
+  const artist=document.getElementById('f-artist').value.trim();
+  const year=parseInt(document.getElementById('f-year').value)||new Date().getFullYear();
+  const type=document.getElementById('f-type').value;
+  const src=document.getElementById('f-src').value.trim();
+  if(!title||!artist||!src){ showToast('Wypełnij wymagane pola!',true); return; }
+  if(type==='yt'&&!extractYTId(src)){ showToast('Nieprawidłowy link YouTube',true); return; }
+  const id=Date.now().toString(36);
+  S.songs.push({id,title,artist,year,type,src});
+  saveSongs(); showToast('Dodano: '+title); 
+  document.getElementById('f-title').value=''; document.getElementById('f-artist').value='';
+  document.getElementById('f-src').value=''; document.getElementById('f-year').value='';
+}
+
+function deleteSong(id) {
+  if(!confirm('Usunąć tę piosenkę?')) return;
+  S.songs=S.songs.filter(s=>s.id!==id);
+  saveSongs(); renderListTab(); showToast('Usunięto');
+}
+
+function clearAll() {
+  if(!confirm('Usunąć WSZYSTKIE piosenki? Tego nie można cofnąć!')) return;
+  S.songs=[]; saveSongs(); renderListTab(); showToast('Wyczyszczono bazę');
+}
+
+function exportSongs() {
+  const data=JSON.stringify(S.songs, null, 2);
+  const blob=new Blob([data],{type:'application/json'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='hitquiz-songs.json';
+  a.click();
+  showToast('Wyeksportowano '+S.songs.length+' piosenek');
+}
+
+function renderBulkTab() {
+  document.getElementById('tab-bulk').innerHTML=`
+    <div class="add-form">
+      <div class="bulk-area">
+        <textarea id="bulk-input" placeholder='Wklej JSON lub CSV...
+
+Przykład JSON:
+[
+  {"title":"HUMBLE.","artist":"Kendrick Lamar","year":2017,"type":"yt","src":"https://www.youtube.com/watch?v=tvTRZJ-4EyI"},
+  {"title":"God Plan","artist":"Drake","year":2018,"type":"yt","src":"https://www.youtube.com/watch?v=xpVfcZ0ZcFM"}
+]
+
+Przykład CSV (tytuł;artysta;rok;typ;link):
+HUMBLE.;Kendrick Lamar;2017;yt;https://www.youtube.com/watch?v=...
+God Plan;Drake;2018;yt;https://www.youtube.com/watch?v=...'></textarea>
+      </div>
+      <div class="bulk-hint">
+        📌 Format JSON: tablica obiektów z polami <strong>title, artist, year, type (yt/mp3), src</strong><br>
+        📌 Format CSV: kolumny oddzielone średnikiem, każda piosenka w nowej linii
+      </div>
+      <button class="btn-bulk" onclick="importBulk()">📦 IMPORTUJ</button>
+      <button class="btn-bulk" style="margin-top:6px" onclick="loadDefaultSongs()">↩ Wczytaj przykładowe piosenki</button>
+    </div>
+  `;
+}
+
+function importBulk() {
+  const raw=document.getElementById('bulk-input').value.trim();
+  if(!raw){ showToast('Brak danych do importu',true); return; }
+  let items=[];
+  try {
+    if(raw.startsWith('[')) {
+      items=JSON.parse(raw);
+    } else {
+      items=raw.split('\n').filter(l=>l.trim()).map(l=>{
+        const p=l.split(';');
+        return {title:p[0]?.trim(),artist:p[1]?.trim(),year:parseInt(p[2])||2020,type:p[3]?.trim()||'yt',src:p[4]?.trim()};
+      });
+    }
+    const valid=items.filter(i=>i.title&&i.artist&&i.src);
+    valid.forEach(i=>{ if(!i.id) i.id=Date.now().toString(36)+Math.random().toString(36).slice(2,5); });
+    S.songs=[...S.songs,...valid];
+    saveSongs();
+    showToast('Dodano '+valid.length+' piosenek!');
+    document.getElementById('bulk-input').value='';
+  } catch(e){ showToast('Błąd parsowania – sprawdź format',true); }
+}
+
+function loadDefaultSongs() {
+  S.songs=[...DEFAULT_SONGS,...S.songs.filter(s=>!DEFAULT_SONGS.find(d=>d.id===s.id))];
+  saveSongs(); showToast('Wczytano przykładowe piosenki');
+}
+
+function renderHistoryTab() {
+  const el=document.getElementById('tab-historia');
+  const wins=S.history.filter(h=>h.won).length;
+  const total=S.history.length;
+  const pct=total?Math.round(wins/total*100):0;
+  el.innerHTML=`
+    <div class="stats-grid">
+      <div class="stat-box"><div class="v">${S.score}</div><div class="l">Pkt łącznie</div></div>
+      <div class="stat-box"><div class="v">${pct}%</div><div class="l">Trafność</div></div>
+      <div class="stat-box"><div class="v">${S.streak}</div><div class="l">Aktualna seria</div></div>
+    </div>
+    <div class="history-list">
+      ${S.history.length===0?'<div class="empty-state"><div class="em">📊</div><p>Brak historii – zacznij grać!</p></div>':''}
+      ${S.history.slice(0,50).map(h=>`
+        <div class="hist-item">
+          <div class="hist-icon">${h.won?'🏆':'💀'}</div>
+          <div class="hist-info">
+            <div class="hist-title">${h.title}</div>
+            <div class="hist-sub">${h.artist} &bull; ${h.date} &bull; próba ${h.attempt}</div>
+          </div>
+          ${h.won?`<div class="hist-pts">+${h.pts} pkt</div>`:'<div class="hist-pts" style="color:var(--text3)">—</div>'}
+        </div>
+      `).join('')}
+    </div>
+    <button class="btn-bulk" style="margin-top:12px;border-color:rgba(255,58,58,.4);color:var(--red)" onclick="clearHistory()">🗑 Wyczyść historię</button>
+  `;
+}
+
+function clearHistory() {
+  if(!confirm('Wyczyścić historię i statystyki?')) return;
+  S.history=[]; S.score=0; S.streak=0; S.totalPlayed=0;
+  saveStats(); updateStats(); renderHistoryTab(); showToast('Historia wyczyszczona');
+}
+
+// ═══════════════════════════════════════════════════════
+//  TOAST
+// ═══════════════════════════════════════════════════════
+let toastTimer=null;
+function showToast(msg,err=false) {
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.className='toast'+(err?' error':'');
+  clearTimeout(toastTimer);
+  requestAnimationFrame(()=>{ t.classList.add('show'); });
+  toastTimer=setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+// ═══════════════════════════════════════════════════════
+//  CLOSE DROPDOWN ON CLICK OUTSIDE
+// ═══════════════════════════════════════════════════════
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.search-wrap')) document.getElementById('dropdown').classList.remove('open');
+});
+
+// ═══════════════════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════════════════
+loadYTApi();
+loadData();
+startGame();
+</script>
+</body>
+</html>
