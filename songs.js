@@ -45,22 +45,6 @@ const SONGS_DB = [
     type: 'sc',
     src: 'https://soundcloud.com/szydlik-jakub/miue-ft-pezet-bedoes-2115'
   },
-  {
-    id: 'sc_example_002',
-    title: 'Thick of It',
-    artist: 'KSI',
-    year: 2016,
-    type: 'sc',
-    src: 'https://soundcloud.com/ksi/ksi-thick-of-it'
-  },
-  {
-    id: 'sc_example_003',
-    title: 'Miracle',
-    artist: 'Madeon',
-    year: 2012,
-    type: 'sc',
-    src: 'https://soundcloud.com/madeon/miracle'
-  },
 
   // ── TUTAJ DODAWAJ SWOJE PIOSENKI ──
   // Wzór:
