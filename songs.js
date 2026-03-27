@@ -46,6 +46,294 @@ const SONGS_DB = [
     src: 'https://soundcloud.com/szydlik-jakub/miue-ft-pezet-bedoes-2115'
   },
 
+  {
+    id: 'sc_0002',
+    title: 'Penthouse 2',
+    artist: 'Sentino, Koneser',
+    year: 2026,
+    type: 'sc',
+    src: 'https://soundcloud.com/karzeu/sentino-x-koneser-penthouse-1'
+  },
+  
+  {
+    id: 'sc_0003',
+    title: 'Rainman',
+    artist: 'Tymek, Trill Pem, Tede',
+    year: 2019,
+    type: 'sc',
+    src: 'https://soundcloud.com/user-452641235-916715741/1-rainman'
+  },  
+  
+  {
+    id: 'sc_0004',
+    title: 'NOWE CIOCIE',
+    artist: 'Rydawarrior',
+    year: 2026,
+    type: 'sc',
+    src: 'https://soundcloud.com/leslixe/nowe-ciocie-rydawarrior'
+  },   
+
+  {
+    id: 'sc_0005',
+    title: 'Wiem co to ból',
+    artist: 'Quebonafide, Sentino, Kaz Bałagane',
+    year: 2026,
+    type: 'sc',
+    src: 'https://soundcloud.com/karzeu/11999e4f-d447-4cd8-ae65-45d7e19fe379'
+  },
+
+  {
+    id: 'sc_0006',
+    title: 'INTRO',
+    artist: 'Vkie',
+    year: 2024,
+    type: 'sc',
+    src: 'https://soundcloud.com/ciastwo1337/vkie-intro'
+  },    
+  
+  {
+    id: 'sc_0007',
+    title: 'FPS',
+    artist: 'Bedoes, Lanek',
+    year: 2019,
+    type: 'sc',
+    src: 'https://soundcloud.com/user-717001874/bedoes-lanek-fps'
+  },
+
+  {
+    id: 'sc_0008',
+    title: 'NA ROGU',
+    artist: 'Rusina',
+    year: 2024,
+    type: 'sc',
+    src: 'https://soundcloud.com/fifi-54979647/rusina-na-rogu'
+  },
+
+  {
+    id: 'sc_0009',
+    title: 'Dzień Kota',
+    artist: 'Włodar',
+    year: 2023,
+    type: 'sc',
+    src: 'https://soundcloud.com/muzanapierdala/wlodar-dzien-kota'
+  },
+  
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'sc',
+    src: ''
+  },
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'sc',
+    src: ''
+  },
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'sc',
+    src: ''
+  },
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'sc',
+    src: ''
+  },
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'sc',
+    src: ''
+  },
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'sc',
+    src: ''
+  },
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'sc',
+    src: ''
+  },
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'sc',
+    src: ''
+  },
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'sc',
+    src: ''
+  },
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'sc',
+    src: ''
+  },
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'sc',
+    src: ''
+  },
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'sc',
+    src: ''
+  },
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'sc',
+    src: ''
+  },
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'sc',
+    src: ''
+  },
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'sc',
+    src: ''
+  },
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'sc',
+    src: ''
+  },
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'sc',
+    src: ''
+  },
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'sc',
+    src: ''
+  },
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'sc',
+    src: ''
+  },
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'sc',
+    src: ''
+  },
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'sc',
+    src: ''
+  },
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'sc',
+    src: ''
+  },
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'sc',
+    src: ''
+  },
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'sc',
+    src: ''
+  },  
+  
   // ── TUTAJ DODAWAJ SWOJE PIOSENKI ──
   // Wzór:
   // {
