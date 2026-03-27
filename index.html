@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>RAPGUESSER 6</title>
+<title>RAPGUESSER</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -492,11 +492,11 @@ function playFrag(){
     aud.src=blobUrl;
     aud.currentTime=0;
     aud.play().catch(e=>{showToast('Błąd odtwarzania MP3',true);stopPlay();});
-							   
-									
-				  
-			   
-												 
+    // MP3 startuje natychmiast
+    btn.textContent='⏸ GRANIE...';
+    setWave(true);
+    animBar(d);
+    G.playTimer=setTimeout(stopPlay, d*1000+200);							   								 
   } else {
     // SC — timer i pasek startują dopiero gdy faktycznie zacznie grać
     playSC(song.src, d, ()=>{
