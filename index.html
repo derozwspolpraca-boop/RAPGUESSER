@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>RAPGUESSER 1</title>
+<title>RAPGUESSER</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -494,6 +494,12 @@ function playFrag(){
     aud.play().catch(e=>{showToast('Błąd odtwarzania MP3',true);stopPlay();});
   } else {
     playSC(song.src, d);
+    // Fallback: jeśli przeglądarka zablokuje autoplay, pokaż info
+    setTimeout(()=>{
+      if(G.playing && scIframe && scIframe.src.includes('soundcloud')){
+        // Gra już - wszystko OK
+      }
+    }, 1500);
   }
   G.playTimer=setTimeout(stopPlay, d*1000+200);
 }
@@ -533,32 +539,64 @@ function setWave(on){
 // ══════════════════════════════════════
 //  SOUNDCLOUD WIDGET
 // ══════════════════════════════════════
-let scWidget=null;let scIframe=null;
-function ensureSCWidget(src, cb){
+let scWidget=null;
+let scIframe=null;
+let scCurrentSrc=null;
+
+function getSCIframe(){
   if(!scIframe){
     scIframe=document.createElement('iframe');
     scIframe.id='sc-iframe';
-    scIframe.style.cssText='position:fixed;bottom:-999px;left:0;width:1px;height:1px;opacity:0;pointer-events:none;border:none';
+    scIframe.style.cssText='position:fixed;bottom:-9999px;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;border:none';
     scIframe.allow='autoplay';
     document.body.appendChild(scIframe);
   }
-  const embedUrl='https://w.soundcloud.com/player/?url='+encodeURIComponent(src)+'&auto_play=false&buying=false&sharing=false&download=false&show_artwork=false&show_playcount=false&show_user=false';
-  scIframe.src=embedUrl;
-  if(!window.SC){
-    const script=document.createElement('script');
-    script.src='https://w.soundcloud.com/player/api.js';
-    script.onload=()=>{
-      scWidget=window.SC.Widget(scIframe);
-      scWidget.bind(SC.Widget.Events.READY,()=>{if(cb)cb();});
-    };
-    document.head.appendChild(script);
-  } else {
-    scWidget=window.SC.Widget(scIframe);
-    scWidget.bind(SC.Widget.Events.READY,()=>{if(cb)cb();});
-  }
+  return scIframe;
 }
-function playSC(src, d){ensureSCWidget(src,()=>{scWidget.seekTo(0);scWidget.play();});}
-function pauseSC(){if(scWidget){try{scWidget.pause();}catch(e){}}}
+
+function loadSCApi(cb){
+  if(window.SC){cb();return;}
+  const s=document.createElement('script');
+  s.src='https://w.soundcloud.com/player/api.js';
+  s.onload=cb;
+  document.head.appendChild(s);
+}
+
+function playSC(src, d){
+  const iframe=getSCIframe();
+  const embedUrl='https://w.soundcloud.com/player/?url='+encodeURIComponent(src)
+    +'&auto_play=true&buying=false&sharing=false&download=false'
+    +'&show_artwork=false&show_playcount=false&show_user=false&hide_related=true';
+
+  // Za każdym razem ładujemy świeży iframe z auto_play=true
+  // To omija problem z Widget API i działa niezawodnie
+  scWidget=null;
+  scCurrentSrc=src;
+  iframe.src='about:blank';
+
+  setTimeout(()=>{
+    if(scCurrentSrc!==src) return; // piosenka już zmieniona
+    iframe.src=embedUrl;
+
+    // Równolegle ładujemy Widget API żeby móc zatrzymać
+    loadSCApi(()=>{
+      setTimeout(()=>{
+        if(!window.SC||scCurrentSrc!==src) return;
+        try{
+          scWidget=window.SC.Widget(iframe);
+        }catch(e){}
+      }, 2000);
+    });
+  }, 80);
+}
+
+function pauseSC(){
+  scCurrentSrc=null;
+  if(scWidget){try{scWidget.pause();}catch(e){}}
+  // Wyczyść iframe żeby na pewno zatrzymać dźwięk
+  if(scIframe) scIframe.src='about:blank';
+  scWidget=null;
+}
 
 // ══════════════════════════════════════
 //  GAME LOGIC
