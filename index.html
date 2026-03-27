@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>RAPGUESSER 2.1</title>
+<title>RAPGUESSER TEST</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -408,7 +408,7 @@ let G = {
   playTimer:null,
   mp3Queue:[],
 };
-let playToken = 0;
+
 function dur(){return DURS[Math.min(G.attempt,DURS.length-1)];}
 
 // ══════════════════════════════════════
@@ -472,9 +472,6 @@ function updateHUD(){
 const aud=document.getElementById('aud');
 
 function playFrag(){
-  playToken++;
-  const currentToken = playToken;
-
   if(G.gameOver||G.playing) return;
   if(!G.current){showToast('Brak piosenek! Dodaj je w panelu admina',true);return;}
   const song=G.current;
@@ -500,8 +497,8 @@ function playFrag(){
     G.playTimer=setTimeout(stopPlay, d*1000+200);
   } else {
     // SC — timer i pasek startują dopiero gdy faktycznie zacznie grać
-    playSC(song.src, d, currentToken, ()=>{
-      if(!G.playing || currentToken !== playToken) return;
+    playSC(song.src, d, ()=>{
+      if(!G.playing) return; // użytkownik zdążył zatrzymać
       btn.textContent='⏸ GRANIE...';
       setWave(true);
       animBar(d);
@@ -588,7 +585,7 @@ function preloadSC(src){
       try{
         scWidget=window.SC.Widget(iframe);
         scWidget.bind(window.SC.Widget.Events.READY,()=>{
-          if(scCurrentSrc===src && token === playToken) scReady=true;
+          if(scCurrentSrc===src) scReady=true;
         });
       }catch(e){
         setTimeout(tryBind, 300);
@@ -598,7 +595,7 @@ function preloadSC(src){
   });
 }
 
-function playSC(src, d, token, onActualPlay){
+function playSC(src, d, onActualPlay){
   const iframe=getSCIframe();
 
   const doPlay=()=>{
@@ -622,9 +619,7 @@ function playSC(src, d, token, onActualPlay){
       iframe.src=embedUrl;
       // Timer startuje po 800ms — tyle zwykle potrzeba żeby SC zaczął grać
       setTimeout(()=>{
-        if(scCurrentSrc===src && token === playToken && onActualPlay){
-          onActualPlay();
-        }
+        if(scCurrentSrc===src && onActualPlay) onActualPlay();
       }, 800);
     }
   };
