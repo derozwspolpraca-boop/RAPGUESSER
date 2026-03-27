@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>RAPGUESSER</title>
+<title>RAPGUESSER 2</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -571,6 +571,33 @@ function loadSCApi(cb){
 }
 
 														   
+// Preload — ładuje iframe w tle, cicho, auto_play=false
+// Wywołaj to zaraz po wybraniu piosenki żeby widget zdążył się załadować
+function preloadSC(src){
+  const iframe=getSCIframe();
+  scCurrentSrc=src;
+  scReady=false;
+  scWidget=null;
+  const embedUrl='https://w.soundcloud.com/player/?url='+encodeURIComponent(src)
+    +'&auto_play=false&buying=false&sharing=false&download=false'
+    +'&show_artwork=false&show_playcount=false&show_user=false&hide_related=true';
+  iframe.src=embedUrl;
+  loadSCApi(()=>{
+    // Poczekaj aż iframe się załaduje
+    const tryBind=()=>{
+      if(scCurrentSrc!==src) return;
+      try{
+        scWidget=window.SC.Widget(iframe);
+        scWidget.bind(window.SC.Widget.Events.READY,()=>{
+          if(scCurrentSrc===src) scReady=true;
+        });
+      }catch(e){
+        setTimeout(tryBind, 300);
+      }
+    };
+    setTimeout(tryBind, 500);
+  });
+}
 																				 
 function playSC(src, d){
   const iframe=getSCIframe();
