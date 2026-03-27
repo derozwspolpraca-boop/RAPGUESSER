@@ -38,12 +38,12 @@ const SONGS_DB = [
   // Usuń te przykłady i wstaw swoje własne piosenki
 
   {
-    id: 'sc_example_001',
-    title: 'Holiday',
-    artist: 'KSI',
-    year: 2020,
+    id: 'sc_0001',
+    title: 'Fantazje',
+    artist: 'MIU, Bedoes 2115, Pezet',
+    year: 2026,
     type: 'sc',
-    src: 'https://soundcloud.com/ksi/holiday'
+    src: 'https://soundcloud.com/szydlik-jakub/miue-ft-pezet-bedoes-2115'
   },
   {
     id: 'sc_example_002',
