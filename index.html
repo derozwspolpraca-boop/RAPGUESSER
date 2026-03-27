@@ -9,10 +9,10 @@
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#07070f;--s1:#0e0e1c;--s2:#151524;--s3:#1c1c2e;--s4:#232338;
-  --gold:#f5c842;--gold2:#e8a800;--gold3:#fff3b0;
+  --gold:#ffffff;--gold2:#cccccc;--gold3:#f0f0f0;
   --red:#ff3f3f;--green:#00e676;--blue:#4fc3f7;
   --text:#eeeeff;--text2:#8888aa;--text3:#444466;
-  --border:rgba(245,200,66,.13);--border2:rgba(245,200,66,.32);
+  --border:rgba(255,255,255,.13);--border2:rgba(255,255,255,.32);
   --r:10px;
 }
 html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
@@ -43,9 +43,9 @@ html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);c
 
 /* VINYL */
 .vinyl-wrap{display:flex;justify-content:center;padding:16px 0 8px;position:relative}
-.vinyl{width:126px;height:126px;border-radius:50%;background:conic-gradient(from 0deg,#111 0%,#1a1a00 15%,#f5c842 17%,#1a1a00 19%,#111 35%,#e8a800 50%,#111 52%,#1a1a1a 75%,#333 90%,#111 100%);box-shadow:0 0 0 3px #2a2a2a,0 0 0 6px #111,0 0 28px rgba(245,200,66,.18);position:relative;transition:all .3s}
+.vinyl{width:126px;height:126px;border-radius:50%;background:conic-gradient(from 0deg,#111 0%,#1a1a1a 15%,#ffffff 17%,#1a1a1a 19%,#111 35%,#cccccc 50%,#111 52%,#1a1a1a 75%,#333 90%,#111 100%);box-shadow:0 0 0 3px #2a2a2a,0 0 0 6px #111,0 0 28px rgba(255,255,255,.18);position:relative;transition:all .3s}
 .vinyl.spin{animation:vspin 2.2s linear infinite}
-.vinyl::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:26px;height:26px;border-radius:50%;background:radial-gradient(circle,#f5c842,#c87800);box-shadow:0 0 8px rgba(245,200,66,.5)}
+.vinyl::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:26px;height:26px;border-radius:50%;background:radial-gradient(circle,#ffffff,#aaaaaa);box-shadow:0 0 8px rgba(255,255,255,.5)}
 @keyframes vspin{to{transform:rotate(360deg)}}
 
 /* WAVEFORM */
@@ -120,6 +120,33 @@ html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);c
 .empty .eq{color:var(--gold);cursor:pointer;text-decoration:underline}
 
 /* ══════════════════════════════
+   MODAL HASŁA
+══════════════════════════════ */
+.pw-ov{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:600;display:flex;align-items:center;justify-content:center;padding:20px}
+.pw-ov.hidden{display:none}
+.pw-box{background:var(--s1);border:1px solid var(--border2);border-radius:18px;padding:36px 32px;width:100%;max-width:360px;text-align:center;animation:fadeup .3s ease}
+.pw-icon{font-size:48px;margin-bottom:12px}
+.pw-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:var(--gold);margin-bottom:6px}
+.pw-sub{font-size:13px;color:var(--text3);margin-bottom:22px;line-height:1.6}
+.pw-inp{width:100%;padding:13px 16px;background:var(--s3);border:1.5px solid var(--border);border-radius:var(--r);color:var(--text);font-size:16px;font-family:'Barlow',sans-serif;outline:none;transition:border-color .2s;text-align:center;letter-spacing:3px;margin-bottom:8px}
+.pw-inp:focus{border-color:var(--gold)}
+.pw-inp.err{border-color:var(--red);animation:shake .3s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.pw-btn{width:100%;padding:13px;background:var(--gold);border:none;border-radius:var(--r);font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:#000;cursor:pointer;transition:all .2s;margin-top:4px}
+.pw-btn:hover{background:#ffe566;transform:translateY(-1px)}
+.pw-err{font-size:12px;color:var(--red);height:18px;margin-top:4px;transition:opacity .2s}
+
+/* ══════════════════════════════
+   PANEL STATYSTYK UŻYTKOWNIKA
+══════════════════════════════ */
+.stats-ov{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:500;display:none;overflow-y:auto}
+.stats-ov.open{display:block}
+.stats-panel{max-width:680px;margin:0 auto;background:var(--s1);min-height:100vh;padding:18px 16px}
+.stats-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.stats-title{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--gold);letter-spacing:2px}
+.stats-note{font-size:11px;color:var(--text3);line-height:1.6;text-align:center;padding:8px 0 14px;border-bottom:1px solid var(--border);margin-bottom:16px}
+
+/* ══════════════════════════════
    ADMIN PANEL
 ══════════════════════════════ */
 .adm-ov{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:500;display:none;overflow-y:auto}
@@ -177,6 +204,7 @@ html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);c
 .badge{font-size:10px;padding:2px 7px;border-radius:4px;font-weight:700;flex-shrink:0}
 .badge.mp3{background:rgba(245,200,66,.1);color:var(--gold);border:1px solid var(--border2)}
 .badge.sc{background:rgba(255,85,0,.12);color:#ff7733;border:1px solid rgba(255,85,0,.3)}
+.badge.db{background:rgba(79,195,247,.12);color:var(--blue);border:1px solid rgba(79,195,247,.3)}
 .sdel{background:none;border:none;color:var(--text3);cursor:pointer;font-size:15px;padding:3px;transition:color .2s;flex-shrink:0}
 .sdel:hover{color:var(--red)}
 
@@ -201,6 +229,10 @@ html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);c
 .butil:hover{background:var(--s4)}
 .butil.danger{border-color:rgba(255,63,63,.35);color:var(--red)}
 
+/* DB INFO BOX */
+.db-info{background:rgba(79,195,247,.07);border:1px solid rgba(79,195,247,.2);border-radius:var(--r);padding:12px 14px;font-size:12px;color:var(--blue);line-height:1.7;margin-bottom:14px}
+.db-info strong{color:var(--blue)}
+
 .cnt{font-size:11px;color:var(--text3);margin-bottom:8px}
 .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--s2);border:1px solid var(--border2);border-radius:9px;padding:10px 18px;font-size:13px;font-weight:600;color:var(--gold);z-index:1000;transition:transform .28s cubic-bezier(.34,1.56,.64,1);white-space:nowrap;pointer-events:none}
 .toast.show{transform:translateX(-50%) translateY(0)}
@@ -214,8 +246,8 @@ footer{text-align:center;padding:18px 0;color:var(--text3);font-size:11px;border
   <div class="header">
     <div class="logo">RAPGUESSER<small>HIP-HOP</small></div>
     <div class="hbtns">
-      <button class="hbtn" onclick="openAdmin('lista')">⚙ ADMIN</button>
-      <button class="hbtn" onclick="openAdmin('historia')">📊</button>
+      <button class="hbtn" onclick="tryOpenAdmin('lista')">⚙ ADMIN</button>
+      <button class="hbtn" onclick="openStats()">📊 STATYSTYKI</button>
     </div>
   </div>
 
@@ -264,7 +296,34 @@ footer{text-align:center;padding:18px 0;color:var(--text3);font-size:11px;border
 <!-- hidden audio -->
 <audio id="aud" preload="auto"></audio>
 
-<!-- ADMIN -->
+<!-- ══════ MODAL HASŁA ══════ -->
+<div class="pw-ov hidden" id="pw-modal">
+  <div class="pw-box">
+    <div class="pw-icon">🔒</div>
+    <div class="pw-title">PANEL ADMINA</div>
+    <div class="pw-sub">Wprowadź hasło aby uzyskać dostęp do panelu administratora</div>
+    <input class="pw-inp" id="pw-inp" type="password" placeholder="••••••••"
+      onkeydown="if(event.key==='Enter')checkPw()" autocomplete="current-password"/>
+    <div class="pw-err" id="pw-err">&nbsp;</div>
+    <button class="pw-btn" onclick="checkPw()">WEJDŹ →</button>
+  </div>
+</div>
+
+<!-- ══════ PANEL STATYSTYK ══════ -->
+<div class="stats-ov" id="stats-panel">
+  <div class="stats-panel">
+    <div class="stats-hdr">
+      <div class="stats-title">📊 TWOJE STATYSTYKI</div>
+      <button class="cbtn" onclick="closeStats()">✕ ZAMKNIJ</button>
+    </div>
+    <div class="stats-note">
+      Statystyki są zapisywane tylko w Twojej przeglądarce i widoczne wyłącznie dla Ciebie.
+    </div>
+    <div id="stats-content"></div>
+  </div>
+</div>
+
+<!-- ══════ ADMIN PANEL ══════ -->
 <div class="adm-ov" id="adm">
   <div class="adm-panel">
     <div class="adm-hdr">
@@ -275,39 +334,108 @@ footer{text-align:center;padding:18px 0;color:var(--text3);font-size:11px;border
       <button class="atb on" onclick="swTab('lista',this)">📋 Lista <span id="bcnt" style="background:var(--red);color:#fff;font-size:9px;border-radius:5px;padding:1px 5px;margin-left:2px">0</span></button>
       <button class="atb" onclick="swTab('mp3',this)">🎵 Dodaj MP3</button>
       <button class="atb" onclick="swTab('sc',this)">☁ SoundCloud</button>
-      <button class="atb" onclick="swTab('historia',this)">📊 Historia</button>
     </div>
     <div id="tab-lista"></div>
     <div id="tab-mp3" style="display:none"></div>
     <div id="tab-sc" style="display:none"></div>
-    <div id="tab-historia" style="display:none"></div>
   </div>
 </div>
 
 <div class="toast" id="toast"></div>
 
+<!-- Zewnętrzna baza piosenek -->
+<script src="songs.js"></script>
+
 <script>
+// ══════════════════════════════════════
+//  HASŁO ADMINA
+//  ⚠ ZMIEŃ TO HASŁO NA SWOJE!
+// ══════════════════════════════════════
+const ADMIN_PASSWORD = 'Pijeciejaksok';
+
+// Klucz sesji — zalogowanie trzymane do zamknięcia karty
+const SESSION_KEY = 'rg_admin_auth';
+let adminUnlocked = sessionStorage.getItem(SESSION_KEY) === '1';
+let pendingAdminTab = 'lista';
+
+function tryOpenAdmin(tab) {
+  pendingAdminTab = tab || 'lista';
+  if (adminUnlocked) {
+    openAdmin(pendingAdminTab);
+  } else {
+    document.getElementById('pw-inp').value = '';
+    document.getElementById('pw-err').textContent = '\u00a0';
+    document.getElementById('pw-inp').classList.remove('err');
+    document.getElementById('pw-modal').classList.remove('hidden');
+    setTimeout(() => document.getElementById('pw-inp').focus(), 80);
+  }
+}
+
+function checkPw() {
+  const val = document.getElementById('pw-inp').value;
+  if (val === ADMIN_PASSWORD) {
+    adminUnlocked = true;
+    sessionStorage.setItem(SESSION_KEY, '1');
+    document.getElementById('pw-modal').classList.add('hidden');
+    openAdmin(pendingAdminTab);
+  } else {
+    const inp = document.getElementById('pw-inp');
+    inp.classList.add('err');
+    document.getElementById('pw-err').textContent = '❌ Nieprawidłowe hasło';
+    inp.value = '';
+    setTimeout(() => inp.classList.remove('err'), 400);
+    inp.focus();
+  }
+}
+
+// Zamknij modal hasła klikając poza nim
+document.getElementById('pw-modal').addEventListener('click', function(e) {
+  if (e.target === this) this.classList.add('hidden');
+});
+
 // ══════════════════════════════════════
 //  STATE
 // ══════════════════════════════════════
 const DURS = [0.5,1,2,4,7,11];
 let G = {
-  songs:[],          // {id,title,artist,year,type:'mp3'|'sc',src,blobUrl?}
-  mp3Blobs:{},       // id -> objectURL (in-memory, session only)
+  songs:[],
+  mp3Blobs:{},
   current:null,
   attempt:0,maxAttempts:6,results:[],
   score:0,streak:0,total:0,
   gameOver:false,playing:false,guess:null,
   played:new Set(),history:[],mode:'classic',
   playTimer:null,
-  // MP3 staging queue (before saving)
-  mp3Queue:[],  // {file, title, artist, year, tmpId}
+  mp3Queue:[],
 };
 
 function dur(){return DURS[Math.min(G.attempt,DURS.length-1)];}
 
 // ══════════════════════════════════════
-//  STORAGE  (songs metadata only — blobs stay in memory)
+//  ŁADOWANIE BAZY Z songs.js
+// ══════════════════════════════════════
+function loadSongsDB() {
+  if (typeof window.SONGS_DB !== 'undefined' && Array.isArray(window.SONGS_DB)) {
+    // Dodaj piosenki z bazy (unikaj duplikatów po id)
+    const existingIds = new Set(G.songs.map(s => s.id));
+    let added = 0;
+    window.SONGS_DB.forEach(song => {
+      if (!existingIds.has(song.id)) {
+        G.songs.push(song);
+        existingIds.add(song.id);
+        added++;
+      }
+    });
+    if (added > 0) {
+      console.log('[RAPGUESSER] Załadowano ' + added + ' piosenek z songs.js');
+    }
+  } else {
+    console.warn('[RAPGUESSER] Brak pliku songs.js lub pusta baza. Dodaj piosenki w songs.js!');
+  }
+}
+
+// ══════════════════════════════════════
+//  STORAGE
 // ══════════════════════════════════════
 function loadAll(){
   try{
@@ -318,12 +446,11 @@ function loadAll(){
     const h=localStorage.getItem('hq2_hist');
     if(h) G.history=JSON.parse(h);
   }catch(e){}
-  // filter out mp3 songs with no blob (session ended, blob gone)
-  // we keep them in list but mark as unavailable
+  // Załaduj bazę z songs.js (zewnętrzny plik)
+  loadSongsDB();
   updateHUD();
 }
 function saveSongs(){
-  // save only sc songs + mp3 metadata (not blobs — too large for localStorage)
   const toSave=G.songs.map(s=>({id:s.id,title:s.title,artist:s.artist,year:s.year,type:s.type,src:s.type==='sc'?s.src:'__local__'}));
   try{localStorage.setItem('hq2_songs',JSON.stringify(toSave));}catch(e){showToast('Baza za duża dla localStorage – eksportuj JSON',true);}
   document.getElementById('bcnt').textContent=G.songs.length;
@@ -348,7 +475,6 @@ function playFrag(){
   if(G.gameOver||G.playing) return;
   if(!G.current){showToast('Brak piosenek! Dodaj je w panelu admina',true);return;}
   const song=G.current;
-  // check availability
   if(song.type==='mp3'&&!G.mp3Blobs[song.id]){
     showToast('⚠ Ten plik MP3 nie jest dostępny w tej sesji. Wgraj go ponownie.',true);
     return;
@@ -367,7 +493,6 @@ function playFrag(){
     aud.currentTime=0;
     aud.play().catch(e=>{showToast('Błąd odtwarzania MP3',true);stopPlay();});
   } else {
-    // SoundCloud — use SC Widget API via hidden iframe
     playSC(song.src, d);
   }
   G.playTimer=setTimeout(stopPlay, d*1000+200);
@@ -410,7 +535,6 @@ function setWave(on){
 // ══════════════════════════════════════
 let scWidget=null;let scIframe=null;
 function ensureSCWidget(src, cb){
-  const container=document.getElementById('sc-container');
   if(!scIframe){
     scIframe=document.createElement('iframe');
     scIframe.id='sc-iframe';
@@ -433,16 +557,8 @@ function ensureSCWidget(src, cb){
     scWidget.bind(SC.Widget.Events.READY,()=>{if(cb)cb();});
   }
 }
-
-function playSC(src, d){
-  ensureSCWidget(src,()=>{
-    scWidget.seekTo(0);
-    scWidget.play();
-  });
-}
-function pauseSC(){
-  if(scWidget){try{scWidget.pause();}catch(e){}}
-}
+function playSC(src, d){ensureSCWidget(src,()=>{scWidget.seekTo(0);scWidget.play();});}
+function pauseSC(){if(scWidget){try{scWidget.pause();}catch(e){}}}
 
 // ══════════════════════════════════════
 //  GAME LOGIC
@@ -482,8 +598,9 @@ function renderEmpty(){
   r.style.display='block';
   r.innerHTML=`<div class="empty"><div class="ei">🎵</div>
     <p>Brak piosenek w sesji!<br>
-    Otwórz <span class="eq" onclick="openAdmin('mp3')">ADMIN → Dodaj MP3</span> i wgraj pliki,<br>
-    lub <span class="eq" onclick="openAdmin('sc')">dodaj linki SoundCloud</span>.</p></div>`;
+    Otwórz <span class="eq" onclick="tryOpenAdmin('mp3')">ADMIN → Dodaj MP3</span> i wgraj pliki,<br>
+    lub <span class="eq" onclick="tryOpenAdmin('sc')">dodaj linki SoundCloud</span>,<br>
+    lub uzupełnij plik <strong>songs.js</strong>.</p></div>`;
 }
 
 const ICONS=['🎤','🎵','🎸','🥁','🎹','🎺'];
@@ -595,9 +712,9 @@ function swTab(tab,el){
 }
 function swTabDirect(tab){
   curTab=tab;
-  ['lista','mp3','sc','historia'].forEach(t=>{document.getElementById('tab-'+t).style.display=t===tab?'block':'none';});
+  ['lista','mp3','sc'].forEach(t=>{document.getElementById('tab-'+t).style.display=t===tab?'block':'none';});
   document.querySelectorAll('.atb').forEach((b,i)=>{
-    b.classList.toggle('on',['lista','mp3','sc','historia'][i]===tab);
+    b.classList.toggle('on',['lista','mp3','sc'][i]===tab);
   });
   renderAdmTab(tab);
 }
@@ -605,17 +722,21 @@ function renderAdmTab(tab){
   if(tab==='lista') renderLista();
   else if(tab==='mp3') renderMP3Tab();
   else if(tab==='sc') renderSCTab();
-  else renderHist();
 }
 
 // ── LISTA ──
 let filt='';
 function renderLista(){
+  const dbCnt=(typeof window.SONGS_DB!=='undefined')?window.SONGS_DB.length:0;
   const mp3cnt=G.songs.filter(s=>s.type==='mp3').length;
   const sccnt=G.songs.filter(s=>s.type==='sc').length;
   const mp3active=Object.keys(G.mp3Blobs).length;
   const filtered=G.songs.filter(s=>s.title.toLowerCase().includes(filt.toLowerCase())||s.artist.toLowerCase().includes(filt.toLowerCase()));
   document.getElementById('tab-lista').innerHTML=`
+    <div class="db-info">
+      📁 <strong>songs.js</strong> — zewnętrzna baza piosenek<br>
+      Załadowano z pliku: <strong>${dbCnt} piosenek</strong> · Edytuj plik <code>songs.js</code> aby dodać więcej.
+    </div>
     <div class="sgrid">
       <div class="sbox"><div class="v">${G.songs.length}</div><div class="l">Piosenek</div></div>
       <div class="sbox"><div class="v">${mp3active}</div><div class="l">MP3 aktywne</div></div>
@@ -626,6 +747,7 @@ function renderLista(){
     <div class="slist">
       ${filtered.length===0?'<div class="empty" style="padding:20px"><div class="ei">🔍</div><p>Brak wyników</p></div>':''}
       ${filtered.map((s,i)=>{
+        const fromDb=typeof window.SONGS_DB!=='undefined'&&window.SONGS_DB.some(x=>x.id===s.id);
         const active=s.type==='sc'||(s.type==='mp3'&&G.mp3Blobs[s.id]);
         return `<div class="sitem" style="${!active?'opacity:.45':''}">
           <div class="si-n">${i+1}</div>
@@ -633,13 +755,13 @@ function renderLista(){
             <div class="si-t">${s.title}</div>
             <div class="si-a">${s.artist} · ${s.year}${!active?' · ⚠ niedostępna w tej sesji':''}</div>
           </div>
-          <div class="badge ${s.type}">${s.type==='mp3'?'MP3':'SC'}</div>
-          <button class="sdel" onclick="delSong('${esc(s.id)}')">🗑</button>
+          <div class="badge ${fromDb?'db':s.type}">${fromDb?'DB':s.type==='mp3'?'MP3':'SC'}</div>
+          ${!fromDb?`<button class="sdel" onclick="delSong('${esc(s.id)}')">🗑</button>`:'<div style="width:24px"></div>'}
         </div>`;
       }).join('')}
     </div>
     <button class="butil" onclick="exportJSON()">⬇ Eksportuj metadane JSON</button>
-    <button class="butil danger" onclick="clearAll()">🗑 Wyczyść całą bazę</button>
+    <button class="butil danger" onclick="clearAll()">🗑 Wyczyść bazę (tylko dodane ręcznie)</button>
   `;
 }
 function delSong(id){
@@ -649,15 +771,19 @@ function delSong(id){
   saveSongs();renderLista();showToast('Usunięto');
 }
 function clearAll(){
-  if(!confirm('Usunąć WSZYSTKIE piosenki?'))return;
-  Object.values(G.mp3Blobs).forEach(u=>URL.revokeObjectURL(u));
-  G.mp3Blobs={};G.songs=[];saveSongs();renderLista();showToast('Wyczyszczono');
+  if(!confirm('Usunąć piosenki dodane ręcznie (MP3/SC)?\nPiosenki z bazy songs.js pozostaną.'))return;
+  const dbIds=new Set((window.SONGS_DB||[]).map(s=>s.id));
+  G.songs.filter(s=>!dbIds.has(s.id)).forEach(s=>{
+    if(G.mp3Blobs[s.id]){URL.revokeObjectURL(G.mp3Blobs[s.id]);delete G.mp3Blobs[s.id];}
+  });
+  G.songs=G.songs.filter(s=>dbIds.has(s.id));
+  saveSongs();renderLista();showToast('Wyczyszczono ręcznie dodane');
 }
 function exportJSON(){
   const d=JSON.stringify(G.songs.map(s=>({title:s.title,artist:s.artist,year:s.year,type:s.type,src:s.type==='sc'?s.src:'[lokalny plik]'})),null,2);
   const a=document.createElement('a');
   a.href=URL.createObjectURL(new Blob([d],{type:'application/json'}));
-  a.download='hitquiz-songs.json';a.click();
+  a.download='rapguesser-songs.json';a.click();
   showToast('Wyeksportowano');
 }
 
@@ -687,7 +813,6 @@ function onFilesPicked(files){
   Array.from(files).forEach(f=>{
     if(!f.type.includes('audio'))return;
     const tmpId='tmp_'+Date.now()+'_'+Math.random().toString(36).slice(2);
-    // auto-parse title/artist from filename
     const name=f.name.replace(/\.[^.]+$/,'');
     let title=name,artist='';
     const sep=name.match(/[-–—_]/);
@@ -768,32 +893,59 @@ function addSC(){
   document.getElementById('sc-src').value='';
 }
 
-// ── HISTORIA ──
-function renderHist(){
+// ══════════════════════════════════════
+//  PANEL STATYSTYK UŻYTKOWNIKA
+// ══════════════════════════════════════
+function openStats(){
+  renderStatsPanel();
+  document.getElementById('stats-panel').classList.add('open');
+}
+function closeStats(){
+  document.getElementById('stats-panel').classList.remove('open');
+}
+function renderStatsPanel(){
   const wins=G.history.filter(h=>h.won).length;
   const tot=G.history.length;
   const pct=tot?Math.round(wins/tot*100):0;
-  document.getElementById('tab-historia').innerHTML=`
-    <div class="sgrid">
-      <div class="sbox"><div class="v">${G.score}</div><div class="l">Pkt łącznie</div></div>
+  const bestStreak=G.history.reduce((acc,_,i,arr)=>{
+    let cur=0;for(let j=i;j<arr.length&&arr[j].won;j++)cur++;return Math.max(acc,cur);
+  },0);
+  document.getElementById('stats-content').innerHTML=`
+    <div class="sgrid" style="grid-template-columns:repeat(2,1fr);margin-bottom:10px">
+      <div class="sbox"><div class="v">${G.score}</div><div class="l">Punkty łącznie</div></div>
+      <div class="sbox"><div class="v">${G.streak}</div><div class="l">Aktualna seria 🔥</div></div>
+    </div>
+    <div class="sgrid" style="grid-template-columns:repeat(3,1fr)">
+      <div class="sbox"><div class="v">${tot}</div><div class="l">Rozegrane</div></div>
+      <div class="sbox"><div class="v">${wins}</div><div class="l">Trafione ✓</div></div>
       <div class="sbox"><div class="v">${pct}%</div><div class="l">Trafność</div></div>
-      <div class="sbox"><div class="v">${G.streak}</div><div class="l">Seria</div></div>
+    </div>
+    <div style="font-size:12px;color:var(--text3);text-align:center;padding:10px 0 14px">
+      Najdłuższa seria: <span style="color:var(--gold);font-weight:700">${bestStreak}</span>
+    </div>
+    <div style="font-size:13px;font-weight:700;color:var(--text2);margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--border)">
+      HISTORIA OSTATNICH RUND
     </div>
     <div class="hlist">
-      ${!G.history.length?'<div class="empty" style="padding:24px"><div class="ei">📊</div><p>Brak historii – zacznij grać!</p></div>':''}
-      ${G.history.slice(0,60).map(h=>`<div class="hitem">
-        <div class="hico">${h.won?'🏆':'💀'}</div>
-        <div class="hinf"><div class="ht">${h.title}</div><div class="hs">${h.artist} · ${h.d} · próba ${h.att}</div></div>
-        ${h.won?`<div class="hpts">+${h.pts}</div>`:'<div class="hpts" style="color:var(--text3)">—</div>'}
-      </div>`).join('')}
+      ${!G.history.length?`<div class="empty" style="padding:24px"><div class="ei">🎵</div><p>Brak historii – zacznij grać!</p></div>`:''}
+      ${G.history.slice(0,60).map(h=>`
+        <div class="hitem">
+          <div class="hico">${h.won?'🏆':'💀'}</div>
+          <div class="hinf">
+            <div class="ht">${h.title}</div>
+            <div class="hs">${h.artist} · ${h.d} · próba ${h.att}</div>
+          </div>
+          ${h.won?`<div class="hpts">+${h.pts}</div>`:`<div class="hpts" style="color:var(--text3)">—</div>`}
+        </div>
+      `).join('')}
     </div>
-    <button class="butil danger" style="margin-top:10px" onclick="clearHist()">🗑 Wyczyść historię</button>
+    <button class="butil danger" style="margin-top:14px" onclick="clearMyStats()">🗑 Wyczyść moje statystyki</button>
   `;
 }
-function clearHist(){
-  if(!confirm('Wyczyścić historię i statystyki?'))return;
+function clearMyStats(){
+  if(!confirm('Wyczyścić swoją historię i statystyki?'))return;
   G.history=[];G.score=0;G.streak=0;G.total=0;
-  saveStats();updateHUD();renderHist();showToast('Wyczyszczono');
+  saveStats();updateHUD();renderStatsPanel();showToast('Wyczyszczono statystyki');
 }
 
 // ── TOAST ──
@@ -806,7 +958,6 @@ function showToast(msg,err=false){
   toastT=setTimeout(()=>t.classList.remove('show'),2800);
 }
 
-// ── CLOSE DROPDOWN ──
 document.addEventListener('click',e=>{if(!e.target.closest('.srchwrap'))document.getElementById('dd').classList.remove('open');});
 
 // ── INIT ──
