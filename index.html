@@ -481,27 +481,31 @@ function playFrag(){
   }
   G.playing=true;
   const btn=document.getElementById('playbtn');
-  btn.disabled=true; btn.textContent='⏸ GRANIE...';
+  btn.disabled=true; btn.textContent='⏸ ŁADOWANIE...';
   document.getElementById('vinyl').classList.add('spin');
-  setWave(true);
   const d=dur();
-  animBar(d);
 
   if(song.type==='mp3'){
     const blobUrl=G.mp3Blobs[song.id];
     aud.src=blobUrl;
     aud.currentTime=0;
     aud.play().catch(e=>{showToast('Błąd odtwarzania MP3',true);stopPlay();});
+    // MP3 startuje natychmiast
+    btn.textContent='⏸ GRANIE...';
+    setWave(true);
+    animBar(d);
+    G.playTimer=setTimeout(stopPlay, d*1000+200);
   } else {
-    playSC(song.src, d);
-    // Fallback: jeśli przeglądarka zablokuje autoplay, pokaż info
-    setTimeout(()=>{
-      if(G.playing && scIframe && scIframe.src.includes('soundcloud')){
-        // Gra już - wszystko OK
-      }
-    }, 1500);
+    // SC — timer i pasek startują dopiero gdy faktycznie zacznie grać
+    playSC(song.src, d, ()=>{
+      if(!G.playing) return; // użytkownik zdążył zatrzymać
+      btn.textContent='⏸ GRANIE...';
+      setWave(true);
+      animBar(d);
+      clearTimeout(G.playTimer);
+      G.playTimer=setTimeout(stopPlay, d*1000+200);
+    });
   }
-  G.playTimer=setTimeout(stopPlay, d*1000+200);
 }
 
 function stopPlay(){
@@ -542,6 +546,7 @@ function setWave(on){
 let scWidget=null;
 let scIframe=null;
 let scCurrentSrc=null;
+let scReady=false;  // czy widget jest gotowy do odtwarzania
 
 function getSCIframe(){
   if(!scIframe){
@@ -562,38 +567,75 @@ function loadSCApi(cb){
   document.head.appendChild(s);
 }
 
-function playSC(src, d){
+// Preload — ładuje iframe w tle, cicho, auto_play=false
+// Wywołaj to zaraz po wybraniu piosenki żeby widget zdążył się załadować
+function preloadSC(src){
   const iframe=getSCIframe();
-  const embedUrl='https://w.soundcloud.com/player/?url='+encodeURIComponent(src)
-    +'&auto_play=true&buying=false&sharing=false&download=false'
-    +'&show_artwork=false&show_playcount=false&show_user=false&hide_related=true';
-
-  // Za każdym razem ładujemy świeży iframe z auto_play=true
-  // To omija problem z Widget API i działa niezawodnie
-  scWidget=null;
   scCurrentSrc=src;
-  iframe.src='about:blank';
+  scReady=false;
+  scWidget=null;
+  const embedUrl='https://w.soundcloud.com/player/?url='+encodeURIComponent(src)
+    +'&auto_play=false&buying=false&sharing=false&download=false'
+    +'&show_artwork=false&show_playcount=false&show_user=false&hide_related=true';
+  iframe.src=embedUrl;
+  loadSCApi(()=>{
+    // Poczekaj aż iframe się załaduje
+    const tryBind=()=>{
+      if(scCurrentSrc!==src) return;
+      try{
+        scWidget=window.SC.Widget(iframe);
+        scWidget.bind(window.SC.Widget.Events.READY,()=>{
+          if(scCurrentSrc===src) scReady=true;
+        });
+      }catch(e){
+        setTimeout(tryBind, 300);
+      }
+    };
+    setTimeout(tryBind, 500);
+  });
+}
 
-  setTimeout(()=>{
-    if(scCurrentSrc!==src) return; // piosenka już zmieniona
-    iframe.src=embedUrl;
+function playSC(src, d, onActualPlay){
+  const iframe=getSCIframe();
 
-    // Równolegle ładujemy Widget API żeby móc zatrzymać
-    loadSCApi(()=>{
+  const doPlay=()=>{
+    if(scCurrentSrc!==src) return;
+    if(scReady && scWidget){
+      // Widget gotowy — seekTo(0) i play, timer startuje po evencie PLAY
+      scWidget.seekTo(0);
+      scWidget.unbind(window.SC.Widget.Events.PLAY);
+      scWidget.bind(window.SC.Widget.Events.PLAY,()=>{
+        scWidget.unbind(window.SC.Widget.Events.PLAY);
+        if(scCurrentSrc===src && onActualPlay) onActualPlay();
+      });
+      scWidget.play();
+    } else {
+      // Fallback — załaduj z auto_play=true, timer startuje po 800ms (bufor ładowania)
+      scWidget=null;
+      scCurrentSrc=src;
+      const embedUrl='https://w.soundcloud.com/player/?url='+encodeURIComponent(src)
+        +'&auto_play=true&buying=false&sharing=false&download=false'
+        +'&show_artwork=false&show_playcount=false&show_user=false&hide_related=true';
+      iframe.src=embedUrl;
+      // Timer startuje po 800ms — tyle zwykle potrzeba żeby SC zaczął grać
       setTimeout(()=>{
-        if(!window.SC||scCurrentSrc!==src) return;
-        try{
-          scWidget=window.SC.Widget(iframe);
-        }catch(e){}
-      }, 2000);
-    });
-  }, 80);
+        if(scCurrentSrc===src && onActualPlay) onActualPlay();
+      }, 800);
+    }
+  };
+  doPlay();
 }
 
 function pauseSC(){
+  const src=scCurrentSrc;
   scCurrentSrc=null;
-  if(scWidget){try{scWidget.pause();}catch(e){}}
-  // Wyczyść iframe żeby na pewno zatrzymać dźwięk
+  scReady=false;
+  if(scWidget){
+    try{
+      scWidget.unbind(window.SC.Widget.Events.PLAY);
+      scWidget.pause();
+    }catch(e){}
+  }
   if(scIframe) scIframe.src='about:blank';
   scWidget=null;
 }
@@ -628,6 +670,8 @@ function startGame(){
   setWave(false);
   document.getElementById('vinyl').classList.remove('spin');
   renderDots();renderClue();
+  // Preload SC widget w tle — żeby był gotowy gdy gracz kliknie GRAJ
+  if(G.current.type==='sc') preloadSC(G.current.src);
 }
 
 function renderEmpty(){
