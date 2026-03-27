@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>RAPGUESSER</title>
+<title>RAPGUESSER 6</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -492,14 +492,21 @@ function playFrag(){
     aud.src=blobUrl;
     aud.currentTime=0;
     aud.play().catch(e=>{showToast('Błąd odtwarzania MP3',true);stopPlay();});
+							   
+									
+				  
+			   
+												 
   } else {
-    playSC(song.src, d);
-    // Fallback: jeśli przeglądarka zablokuje autoplay, pokaż info
-    setTimeout(()=>{
-      if(G.playing && scIframe && scIframe.src.includes('soundcloud')){
-        // Gra już - wszystko OK
-      }
-    }, 1500);
+    // SC — timer i pasek startują dopiero gdy faktycznie zacznie grać
+    playSC(song.src, d, ()=>{
+      if(!G.playing) return; // użytkownik zdążył zatrzymać
+      btn.textContent='⏸ GRANIE...';
+      setWave(true);
+      animBar(d);
+      clearTimeout(G.playTimer);
+      G.playTimer=setTimeout(stopPlay, d*1000+200);
+    });
   }
   G.playTimer=setTimeout(stopPlay, d*1000+200);
 }
@@ -542,6 +549,7 @@ function setWave(on){
 let scWidget=null;
 let scIframe=null;
 let scCurrentSrc=null;
+															
 
 function getSCIframe(){
   if(!scIframe){
@@ -562,8 +570,13 @@ function loadSCApi(cb){
   document.head.appendChild(s);
 }
 
+														   
+																				 
 function playSC(src, d){
   const iframe=getSCIframe();
+				   
+				
+				
   const embedUrl='https://w.soundcloud.com/player/?url='+encodeURIComponent(src)
     +'&auto_play=true&buying=false&sharing=false&download=false'
     +'&show_artwork=false&show_playcount=false&show_user=false&hide_related=true';
@@ -573,6 +586,17 @@ function playSC(src, d){
   scWidget=null;
   scCurrentSrc=src;
   iframe.src='about:blank';
+										  
+														 
+											  
+		   
+				
+								 
+	   
+	  
+							 
+	 
+ 
 
   setTimeout(()=>{
     if(scCurrentSrc!==src) return; // piosenka już zmieniona
@@ -580,6 +604,24 @@ function playSC(src, d){
 
     // Równolegle ładujemy Widget API żeby móc zatrzymać
     loadSCApi(()=>{
+							
+																		   
+						 
+													
+													  
+													  
+															  
+		 
+					  
+			
+																						   
+					
+					   
+																					
+																	
+																					  
+						  
+																				 
       setTimeout(()=>{
         if(!window.SC||scCurrentSrc!==src) return;
         try{
@@ -588,12 +630,19 @@ function playSC(src, d){
       }, 2000);
     });
   }, 80);
+		   
 }
 
 function pauseSC(){
+						 
   scCurrentSrc=null;
   if(scWidget){try{scWidget.pause();}catch(e){}}
   // Wyczyść iframe żeby na pewno zatrzymać dźwięk
+		
+													
+					   
+			   
+   
   if(scIframe) scIframe.src='about:blank';
   scWidget=null;
 }
@@ -628,6 +677,8 @@ function startGame(){
   setWave(false);
   document.getElementById('vinyl').classList.remove('spin');
   renderDots();renderClue();
+																		 
+													 
 }
 
 function renderEmpty(){
