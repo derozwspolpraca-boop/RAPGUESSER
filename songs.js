@@ -38,7 +38,14 @@ const SONGS_DB = [
 
   // ── DODAJ SWOJE PIOSENKI PONIŻEJ ──
 
-
+  {
+    id: 'sc_001',
+    title: 'WAWA022',
+    artist: 'Sentino',
+    year: '2026',
+    type: 'sc',
+    src: 'https://soundcloud.com/karzeu/8472371e-ba14-4c17-805e-aa33da7261d2?si=e1b72614dea14775b82a10149a6f71e5&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing'
+  },
 ];
 
 // NIE MODYFIKUJ PONIŻEJ TEJ LINII
