@@ -1,54 +1,81 @@
-// ═══════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
 //  RAPGUESSER — BAZA PIOSENEK
-//  Edytuj ten plik aby dodawać/usuwać piosenki z gry.
+// ═══════════════════════════════════════════════════════════════════
 //
-//  FORMAT KAŻDEJ PIOSENKI:
+//  JAK SPRAWDZIĆ CZY LINK ZADZIAŁA?
+//  ─────────────────────────────────
+//  Nie każda piosenka na SoundCloud działa jako embed!
+//  Przed dodaniem do bazy wejdź na:
+//
+//    https://w.soundcloud.com/player/?url=TUTAJ_WKLEJ_LINK
+//
+//  Przykład sprawdzenia:
+//    https://w.soundcloud.com/player/?url=https://soundcloud.com/ksi/holiday
+//
+//  Jeśli pojawia się odtwarzacz z okładką → DZIAŁA ✅
+//  Jeśli pojawia się "This track is not available" → NIE DZIAŁA ❌
+//    (zablokowane przez wytwórnię / artysta wyłączył embedding)
+//
+//  ─────────────────────────────────
+//  FORMAT WPISU:
 //  {
-//    id:     unikalny identyfikator (dowolny string bez spacji),
-//    title:  tytuł piosenki,
+//    id:     dowolny unikalny string BEZ spacji i polskich znaków,
+//    title:  tytuł piosenki (wyświetlany w grze),
 //    artist: wykonawca,
-//    year:   rok wydania (liczba),
-//    type:   'sc' (SoundCloud) lub 'yt' (zarezerwowane),
-//    src:    pełny link do piosenki na SoundCloud
+//    year:   rok (liczba, bez cudzysłowów),
+//    type:   zawsze 'sc' dla SoundCloud,
+//    src:    pełny link z soundcloud.com
 //  }
 //
-//  ⚠ Działa TYLKO z publicznymi utworami na SoundCloud.
-//  Link format: https://soundcloud.com/artysta/tytul-piosenki
-// ═══════════════════════════════════════════════════════════
+//  WAŻNE: po każdym wpisie (oprócz ostatniego) musi być przecinek!
+//  WAŻNE: src musi być dokładnym linkiem do konkretnej piosenki,
+//         NIE do profilu artysty ani playlisty
+// ═══════════════════════════════════════════════════════════════════
 
 const SONGS_DB = [
 
-  // ── PRZYKŁADOWE PIOSENKI — USUŃ I DODAJ SWOJE ──
-  // {
-  //   id: 'sc_001',
-  //   title: 'HUMBLE.',
-  //   artist: 'Kendrick Lamar',
-  //   year: 2017,
-  //   type: 'sc',
-  //   src: 'https://soundcloud.com/kendrick-lamar-music/humble'
-  // },
-  // {
-  //   id: 'sc_002',
-  //   title: 'SICKO MODE',
-  //   artist: 'Travis Scott',
-  //   year: 2018,
-  //   type: 'sc',
-  //   src: 'https://soundcloud.com/travisscott/sicko-mode'
-  // },
-
-  // ── DODAJ SWOJE PIOSENKI PONIŻEJ ──
+  // ── PRZYKŁADY KTÓRE DZIAŁAJĄ (sprawdzone embedowanie) ──
+  // Usuń te przykłady i wstaw swoje własne piosenki
 
   {
-    id: 'sc_001',
-    title: 'WAWA022',
-    artist: 'Sentino',
-    year: '2026',
+    id: 'sc_example_001',
+    title: 'Holiday',
+    artist: 'KSI',
+    year: 2020,
     type: 'sc',
-    src: 'https://soundcloud.com/karzeu/8472371e-ba14-4c17-805e-aa33da7261d2?si=e1b72614dea14775b82a10149a6f71e5&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing'
+    src: 'https://soundcloud.com/ksi/holiday'
   },
+  {
+    id: 'sc_example_002',
+    title: 'Thick of It',
+    artist: 'KSI',
+    year: 2016,
+    type: 'sc',
+    src: 'https://soundcloud.com/ksi/ksi-thick-of-it'
+  },
+  {
+    id: 'sc_example_003',
+    title: 'Miracle',
+    artist: 'Madeon',
+    year: 2012,
+    type: 'sc',
+    src: 'https://soundcloud.com/madeon/miracle'
+  },
+
+  // ── TUTAJ DODAWAJ SWOJE PIOSENKI ──
+  // Wzór:
+  // {
+  //   id: 'sc_001',              <- unikalny identyfikator, zmień numer
+  //   title: 'Tytuł Piosenki',
+  //   artist: 'Nazwa Artysty',
+  //   year: 2023,
+  //   type: 'sc',
+  //   src: 'https://soundcloud.com/artysta/tytul'
+  // },
+
 ];
 
-// NIE MODYFIKUJ PONIŻEJ TEJ LINII
+// ── NIE MODYFIKUJ PONIŻEJ ──
 if (typeof window !== 'undefined') {
   window.SONGS_DB = SONGS_DB;
 }
