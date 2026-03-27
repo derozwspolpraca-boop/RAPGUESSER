@@ -481,31 +481,21 @@ function playFrag(){
   }
   G.playing=true;
   const btn=document.getElementById('playbtn');
-  btn.disabled=true; btn.textContent='⏸ ŁADOWANIE...';
+  btn.disabled=true; btn.textContent='⏸ GRANIE...';
   document.getElementById('vinyl').classList.add('spin');
+  setWave(true);
   const d=dur();
+  animBar(d);
 
   if(song.type==='mp3'){
     const blobUrl=G.mp3Blobs[song.id];
     aud.src=blobUrl;
     aud.currentTime=0;
     aud.play().catch(e=>{showToast('Błąd odtwarzania MP3',true);stopPlay();});
-    // MP3 startuje natychmiast
-    btn.textContent='⏸ GRANIE...';
-    setWave(true);
-    animBar(d);
-    G.playTimer=setTimeout(stopPlay, d*1000+200);
   } else {
-    // SC — timer i pasek startują dopiero gdy faktycznie zacznie grać
-    playSC(song.src, d, ()=>{
-      if(!G.playing) return; // użytkownik zdążył zatrzymać
-      btn.textContent='⏸ GRANIE...';
-      setWave(true);
-      animBar(d);
-      clearTimeout(G.playTimer);
-      G.playTimer=setTimeout(stopPlay, d*1000+200);
-    });
+    playSC(song.src, d);
   }
+  G.playTimer=setTimeout(stopPlay, d*1000+200);
 }
 
 function stopPlay(){
@@ -543,102 +533,32 @@ function setWave(on){
 // ══════════════════════════════════════
 //  SOUNDCLOUD WIDGET
 // ══════════════════════════════════════
-let scWidget=null;
-let scIframe=null;
-let scCurrentSrc=null;
-let scReady=false;  // czy widget jest gotowy do odtwarzania
-
-function getSCIframe(){
+let scWidget=null;let scIframe=null;
+function ensureSCWidget(src, cb){
   if(!scIframe){
     scIframe=document.createElement('iframe');
     scIframe.id='sc-iframe';
-    scIframe.style.cssText='position:fixed;bottom:-9999px;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;border:none';
+    scIframe.style.cssText='position:fixed;bottom:-999px;left:0;width:1px;height:1px;opacity:0;pointer-events:none;border:none';
     scIframe.allow='autoplay';
     document.body.appendChild(scIframe);
   }
-  return scIframe;
-}
-
-function loadSCApi(cb){
-  if(window.SC){cb();return;}
-  const s=document.createElement('script');
-  s.src='https://w.soundcloud.com/player/api.js';
-  s.onload=cb;
-  document.head.appendChild(s);
-}
-
-// Preload — ładuje iframe w tle, cicho, auto_play=false
-// Wywołaj to zaraz po wybraniu piosenki żeby widget zdążył się załadować
-function preloadSC(src){
-  const iframe=getSCIframe();
-  scCurrentSrc=src;
-  scReady=false;
-  scWidget=null;
-  const embedUrl='https://w.soundcloud.com/player/?url='+encodeURIComponent(src)
-    +'&auto_play=false&buying=false&sharing=false&download=false'
-    +'&show_artwork=false&show_playcount=false&show_user=false&hide_related=true';
-  iframe.src=embedUrl;
-  loadSCApi(()=>{
-    // Poczekaj aż iframe się załaduje
-    const tryBind=()=>{
-      if(scCurrentSrc!==src) return;
-      try{
-        scWidget=window.SC.Widget(iframe);
-        scWidget.bind(window.SC.Widget.Events.READY,()=>{
-          if(scCurrentSrc===src) scReady=true;
-        });
-      }catch(e){
-        setTimeout(tryBind, 300);
-      }
+  const embedUrl='https://w.soundcloud.com/player/?url='+encodeURIComponent(src)+'&auto_play=false&buying=false&sharing=false&download=false&show_artwork=false&show_playcount=false&show_user=false';
+  scIframe.src=embedUrl;
+  if(!window.SC){
+    const script=document.createElement('script');
+    script.src='https://w.soundcloud.com/player/api.js';
+    script.onload=()=>{
+      scWidget=window.SC.Widget(scIframe);
+      scWidget.bind(SC.Widget.Events.READY,()=>{if(cb)cb();});
     };
-    setTimeout(tryBind, 500);
-  });
-}
-
-function playSC(src, d, onActualPlay){
-  const iframe=getSCIframe();
-
-  const doPlay=()=>{
-    if(scCurrentSrc!==src) return;
-    if(scReady && scWidget){
-      // Widget gotowy — seekTo(0) i play, timer startuje po evencie PLAY
-      scWidget.seekTo(0);
-      scWidget.unbind(window.SC.Widget.Events.PLAY);
-      scWidget.bind(window.SC.Widget.Events.PLAY,()=>{
-        scWidget.unbind(window.SC.Widget.Events.PLAY);
-        if(scCurrentSrc===src && onActualPlay) onActualPlay();
-      });
-      scWidget.play();
-    } else {
-      // Fallback — załaduj z auto_play=true, timer startuje po 800ms (bufor ładowania)
-      scWidget=null;
-      scCurrentSrc=src;
-      const embedUrl='https://w.soundcloud.com/player/?url='+encodeURIComponent(src)
-        +'&auto_play=true&buying=false&sharing=false&download=false'
-        +'&show_artwork=false&show_playcount=false&show_user=false&hide_related=true';
-      iframe.src=embedUrl;
-      // Timer startuje po 800ms — tyle zwykle potrzeba żeby SC zaczął grać
-      setTimeout(()=>{
-        if(scCurrentSrc===src && onActualPlay) onActualPlay();
-      }, 800);
-    }
-  };
-  doPlay();
-}
-
-function pauseSC(){
-  const src=scCurrentSrc;
-  scCurrentSrc=null;
-  scReady=false;
-  if(scWidget){
-    try{
-      scWidget.unbind(window.SC.Widget.Events.PLAY);
-      scWidget.pause();
-    }catch(e){}
+    document.head.appendChild(script);
+  } else {
+    scWidget=window.SC.Widget(scIframe);
+    scWidget.bind(SC.Widget.Events.READY,()=>{if(cb)cb();});
   }
-  if(scIframe) scIframe.src='about:blank';
-  scWidget=null;
 }
+function playSC(src, d){ensureSCWidget(src,()=>{scWidget.seekTo(0);scWidget.play();});}
+function pauseSC(){if(scWidget){try{scWidget.pause();}catch(e){}}}
 
 // ══════════════════════════════════════
 //  GAME LOGIC
@@ -670,8 +590,6 @@ function startGame(){
   setWave(false);
   document.getElementById('vinyl').classList.remove('spin');
   renderDots();renderClue();
-  // Preload SC widget w tle — żeby był gotowy gdy gracz kliknie GRAJ
-  if(G.current.type==='sc') preloadSC(G.current.src);
 }
 
 function renderEmpty(){
