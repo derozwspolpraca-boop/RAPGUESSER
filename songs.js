@@ -201,15 +201,6 @@ const SONGS_DB = [
 
   {
     id: 'sc_0019',
-    title: 'WODA SODOWA',
-    artist: 'OKI',
-    year: 2024,
-    type: 'sc',
-    src: 'https://soundcloud.com/wiktor122/oki-woda-sodowa'
-  },
-
-  {
-    id: 'sc_0020',
     title: 'Małe Krople',
     artist: 'Young Igi',
     year: 2022,
@@ -218,7 +209,7 @@ const SONGS_DB = [
   },
 
   {
-    id: 'sc_0006',
+    id: 'sc_0020',
     title: '',
     artist: '',
     year: 202,
