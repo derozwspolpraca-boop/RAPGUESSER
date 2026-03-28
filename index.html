@@ -43,6 +43,27 @@ html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);c
 .hbtn{background:var(--s2);border:1px solid var(--border);border-radius:7px;padding:6px 10px;cursor:pointer;color:var(--text2);font-size:12px;font-weight:600;transition:all .2s;font-family:'Barlow',sans-serif;touch-action:manipulation}
 .hbtn:hover,.hbtn:active{border-color:var(--accent);color:var(--accent)}
 
+/* SUGGEST BUTTON */
+.suggest-btn{
+  display:flex;align-items:center;justify-content:center;gap:7px;
+  width:100%;padding:10px 14px;margin-bottom:10px;
+  background:transparent;
+  border:1.5px dashed rgba(184,76,227,.4);
+  border-radius:var(--r);
+  color:var(--text3);font-size:12px;font-weight:600;
+  cursor:pointer;transition:all .25s;
+  font-family:'Barlow',sans-serif;
+  text-decoration:none;
+  letter-spacing:.3px;
+  touch-action:manipulation;
+}
+.suggest-btn:hover,.suggest-btn:active{
+  border-color:var(--accent);
+  color:var(--accent);
+  background:rgba(184,76,227,.06);
+}
+.suggest-btn .sb-icon{font-size:15px}
+
 /* SCORES */
 .scorebar{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:10px 0}
 .sc{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:8px;text-align:center}
@@ -336,7 +357,6 @@ footer{text-align:center;padding:16px 0;color:var(--text3);font-size:10px;border
       <div class="pts-max" id="pts-max">max</div>
     </div>
     <div class="vinyl" id="vinyl"></div>
-    <!-- prawa strona — pusta dla symetrii -->
     <div style="width:80px;flex-shrink:0"></div>
   </div>
 
@@ -378,6 +398,13 @@ footer{text-align:center;padding:16px 0;color:var(--text3);font-size:10px;border
       <button class="bconf" id="bconf" onclick="doConfirm()" disabled>✓ POTWIERDŹ</button>
     </div>
   </div>
+
+  <!-- PRZYCISK ZAPROPONUJ UTWÓR -->
+  <a class="suggest-btn" href="https://forms.gle/WeBdqbTMoF2drfYZ7" target="_blank" rel="noopener">
+    <span class="sb-icon">💡</span>
+    Zaproponuj utwór do bazy
+    <span style="margin-left:auto;font-size:10px;opacity:.6">↗</span>
+  </a>
 
   <div id="res-area" style="display:none"></div>
   <footer>RAPGUESSER — 2026</footer>
@@ -438,7 +465,6 @@ footer{text-align:center;padding:16px 0;color:var(--text3);font-size:10px;border
 // ══════════════════════════════════════
 const ADMIN_PASSWORD = 'Pijeciejaksok';
 const SESSION_KEY = 'rg_admin_auth';
-// Punkty za próbę: 1-sza=150, 2-ga=130, 3-cia=110, ...
 const PTS_BY_ATTEMPT = [150, 130, 110, 90, 60, 30];
 
 let adminUnlocked = sessionStorage.getItem(SESSION_KEY) === '1';
@@ -922,7 +948,6 @@ function renderResult(ok) {
   document.getElementById('game-area').style.display = 'none';
   const r = document.getElementById('res-area'); r.style.display = 'block';
   const pts = G.history[0]?.pts || 0;
-  // Update badge to show result
   const badge = document.getElementById('pts-badge');
   const ptsEl = document.getElementById('pts-display');
   const maxEl = document.getElementById('pts-max');
@@ -970,11 +995,9 @@ function saveDailyState(state) {
   localStorage.setItem(DAILY_KEY, JSON.stringify(state));
 }
 
-// Deterministyczny wybór piosenki na dany dzień (seed z daty)
 function pickDailySong(dateStr) {
   const pool = availableSongs();
   if (!pool.length) return null;
-  // prosta hash z daty → indeks
   let hash = 0;
   for (let i = 0; i < dateStr.length; i++) {
     hash = ((hash << 5) - hash) + dateStr.charCodeAt(i);
@@ -1024,7 +1047,6 @@ function renderDailyAlready(state) {
   document.getElementById('durbar').style.transition = 'none';
   document.getElementById('durbar').style.width = '0%';
 
-  // Pts badge — pokaż wynik dzisiejszego daily
   const badge = document.getElementById('pts-badge');
   const ptsEl = document.getElementById('pts-display');
   const maxEl = document.getElementById('pts-max');
@@ -1087,14 +1109,12 @@ function updateDailyTabBtn(state) {
 
 function startDailyGame() {
   clearInterval(dailyCountdownTimer);
-  // Przywróć ukryte elementy
   document.getElementById('clue').style.display = '';
   document.getElementById('playbtn').style.display = '';
 
   const today = todayStr();
   const state = getDailyState();
 
-  // Już zagrane dziś?
   if (state && state.date === today) {
     renderDailyAlready(state);
     return;
@@ -1103,7 +1123,6 @@ function startDailyGame() {
   const song = pickDailySong(today);
   if (!song) { renderEmpty(); return; }
 
-  // Ustaw current i zresetuj grę
   G.current = song;
   G.attempt = 0; G.results = []; G.guessLog = []; G.gameOver = false; G.guess = null;
   G.maxAttempts = 6;
@@ -1123,7 +1142,6 @@ function startDailyGame() {
   setWave(false);
   document.getElementById('vinyl').classList.remove('spin');
 
-  // Reset pts badge
   const badge = document.getElementById('pts-badge');
   const ptsEl = document.getElementById('pts-display');
   const maxEl = document.getElementById('pts-max');
@@ -1140,7 +1158,6 @@ function checkEndDaily(ok) {
   G.gameOver = true; G.total++;
   const today = todayStr();
   const prevState = getDailyState();
-  // Policz dailyStreak
   let dailyStreak = 1;
   if (prevState) {
     const prevDate = new Date(prevState.date);
@@ -1150,7 +1167,6 @@ function checkEndDaily(ok) {
     else if (diffDays === 1 && !prevState.won) dailyStreak = 1;
   }
 
-  // Punkty malejące jak w klasycznym
   const rawPts = ok ? Math.max(DAILY_PTS - (G.attempt - 1) * 130, 100) : 0;
   const pts = ok ? rawPts : 0;
 
@@ -1170,7 +1186,6 @@ function renderDailyResult(ok, pts, dailyStreak) {
   document.getElementById('game-area').style.display = 'none';
   const r = document.getElementById('res-area'); r.style.display = 'block';
 
-  // Badge update
   const badge = document.getElementById('pts-badge');
   const ptsEl = document.getElementById('pts-display');
   const maxEl = document.getElementById('pts-max');
@@ -1218,7 +1233,6 @@ function setMode(m, el) {
   if (m === 'daily') {
     startDailyGame();
   } else {
-    // Przywróć UI jeśli daily ukryło elementy
     document.getElementById('clue').style.display = '';
     document.getElementById('playbtn').style.display = '';
     startGame();
@@ -1376,7 +1390,6 @@ function saveMP3Queue() {
 }
 
 // ── URL / SC TAB ───────────────────────────────────
-// Obsługuje zarówno bezpośrednie URL (hosting MP3) jak i SoundCloud
 function renderURLTab() {
   document.getElementById('tab-url').innerHTML = `
     <div class="scform">
@@ -1527,7 +1540,6 @@ document.addEventListener('click', e => {
 
 // ── INIT ──
 loadAll();
-// Pokaż status daily na zakładce
 updateDailyTabBtn(getDailyState()?.date === todayStr() ? getDailyState() : null);
 startGame();
 </script>
