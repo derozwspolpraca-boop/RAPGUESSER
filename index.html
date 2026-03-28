@@ -21,6 +21,7 @@
   --col-miss: #ff3f3f;
   --col-skip: #444466;
   --col-blue: #4fc3f7;
+  --col-album: #b84ce3;
   --text:  #eeeeff;
   --text2: #8888aa;
   --text3: #444466;
@@ -57,11 +58,7 @@ html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);c
   letter-spacing:.3px;
   touch-action:manipulation;
 }
-.suggest-btn:hover,.suggest-btn:active{
-  border-color:var(--accent);
-  color:var(--accent);
-  background:rgba(184,76,227,.06);
-}
+.suggest-btn:hover,.suggest-btn:active{border-color:var(--accent);color:var(--accent);background:rgba(184,76,227,.06)}
 .suggest-btn .sb-icon{font-size:15px}
 
 /* SCORES */
@@ -75,8 +72,9 @@ html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);c
 .mt{flex:1;padding:7px 2px;border:none;background:transparent;color:var(--text2);font-size:10px;font-weight:700;cursor:pointer;border-radius:6px;transition:all .2s;font-family:'Barlow',sans-serif;text-align:center;line-height:1.3;touch-action:manipulation}
 .mt.on{background:var(--accent);color:var(--accent-text)}
 .mt:active{opacity:.8}
+.mt.album-tab.on{background:linear-gradient(135deg,var(--col-album),#7b2fff);color:#fff}
 
-/* ── VINYL + POINTS WRAPPER ── */
+/* ── VINYL / ALBUM COVER + POINTS WRAPPER ── */
 .vinyl-area{display:flex;align-items:center;justify-content:center;gap:20px;padding:14px 0 6px}
 
 /* POINTS DISPLAY */
@@ -94,6 +92,21 @@ html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);c
 .vinyl.spin{animation:vspin 2.2s linear infinite}
 .vinyl::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:24px;height:24px;border-radius:50%;background:radial-gradient(circle,#ffffff,#aaaaaa);box-shadow:0 0 7px rgba(255,255,255,.5)}
 @keyframes vspin{to{transform:rotate(360deg)}}
+
+/* ALBUM COVER */
+.album-cover-wrap{width:110px;height:110px;border-radius:10px;overflow:hidden;position:relative;flex-shrink:0;box-shadow:0 0 0 2px rgba(184,76,227,.4),0 8px 32px rgba(0,0,0,.7);transition:all .3s}
+.album-cover-wrap.spin{animation:albumPulse 2.2s ease-in-out infinite}
+@keyframes albumPulse{0%,100%{box-shadow:0 0 0 2px rgba(184,76,227,.4),0 8px 32px rgba(0,0,0,.7)}50%{box-shadow:0 0 0 3px rgba(184,76,227,.9),0 8px 48px rgba(184,76,227,.35)}}
+.album-cover-img{width:100%;height:100%;object-fit:cover;display:block}
+.album-cover-placeholder{width:100%;height:100%;background:linear-gradient(135deg,var(--s3),var(--s4));display:flex;align-items:center;justify-content:center;font-size:40px}
+
+/* ALBUM INFO STRIP */
+.album-strip{background:linear-gradient(90deg,rgba(184,76,227,.12),rgba(123,47,255,.08));border:1px solid rgba(184,76,227,.25);border-radius:10px;padding:8px 12px;margin-bottom:8px;display:none;animation:fadeup .3s ease}
+.album-strip.show{display:block}
+.album-strip-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--col-album);margin-bottom:2px}
+.album-strip-title{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1.5px;color:var(--text);line-height:1}
+.album-strip-meta{font-size:11px;color:var(--text2);margin-top:1px}
+.album-strip-progress{font-size:10px;color:var(--col-album);font-weight:700;margin-top:3px}
 
 /* WAVEFORM */
 .wf{display:flex;align-items:flex-end;justify-content:center;gap:3px;height:30px;margin-bottom:8px;opacity:.3;transition:opacity .3s}
@@ -179,6 +192,25 @@ html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);c
 .bnext:hover{background:var(--accent-hover)}
 .bnext:active{opacity:.85}
 
+/* ALBUM RESULT CARD */
+.album-rescard{background:linear-gradient(135deg,var(--s2) 0%,#1a0a2e 100%);border:1px solid rgba(184,76,227,.35);border-radius:14px;padding:20px;text-align:center;margin-bottom:10px;animation:fadeup .35s ease;position:relative;overflow:hidden}
+.album-rescard::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(184,76,227,.1) 0%,transparent 70%);pointer-events:none}
+.album-res-cover{width:90px;height:90px;border-radius:8px;object-fit:cover;margin:0 auto 10px;display:block;box-shadow:0 4px 20px rgba(0,0,0,.6)}
+.album-res-cover-placeholder{width:90px;height:90px;border-radius:8px;background:var(--s3);margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:36px}
+.album-res-next{background:linear-gradient(135deg,var(--col-album),#7b2fff);color:#fff}
+.album-res-next:hover{filter:brightness(1.15)}
+
+/* ALBUM MODE END-OF-ALBUM CARD */
+.album-end-card{background:linear-gradient(135deg,var(--s2),#0d1a2e);border:1px solid rgba(79,195,247,.3);border-radius:14px;padding:22px;text-align:center;margin-bottom:10px;animation:fadeup .35s ease}
+.album-end-icon{font-size:52px;margin-bottom:8px}
+.album-end-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:var(--col-blue);margin-bottom:4px}
+.album-end-sub{font-size:12px;color:var(--text2);margin-bottom:14px}
+.album-end-score{font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--accent);line-height:1;margin-bottom:4px}
+.album-end-score-lbl{font-size:10px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-bottom:14px}
+.bnext-album{width:100%;padding:13px;background:linear-gradient(135deg,var(--col-album),#7b2fff);border:none;border-radius:var(--r);font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:2px;color:#fff;cursor:pointer;transition:all .2s;touch-action:manipulation}
+.bnext-album:hover{filter:brightness(1.15)}
+.bnext-album:active{opacity:.85}
+
 /* EMPTY */
 .empty{text-align:center;padding:36px 16px;color:var(--text3)}
 .empty .ei{font-size:40px;margin-bottom:10px}
@@ -261,6 +293,7 @@ html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);c
 .badge.url{background:rgba(0,230,118,.1);color:var(--col-hit);border:1px solid rgba(0,230,118,.3)}
 .badge.file{background:rgba(255,200,0,.1);color:#ffcc00;border:1px solid rgba(255,200,0,.3)}
 .badge.db{background:rgba(79,195,247,.12);color:var(--col-blue);border:1px solid rgba(79,195,247,.3)}
+.badge.alb{background:rgba(184,76,227,.12);color:var(--col-album);border:1px solid rgba(184,76,227,.3)}
 .sdel{background:none;border:none;color:var(--text3);cursor:pointer;font-size:14px;padding:3px;transition:color .2s;flex-shrink:0}
 .sdel:hover,.sdel:active{color:var(--col-miss)}
 
@@ -289,6 +322,15 @@ html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);c
 .db-info strong{color:var(--col-blue)}
 .cnt{font-size:10px;color:var(--text3);margin-bottom:7px}
 
+/* ALBUM LIST IN ADMIN */
+.aitem{background:var(--s2);border:1px solid var(--border);border-radius:9px;padding:9px 10px;display:flex;align-items:center;gap:9px;margin-bottom:5px}
+.aitem-cover{width:44px;height:44px;border-radius:6px;object-fit:cover;flex-shrink:0;background:var(--s3);display:flex;align-items:center;justify-content:center;font-size:20px;overflow:hidden}
+.aitem-cover img{width:100%;height:100%;object-fit:cover}
+.aitem-inf{flex:1;min-width:0}
+.aitem-t{font-size:12px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.aitem-a{font-size:10px;color:var(--text2)}
+.aitem-cnt{font-size:10px;color:var(--col-album);font-weight:700}
+
 /* TOAST */
 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--s2);border:1px solid var(--border2);border-radius:8px;padding:9px 16px;font-size:12px;font-weight:600;color:var(--accent);z-index:1000;transition:transform .28s cubic-bezier(.34,1.56,.64,1);white-space:nowrap;pointer-events:none;max-width:90vw;text-align:center}
 .toast.show{transform:translateX(-50%) translateY(0)}
@@ -312,14 +354,13 @@ footer{text-align:center;padding:16px 0;color:var(--text3);font-size:10px;border
 .daily-won-artist{font-size:12px;color:var(--text2);margin-bottom:12px}
 .daily-already{background:var(--s2);border:1px solid rgba(184,76,227,.3);border-radius:14px;padding:20px 16px;text-align:center;margin-bottom:12px;animation:fadeup .3s ease}
 .daily-streak-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(204,170,48,.12);border:1px solid rgba(204,170,48,.3);border-radius:20px;padding:5px 12px;font-size:12px;font-weight:700;color:var(--accent2);margin-bottom:12px}
-.mt.daily-locked{opacity:.6}
 .mt.daily-done{background:linear-gradient(135deg,rgba(0,230,118,.15),rgba(0,230,118,.05)) !important;border:1px solid rgba(0,230,118,.3) !important;color:var(--col-hit) !important}
 
-/* MOBILE OVERRIDES */
+/* MOBILE */
 @media(max-width:400px){
   .logo{font-size:22px}
   .hbtn{padding:5px 8px;font-size:11px}
-  .vinyl{width:90px;height:90px}
+  .vinyl,.album-cover-wrap{width:90px;height:90px}
   .pts-badge{width:70px;height:70px}
   .pts-badge .pts-val{font-size:24px}
   .ad{width:32px;height:32px;font-size:12px}
@@ -346,18 +387,35 @@ footer{text-align:center;padding:16px 0;color:var(--text3);font-size:10px;border
   <div class="mtabs">
     <button class="mt on" onclick="setMode('classic',this)">🎯 Klasyczny<br><span style="font-size:9px;font-weight:400">6 prób</span></button>
     <button class="mt" id="daily-tab-btn" onclick="setMode('daily',this)">📅 Daily<br><span style="font-size:9px;font-weight:400" id="daily-tab-sub">1000 pkt</span></button>
-    <button class="mt" onclick="setMode('chill',this)">♾️ Relax<br><span style="font-size:9px;font-weight:400">bez limitu</span></button>
+    <button class="mt album-tab" onclick="setMode('album',this)">💿 Album<br><span style="font-size:9px;font-weight:400" id="album-tab-sub">zgadnij skład</span></button>
   </div>
 
-  <!-- VINYL + POINTS SIDE BY SIDE -->
+  <!-- VINYL / ALBUM COVER + POINTS -->
   <div class="vinyl-area">
     <div class="pts-badge" id="pts-badge">
       <div class="pts-val" id="pts-display">150</div>
       <div class="pts-lbl">PKT</div>
       <div class="pts-max" id="pts-max">max</div>
     </div>
+
+    <!-- VINYL (classic/daily) -->
     <div class="vinyl" id="vinyl"></div>
+
+    <!-- ALBUM COVER (album mode) -->
+    <div class="album-cover-wrap" id="album-cover-wrap" style="display:none">
+      <div class="album-cover-placeholder" id="album-cover-placeholder">💿</div>
+      <img class="album-cover-img" id="album-cover-img" src="" alt="" style="display:none" onerror="this.style.display='none';document.getElementById('album-cover-placeholder').style.display='flex'"/>
+    </div>
+
     <div style="width:80px;flex-shrink:0"></div>
+  </div>
+
+  <!-- ALBUM STRIP (pokazuje się w trybie album) -->
+  <div class="album-strip" id="album-strip">
+    <div class="album-strip-label">Zgadywany album</div>
+    <div class="album-strip-title" id="album-strip-title">—</div>
+    <div class="album-strip-meta" id="album-strip-meta">—</div>
+    <div class="album-strip-progress" id="album-strip-progress"></div>
   </div>
 
   <div class="wf" id="wf">
@@ -399,7 +457,6 @@ footer{text-align:center;padding:16px 0;color:var(--text3);font-size:10px;border
     </div>
   </div>
 
-  <!-- PRZYCISK ZAPROPONUJ UTWÓR -->
   <a class="suggest-btn" href="https://forms.gle/WeBdqbTMoF2drfYZ7" target="_blank" rel="noopener">
     <span class="sb-icon">💡</span>
     Zaproponuj utwór do bazy
@@ -446,10 +503,12 @@ footer{text-align:center;padding:16px 0;color:var(--text3);font-size:10px;border
     </div>
     <div class="atabs">
       <button class="atb on" onclick="swTab('lista',this)">📋 Lista <span id="bcnt" style="background:var(--col-miss);color:#fff;font-size:9px;border-radius:5px;padding:1px 5px;margin-left:2px">0</span></button>
+      <button class="atb" onclick="swTab('albumy',this)">💿 Albumy <span id="acnt" style="background:var(--col-album);color:#fff;font-size:9px;border-radius:5px;padding:1px 5px;margin-left:2px">0</span></button>
       <button class="atb" onclick="swTab('mp3',this)">🎵 MP3</button>
       <button class="atb" onclick="swTab('url',this)">🔗 URL / SC</button>
     </div>
     <div id="tab-lista"></div>
+    <div id="tab-albumy" style="display:none"></div>
     <div id="tab-mp3" style="display:none"></div>
     <div id="tab-url" style="display:none"></div>
   </div>
@@ -458,6 +517,7 @@ footer{text-align:center;padding:16px 0;color:var(--text3);font-size:10px;border
 <div class="toast" id="toast"></div>
 
 <script src="songs.js"></script>
+<script src="albums.js"></script>
 
 <script>
 // ══════════════════════════════════════
@@ -482,6 +542,13 @@ let G = {
   gameOver: false, playing: false, guess: null,
   played: new Set(), history: [], mode: 'classic',
   playTimer: null, mp3Queue: [],
+  // ALBUM MODE STATE
+  albums: [],           // załadowane z albums.js
+  currentAlbum: null,   // aktualnie losowany album
+  albumSongQueue: [],   // kolejka piosenek z albumu (przetasowana)
+  albumSongIdx: 0,      // indeks w kolejce
+  albumScore: 0,        // punkty z aktualnego albumu
+  albumPlayed: new Set(), // zagranych albumów
 };
 
 function dur() { return DURS[Math.min(G.attempt, DURS.length - 1)]; }
@@ -490,7 +557,7 @@ function dur() { return DURS[Math.min(G.attempt, DURS.length - 1)]; }
 //  POINTS DISPLAY
 // ══════════════════════════════════════
 function calcPts(attempt) {
-  if (G.mode === 'chill') return 50;
+  if (G.mode === 'album') return PTS_BY_ATTEMPT[Math.min(attempt, PTS_BY_ATTEMPT.length - 1)] || 10;
   if (G.mode === 'daily') return Math.max(DAILY_PTS - attempt * 130, 100);
   return PTS_BY_ATTEMPT[Math.min(attempt, PTS_BY_ATTEMPT.length - 1)] || 10;
 }
@@ -507,13 +574,52 @@ function updatePtsBadge(reducing) {
 
   if (badge) {
     badge.classList.remove('zero', 'reducing');
-    if (reducing) {
-      void badge.offsetWidth;
-      badge.classList.add('reducing');
-    }
+    if (reducing) { void badge.offsetWidth; badge.classList.add('reducing'); }
     if (pts <= (G.mode === 'daily' ? 100 : 30)) badge.classList.add('zero');
     else badge.classList.remove('zero');
   }
+}
+
+// ══════════════════════════════════════
+//  ALBUM COVER UI
+// ══════════════════════════════════════
+function showAlbumCover(album) {
+  document.getElementById('vinyl').style.display = 'none';
+  const wrap = document.getElementById('album-cover-wrap');
+  const img = document.getElementById('album-cover-img');
+  const ph = document.getElementById('album-cover-placeholder');
+  wrap.style.display = 'block';
+  if (album && album.cover) {
+    img.src = album.cover;
+    img.style.display = 'block';
+    ph.style.display = 'none';
+  } else {
+    img.src = '';
+    img.style.display = 'none';
+    ph.style.display = 'flex';
+  }
+}
+
+function showVinyl() {
+  document.getElementById('vinyl').style.display = '';
+  document.getElementById('album-cover-wrap').style.display = 'none';
+}
+
+function setAlbumSpin(on) {
+  document.getElementById('album-cover-wrap').classList.toggle('spin', on);
+  document.getElementById('vinyl').classList.toggle('spin', on);
+}
+
+function updateAlbumStrip() {
+  const strip = document.getElementById('album-strip');
+  if (G.mode !== 'album' || !G.currentAlbum) { strip.classList.remove('show'); return; }
+  strip.classList.add('show');
+  document.getElementById('album-strip-title').textContent = G.currentAlbum.title;
+  document.getElementById('album-strip-meta').textContent = G.currentAlbum.artist + ' · ' + G.currentAlbum.year;
+  const done = G.albumSongIdx;
+  const total = G.currentAlbum.songs.length;
+  document.getElementById('album-strip-progress').textContent =
+    'Piosenka ' + (done + 1) + ' z ' + total + ' — album score: ' + G.albumScore + ' pkt';
 }
 
 // ══════════════════════════════════════
@@ -563,6 +669,21 @@ function loadSongsDB() {
 }
 
 // ══════════════════════════════════════
+//  ALBUMS DB (albums.js)
+// ══════════════════════════════════════
+function loadAlbumsDB() {
+  if (typeof window.ALBUMS_DB !== 'undefined' && Array.isArray(window.ALBUMS_DB)) {
+    G.albums = window.ALBUMS_DB;
+    console.log('[RAPGUESSER] Załadowano ' + G.albums.length + ' albumów z albums.js');
+  }
+  updateAlbumAdminCount();
+}
+function updateAlbumAdminCount() {
+  const el = document.getElementById('acnt');
+  if (el) el.textContent = G.albums.length;
+}
+
+// ══════════════════════════════════════
 //  STORAGE
 // ══════════════════════════════════════
 function loadAll() {
@@ -575,6 +696,7 @@ function loadAll() {
     if (h) G.history = JSON.parse(h);
   } catch(e) {}
   loadSongsDB();
+  loadAlbumsDB();
   updateHUD();
 }
 function saveSongs() {
@@ -594,6 +716,7 @@ function updateHUD() {
   document.getElementById('sc-str').textContent = G.streak;
   document.getElementById('sc-tot').textContent = G.total;
   document.getElementById('bcnt').textContent = G.songs.length;
+  updateAlbumAdminCount();
 }
 
 // ══════════════════════════════════════
@@ -702,7 +825,7 @@ function playFrag() {
   G.playing = true;
   const btn = document.getElementById('playbtn');
   btn.disabled = true; btn.textContent = '⏸ ŁADOWANIE...';
-  document.getElementById('vinyl').classList.add('spin');
+  setAlbumSpin(true);
   const d = dur();
   if (song.type === 'mp3') {
     aud.src = G.mp3Blobs[song.id]; aud.currentTime = 0;
@@ -730,7 +853,7 @@ function stopPlay() {
   clearTimeout(G.playTimer); G.playTimer = null;
   try { aud.pause(); } catch(e) {}
   pauseSC();
-  document.getElementById('vinyl').classList.remove('spin');
+  setAlbumSpin(false);
   setWave(false);
   const d = dur();
   const btn = document.getElementById('playbtn');
@@ -756,7 +879,7 @@ function setWave(on) {
 }
 
 // ══════════════════════════════════════
-//  GAME LOGIC
+//  CLASSIC / DAILY GAME LOGIC
 // ══════════════════════════════════════
 function availableSongs() {
   return G.songs.filter(s => s.type === 'sc' || s.type === 'url' || s.type === 'file' || G.mp3Blobs[s.id]);
@@ -776,21 +899,37 @@ function startGame() {
   if (!G.current) { renderEmpty(); return; }
   G.played.add(G.current.id);
   G.attempt = 0; G.results = []; G.guessLog = []; G.gameOver = false; G.guess = null;
+  resetGameUI('▶ GRAJ FRAGMENT');
+  renderDots(); renderClue(); updatePtsBadge(false);
+  if (G.current.type === 'sc') preloadSC(G.current.src);
+  // Classic/Daily: vinyl, no album strip
+  showVinyl();
+  document.getElementById('album-strip').classList.remove('show');
+}
+
+function resetGameUI(btnLabel) {
   const btn = document.getElementById('playbtn');
-  btn.textContent = '▶ GRAJ FRAGMENT'; btn.disabled = false;
+  btn.textContent = btnLabel; btn.disabled = false;
   document.getElementById('srch').value = '';
   document.getElementById('srch').disabled = true;
   document.getElementById('bconf').disabled = true;
   document.getElementById('dd').classList.remove('open');
+  document.getElementById('durbar').style.transition = 'none';
   document.getElementById('durbar').style.width = '0%';
   document.getElementById('res-area').style.display = 'none';
   document.getElementById('game-area').style.display = 'block';
   document.getElementById('guesses-wrap').style.display = 'none';
   document.getElementById('guesses-body').innerHTML = '';
   setWave(false);
-  document.getElementById('vinyl').classList.remove('spin');
-  renderDots(); renderClue(); updatePtsBadge(false);
-  if (G.current.type === 'sc') preloadSC(G.current.src);
+  setAlbumSpin(false);
+  // Reset badge colors
+  const badge = document.getElementById('pts-badge');
+  const ptsEl = document.getElementById('pts-display');
+  const maxEl = document.getElementById('pts-max');
+  badge.classList.remove('zero','reducing');
+  badge.style.borderColor = ''; badge.style.background = '';
+  ptsEl.style.color = '';
+  maxEl.textContent = 'max';
 }
 
 function renderEmpty() {
@@ -826,10 +965,8 @@ function renderClue() {
   if (G.attempt >= 5) h.push('Artysta: <strong>' + G.current.artist + '</strong>');
   el.innerHTML = '⏱ Fragment: <strong>' + d + 's</strong>' + (h.length ? ' &nbsp;|&nbsp; ' + h.join(' | ') : '');
 }
-
 function initials(n) { return n.split(' ').map(w => w[0] || '').join('').toUpperCase(); }
 
-// ── GUESS TABLE ────────────────────────────────────
 function addGuessRow(logEntry, rowNum) {
   const wrap = document.getElementById('guesses-wrap');
   const tbody = document.getElementById('guesses-body');
@@ -869,19 +1006,29 @@ function renderGuessTable() {
 }
 
 // ── SEARCH ─────────────────────────────────────────
+function getSearchPool() {
+  // W trybie album przeszukujemy tylko piosenki z aktualnego albumu
+  if (G.mode === 'album' && G.currentAlbum) {
+    return G.currentAlbum.songs;
+  }
+  return G.songs;
+}
+
 function onSearch(val) {
   G.guess = null;
   const dd = document.getElementById('dd');
   if (!val.trim()) { dd.classList.remove('open'); return; }
   const v = val.toLowerCase();
-  const res = G.songs.filter(s => s.title.toLowerCase().includes(v) || s.artist.toLowerCase().includes(v)).slice(0, 10);
+  const pool = getSearchPool();
+  const res = pool.filter(s => s.title.toLowerCase().includes(v) || s.artist.toLowerCase().includes(v)).slice(0, 10);
   if (!res.length) { dd.classList.remove('open'); return; }
   dd.innerHTML = res.map(s => `<div class="di" onclick="selSong('${esc(s.id)}')"><div class="dt">${s.title}</div><div class="da">${s.artist} · ${s.year}</div></div>`).join('');
   dd.classList.add('open');
 }
 function esc(s) { return String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'"); }
 function selSong(id) {
-  const s = G.songs.find(x => x.id === id); if (!s) return;
+  const pool = getSearchPool();
+  const s = pool.find(x => x.id === id); if (!s) return;
   G.guess = s;
   document.getElementById('srch').value = s.title + ' – ' + s.artist;
   document.getElementById('dd').classList.remove('open');
@@ -930,6 +1077,8 @@ function checkEnd(ok) {
     return;
   }
   if (G.mode === 'daily') { checkEndDaily(ok); return; }
+  if (G.mode === 'album') { checkEndAlbumSong(ok); return; }
+  // classic
   G.gameOver = true; G.total++;
   if (ok) {
     const pts = calcPts(G.attempt - 1);
@@ -952,13 +1101,11 @@ function renderResult(ok) {
   const ptsEl = document.getElementById('pts-display');
   const maxEl = document.getElementById('pts-max');
   if (ok) {
-    if (badge) { badge.classList.remove('zero','reducing'); badge.style.borderColor='var(--col-hit)'; badge.style.background='rgba(0,230,118,.08)'; }
-    if (ptsEl) { ptsEl.textContent = '+' + pts; ptsEl.style.color='var(--col-hit)'; }
-    if (maxEl) maxEl.textContent = '🏆';
+    badge.classList.remove('zero','reducing'); badge.style.borderColor='var(--col-hit)'; badge.style.background='rgba(0,230,118,.08)';
+    ptsEl.textContent = '+' + pts; ptsEl.style.color='var(--col-hit)'; maxEl.textContent = '🏆';
   } else {
-    if (badge) { badge.classList.add('zero'); badge.style.borderColor='var(--col-miss)'; }
-    if (ptsEl) { ptsEl.textContent = '0'; ptsEl.style.color='var(--col-miss)'; }
-    if (maxEl) maxEl.textContent = '💀';
+    badge.classList.add('zero'); badge.style.borderColor='var(--col-miss)';
+    ptsEl.textContent = '0'; ptsEl.style.color='var(--col-miss)'; maxEl.textContent = '💀';
   }
   r.innerHTML = `
     <div class="rescard">
@@ -973,6 +1120,170 @@ function renderResult(ok) {
 }
 
 // ══════════════════════════════════════
+//  ALBUM MODE
+// ══════════════════════════════════════
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function availableAlbums() {
+  return G.albums.filter(al => al.songs && al.songs.length > 0);
+}
+
+function pickAlbum() {
+  let pool = availableAlbums().filter(al => !G.albumPlayed.has(al.id));
+  if (!pool.length) { G.albumPlayed.clear(); pool = availableAlbums(); }
+  if (!pool.length) return null;
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+
+function startAlbumMode() {
+  clearTimeout(G.playTimer); G.playTimer = null; G.playing = false;
+  try { aud.pause(); aud.src = ''; } catch(e) {}
+  stopSCFully();
+
+  const album = pickAlbum();
+  if (!album) {
+    renderEmptyAlbum(); return;
+  }
+  G.albumPlayed.add(album.id);
+  G.currentAlbum = album;
+  G.albumSongQueue = shuffle(album.songs);
+  G.albumSongIdx = 0;
+  G.albumScore = 0;
+
+  showAlbumCover(album);
+  updateAlbumStrip();
+  startAlbumSong();
+}
+
+function startAlbumSong() {
+  const song = G.albumSongQueue[G.albumSongIdx];
+  if (!song) { renderAlbumEnd(); return; }
+  G.current = song;
+  G.attempt = 0; G.results = []; G.guessLog = []; G.gameOver = false; G.guess = null;
+  G.maxAttempts = 6;
+  resetGameUI('▶ GRAJ FRAGMENT');
+  renderDots(); renderClue(); updatePtsBadge(false);
+  updateAlbumStrip();
+  if (song.type === 'sc') preloadSC(song.src);
+}
+
+function checkEndAlbumSong(ok) {
+  G.gameOver = true; G.total++;
+  const pts = ok ? calcPts(G.attempt - 1) : 0;
+  if (ok) { G.albumScore += pts; G.score += pts; G.streak++; }
+  else { G.streak = 0; }
+  G.history.unshift({
+    title: G.current.title, artist: G.current.artist,
+    won: ok, pts, att: G.attempt,
+    d: new Date().toLocaleDateString('pl'),
+    album: G.currentAlbum.title
+  });
+  updateHUD(); saveStats();
+  renderAlbumSongResult(ok, pts);
+}
+
+function renderAlbumSongResult(ok, pts) {
+  stopPlay();
+  document.getElementById('guesses-wrap').style.display = 'none';
+  document.getElementById('game-area').style.display = 'none';
+  const r = document.getElementById('res-area'); r.style.display = 'block';
+
+  const badge = document.getElementById('pts-badge');
+  const ptsEl = document.getElementById('pts-display');
+  const maxEl = document.getElementById('pts-max');
+  if (ok) {
+    badge.classList.remove('zero','reducing'); badge.style.borderColor='var(--col-hit)'; badge.style.background='rgba(0,230,118,.08)';
+    ptsEl.textContent = '+' + pts; ptsEl.style.color='var(--col-hit)'; maxEl.textContent = '🏆';
+  } else {
+    badge.classList.add('zero'); badge.style.borderColor='var(--col-miss)';
+    ptsEl.textContent = '0'; ptsEl.style.color='var(--col-miss)'; maxEl.textContent = '💀';
+  }
+
+  const isLast = G.albumSongIdx >= G.albumSongQueue.length - 1;
+  const coverHtml = G.currentAlbum.cover
+    ? `<img class="album-res-cover" src="${G.currentAlbum.cover}" alt="" onerror="this.style.display='none'">`
+    : `<div class="album-res-cover-placeholder">💿</div>`;
+
+  r.innerHTML = `
+    <div class="album-rescard">
+      ${coverHtml}
+      <div class="resi" style="font-size:32px;margin-bottom:3px">${ok ? '🏆' : '💀'}</div>
+      <div class="ress ${ok ? 'win' : 'lose'}">${ok ? 'TRAFIONY!' : 'MISS!'}</div>
+      <div class="rest">${G.current.title}</div>
+      <div class="resa">${G.current.artist} · ${G.current.year}</div>
+      <div class="resp" style="margin-bottom:6px">${ok ? '+' + pts + ' pkt &nbsp;|&nbsp; ' : ''}Próba ${G.attempt}</div>
+      <div style="font-size:11px;color:var(--col-album);font-weight:700;margin-bottom:12px">
+        Album score: ${G.albumScore} pkt
+        &nbsp;|&nbsp; Piosenka ${G.albumSongIdx + 1} / ${G.albumSongQueue.length}
+      </div>
+    </div>
+    ${renderGuessTable()}
+    <button class="bnext album-res-next" onclick="${isLast ? 'renderAlbumEnd()' : 'nextAlbumSong()'}">${isLast ? '🏁 ZAKOŃCZ ALBUM' : 'NASTĘPNA PIOSENKA →'}</button>
+    ${isLast ? '' : `<button class="bnext" style="background:var(--s3);color:var(--text2);margin-top:6px;border:1px solid var(--border)" onclick="renderAlbumEnd()">⏭ Pomiń resztę albumu</button>`}
+  `;
+}
+
+function nextAlbumSong() {
+  G.albumSongIdx++;
+  if (G.albumSongIdx >= G.albumSongQueue.length) { renderAlbumEnd(); return; }
+  // Restore album cover (może było nadpisane przez wynik)
+  showAlbumCover(G.currentAlbum);
+  startAlbumSong();
+}
+
+function renderAlbumEnd() {
+  stopPlay();
+  document.getElementById('guesses-wrap').style.display = 'none';
+  document.getElementById('game-area').style.display = 'none';
+  document.getElementById('album-strip').classList.remove('show');
+  const r = document.getElementById('res-area'); r.style.display = 'block';
+
+  const total = G.albumSongQueue.length;
+  const done = Math.min(G.albumSongIdx + 1, total);
+  const maxPossible = total * PTS_BY_ATTEMPT[0];
+  const pct = maxPossible > 0 ? Math.round((G.albumScore / maxPossible) * 100) : 0;
+
+  const badge = document.getElementById('pts-badge');
+  const ptsEl = document.getElementById('pts-display');
+  const maxEl = document.getElementById('pts-max');
+  badge.classList.remove('zero','reducing');
+  badge.style.borderColor = 'var(--col-blue)'; badge.style.background = 'rgba(79,195,247,.08)';
+  ptsEl.textContent = G.albumScore; ptsEl.style.color = 'var(--col-blue)';
+  maxEl.textContent = '💿';
+
+  const coverHtml = G.currentAlbum.cover
+    ? `<img style="width:80px;height:80px;border-radius:10px;object-fit:cover;margin:0 auto 12px;display:block;box-shadow:0 4px 20px rgba(0,0,0,.6)" src="${G.currentAlbum.cover}" alt="">`
+    : `<div style="font-size:50px;margin-bottom:12px">💿</div>`;
+
+  r.innerHTML = `
+    <div class="album-end-card">
+      ${coverHtml}
+      <div class="album-end-title">ALBUM UKOŃCZONY!</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:var(--accent);margin-bottom:2px">${G.currentAlbum.title}</div>
+      <div style="font-size:11px;color:var(--text2);margin-bottom:14px">${G.currentAlbum.artist} · ${G.currentAlbum.year}</div>
+      <div class="album-end-score">${G.albumScore}</div>
+      <div class="album-end-score-lbl">punktów / ${maxPossible} możliwych (${pct}%)</div>
+      <div style="font-size:11px;color:var(--text3);margin-bottom:16px">Zagrane piosenki: ${done} z ${total}</div>
+    </div>
+    <button class="bnext-album" onclick="startAlbumMode()">💿 LOSUJ NOWY ALBUM →</button>
+  `;
+}
+
+function renderEmptyAlbum() {
+  document.getElementById('game-area').style.display = 'none';
+  const r = document.getElementById('res-area');
+  r.style.display = 'block';
+  r.innerHTML = `<div class="empty"><div class="ei">💿</div><p>Brak albumów!<br>Dodaj albumy do pliku <strong>albums.js</strong>.</p></div>`;
+}
+
+// ══════════════════════════════════════
 //  DAILY MODE
 // ══════════════════════════════════════
 const DAILY_PTS = 1000;
@@ -982,62 +1293,34 @@ function todayStr() {
   const d = new Date();
   return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
 }
-
 function getDailyState() {
-  try {
-    const raw = localStorage.getItem(DAILY_KEY);
-    if (raw) return JSON.parse(raw);
-  } catch(e) {}
+  try { const raw = localStorage.getItem(DAILY_KEY); if (raw) return JSON.parse(raw); } catch(e) {}
   return null;
 }
-
-function saveDailyState(state) {
-  localStorage.setItem(DAILY_KEY, JSON.stringify(state));
-}
-
+function saveDailyState(state) { localStorage.setItem(DAILY_KEY, JSON.stringify(state)); }
 function pickDailySong(dateStr) {
   const pool = availableSongs();
   if (!pool.length) return null;
   let hash = 0;
-  for (let i = 0; i < dateStr.length; i++) {
-    hash = ((hash << 5) - hash) + dateStr.charCodeAt(i);
-    hash |= 0;
-  }
-  const idx = Math.abs(hash) % pool.length;
-  return pool[idx];
+  for (let i = 0; i < dateStr.length; i++) { hash = ((hash << 5) - hash) + dateStr.charCodeAt(i); hash |= 0; }
+  return pool[Math.abs(hash) % pool.length];
 }
-
 function msUntilMidnight() {
-  const now = new Date();
-  const midnight = new Date(now);
-  midnight.setHours(24, 0, 0, 0);
-  return midnight - now;
+  const now = new Date(); const midnight = new Date(now); midnight.setHours(24,0,0,0); return midnight - now;
 }
-
 function formatCountdown(ms) {
-  const totalSec = Math.floor(ms / 1000);
-  const h = Math.floor(totalSec / 3600);
-  const m = Math.floor((totalSec % 3600) / 60);
-  const s = totalSec % 60;
-  return String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+  const t = Math.floor(ms / 1000);
+  return String(Math.floor(t/3600)).padStart(2,'0') + ':' + String(Math.floor((t%3600)/60)).padStart(2,'0') + ':' + String(t%60).padStart(2,'0');
 }
-
 let dailyCountdownTimer = null;
-
 function startDailyCountdown(targetEl) {
   clearInterval(dailyCountdownTimer);
-  const tick = () => {
-    const el = document.getElementById(targetEl);
-    if (!el) { clearInterval(dailyCountdownTimer); return; }
-    el.textContent = formatCountdown(msUntilMidnight());
-  };
-  tick();
-  dailyCountdownTimer = setInterval(tick, 1000);
+  const tick = () => { const el = document.getElementById(targetEl); if (!el) { clearInterval(dailyCountdownTimer); return; } el.textContent = formatCountdown(msUntilMidnight()); };
+  tick(); dailyCountdownTimer = setInterval(tick, 1000);
 }
 
 function renderDailyAlready(state) {
-  clearTimeout(G.playTimer); G.playTimer = null;
-  stopPlay(); stopSCFully();
+  clearTimeout(G.playTimer); G.playTimer = null; stopPlay(); stopSCFully();
   document.getElementById('game-area').style.display = 'none';
   document.getElementById('res-area').style.display = 'none';
   document.getElementById('guesses-wrap').style.display = 'none';
@@ -1046,29 +1329,11 @@ function renderDailyAlready(state) {
   document.getElementById('playbtn').style.display = 'none';
   document.getElementById('durbar').style.transition = 'none';
   document.getElementById('durbar').style.width = '0%';
-
-  const badge = document.getElementById('pts-badge');
-  const ptsEl = document.getElementById('pts-display');
-  const maxEl = document.getElementById('pts-max');
-  if (state.won) {
-    badge.classList.remove('zero','reducing');
-    badge.style.borderColor = 'var(--col-hit)';
-    badge.style.background = 'rgba(0,230,118,.08)';
-    ptsEl.style.color = 'var(--col-hit)';
-    ptsEl.textContent = '+' + state.pts;
-    maxEl.textContent = '🏆';
-  } else {
-    badge.classList.add('zero');
-    badge.style.borderColor = 'var(--col-miss)';
-    ptsEl.style.color = 'var(--col-miss)';
-    ptsEl.textContent = '0';
-    maxEl.textContent = '💀';
-  }
-
-  const r = document.getElementById('res-area');
-  r.style.display = 'block';
+  const badge = document.getElementById('pts-badge'); const ptsEl = document.getElementById('pts-display'); const maxEl = document.getElementById('pts-max');
+  if (state.won) { badge.classList.remove('zero','reducing'); badge.style.borderColor='var(--col-hit)'; badge.style.background='rgba(0,230,118,.08)'; ptsEl.style.color='var(--col-hit)'; ptsEl.textContent='+'+state.pts; maxEl.textContent='🏆'; }
+  else { badge.classList.add('zero'); badge.style.borderColor='var(--col-miss)'; ptsEl.style.color='var(--col-miss)'; ptsEl.textContent='0'; maxEl.textContent='💀'; }
+  const r = document.getElementById('res-area'); r.style.display = 'block';
   const pct = Math.round((state.pts / DAILY_PTS) * 100);
-
   r.innerHTML = `
     <div class="daily-already">
       <div class="daily-crown">${state.won ? '🏆' : '💀'}</div>
@@ -1076,17 +1341,12 @@ function renderDailyAlready(state) {
       <div class="daily-date">Już dziś zagrałeś!</div>
       <div style="margin-bottom:10px">
         <div class="daily-pts-ring" style="--pct:${pct}%">
-          <div class="daily-pts-inner">
-            <div class="daily-pts-val">${state.pts}</div>
-            <div class="daily-pts-lbl">PKT</div>
-          </div>
+          <div class="daily-pts-inner"><div class="daily-pts-val">${state.pts}</div><div class="daily-pts-lbl">PKT</div></div>
         </div>
       </div>
       <div class="daily-won-song">${state.songTitle}</div>
       <div class="daily-won-artist">${state.songArtist}</div>
-      ${state.won
-        ? `<div class="daily-streak-badge">🔥 Seria daily: ${state.dailyStreak || 1}</div>`
-        : `<div style="font-size:12px;color:var(--text3);margin-bottom:10px">Nie trafiłeś dzisiaj. Jutro nowa szansa!</div>`}
+      ${state.won ? `<div class="daily-streak-badge">🔥 Seria daily: ${state.dailyStreak||1}</div>` : `<div style="font-size:12px;color:var(--text3);margin-bottom:10px">Nie trafiłeś dzisiaj. Jutro nowa szansa!</div>`}
       <div class="daily-countdown-lbl">Następna piosenka za:</div>
       <div class="daily-countdown" id="daily-cd">--:--:--</div>
     </div>`;
@@ -1095,86 +1355,43 @@ function renderDailyAlready(state) {
 }
 
 function updateDailyTabBtn(state) {
-  const btn = document.getElementById('daily-tab-btn');
-  const sub = document.getElementById('daily-tab-sub');
+  const btn = document.getElementById('daily-tab-btn'); const sub = document.getElementById('daily-tab-sub');
   if (!btn) return;
-  if (state) {
-    btn.classList.add('daily-done');
-    sub.textContent = state.won ? '+' + state.pts + ' pkt ✓' : 'miss 💀';
-  } else {
-    btn.classList.remove('daily-done');
-    sub.textContent = '1000 pkt';
-  }
+  if (state) { btn.classList.add('daily-done'); sub.textContent = state.won ? '+'+state.pts+' pkt ✓' : 'miss 💀'; }
+  else { btn.classList.remove('daily-done'); sub.textContent = '1000 pkt'; }
 }
 
 function startDailyGame() {
   clearInterval(dailyCountdownTimer);
   document.getElementById('clue').style.display = '';
   document.getElementById('playbtn').style.display = '';
-
-  const today = todayStr();
-  const state = getDailyState();
-
-  if (state && state.date === today) {
-    renderDailyAlready(state);
-    return;
-  }
-
+  const today = todayStr(); const state = getDailyState();
+  if (state && state.date === today) { renderDailyAlready(state); return; }
   const song = pickDailySong(today);
   if (!song) { renderEmpty(); return; }
-
   G.current = song;
-  G.attempt = 0; G.results = []; G.guessLog = []; G.gameOver = false; G.guess = null;
-  G.maxAttempts = 6;
-
-  const btn = document.getElementById('playbtn');
-  btn.textContent = '▶ GRAJ FRAGMENT'; btn.disabled = false;
-  document.getElementById('srch').value = '';
-  document.getElementById('srch').disabled = true;
-  document.getElementById('bconf').disabled = true;
-  document.getElementById('dd').classList.remove('open');
-  document.getElementById('durbar').style.transition = 'none';
-  document.getElementById('durbar').style.width = '0%';
-  document.getElementById('res-area').style.display = 'none';
-  document.getElementById('game-area').style.display = 'block';
-  document.getElementById('guesses-wrap').style.display = 'none';
-  document.getElementById('guesses-body').innerHTML = '';
-  setWave(false);
-  document.getElementById('vinyl').classList.remove('spin');
-
-  const badge = document.getElementById('pts-badge');
-  const ptsEl = document.getElementById('pts-display');
-  const maxEl = document.getElementById('pts-max');
-  badge.classList.remove('zero','reducing');
-  badge.style.borderColor = ''; badge.style.background = '';
-  ptsEl.style.color = ''; ptsEl.textContent = DAILY_PTS;
-  maxEl.textContent = 'max';
-
+  G.attempt = 0; G.results = []; G.guessLog = []; G.gameOver = false; G.guess = null; G.maxAttempts = 6;
+  resetGameUI('▶ GRAJ FRAGMENT');
+  document.getElementById('pts-display').textContent = DAILY_PTS;
   renderDots(); renderClue();
+  showVinyl();
+  document.getElementById('album-strip').classList.remove('show');
   if (song.type === 'sc') preloadSC(song.src);
 }
 
 function checkEndDaily(ok) {
   G.gameOver = true; G.total++;
-  const today = todayStr();
-  const prevState = getDailyState();
+  const today = todayStr(); const prevState = getDailyState();
   let dailyStreak = 1;
   if (prevState) {
-    const prevDate = new Date(prevState.date);
-    const todayDate = new Date(today);
-    const diffDays = Math.round((todayDate - prevDate) / 86400000);
-    if (diffDays === 1 && prevState.won) dailyStreak = (prevState.dailyStreak || 1) + 1;
+    const diffDays = Math.round((new Date(today) - new Date(prevState.date)) / 86400000);
+    if (diffDays === 1 && prevState.won) dailyStreak = (prevState.dailyStreak||1)+1;
     else if (diffDays === 1 && !prevState.won) dailyStreak = 1;
   }
-
-  const rawPts = ok ? Math.max(DAILY_PTS - (G.attempt - 1) * 130, 100) : 0;
-  const pts = ok ? rawPts : 0;
-
-  if (ok) { G.score += pts; G.streak++; }
-  else { G.streak = 0; }
+  const pts = ok ? Math.max(DAILY_PTS - (G.attempt-1)*130, 100) : 0;
+  if (ok) { G.score += pts; G.streak++; } else { G.streak = 0; }
   G.history.unshift({ title: G.current.title, artist: G.current.artist, won: ok, pts, att: G.attempt, d: new Date().toLocaleDateString('pl'), daily: true });
   updateHUD(); saveStats();
-
   saveDailyState({ date: today, won: ok, pts, songTitle: G.current.title, songArtist: G.current.artist, dailyStreak });
   updateDailyTabBtn({ won: ok, pts, date: today, dailyStreak });
   renderDailyResult(ok, pts, dailyStreak);
@@ -1185,32 +1402,17 @@ function renderDailyResult(ok, pts, dailyStreak) {
   document.getElementById('guesses-wrap').style.display = 'none';
   document.getElementById('game-area').style.display = 'none';
   const r = document.getElementById('res-area'); r.style.display = 'block';
-
-  const badge = document.getElementById('pts-badge');
-  const ptsEl = document.getElementById('pts-display');
-  const maxEl = document.getElementById('pts-max');
-  if (ok) {
-    badge.classList.remove('zero','reducing');
-    badge.style.borderColor = 'var(--col-hit)'; badge.style.background = 'rgba(0,230,118,.08)';
-    ptsEl.style.color = 'var(--col-hit)'; ptsEl.textContent = '+' + pts; maxEl.textContent = '🏆';
-  } else {
-    badge.classList.add('zero');
-    badge.style.borderColor = 'var(--col-miss)';
-    ptsEl.style.color = 'var(--col-miss)'; ptsEl.textContent = '0'; maxEl.textContent = '💀';
-  }
-
-  const pct = Math.round((pts / DAILY_PTS) * 100);
-
+  const badge = document.getElementById('pts-badge'); const ptsEl = document.getElementById('pts-display'); const maxEl = document.getElementById('pts-max');
+  if (ok) { badge.classList.remove('zero','reducing'); badge.style.borderColor='var(--col-hit)'; badge.style.background='rgba(0,230,118,.08)'; ptsEl.style.color='var(--col-hit)'; ptsEl.textContent='+'+pts; maxEl.textContent='🏆'; }
+  else { badge.classList.add('zero'); badge.style.borderColor='var(--col-miss)'; ptsEl.style.color='var(--col-miss)'; ptsEl.textContent='0'; maxEl.textContent='💀'; }
+  const pct = Math.round((pts/DAILY_PTS)*100);
   r.innerHTML = `
     <div class="daily-card">
       <span class="daily-crown">${ok ? '👑' : '💀'}</span>
       <div class="daily-title">${ok ? 'DAILY TRAFIONY!' : 'DAILY MISS!'}</div>
       <div class="daily-date">${todayStr()}</div>
-      <div class="daily-pts-ring" style="background:conic-gradient(${ok ? 'var(--col-hit)' : 'var(--col-miss)'} ${pct}%,var(--s3) 0%);margin:0 auto 12px">
-        <div class="daily-pts-inner">
-          <div class="daily-pts-val" style="color:${ok ? 'var(--col-hit)' : 'var(--col-miss)'}">${pts}</div>
-          <div class="daily-pts-lbl">PKT</div>
-        </div>
+      <div class="daily-pts-ring" style="background:conic-gradient(${ok?'var(--col-hit)':'var(--col-miss)'} ${pct}%,var(--s3) 0%);margin:0 auto 12px">
+        <div class="daily-pts-inner"><div class="daily-pts-val" style="color:${ok?'var(--col-hit)':'var(--col-miss)'}">${pts}</div><div class="daily-pts-lbl">PKT</div></div>
       </div>
       <div class="daily-won-song">${G.current.title}</div>
       <div class="daily-won-artist">${G.current.artist} · ${G.current.year}</div>
@@ -1224,15 +1426,26 @@ function renderDailyResult(ok, pts, dailyStreak) {
   startDailyCountdown('daily-cd-res');
 }
 
+// ══════════════════════════════════════
+//  MODE SWITCHING
+// ══════════════════════════════════════
 function setMode(m, el) {
   G.mode = m;
-  G.maxAttempts = m === 'chill' ? 9999 : 6;
+  G.maxAttempts = 6;
   document.querySelectorAll('.mt').forEach(b => b.classList.remove('on')); el.classList.add('on');
   clearInterval(dailyCountdownTimer);
 
   if (m === 'daily') {
+    showVinyl();
+    document.getElementById('album-strip').classList.remove('show');
     startDailyGame();
+  } else if (m === 'album') {
+    document.getElementById('clue').style.display = '';
+    document.getElementById('playbtn').style.display = '';
+    startAlbumMode();
   } else {
+    showVinyl();
+    document.getElementById('album-strip').classList.remove('show');
     document.getElementById('clue').style.display = '';
     document.getElementById('playbtn').style.display = '';
     startGame();
@@ -1251,12 +1464,13 @@ function swTab(tab, el) {
 }
 function swTabDirect(tab) {
   curTab = tab;
-  ['lista','mp3','url'].forEach(t => { document.getElementById('tab-' + t).style.display = t === tab ? 'block' : 'none'; });
-  document.querySelectorAll('.atb').forEach((b, i) => { b.classList.toggle('on', ['lista','mp3','url'][i] === tab); });
+  ['lista','albumy','mp3','url'].forEach(t => { document.getElementById('tab-' + t).style.display = t === tab ? 'block' : 'none'; });
+  document.querySelectorAll('.atb').forEach((b, i) => { b.classList.toggle('on', ['lista','albumy','mp3','url'][i] === tab); });
   renderAdmTab(tab);
 }
 function renderAdmTab(tab) {
   if (tab === 'lista') renderLista();
+  else if (tab === 'albumy') renderAlbumy();
   else if (tab === 'mp3') renderMP3Tab();
   else if (tab === 'url') renderURLTab();
 }
@@ -1289,10 +1503,7 @@ function renderLista() {
         const bLabel = fromDb ? 'DB' : s.type === 'mp3' ? 'MP3' : s.type === 'url' ? 'URL' : s.type === 'file' ? 'PLIK' : 'SC';
         return `<div class="sitem" style="${!active ? 'opacity:.4' : ''}">
           <div class="si-n">${i+1}</div>
-          <div class="si-inf">
-            <div class="si-t">${s.title}</div>
-            <div class="si-a">${s.artist} · ${s.year}${!active ? ' · ⚠ niedostępna' : ''}</div>
-          </div>
+          <div class="si-inf"><div class="si-t">${s.title}</div><div class="si-a">${s.artist} · ${s.year}${!active ? ' · ⚠ niedostępna' : ''}</div></div>
           <div class="badge ${bType}">${bLabel}</div>
           ${!fromDb ? `<button class="sdel" onclick="delSong('${esc(s.id)}')">🗑</button>` : '<div style="width:22px"></div>'}
         </div>`;
@@ -1302,6 +1513,39 @@ function renderLista() {
     <button class="butil danger" onclick="clearAll()">🗑 Wyczyść ręcznie dodane</button>
   `;
 }
+
+function renderAlbumy() {
+  const albums = G.albums;
+  const totalSongs = albums.reduce((a, al) => a + (al.songs ? al.songs.length : 0), 0);
+  document.getElementById('tab-albumy').innerHTML = `
+    <div class="db-info" style="background:rgba(184,76,227,.07);border-color:rgba(184,76,227,.2);color:var(--col-album)">
+      💿 <strong>albums.js</strong> — baza albumów dla trybu ALBUM<br>
+      Załadowano: <strong>${albums.length} albumów</strong>, łącznie <strong>${totalSongs} piosenek</strong>
+    </div>
+    <div style="font-size:11px;color:var(--text3);line-height:1.7;padding:5px 0 10px">
+      Aby dodać album, edytuj plik <strong>albums.js</strong> w tym samym folderze co <code>index.html</code>.<br>
+      Każdy album zawiera listę piosenek — mogą być w formacie SC, URL lub plik lokalny.
+    </div>
+    <div style="font-size:10px;color:var(--text3);margin-bottom:7px">${albums.length} albumów</div>
+    <div class="slist" style="max-height:440px">
+      ${!albums.length ? `<div class="empty" style="padding:20px"><div class="ei">💿</div><p>Brak albumów.<br>Dodaj albumy do <strong>albums.js</strong></p></div>` : ''}
+      ${albums.map((al, i) => `
+        <div class="aitem">
+          <div class="aitem-cover">
+            ${al.cover ? `<img src="${al.cover}" alt="" onerror="this.style.display='none'">` : '💿'}
+          </div>
+          <div class="aitem-inf">
+            <div class="aitem-t">${al.title}</div>
+            <div class="aitem-a">${al.artist} · ${al.year}</div>
+            <div class="aitem-cnt">💿 ${al.songs ? al.songs.length : 0} piosenek</div>
+          </div>
+          <div class="badge alb">ALB</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
 function delSong(id) {
   if (!confirm('Usunąć?')) return;
   G.songs = G.songs.filter(s => s.id !== id);
@@ -1419,43 +1663,27 @@ function renderURLTab() {
     <div class="sc-hint" id="url-hint">
       📁 <strong>Plik lokalny:</strong><br>
       Wrzuć plik .mp3 do tego samego folderu co <code>index.html</code><br>
-      i wpisz samą nazwę pliku, np. <code>sentino.mp3</code><br>
-      Możesz też podać podfolder: <code>muzyka/sentino.mp3</code><br><br>
-      W <code>songs.js</code> wygląda to tak:<br>
-      <code>{ type: "file", src: "sentino.mp3", ... }</code>
+      i wpisz samą nazwę pliku, np. <code>sentino.mp3</code><br><br>
+      W <code>songs.js</code>: <code>{ type: "file", src: "sentino.mp3", ... }</code>
     </div>
   `;
 }
-
 function updateUrlHint() {
   const t = document.getElementById('u-type').value;
   const lbl = document.getElementById('u-src-label');
   const inp = document.getElementById('u-src');
   const hint = document.getElementById('url-hint');
   if (t === 'file') {
-    lbl.textContent = 'Nazwa pliku *';
-    inp.placeholder = 'sentino.mp3  lub  muzyka/sentino.mp3';
-    hint.innerHTML = `📁 <strong>Plik lokalny:</strong><br>
-      Wrzuć plik .mp3 do tego samego folderu co <code>index.html</code><br>
-      i wpisz samą nazwę pliku, np. <code>sentino.mp3</code><br>
-      Możesz też podać podfolder: <code>muzyka/sentino.mp3</code><br><br>
-      W <code>songs.js</code> wygląda to tak:<br>
-      <code>{ type: "file", src: "sentino.mp3", ... }</code>`;
+    lbl.textContent = 'Nazwa pliku *'; inp.placeholder = 'sentino.mp3  lub  muzyka/sentino.mp3';
+    hint.innerHTML = `📁 <strong>Plik lokalny:</strong><br>Wrzuć .mp3 do folderu z <code>index.html</code>.<br>W <code>songs.js</code>: <code>{ type: "file", src: "sentino.mp3", ... }</code>`;
   } else if (t === 'url') {
-    lbl.textContent = 'Link do pliku MP3 *';
-    inp.placeholder = 'https://twojdomain.com/muzyka/piosenka.mp3';
-    hint.innerHTML = `🔗 <strong>URL (hosting MP3):</strong><br>
-      Wgraj plik .mp3 na dowolny hosting i wklej bezpośredni link.<br>
-      Plik musi być publicznie dostępny (bez logowania).`;
+    lbl.textContent = 'Link do pliku MP3 *'; inp.placeholder = 'https://twojdomain.com/muzyka/piosenka.mp3';
+    hint.innerHTML = `🔗 <strong>URL (hosting MP3):</strong><br>Wgraj plik .mp3 na dowolny hosting i wklej bezpośredni link.`;
   } else {
-    lbl.textContent = 'Link SoundCloud *';
-    inp.placeholder = 'https://soundcloud.com/artysta/tytul-piosenki';
-    hint.innerHTML = `☁ <strong>SoundCloud:</strong><br>
-      Wejdź na soundcloud.com → znajdź piosenkę → Udostępnij → Kopiuj link<br>
-      Format: <em>soundcloud.com/artysta/tytul</em>`;
+    lbl.textContent = 'Link SoundCloud *'; inp.placeholder = 'https://soundcloud.com/artysta/tytul-piosenki';
+    hint.innerHTML = `☁ <strong>SoundCloud:</strong><br>Udostępnij → Kopiuj link. Format: <em>soundcloud.com/artysta/tytul</em>`;
   }
 }
-
 function addURL() {
   const title = document.getElementById('u-title').value.trim();
   const artist = document.getElementById('u-artist').value.trim();
@@ -1481,10 +1709,8 @@ function closeStats() { document.getElementById('stats-panel').classList.remove(
 function renderStatsPanel() {
   const wins = G.history.filter(h => h.won).length;
   const tot = G.history.length;
-  const pct = tot ? Math.round(wins / tot * 100) : 0;
-  const bestStreak = G.history.reduce((acc, _, i, arr) => {
-    let cur = 0; for (let j = i; j < arr.length && arr[j].won; j++) cur++; return Math.max(acc, cur);
-  }, 0);
+  const pct = tot ? Math.round(wins/tot*100) : 0;
+  const bestStreak = G.history.reduce((acc,_,i,arr) => { let cur=0; for(let j=i;j<arr.length&&arr[j].won;j++)cur++; return Math.max(acc,cur); }, 0);
   document.getElementById('stats-content').innerHTML = `
     <div class="sgrid" style="grid-template-columns:repeat(2,1fr);margin-bottom:8px">
       <div class="sbox"><div class="v">${G.score}</div><div class="l">Punkty łącznie</div></div>
@@ -1495,20 +1721,16 @@ function renderStatsPanel() {
       <div class="sbox"><div class="v">${wins}</div><div class="l">Trafione</div></div>
       <div class="sbox"><div class="v">${pct}%</div><div class="l">Trafność</div></div>
     </div>
-    <div style="font-size:11px;color:var(--text3);text-align:center;padding:8px 0 12px">
-      Najdłuższa seria: <span style="color:var(--accent);font-weight:700">${bestStreak}</span>
-    </div>
-    <div style="font-size:12px;font-weight:700;color:var(--text2);margin-bottom:7px;padding-bottom:5px;border-bottom:1px solid var(--border)">
-      HISTORIA OSTATNICH RUND
-    </div>
+    <div style="font-size:11px;color:var(--text3);text-align:center;padding:8px 0 12px">Najdłuższa seria: <span style="color:var(--accent);font-weight:700">${bestStreak}</span></div>
+    <div style="font-size:12px;font-weight:700;color:var(--text2);margin-bottom:7px;padding-bottom:5px;border-bottom:1px solid var(--border)">HISTORIA OSTATNICH RUND</div>
     <div class="hlist">
       ${!G.history.length ? `<div class="empty" style="padding:20px"><div class="ei">🎵</div><p>Brak historii</p></div>` : ''}
-      ${G.history.slice(0, 60).map(h => `
+      ${G.history.slice(0,60).map(h => `
         <div class="hitem">
-          <div class="hico">${h.won ? '🏆' : '💀'}</div>
+          <div class="hico">${h.daily ? '📅' : h.album ? '💿' : h.won ? '🏆' : '💀'}</div>
           <div class="hinf">
             <div class="ht">${h.title}</div>
-            <div class="hs">${h.artist} · ${h.d} · próba ${h.att}</div>
+            <div class="hs">${h.artist} · ${h.d} · próba ${h.att}${h.album ? ' · '+h.album : ''}</div>
           </div>
           ${h.won ? `<div class="hpts">+${h.pts}</div>` : `<div class="hpts" style="color:var(--text3)">—</div>`}
         </div>`).join('')}
