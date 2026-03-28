@@ -138,7 +138,7 @@ const SONGS_DB = [
 
   {
     id: 'sc_0012',
-    title: 'Jedno Życiehttps://soundcloud.com/pozdroigi/young-igi-thc-ftwlodi-prod-shad0w-x-hubi',
+    title: 'Jedno Życie',
     artist: 'Blacha',
     year: 2020,
     type: 'sc',
