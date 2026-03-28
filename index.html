@@ -275,6 +275,25 @@ html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);c
 
 footer{text-align:center;padding:16px 0;color:var(--text3);font-size:10px;border-top:1px solid var(--border);margin-top:auto}
 
+/* DAILY MODE */
+.daily-card{background:linear-gradient(135deg,var(--s2) 0%,#1a0a2e 100%);border:1px solid rgba(184,76,227,.35);border-radius:14px;padding:22px 18px;text-align:center;margin-bottom:12px;animation:fadeup .35s ease;position:relative;overflow:hidden}
+.daily-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(184,76,227,.12) 0%,transparent 70%);pointer-events:none}
+.daily-crown{font-size:46px;margin-bottom:6px;display:block}
+.daily-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;color:var(--accent);margin-bottom:3px}
+.daily-date{font-size:11px;color:var(--text3);margin-bottom:14px;letter-spacing:1px}
+.daily-pts-ring{width:90px;height:90px;border-radius:50%;background:conic-gradient(var(--accent) var(--pct,100%),var(--s3) 0%);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;position:relative;transition:--pct .4s}
+.daily-pts-inner{width:72px;height:72px;border-radius:50%;background:var(--s1);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.daily-pts-val{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--accent);line-height:1}
+.daily-pts-lbl{font-size:9px;color:var(--text3);letter-spacing:1px}
+.daily-countdown{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;color:var(--accent2);margin-bottom:4px}
+.daily-countdown-lbl{font-size:11px;color:var(--text3);margin-bottom:14px}
+.daily-won-song{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:var(--accent);margin-bottom:2px}
+.daily-won-artist{font-size:12px;color:var(--text2);margin-bottom:12px}
+.daily-already{background:var(--s2);border:1px solid rgba(184,76,227,.3);border-radius:14px;padding:20px 16px;text-align:center;margin-bottom:12px;animation:fadeup .3s ease}
+.daily-streak-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(204,170,48,.12);border:1px solid rgba(204,170,48,.3);border-radius:20px;padding:5px 12px;font-size:12px;font-weight:700;color:var(--accent2);margin-bottom:12px}
+.mt.daily-locked{opacity:.6}
+.mt.daily-done{background:linear-gradient(135deg,rgba(0,230,118,.15),rgba(0,230,118,.05)) !important;border:1px solid rgba(0,230,118,.3) !important;color:var(--col-hit) !important}
+
 /* MOBILE OVERRIDES */
 @media(max-width:400px){
   .logo{font-size:22px}
@@ -305,7 +324,7 @@ footer{text-align:center;padding:16px 0;color:var(--text3);font-size:10px;border
 
   <div class="mtabs">
     <button class="mt on" onclick="setMode('classic',this)">🎯 Klasyczny<br><span style="font-size:9px;font-weight:400">6 prób</span></button>
-    <button class="mt" onclick="setMode('blitz',this)">⚡ Blitz<br><span style="font-size:9px;font-weight:400">3 próby</span></button>
+    <button class="mt" id="daily-tab-btn" onclick="setMode('daily',this)">📅 Daily<br><span style="font-size:9px;font-weight:400" id="daily-tab-sub">1000 pkt</span></button>
     <button class="mt" onclick="setMode('chill',this)">♾️ Relax<br><span style="font-size:9px;font-weight:400">bez limitu</span></button>
   </div>
 
@@ -446,25 +465,27 @@ function dur() { return DURS[Math.min(G.attempt, DURS.length - 1)]; }
 // ══════════════════════════════════════
 function calcPts(attempt) {
   if (G.mode === 'chill') return 50;
+  if (G.mode === 'daily') return Math.max(DAILY_PTS - attempt * 130, 100);
   return PTS_BY_ATTEMPT[Math.min(attempt, PTS_BY_ATTEMPT.length - 1)] || 10;
 }
 
 function updatePtsBadge(reducing) {
+  const maxVal = G.mode === 'daily' ? DAILY_PTS : PTS_BY_ATTEMPT[0];
   const pts = G.gameOver ? 0 : calcPts(G.attempt);
   const el = document.getElementById('pts-display');
   const badge = document.getElementById('pts-badge');
   const max = document.getElementById('pts-max');
 
   if (el) el.textContent = G.gameOver ? '—' : pts;
-  if (max) max.textContent = G.gameOver ? '' : (G.attempt === 0 ? 'max' : '-' + (PTS_BY_ATTEMPT[0] - pts) + ' pkt');
+  if (max) max.textContent = G.gameOver ? '' : (G.attempt === 0 ? 'max' : '-' + (maxVal - pts) + ' pkt');
 
   if (badge) {
     badge.classList.remove('zero', 'reducing');
     if (reducing) {
-      void badge.offsetWidth; // reflow to restart animation
+      void badge.offsetWidth;
       badge.classList.add('reducing');
     }
-    if (pts <= 30) badge.classList.add('zero');
+    if (pts <= (G.mode === 'daily' ? 100 : 30)) badge.classList.add('zero');
     else badge.classList.remove('zero');
   }
 }
@@ -882,6 +903,7 @@ function checkEnd(ok) {
     document.getElementById('bconf').disabled = true;
     return;
   }
+  if (G.mode === 'daily') { checkEndDaily(ok); return; }
   G.gameOver = true; G.total++;
   if (ok) {
     const pts = calcPts(G.attempt - 1);
@@ -925,11 +947,282 @@ function renderResult(ok) {
     <button class="bnext" onclick="startGame()">NASTĘPNA PIOSENKA →</button>`;
 }
 
+// ══════════════════════════════════════
+//  DAILY MODE
+// ══════════════════════════════════════
+const DAILY_PTS = 1000;
+const DAILY_KEY = 'rg_daily';
+
+function todayStr() {
+  const d = new Date();
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+}
+
+function getDailyState() {
+  try {
+    const raw = localStorage.getItem(DAILY_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch(e) {}
+  return null;
+}
+
+function saveDailyState(state) {
+  localStorage.setItem(DAILY_KEY, JSON.stringify(state));
+}
+
+// Deterministyczny wybór piosenki na dany dzień (seed z daty)
+function pickDailySong(dateStr) {
+  const pool = availableSongs();
+  if (!pool.length) return null;
+  // prosta hash z daty → indeks
+  let hash = 0;
+  for (let i = 0; i < dateStr.length; i++) {
+    hash = ((hash << 5) - hash) + dateStr.charCodeAt(i);
+    hash |= 0;
+  }
+  const idx = Math.abs(hash) % pool.length;
+  return pool[idx];
+}
+
+function msUntilMidnight() {
+  const now = new Date();
+  const midnight = new Date(now);
+  midnight.setHours(24, 0, 0, 0);
+  return midnight - now;
+}
+
+function formatCountdown(ms) {
+  const totalSec = Math.floor(ms / 1000);
+  const h = Math.floor(totalSec / 3600);
+  const m = Math.floor((totalSec % 3600) / 60);
+  const s = totalSec % 60;
+  return String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+}
+
+let dailyCountdownTimer = null;
+
+function startDailyCountdown(targetEl) {
+  clearInterval(dailyCountdownTimer);
+  const tick = () => {
+    const el = document.getElementById(targetEl);
+    if (!el) { clearInterval(dailyCountdownTimer); return; }
+    el.textContent = formatCountdown(msUntilMidnight());
+  };
+  tick();
+  dailyCountdownTimer = setInterval(tick, 1000);
+}
+
+function renderDailyAlready(state) {
+  clearTimeout(G.playTimer); G.playTimer = null;
+  stopPlay(); stopSCFully();
+  document.getElementById('game-area').style.display = 'none';
+  document.getElementById('res-area').style.display = 'none';
+  document.getElementById('guesses-wrap').style.display = 'none';
+  document.getElementById('arow').innerHTML = '';
+  document.getElementById('clue').style.display = 'none';
+  document.getElementById('playbtn').style.display = 'none';
+  document.getElementById('durbar').style.transition = 'none';
+  document.getElementById('durbar').style.width = '0%';
+
+  // Pts badge — pokaż wynik dzisiejszego daily
+  const badge = document.getElementById('pts-badge');
+  const ptsEl = document.getElementById('pts-display');
+  const maxEl = document.getElementById('pts-max');
+  if (state.won) {
+    badge.classList.remove('zero','reducing');
+    badge.style.borderColor = 'var(--col-hit)';
+    badge.style.background = 'rgba(0,230,118,.08)';
+    ptsEl.style.color = 'var(--col-hit)';
+    ptsEl.textContent = '+' + state.pts;
+    maxEl.textContent = '🏆';
+  } else {
+    badge.classList.add('zero');
+    badge.style.borderColor = 'var(--col-miss)';
+    ptsEl.style.color = 'var(--col-miss)';
+    ptsEl.textContent = '0';
+    maxEl.textContent = '💀';
+  }
+
+  const r = document.getElementById('res-area');
+  r.style.display = 'block';
+  const pct = Math.round((state.pts / DAILY_PTS) * 100);
+
+  r.innerHTML = `
+    <div class="daily-already">
+      <div class="daily-crown">${state.won ? '🏆' : '💀'}</div>
+      <div class="daily-title">DAILY ${state.date}</div>
+      <div class="daily-date">Już dziś zagrałeś!</div>
+      <div style="margin-bottom:10px">
+        <div class="daily-pts-ring" style="--pct:${pct}%">
+          <div class="daily-pts-inner">
+            <div class="daily-pts-val">${state.pts}</div>
+            <div class="daily-pts-lbl">PKT</div>
+          </div>
+        </div>
+      </div>
+      <div class="daily-won-song">${state.songTitle}</div>
+      <div class="daily-won-artist">${state.songArtist}</div>
+      ${state.won
+        ? `<div class="daily-streak-badge">🔥 Seria daily: ${state.dailyStreak || 1}</div>`
+        : `<div style="font-size:12px;color:var(--text3);margin-bottom:10px">Nie trafiłeś dzisiaj. Jutro nowa szansa!</div>`}
+      <div class="daily-countdown-lbl">Następna piosenka za:</div>
+      <div class="daily-countdown" id="daily-cd">--:--:--</div>
+    </div>`;
+  startDailyCountdown('daily-cd');
+  updateDailyTabBtn(state);
+}
+
+function updateDailyTabBtn(state) {
+  const btn = document.getElementById('daily-tab-btn');
+  const sub = document.getElementById('daily-tab-sub');
+  if (!btn) return;
+  if (state) {
+    btn.classList.add('daily-done');
+    sub.textContent = state.won ? '+' + state.pts + ' pkt ✓' : 'miss 💀';
+  } else {
+    btn.classList.remove('daily-done');
+    sub.textContent = '1000 pkt';
+  }
+}
+
+function startDailyGame() {
+  clearInterval(dailyCountdownTimer);
+  // Przywróć ukryte elementy
+  document.getElementById('clue').style.display = '';
+  document.getElementById('playbtn').style.display = '';
+
+  const today = todayStr();
+  const state = getDailyState();
+
+  // Już zagrane dziś?
+  if (state && state.date === today) {
+    renderDailyAlready(state);
+    return;
+  }
+
+  const song = pickDailySong(today);
+  if (!song) { renderEmpty(); return; }
+
+  // Ustaw current i zresetuj grę
+  G.current = song;
+  G.attempt = 0; G.results = []; G.guessLog = []; G.gameOver = false; G.guess = null;
+  G.maxAttempts = 6;
+
+  const btn = document.getElementById('playbtn');
+  btn.textContent = '▶ GRAJ FRAGMENT'; btn.disabled = false;
+  document.getElementById('srch').value = '';
+  document.getElementById('srch').disabled = true;
+  document.getElementById('bconf').disabled = true;
+  document.getElementById('dd').classList.remove('open');
+  document.getElementById('durbar').style.transition = 'none';
+  document.getElementById('durbar').style.width = '0%';
+  document.getElementById('res-area').style.display = 'none';
+  document.getElementById('game-area').style.display = 'block';
+  document.getElementById('guesses-wrap').style.display = 'none';
+  document.getElementById('guesses-body').innerHTML = '';
+  setWave(false);
+  document.getElementById('vinyl').classList.remove('spin');
+
+  // Reset pts badge
+  const badge = document.getElementById('pts-badge');
+  const ptsEl = document.getElementById('pts-display');
+  const maxEl = document.getElementById('pts-max');
+  badge.classList.remove('zero','reducing');
+  badge.style.borderColor = ''; badge.style.background = '';
+  ptsEl.style.color = ''; ptsEl.textContent = DAILY_PTS;
+  maxEl.textContent = 'max';
+
+  renderDots(); renderClue();
+  if (song.type === 'sc') preloadSC(song.src);
+}
+
+function checkEndDaily(ok) {
+  G.gameOver = true; G.total++;
+  const today = todayStr();
+  const prevState = getDailyState();
+  // Policz dailyStreak
+  let dailyStreak = 1;
+  if (prevState) {
+    const prevDate = new Date(prevState.date);
+    const todayDate = new Date(today);
+    const diffDays = Math.round((todayDate - prevDate) / 86400000);
+    if (diffDays === 1 && prevState.won) dailyStreak = (prevState.dailyStreak || 1) + 1;
+    else if (diffDays === 1 && !prevState.won) dailyStreak = 1;
+  }
+
+  // Punkty malejące jak w klasycznym
+  const rawPts = ok ? Math.max(DAILY_PTS - (G.attempt - 1) * 130, 100) : 0;
+  const pts = ok ? rawPts : 0;
+
+  if (ok) { G.score += pts; G.streak++; }
+  else { G.streak = 0; }
+  G.history.unshift({ title: G.current.title, artist: G.current.artist, won: ok, pts, att: G.attempt, d: new Date().toLocaleDateString('pl'), daily: true });
+  updateHUD(); saveStats();
+
+  saveDailyState({ date: today, won: ok, pts, songTitle: G.current.title, songArtist: G.current.artist, dailyStreak });
+  updateDailyTabBtn({ won: ok, pts, date: today, dailyStreak });
+  renderDailyResult(ok, pts, dailyStreak);
+}
+
+function renderDailyResult(ok, pts, dailyStreak) {
+  stopPlay();
+  document.getElementById('guesses-wrap').style.display = 'none';
+  document.getElementById('game-area').style.display = 'none';
+  const r = document.getElementById('res-area'); r.style.display = 'block';
+
+  // Badge update
+  const badge = document.getElementById('pts-badge');
+  const ptsEl = document.getElementById('pts-display');
+  const maxEl = document.getElementById('pts-max');
+  if (ok) {
+    badge.classList.remove('zero','reducing');
+    badge.style.borderColor = 'var(--col-hit)'; badge.style.background = 'rgba(0,230,118,.08)';
+    ptsEl.style.color = 'var(--col-hit)'; ptsEl.textContent = '+' + pts; maxEl.textContent = '🏆';
+  } else {
+    badge.classList.add('zero');
+    badge.style.borderColor = 'var(--col-miss)';
+    ptsEl.style.color = 'var(--col-miss)'; ptsEl.textContent = '0'; maxEl.textContent = '💀';
+  }
+
+  const pct = Math.round((pts / DAILY_PTS) * 100);
+
+  r.innerHTML = `
+    <div class="daily-card">
+      <span class="daily-crown">${ok ? '👑' : '💀'}</span>
+      <div class="daily-title">${ok ? 'DAILY TRAFIONY!' : 'DAILY MISS!'}</div>
+      <div class="daily-date">${todayStr()}</div>
+      <div class="daily-pts-ring" style="background:conic-gradient(${ok ? 'var(--col-hit)' : 'var(--col-miss)'} ${pct}%,var(--s3) 0%);margin:0 auto 12px">
+        <div class="daily-pts-inner">
+          <div class="daily-pts-val" style="color:${ok ? 'var(--col-hit)' : 'var(--col-miss)'}">${pts}</div>
+          <div class="daily-pts-lbl">PKT</div>
+        </div>
+      </div>
+      <div class="daily-won-song">${G.current.title}</div>
+      <div class="daily-won-artist">${G.current.artist} · ${G.current.year}</div>
+      ${ok ? `<div class="daily-streak-badge">🔥 Seria daily: ${dailyStreak}</div>` : ''}
+    </div>
+    ${renderGuessTable()}
+    <div style="background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center;margin-bottom:12px">
+      <div class="daily-countdown-lbl">Następna piosenka za:</div>
+      <div class="daily-countdown" id="daily-cd-res">--:--:--</div>
+    </div>`;
+  startDailyCountdown('daily-cd-res');
+}
+
 function setMode(m, el) {
   G.mode = m;
-  G.maxAttempts = m === 'blitz' ? 3 : m === 'chill' ? 9999 : 6;
+  G.maxAttempts = m === 'chill' ? 9999 : 6;
   document.querySelectorAll('.mt').forEach(b => b.classList.remove('on')); el.classList.add('on');
-  startGame();
+  clearInterval(dailyCountdownTimer);
+
+  if (m === 'daily') {
+    startDailyGame();
+  } else {
+    // Przywróć UI jeśli daily ukryło elementy
+    document.getElementById('clue').style.display = '';
+    document.getElementById('playbtn').style.display = '';
+    startGame();
+  }
 }
 
 // ══════════════════════════════════════
@@ -1234,6 +1527,8 @@ document.addEventListener('click', e => {
 
 // ── INIT ──
 loadAll();
+// Pokaż status daily na zakładce
+updateDailyTabBtn(getDailyState()?.date === todayStr() ? getDailyState() : null);
 startGame();
 </script>
 </body>
