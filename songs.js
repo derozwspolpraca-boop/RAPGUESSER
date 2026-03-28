@@ -210,15 +210,6 @@ const SONGS_DB = [
 
   {
     id: 'sc_0020',
-    title: 'TERAZ ALBO NIGDY',
-    artist: '2115, Young Multi,',
-    year: 2022,
-    type: 'sc',
-    src: 'https://soundcloud.com/wiktor122/2115-teraz-albo-nigdy-ft-young-multi'
-  },
-
-  {
-    id: 'sc_0021',
     title: 'Małe Krople',
     artist: 'Young Igi',
     year: 2022,
