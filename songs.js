@@ -7,7 +7,7 @@
 //  Nie każda piosenka na SoundCloud działa jako embed!
 //  Przed dodaniem do bazy wejdź na:
 //
-//    https://w.soundcloud.com/player/?url=TUTAJ_WKLEJ_LINK
+//   https://w.soundcloud.com/player/?url=TUTAJ_WKLEJ_LINK
 //
 //  Przykład sprawdzenia:
 //    https://w.soundcloud.com/player/?url=https://soundcloud.com/ksi/holiday
