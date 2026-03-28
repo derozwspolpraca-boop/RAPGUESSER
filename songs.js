@@ -216,7 +216,7 @@ const SONGS_DB = [
     type: 'sc',
     src: 'https://soundcloud.com/wiktor122/oki-woda-sodowa'
   },
-https://soundcloud.com/wiktor122/young-igi-ma-e-krople-1?in=wiktor122/sets/young-igi-notatki-z-marginesu
+
   {
     id: 'sc_0021',
     title: 'GUGU X 2115',
