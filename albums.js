@@ -6,27 +6,28 @@
 
 window.ALBUMS_DB = [
   {
-    id: "SentinoZL5",
-    title: "Zabójstwo Liryczne 5",
+    id: "album_sentino_zl5",
+    title: "Sentino - Zabójstwo Liryczne 5",
     artist: "Sentino",
     year: 2026,
-    cover: "https://images.genius.com/f31a33a356cab8dba533f780ff4d7778.503x503x120.gif",
+    cover: "https://i.scdn.co/image/ab67616d0000b273106a1c0cd92b1ac702bc3f05",
     songs: [
-      { id: "ZL5_01", title: "TACH TACH", artist: "Sentino, BNP", year: 2026, type: "sc", src: "https://soundcloud.com/juzekkk/tach-tach-sentino" },
-      { id: "ZL5_02", title: "LEGACY", artist: "Sentino, BNP", year: 2026, type: "sc", src: "https://soundcloud.com/juzekkk/legacy-sentino" },
-      { id: "ZL5_03", title: "WAWA022", artist: "Sentino, Diho, BNP", year: 2026, type: "sc", src: "https://soundcloud.com/karzeu/8472371e-ba14-4c17-805e-aa33da7261d2" },
-      { id: "ZL5_04", title: "KURWY CHCĄ SENTO", artist: "Sentino, Popek, typo g, BNP", year: 2026, type: "sc", src: "https://soundcloud.com/juzekkk/kurwy-chca-sento-sentino" },
-      { id: "ZL5_05", title: "MOVE", artist: "Sentino, BNP", year: 2026, type: "sc", src: "https://soundcloud.com/juzekkk/move-sentino" },
-      { id: "ZL5_06", title: "KRAINA CZARÓW 2", artist: "Sentino, BNP", year: 2026, type: "sc", src: "https://soundcloud.com/karzeu/sentino-kraina-czarow-2" },
-      { id: "ZL5_07", title: "PRESIDENT", artist: "Sentino, BNP", year: 2026, type: "sc", src: "https://soundcloud.com/juzekkk/president-sentino" },
-      { id: "ZL5_08", title: "POTWORY", artist: "Sentino, BNP", year: 2026, type: "sc", src: "https://soundcloud.com/juzekkk/potwory-sentino" },
-      { id: "ZL5_09", title: "PAŁAC", artist: "Sentino, BNP", year: 2026, type: "sc", src: "https://soundcloud.com/juzekkk/pa-ac-sentino" },
-      { id: "ZL5_10", title: "FANTASTYCZNY", artist: "Sentino, BNP", year: 2026, type: "sc", src: "https://soundcloud.com/karzeu/sentino-fantastyczny-zabojstwo" },
-      { id: "ZL5_11", title: "FRISBEE", artist: "Sentino, BNP", year: 2026, type: "sc", src: "https://soundcloud.com/juzekkk/frisbee" },
-      { id: "ZL5_12", title: "PENTHOUSE 2", artist: "Sentino, Koneser, BNP", year: 2026, type: "sc", src: "https://soundcloud.com/karzeu/sentino-x-koneser-penthouse-1" },
-      { id: "ZL5_13", title: "OSTATNI RAZ", artist: "Sentino, BNP, Kaz Bałagane", year: 2026, type: "sc", src: "https://soundcloud.com/juzekkk/ostatni-raz-sentino" },
-      { id: "ZL5_14", title: "NO I CO", artist: "Sentino, Koneser, BNP", year: 2026, type: "sc", src: "https://soundcloud.com/juzekkk/no-i-co-sentino" },
-     ]
+      { id: "zl5_01", title: "TACH TACH", artist: "Sentino, BNP", year: 2026, type: "sc", src: "https://soundcloud.com/juzekkk/tach-tach-sentino" },
+      { id: "zl5_02", title: "LEGACY", artist: "Sentino, BNP", year: 2026, type: "sc", src: "https://soundcloud.com/juzekkk/legacy-sentino" },
+      { id: "zl5_03", title: "WAWA022", artist: "Sentino, Diho, BNP", year: 2026, type: "sc", src: "https://soundcloud.com/karzeu/8472371e-ba14-4c17-805e-aa33da7261d2" },
+      { id: "zl5_04", title: "KURWY CHCĄ SENTO", artist: "Sentino, Popek, typo g, BNP", year: 2026, type: "sc", src: "https://soundcloud.com/juzekkk/kurwy-chca-sento-sentino" },
+      { id: "zlt_05", title: "MOVE", artist: "Sentino, BNP", year: 2026, type: "sc", src: "https://soundcloud.com/juzekkk/move-sentino" },
+      { id: "zl5_06", title: "KRAINA CZARÓW 2", artist: "Sentino, BNP", year: 2026, type: "sc", src: "https://soundcloud.com/karzeu/sentino-kraina-czarow-2" },
+      { id: "zl5_07", title: "PRESIDENT", artist: "Sentino, BNP", year: 2026, type: "sc", src: "https://soundcloud.com/juzekkk/president-sentino" },
+      { id: "zl5_08", title: "POTWORY", artist: "Sentino, BNP", year: 2026, type: "sc", src: "https://soundcloud.com/juzekkk/potwory-sentino" },
+      { id: "zl5_09", title: "PAŁAC", artist: "Sentino, BNP", year: 2026, type: "sc", src: "https://soundcloud.com/juzekkk/pa-ac-sentino" },
+      { id: "zl5_10", title: "FANTASTYCZNY", artist: "Sentino, BNP", year: 2026, type: "sc", src: "https://soundcloud.com/karzeu/sentino-fantastyczny-zabojstwo" },
+      { id: "zl5_11", title: "FRISBEE", artist: "Sentino, BNP", year: 2026, type: "sc", src: "https://soundcloud.com/juzekkk/frisbee" },
+      { id: "zl5_12", title: "PENTHOUSE 2", artist: "Sentino, Koneser, BNP", year: 2026, type: "sc", src: "https://soundcloud.com/karzeu/sentino-x-koneser-penthouse-1" },
+      { id: "zl5_13", title: "OSTATNI RAZ", artist: "Sentino, BNP, Kaz Bałagane", year: 2026, type: "sc", src: "https://soundcloud.com/juzekkk/ostatni-raz-sentino" },
+      { id: "zl5_14", title: "NO I CO", artist: "Sentino, Koneser, BNP", year: 2026, type: "sc", src: "https://soundcloud.com/juzekkk/no-i-co-sentino" },
+    ]
+  },
   // ────────────────────────────────────────────────────
   // SZABLON — skopiuj i wypełnij:
   // {
@@ -42,4 +43,4 @@ window.ALBUMS_DB = [
   //   ]
   // },
   // ────────────────────────────────────────────────────
-  },
+];  
