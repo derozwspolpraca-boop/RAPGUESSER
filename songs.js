@@ -210,11 +210,11 @@ const SONGS_DB = [
 
   {
     id: 'sc_0020',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    title: 'Flaga',
+    artist: 'Chillwagon',
+    year: 2019,
+    type: 'file',
+    src: 'flaga-chillwagon.mp3'
   },
 
   {
