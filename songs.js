@@ -201,15 +201,6 @@ const SONGS_DB = [
 
   {
     id: 'sc_0019',
-    title: 'WRAK',
-    artist: 'OKI',
-    year: 2024,
-    type: 'sc',
-    src: 'https://soundcloud.com/wiktor122/oki-wrak'
-  },
-
-  {
-    id: 'sc_0020',
     title: 'WODA SODOWA',
     artist: 'OKI',
     year: 2024,
@@ -218,7 +209,7 @@ const SONGS_DB = [
   },
 
   {
-    id: 'sc_0021',
+    id: 'sc_0020',
     title: 'TERAZ ALBO NIGDY',
     artist: '2115, Young Multi,',
     year: 2022,
@@ -227,7 +218,7 @@ const SONGS_DB = [
   },
 
   {
-    id: 'sc_0022',
+    id: 'sc_0021',
     title: 'Małe Krople',
     artist: 'Young Igi',
     year: 2022,
