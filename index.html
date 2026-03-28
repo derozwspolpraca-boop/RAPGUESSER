@@ -6,72 +6,177 @@
 <title>RAPGUESSER</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet"/>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#07070f;--s1:#0e0e1c;--s2:#151524;--s3:#1c1c2e;--s4:#232338;
-  --gold:#ffffff;--gold2:#cccccc;--gold3:#f0f0f0;
-  --red:#ff3f3f;--green:#00e676;--blue:#4fc3f7;
-  --text:#eeeeff;--text2:#8888aa;--text3:#444466;
-  --border:rgba(255,255,255,.13);--border2:rgba(255,255,255,.32);
-  --r:10px;
+/* ╔══════════════════════════════════════════════════════════╗
+   ║  🎨  KONFIGURACJA KOLORÓW — ZMIEŃ TU WSZYSTKO           ║
+   ║                                                          ║
+   ║  Żeby zmienić schemat kolorów wystarczy edytować        ║
+   ║  wartości poniżej. Reszta kodu się dostosuje            ║
+   ║  automatycznie.                                          ║
+   ╚══════════════════════════════════════════════════════════╝
+
+   ── TŁA (od najciemniejszego do najjaśniejszego) ──────────
+   --bg      = główne tło strony
+   --s1      = tło paneli (admin, statystyki)
+   --s2      = tło kart, inputów
+   --s3      = tło inputów wewnętrznych, hover
+   --s4      = najjaśniejszy akcent tła
+
+   ── KOLOR GŁÓWNY (akcent, przyciski, logo) ────────────────
+   --accent        = kolor głównych przycisków i logo
+   --accent-hover  = kolor po najechaniu na przycisk
+   --accent-text   = kolor tekstu NA tle --accent (zwykle #000 lub #fff)
+   --accent2       = jaśniejszy wariant akcentu (pasek trwania)
+   --accent3       = najjaśniejszy wariant (drobne elementy)
+
+   ── KOLORY STANU ──────────────────────────────────────────
+   --col-hit   = kolor "trafiony" (tło kropki, ramka)
+   --col-miss  = kolor "pudło" (tło kropki, ramka)
+   --col-skip  = kolor "pominięty"
+   --col-blue  = informacyjny (panel bazy)
+
+   ── TEKST ─────────────────────────────────────────────────
+   --text      = tekst główny
+   --text2     = tekst drugorzędny (artysta, podpisy)
+   --text3     = tekst trzeciorzędny (etykiety, placeholdery)
+
+   ── RAMKI ─────────────────────────────────────────────────
+   --border    = subtelna ramka
+   --border2   = wyraźna ramka (dropdown, aktywne elementy)
+
+   ── INNE ──────────────────────────────────────────────────
+   --r         = zaokrąglenie narożników
+*/
+:root {
+  /* TŁA */
+  --bg:    #2b2b2b;
+  --s1:    #0e0e1c;
+  --s2:    #151524;
+  --s3:    #1c1c2e;
+  --s4:    #232338;
+
+  /* AKCENT GŁÓWNY */
+  --accent:       #f5c842;
+  --accent-hover: #ffe566;
+  --accent-text:  #000000;
+  --accent2:      #ccaa30;
+  --accent3:      #f0e070;
+
+  /* STANY */
+  --col-hit:  #00e676;
+  --col-miss: #ff3f3f;
+  --col-skip: #444466;
+  --col-blue: #4fc3f7;
+
+  /* TEKST */
+  --text:  #eeeeff;
+  --text2: #8888aa;
+  --text3: #444466;
+
+  /* RAMKI */
+  --border:  rgba(255,255,255,.13);
+  --border2: rgba(255,255,255,.32);
+
+  /* INNE */
+  --r: 10px;
 }
+
+/* ── koniec sekcji kolorów ──────────────────────────────── */
+
+*{box-sizing:border-box;margin:0;padding:0}
 html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
-::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--s1)}::-webkit-scrollbar-thumb{background:var(--gold2);border-radius:3px}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--s1)}::-webkit-scrollbar-thumb{background:var(--accent2);border-radius:3px}
 
 #app{max-width:680px;margin:0 auto;padding:0 14px;display:flex;flex-direction:column;min-height:100vh}
 
+/* HEADER */
 .header{display:flex;align-items:center;justify-content:space-between;padding:18px 0 12px;border-bottom:1px solid var(--border)}
-.logo{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:2px;color:var(--gold);line-height:1}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:2px;color:var(--accent);line-height:1}
 .logo small{display:block;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:4px;color:var(--text3);font-weight:600}
 .hbtns{display:flex;gap:6px}
 .hbtn{background:var(--s2);border:1px solid var(--border);border-radius:8px;padding:7px 11px;cursor:pointer;color:var(--text2);font-size:13px;font-weight:600;transition:all .2s;font-family:'Barlow',sans-serif}
-.hbtn:hover{border-color:var(--gold);color:var(--gold)}
+.hbtn:hover{border-color:var(--accent);color:var(--accent)}
 
+/* SCORES */
 .scorebar{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px 0}
 .sc{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:9px;text-align:center}
-.sc .v{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--gold);line-height:1.1}
+.sc .v{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--accent);line-height:1.1}
 .sc .l{font-size:11px;color:var(--text3);letter-spacing:1px;text-transform:uppercase;margin-top:2px}
 
+/* MODE TABS */
 .mtabs{display:flex;gap:3px;background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:3px;margin-bottom:14px}
 .mt{flex:1;padding:8px 4px;border:none;background:transparent;color:var(--text2);font-size:11px;font-weight:700;cursor:pointer;border-radius:7px;transition:all .2s;font-family:'Barlow',sans-serif;text-align:center;line-height:1.3}
-.mt.on{background:var(--gold);color:#000}
+.mt.on{background:var(--accent);color:var(--accent-text)}
 .mt:hover:not(.on){color:var(--text)}
 
-.vinyl-wrap{display:flex;justify-content:center;padding:16px 0 8px;position:relative}
+/* VINYL */
+.vinyl-wrap{display:flex;justify-content:center;padding:16px 0 8px}
 .vinyl{width:126px;height:126px;border-radius:50%;background:conic-gradient(from 0deg,#111 0%,#1a1a1a 15%,#ffffff 17%,#1a1a1a 19%,#111 35%,#cccccc 50%,#111 52%,#1a1a1a 75%,#333 90%,#111 100%);box-shadow:0 0 0 3px #2a2a2a,0 0 0 6px #111,0 0 28px rgba(255,255,255,.18);position:relative;transition:all .3s}
 .vinyl.spin{animation:vspin 2.2s linear infinite}
 .vinyl::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:26px;height:26px;border-radius:50%;background:radial-gradient(circle,#ffffff,#aaaaaa);box-shadow:0 0 8px rgba(255,255,255,.5)}
 @keyframes vspin{to{transform:rotate(360deg)}}
 
+/* WAVEFORM */
 .wf{display:flex;align-items:flex-end;justify-content:center;gap:3px;height:36px;margin-bottom:10px;opacity:.35;transition:opacity .3s}
 .wf.on{opacity:1}
-.wb{width:4px;background:var(--gold);border-radius:2px 2px 0 0;height:4px;transition:height .08s}
+.wb{width:4px;background:var(--accent);border-radius:2px 2px 0 0;height:4px;transition:height .08s}
 .wb.p{animation:wpulse .55s ease-in-out infinite}
 @keyframes wpulse{0%,100%{height:4px}50%{height:30px}}
 
+/* ATTEMPTS DOTS */
 .arow{display:flex;gap:6px;justify-content:center;margin:4px 0 12px}
 .ad{width:38px;height:38px;border-radius:8px;border:2px solid var(--s4);background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .3s;flex-shrink:0}
-.ad.cur{border-color:var(--gold);box-shadow:0 0 14px rgba(245,200,66,.3);animation:adglow 1.1s ease-in-out infinite}
-.ad.hit{border-color:var(--green);background:rgba(0,230,118,.1)}
-.ad.mis{border-color:var(--red);background:rgba(255,63,63,.1)}
-.ad.skp{border-color:var(--text3);background:var(--s1)}
+.ad.cur{border-color:var(--accent);box-shadow:0 0 14px rgba(245,200,66,.3);animation:adglow 1.1s ease-in-out infinite}
+.ad.hit{border-color:var(--col-hit);background:rgba(0,230,118,.1)}
+.ad.mis{border-color:var(--col-miss);background:rgba(255,63,63,.1)}
+.ad.skp{border-color:var(--col-skip);background:var(--s1)}
 @keyframes adglow{0%,100%{box-shadow:0 0 8px rgba(245,200,66,.2)}50%{box-shadow:0 0 20px rgba(245,200,66,.5)}}
 
-.clue{background:var(--s2);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:0 var(--r) var(--r) 0;padding:9px 13px;font-size:13px;color:var(--text2);margin-bottom:11px;min-height:38px}
-.clue strong{color:var(--gold)}
+/* ════════════════════════════════════
+   TABELKA PRÓB GRACZA
+════════════════════════════════════ */
+.guesses-wrap{margin-bottom:11px}
+.guesses-table{width:100%;border-collapse:collapse;font-size:12px}
+.guesses-table th{
+  text-align:left;padding:5px 8px;
+  color:var(--text3);font-size:10px;letter-spacing:1px;
+  text-transform:uppercase;font-weight:700;
+  border-bottom:1px solid var(--border)
+}
+.guesses-table th:last-child{text-align:right}
+.gt-row{animation:fadeup .22s ease}
+.gt-row td{padding:6px 8px;border-bottom:1px solid var(--s3);vertical-align:middle}
+.gt-row:last-child td{border-bottom:none}
+.gt-num{color:var(--text3);font-family:'Bebas Neue',sans-serif;font-size:15px;width:22px}
+.gt-icon{width:22px;text-align:center;font-size:14px}
+.gt-main{flex:1}
+.gt-title{font-size:13px;font-weight:700;color:var(--text)}
+.gt-artist{font-size:11px;color:var(--text2)}
+.gt-status{text-align:right;font-size:11px;font-weight:700;white-space:nowrap}
+.gt-status.hit{color:var(--col-hit)}
+.gt-status.miss{color:var(--col-miss)}
+.gt-status.skip{color:var(--text3)}
+.gt-skip-row td{padding:6px 8px;border-bottom:1px solid var(--s3);color:var(--text3);font-size:12px;font-style:italic}
+@keyframes fadeup{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 
-.playbtn{width:100%;padding:14px;background:var(--gold);border:none;border-radius:var(--r);font-family:'Bebas Neue',sans-serif;font-size:21px;letter-spacing:2px;color:#000;cursor:pointer;transition:all .2s;margin-bottom:5px;position:relative;overflow:hidden}
+/* CLUE */
+.clue{background:var(--s2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:0 var(--r) var(--r) 0;padding:9px 13px;font-size:13px;color:var(--text2);margin-bottom:11px;min-height:38px}
+.clue strong{color:var(--accent)}
+
+/* PLAY BTN */
+.playbtn{width:100%;padding:14px;background:var(--accent);border:none;border-radius:var(--r);font-family:'Bebas Neue',sans-serif;font-size:21px;letter-spacing:2px;color:var(--accent-text);cursor:pointer;transition:all .2s;margin-bottom:5px;position:relative;overflow:hidden}
 .playbtn:after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.14) 0%,transparent 55%)}
-.playbtn:hover{background:#ffe566;transform:translateY(-1px);box-shadow:0 6px 22px rgba(245,200,66,.3)}
+.playbtn:hover{background:var(--accent-hover);transform:translateY(-1px);box-shadow:0 6px 22px rgba(245,200,66,.3)}
 .playbtn:active{transform:none}
 .playbtn:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none}
 
+/* DUR BAR */
 .durbar{background:var(--s3);border-radius:3px;height:4px;margin:0 0 13px;overflow:hidden}
-.durfill{height:100%;background:linear-gradient(90deg,var(--gold2),var(--gold));width:0%;border-radius:3px}
+.durfill{height:100%;background:linear-gradient(90deg,var(--accent2),var(--accent));width:0%;border-radius:3px}
 
+/* SEARCH */
 .srchwrap{position:relative;margin-bottom:9px}
 .srchinp{width:100%;padding:12px 15px;background:var(--s2);border:1.5px solid var(--border);border-radius:var(--r);color:var(--text);font-size:14px;font-family:'Barlow',sans-serif;outline:none;transition:border-color .2s}
-.srchinp:focus{border-color:var(--gold2)}
+.srchinp:focus{border-color:var(--accent2)}
 .srchinp::placeholder{color:var(--text3)}
 .srchinp:disabled{opacity:.4;cursor:not-allowed}
 .dd{position:absolute;top:calc(100% + 3px);left:0;right:0;background:var(--s2);border:1.5px solid var(--border2);border-radius:var(--r);max-height:230px;overflow-y:auto;z-index:200;display:none;box-shadow:0 10px 40px rgba(0,0,0,.6)}
@@ -82,91 +187,105 @@ html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);c
 .di .dt{font-size:14px;font-weight:600}
 .di .da{font-size:12px;color:var(--text2);margin-top:1px}
 
+/* ACTION ROW */
 .actrow{display:flex;gap:8px;margin-bottom:16px}
 .bskip{flex:1;padding:11px;background:var(--s2);border:1.5px solid var(--border);border-radius:var(--r);color:var(--text2);font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Barlow',sans-serif}
 .bskip:hover{border-color:var(--text3);color:var(--text)}
-.bconf{flex:2;padding:11px;background:transparent;border:1.5px solid var(--gold);border-radius:var(--r);color:var(--gold);font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Barlow',sans-serif;text-transform:uppercase;letter-spacing:.5px}
-.bconf:hover{background:var(--gold);color:#000}
+.bconf{flex:2;padding:11px;background:transparent;border:1.5px solid var(--accent);border-radius:var(--r);color:var(--accent);font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Barlow',sans-serif;text-transform:uppercase;letter-spacing:.5px}
+.bconf:hover{background:var(--accent);color:var(--accent-text)}
 .bconf:disabled{opacity:.35;pointer-events:none}
 
+/* RESULT */
 .rescard{background:var(--s2);border:1px solid var(--border2);border-radius:14px;padding:22px;text-align:center;margin-bottom:12px;animation:fadeup .35s ease}
-@keyframes fadeup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 .resi{font-size:50px;margin-bottom:6px}
 .ress{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;margin-bottom:4px}
-.ress.win{color:var(--green)}.ress.lose{color:var(--red)}
-.rest{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;color:var(--gold);margin-bottom:3px}
+.ress.win{color:var(--col-hit)}.ress.lose{color:var(--col-miss)}
+.rest{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;color:var(--accent);margin-bottom:3px}
 .resa{font-size:13px;color:var(--text2);margin-bottom:10px}
-.resp{font-size:12px;color:var(--text3)}
-.bnext{width:100%;padding:13px;background:var(--gold);border:none;border-radius:var(--r);font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:#000;cursor:pointer;transition:all .2s}
-.bnext:hover{background:#ffe566;box-shadow:0 4px 18px rgba(245,200,66,.3);transform:translateY(-1px)}
+.resp{font-size:12px;color:var(--text3);margin-bottom:14px}
 
+/* TABELKA W RESULT */
+.res-guesses{background:var(--s3);border-radius:10px;overflow:hidden;margin-bottom:14px;border:1px solid var(--border)}
+.res-guesses-title{font-size:10px;font-weight:700;color:var(--text3);letter-spacing:2px;text-transform:uppercase;padding:8px 12px 6px;border-bottom:1px solid var(--border)}
+
+.bnext{width:100%;padding:13px;background:var(--accent);border:none;border-radius:var(--r);font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--accent-text);cursor:pointer;transition:all .2s}
+.bnext:hover{background:var(--accent-hover);box-shadow:0 4px 18px rgba(245,200,66,.3);transform:translateY(-1px)}
+
+/* EMPTY */
 .empty{text-align:center;padding:40px 20px;color:var(--text3)}
 .empty .ei{font-size:44px;margin-bottom:12px}
 .empty p{font-size:14px;line-height:1.7}
 
+/* PASSWORD MODAL */
 .pw-ov{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:600;display:flex;align-items:center;justify-content:center;padding:20px}
 .pw-ov.hidden{display:none}
 .pw-box{background:var(--s1);border:1px solid var(--border2);border-radius:18px;padding:36px 32px;width:100%;max-width:360px;text-align:center;animation:fadeup .3s ease}
 .pw-icon{font-size:48px;margin-bottom:12px}
-.pw-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:var(--gold);margin-bottom:6px}
+.pw-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:var(--accent);margin-bottom:6px}
 .pw-sub{font-size:13px;color:var(--text3);margin-bottom:22px;line-height:1.6}
 .pw-inp{width:100%;padding:13px 16px;background:var(--s3);border:1.5px solid var(--border);border-radius:var(--r);color:var(--text);font-size:16px;font-family:'Barlow',sans-serif;outline:none;transition:border-color .2s;text-align:center;letter-spacing:3px;margin-bottom:8px}
-.pw-inp:focus{border-color:var(--gold)}
-.pw-inp.err{border-color:var(--red);animation:shake .3s ease}
+.pw-inp:focus{border-color:var(--accent)}
+.pw-inp.err{border-color:var(--col-miss);animation:shake .3s ease}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
-.pw-btn{width:100%;padding:13px;background:var(--gold);border:none;border-radius:var(--r);font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:#000;cursor:pointer;transition:all .2s;margin-top:4px}
-.pw-btn:hover{background:#ffe566;transform:translateY(-1px)}
-.pw-err{font-size:12px;color:var(--red);height:18px;margin-top:4px;transition:opacity .2s}
+.pw-btn{width:100%;padding:13px;background:var(--accent);border:none;border-radius:var(--r);font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--accent-text);cursor:pointer;transition:all .2s;margin-top:4px}
+.pw-btn:hover{background:var(--accent-hover);transform:translateY(-1px)}
+.pw-err{font-size:12px;color:var(--col-miss);height:18px;margin-top:4px}
 
+/* STATS PANEL */
 .stats-ov{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:500;display:none;overflow-y:auto}
 .stats-ov.open{display:block}
 .stats-panel{max-width:680px;margin:0 auto;background:var(--s1);min-height:100vh;padding:18px 16px}
 .stats-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
-.stats-title{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--gold);letter-spacing:2px}
+.stats-title{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--accent);letter-spacing:2px}
 .stats-note{font-size:11px;color:var(--text3);line-height:1.6;text-align:center;padding:8px 0 14px;border-bottom:1px solid var(--border);margin-bottom:16px}
 
+/* ADMIN PANEL */
 .adm-ov{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:500;display:none;overflow-y:auto}
 .adm-ov.open{display:block}
 .adm-panel{max-width:720px;margin:0 auto;background:var(--s1);min-height:100vh;padding:18px 16px}
 .adm-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
-.adm-title{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--gold);letter-spacing:2px}
+.adm-title{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--accent);letter-spacing:2px}
 .cbtn{background:var(--s3);border:1px solid var(--border);border-radius:8px;padding:7px 13px;color:var(--text2);cursor:pointer;font-size:13px;font-weight:600;transition:all .2s;font-family:'Barlow',sans-serif}
-.cbtn:hover{border-color:var(--red);color:var(--red)}
+.cbtn:hover{border-color:var(--col-miss);color:var(--col-miss)}
 
 .atabs{display:flex;gap:3px;background:var(--s2);border-radius:9px;padding:3px;margin-bottom:18px}
 .atb{flex:1;padding:8px 4px;border:none;background:transparent;color:var(--text2);font-size:12px;font-weight:700;cursor:pointer;border-radius:7px;transition:all .2s;font-family:'Barlow',sans-serif}
-.atb.on{background:var(--gold);color:#000}
+.atb.on{background:var(--accent);color:var(--accent-text)}
 
+/* DRAG DROP */
 .dropzone{border:2px dashed var(--border2);border-radius:14px;padding:32px 20px;text-align:center;transition:all .3s;cursor:pointer;margin-bottom:14px;position:relative}
-.dropzone.over{border-color:var(--gold);background:rgba(245,200,66,.05);transform:scale(1.01)}
+.dropzone.over{border-color:var(--accent);background:rgba(245,200,66,.05);transform:scale(1.01)}
 .dropzone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
 .dropzone .di-icon{font-size:36px;margin-bottom:8px}
-.dropzone .di-title{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px;color:var(--gold);margin-bottom:4px}
+.dropzone .di-title{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px;color:var(--accent);margin-bottom:4px}
 .dropzone .di-sub{font-size:12px;color:var(--text3);line-height:1.6}
 
+/* MP3 QUEUE */
 .mp3q{display:flex;flex-direction:column;gap:5px;max-height:260px;overflow-y:auto;margin-bottom:12px}
 .mp3item{background:var(--s2);border:1px solid var(--border);border-radius:8px;padding:9px 12px;display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}
 .mp3item input{background:var(--s3);border:1px solid var(--border);border-radius:6px;padding:5px 8px;color:var(--text);font-size:12px;font-family:'Barlow',sans-serif;outline:none;width:100%}
-.mp3item input:focus{border-color:var(--gold)}
+.mp3item input:focus{border-color:var(--accent)}
 .mp3item input::placeholder{color:var(--text3)}
 .mp3-fields{display:grid;grid-template-columns:1fr 1fr auto;gap:5px;align-items:center}
 .mp3-name{font-size:11px;color:var(--text3);margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mp3-del{background:none;border:none;color:var(--text3);cursor:pointer;font-size:15px;padding:3px;border-radius:4px;transition:color .2s}
-.mp3-del:hover{color:var(--red)}
-.btnq{width:100%;padding:11px;background:var(--gold);border:none;border-radius:8px;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:1px;color:#000;cursor:pointer;transition:all .2s}
-.btnq:hover{background:#ffe566}
+.mp3-del:hover{color:var(--col-miss)}
+.btnq{width:100%;padding:11px;background:var(--accent);border:none;border-radius:8px;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:1px;color:var(--accent-text);cursor:pointer;transition:all .2s}
+.btnq:hover{background:var(--accent-hover)}
 
+/* SC FORM */
 .scform{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:14px;margin-bottom:12px}
 .frow{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:9px}
 .frow.full{grid-template-columns:1fr}
 .fg label{display:block;font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
 .fg input{width:100%;padding:9px 11px;background:var(--s3);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:13px;font-family:'Barlow',sans-serif;outline:none;transition:border-color .2s}
-.fg input:focus{border-color:var(--gold)}
+.fg input:focus{border-color:var(--accent)}
 .fg input::placeholder{color:var(--text3)}
-.btnadd{width:100%;padding:11px;background:var(--gold);border:none;border-radius:8px;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:1px;color:#000;cursor:pointer;transition:all .2s;margin-top:4px}
-.btnadd:hover{background:#ffe566}
+.btnadd{width:100%;padding:11px;background:var(--accent);border:none;border-radius:8px;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:1px;color:var(--accent-text);cursor:pointer;transition:all .2s;margin-top:4px}
+.btnadd:hover{background:var(--accent-hover)}
 .sc-hint{font-size:11px;color:var(--text3);line-height:1.7;padding:6px 0}
 
+/* SONGS LIST */
 .slist{display:flex;flex-direction:column;gap:5px;max-height:420px;overflow-y:auto;padding-right:3px}
 .sitem{background:var(--s2);border:1px solid var(--border);border-radius:8px;padding:9px 12px;display:flex;align-items:center;gap:9px}
 .si-n{font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--text3);width:26px;flex-shrink:0;text-align:right}
@@ -174,15 +293,16 @@ html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);c
 .si-t{font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .si-a{font-size:11px;color:var(--text2)}
 .badge{font-size:10px;padding:2px 7px;border-radius:4px;font-weight:700;flex-shrink:0}
-.badge.mp3{background:rgba(245,200,66,.1);color:var(--gold);border:1px solid var(--border2)}
+.badge.mp3{background:rgba(245,200,66,.1);color:var(--accent);border:1px solid var(--border2)}
 .badge.sc{background:rgba(255,85,0,.12);color:#ff7733;border:1px solid rgba(255,85,0,.3)}
-.badge.db{background:rgba(79,195,247,.12);color:var(--blue);border:1px solid rgba(79,195,247,.3)}
+.badge.db{background:rgba(79,195,247,.12);color:var(--col-blue);border:1px solid rgba(79,195,247,.3)}
 .sdel{background:none;border:none;color:var(--text3);cursor:pointer;font-size:15px;padding:3px;transition:color .2s;flex-shrink:0}
-.sdel:hover{color:var(--red)}
+.sdel:hover{color:var(--col-miss)}
 
+/* STATS */
 .sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
 .sbox{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:12px;text-align:center}
-.sbox .v{font-family:'Bebas Neue',sans-serif;font-size:30px;color:var(--gold)}
+.sbox .v{font-family:'Bebas Neue',sans-serif;font-size:30px;color:var(--accent)}
 .sbox .l{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:1px}
 .hlist{display:flex;flex-direction:column;gap:5px;max-height:380px;overflow-y:auto}
 .hitem{background:var(--s2);border:1px solid var(--border);border-radius:8px;padding:9px 12px;display:flex;align-items:center;gap:9px}
@@ -190,23 +310,23 @@ html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);c
 .hinf{flex:1;min-width:0}
 .ht{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .hs{font-size:11px;color:var(--text2)}
-.hpts{font-size:12px;font-weight:700;color:var(--gold)}
+.hpts{font-size:12px;font-weight:700;color:var(--accent)}
 
 .sfilt{width:100%;padding:9px 11px;background:var(--s2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px;font-family:'Barlow',sans-serif;outline:none;margin-bottom:9px;transition:border-color .2s}
-.sfilt:focus{border-color:var(--gold)}
+.sfilt:focus{border-color:var(--accent)}
 .sfilt::placeholder{color:var(--text3)}
 
-.butil{width:100%;padding:10px;background:var(--s3);border:1px solid var(--border2);border-radius:8px;color:var(--gold);font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Barlow',sans-serif;margin-top:6px}
+.butil{width:100%;padding:10px;background:var(--s3);border:1px solid var(--border2);border-radius:8px;color:var(--accent);font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Barlow',sans-serif;margin-top:6px}
 .butil:hover{background:var(--s4)}
-.butil.danger{border-color:rgba(255,63,63,.35);color:var(--red)}
+.butil.danger{border-color:rgba(255,63,63,.35);color:var(--col-miss)}
 
-.db-info{background:rgba(79,195,247,.07);border:1px solid rgba(79,195,247,.2);border-radius:var(--r);padding:12px 14px;font-size:12px;color:var(--blue);line-height:1.7;margin-bottom:14px}
-.db-info strong{color:var(--blue)}
+.db-info{background:rgba(79,195,247,.07);border:1px solid rgba(79,195,247,.2);border-radius:var(--r);padding:12px 14px;font-size:12px;color:var(--col-blue);line-height:1.7;margin-bottom:14px}
+.db-info strong{color:var(--col-blue)}
 
 .cnt{font-size:11px;color:var(--text3);margin-bottom:8px}
-.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--s2);border:1px solid var(--border2);border-radius:9px;padding:10px 18px;font-size:13px;font-weight:600;color:var(--gold);z-index:1000;transition:transform .28s cubic-bezier(.34,1.56,.64,1);white-space:nowrap;pointer-events:none}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--s2);border:1px solid var(--border2);border-radius:9px;padding:10px 18px;font-size:13px;font-weight:600;color:var(--accent);z-index:1000;transition:transform .28s cubic-bezier(.34,1.56,.64,1);white-space:nowrap;pointer-events:none}
 .toast.show{transform:translateX(-50%) translateY(0)}
-.toast.err{color:var(--red);border-color:rgba(255,63,63,.35)}
+.toast.err{color:var(--col-miss);border-color:rgba(255,63,63,.35)}
 
 footer{text-align:center;padding:18px 0;color:var(--text3);font-size:11px;border-top:1px solid var(--border);margin-top:auto}
 </style>
@@ -243,6 +363,22 @@ footer{text-align:center;padding:18px 0;color:var(--text3);font-size:11px;border
   </div>
 
   <div class="arow" id="arow"></div>
+
+  <!-- TABELKA PRÓB — pojawia się po pierwszej próbie -->
+  <div class="guesses-wrap" id="guesses-wrap" style="display:none">
+    <table class="guesses-table" id="guesses-table">
+      <thead>
+        <tr>
+          <th style="width:22px">#</th>
+          <th style="width:22px"></th>
+          <th>Wpisałeś</th>
+          <th>Wynik</th>
+        </tr>
+      </thead>
+      <tbody id="guesses-body"></tbody>
+    </table>
+  </div>
+
   <div class="clue" id="clue">🎧 Naciśnij <strong>GRAJ FRAGMENT</strong> aby zacząć</div>
   <button class="playbtn" id="playbtn" onclick="playFrag()">▶ GRAJ FRAGMENT</button>
   <div class="durbar"><div class="durfill" id="durbar"></div></div>
@@ -285,9 +421,7 @@ footer{text-align:center;padding:18px 0;color:var(--text3);font-size:11px;border
       <div class="stats-title">TWOJE STATYSTYKI</div>
       <button class="cbtn" onclick="closeStats()">✕ ZAMKNIJ</button>
     </div>
-    <div class="stats-note">
-      Statystyki są zapisywane tylko w Twojej przeglądarce i widoczne wyłącznie dla Ciebie.
-    </div>
+    <div class="stats-note">Statystyki są zapisywane tylko w Twojej przeglądarce i widoczne wyłącznie dla Ciebie.</div>
     <div id="stats-content"></div>
   </div>
 </div>
@@ -300,7 +434,7 @@ footer{text-align:center;padding:18px 0;color:var(--text3);font-size:11px;border
       <button class="cbtn" onclick="closeAdmin()">✕ ZAMKNIJ</button>
     </div>
     <div class="atabs">
-      <button class="atb on" onclick="swTab('lista',this)">📋 Lista <span id="bcnt" style="background:var(--red);color:#fff;font-size:9px;border-radius:5px;padding:1px 5px;margin-left:2px">0</span></button>
+      <button class="atb on" onclick="swTab('lista',this)">📋 Lista <span id="bcnt" style="background:var(--col-miss);color:#fff;font-size:9px;border-radius:5px;padding:1px 5px;margin-left:2px">0</span></button>
       <button class="atb" onclick="swTab('mp3',this)">🎵 Dodaj MP3</button>
       <button class="atb" onclick="swTab('sc',this)">☁ SoundCloud</button>
     </div>
@@ -359,6 +493,8 @@ const DURS = [0.5, 1, 2, 4, 7, 11];
 let G = {
   songs: [], mp3Blobs: {}, current: null,
   attempt: 0, maxAttempts: 6, results: [],
+  // guessLog: tablica obiektów {type:'guess'|'skip', song:{title,artist}|null, result:'hit'|'miss'|'skip'}
+  guessLog: [],
   score: 0, streak: 0, total: 0,
   gameOver: false, playing: false, guess: null,
   played: new Set(), history: [], mode: 'classic',
@@ -415,20 +551,13 @@ function updateHUD() {
 }
 
 // ══════════════════════════════════════
-//  AUDIO — MP3
-// ══════════════════════════════════════
-const aud = document.getElementById('aud');
-
-// ══════════════════════════════════════
 //  SOUNDCLOUD WIDGET
-//  NAPRAWIONE: osobny playToken zapobiega
-//  wyścigom między kolejnymi play()
 // ══════════════════════════════════════
 let scWidget = null;
 let scIframe = null;
-let scLoadedSrc = null;   // src aktualnie załadowany w iframe
-let scReady = false;      // czy widget jest gotowy (READY event odpalił)
-let scPlayToken = 0;      // unikalny token dla każdego wywołania play — anuluje poprzednie callbacki
+let scLoadedSrc = null;
+let scReady = false;
+let scPlayToken = 0;
 
 function getSCIframe() {
   if (!scIframe) {
@@ -449,201 +578,130 @@ function loadSCApi(cb) {
   document.head.appendChild(s);
 }
 
-// Preload — ładuje widget w tle bez auto_play
 function preloadSC(src) {
-  if (scLoadedSrc === src && scReady) return; // już załadowany
+  if (scLoadedSrc === src && scReady) return;
   const iframe = getSCIframe();
-  scLoadedSrc = src;
-  scReady = false;
-  scWidget = null;
-  scPlayToken++; // anuluj poprzednie
-
+  scLoadedSrc = src; scReady = false; scWidget = null; scPlayToken++;
   const embedUrl = 'https://w.soundcloud.com/player/?url=' + encodeURIComponent(src)
     + '&auto_play=false&buying=false&sharing=false&download=false'
     + '&show_artwork=false&show_playcount=false&show_user=false&hide_related=true';
   iframe.src = embedUrl;
-
   loadSCApi(() => {
     const tryBind = () => {
       if (scLoadedSrc !== src) return;
       try {
         scWidget = window.SC.Widget(iframe);
         scWidget.bind(window.SC.Widget.Events.READY, () => {
-          if (scLoadedSrc === src) {
-            scReady = true;
-            console.log('[SC] Widget gotowy dla:', src);
-          }
+          if (scLoadedSrc === src) { scReady = true; }
         });
-      } catch(e) {
-        setTimeout(tryBind, 400);
-      }
+      } catch(e) { setTimeout(tryBind, 400); }
     };
     setTimeout(tryBind, 600);
   });
 }
 
-// playSC — odtwarza piosenkę, woła onActualPlay gdy faktycznie zacznie grać
 function playSC(src, onActualPlay) {
   const iframe = getSCIframe();
-  const token = ++scPlayToken; // unikalny token dla tego wywołania
-
-  const onPlay = () => {
-    if (scPlayToken !== token) return; // anulowane przez nowszy play
-    if (onActualPlay) onActualPlay();
-  };
-
+  const token = ++scPlayToken;
+  const onPlay = () => { if (scPlayToken !== token) return; if (onActualPlay) onActualPlay(); };
   if (scLoadedSrc === src && scReady && scWidget) {
-    // Widget gotowy — seekTo(0) i play
     try {
       scWidget.unbind(window.SC.Widget.Events.PLAY);
       scWidget.seekTo(0);
-      scWidget.bind(window.SC.Widget.Events.PLAY, () => {
-        scWidget.unbind(window.SC.Widget.Events.PLAY);
-        onPlay();
-      });
+      scWidget.bind(window.SC.Widget.Events.PLAY, () => { scWidget.unbind(window.SC.Widget.Events.PLAY); onPlay(); });
       scWidget.play();
-    } catch(e) {
-      console.warn('[SC] Błąd play na gotowym widgecie, fallback:', e);
-      fallbackSC(src, token, onActualPlay);
-    }
-  } else {
-    // Widget nie gotowy lub inny src — załaduj z auto_play=true
-    fallbackSC(src, token, onActualPlay);
-  }
+    } catch(e) { fallbackSC(src, token, onActualPlay); }
+  } else { fallbackSC(src, token, onActualPlay); }
 }
 
 function fallbackSC(src, token, onActualPlay) {
   const iframe = getSCIframe();
-  scLoadedSrc = src;
-  scReady = false;
-  scWidget = null;
-
+  scLoadedSrc = src; scReady = false; scWidget = null;
   const embedUrl = 'https://w.soundcloud.com/player/?url=' + encodeURIComponent(src)
     + '&auto_play=true&buying=false&sharing=false&download=false'
     + '&show_artwork=false&show_playcount=false&show_user=false&hide_related=true';
   iframe.src = embedUrl;
-
-  // Wiąż widget po załadowaniu i nasłuchuj PLAY event
   loadSCApi(() => {
     setTimeout(() => {
       if (scPlayToken !== token) return;
       try {
         scWidget = window.SC.Widget(iframe);
-        scWidget.bind(window.SC.Widget.Events.READY, () => {
-          if (scPlayToken !== token) return;
-          scReady = true;
-          // Już gra (auto_play=true), odpali PLAY event
-        });
+        scWidget.bind(window.SC.Widget.Events.READY, () => { if (scPlayToken !== token) return; scReady = true; });
         scWidget.bind(window.SC.Widget.Events.PLAY, () => {
           if (scPlayToken !== token) return;
           scWidget.unbind(window.SC.Widget.Events.PLAY);
           if (onActualPlay) onActualPlay();
         });
       } catch(e) {
-        // Widget jeszcze nie gotowy, czekamy i odpalimy callback z timeoutem
-        if (scPlayToken === token && onActualPlay) {
-          setTimeout(() => { if (scPlayToken === token) onActualPlay(); }, 1000);
-        }
+        if (scPlayToken === token && onActualPlay) setTimeout(() => { if (scPlayToken === token) onActualPlay(); }, 1000);
       }
     }, 500);
   });
 }
 
 function pauseSC() {
-  scPlayToken++; // anuluj wszelkie oczekujące callbacki
-  if (scWidget) {
-    try {
-      scWidget.unbind(window.SC.Widget.Events.PLAY);
-      scWidget.pause();
-    } catch(e) {}
-  }
-  // NIE czyścimy scLoadedSrc ani scWidget — zostają do ponownego użycia
-  // (seekTo(0) zostanie wywołany przy następnym play)
+  scPlayToken++;
+  if (scWidget) { try { scWidget.unbind(window.SC.Widget.Events.PLAY); scWidget.pause(); } catch(e) {} }
 }
 
 function stopSCFully() {
-  // Pełne zatrzymanie przy zmianie piosenki
-  scPlayToken++;
-  scLoadedSrc = null;
-  scReady = false;
-  scWidget = null;
+  scPlayToken++; scLoadedSrc = null; scReady = false; scWidget = null;
   if (scIframe) scIframe.src = 'about:blank';
 }
 
 // ══════════════════════════════════════
 //  PLAY / STOP
 // ══════════════════════════════════════
+const aud = document.getElementById('aud');
+
 function playFrag() {
   if (G.gameOver || G.playing) return;
   if (!G.current) { showToast('Brak piosenek! Dodaj je w panelu admina', true); return; }
-
   const song = G.current;
-  if (song.type === 'mp3' && !G.mp3Blobs[song.id]) {
-    showToast('⚠ Ten plik MP3 nie jest dostępny. Wgraj go ponownie.', true);
-    return;
-  }
-
+  if (song.type === 'mp3' && !G.mp3Blobs[song.id]) { showToast('⚠ Ten plik MP3 nie jest dostępny. Wgraj go ponownie.', true); return; }
   G.playing = true;
   const btn = document.getElementById('playbtn');
-  btn.disabled = true;
-  btn.textContent = '⏸ ŁADOWANIE...';
+  btn.disabled = true; btn.textContent = '⏸ ŁADOWANIE...';
   document.getElementById('vinyl').classList.add('spin');
   const d = dur();
-
   if (song.type === 'mp3') {
-    aud.src = G.mp3Blobs[song.id];
-    aud.currentTime = 0;
+    aud.src = G.mp3Blobs[song.id]; aud.currentTime = 0;
     aud.play().catch(() => { showToast('Błąd odtwarzania MP3', true); stopPlay(); });
-    // MP3 startuje natychmiast
     onPlayStarted(d);
   } else {
-    // SC — timer startuje po faktycznym PLAY evencie
-    playSC(song.src, () => {
-      if (!G.playing) return; // użytkownik zdążył zatrzymać
-      onPlayStarted(d);
-    });
+    playSC(song.src, () => { if (!G.playing) return; onPlayStarted(d); });
   }
 }
 
 function onPlayStarted(d) {
   const btn = document.getElementById('playbtn');
   btn.textContent = '⏸ GRANIE...';
-  setWave(true);
-  animBar(d);
+  setWave(true); animBar(d);
   clearTimeout(G.playTimer);
   G.playTimer = setTimeout(stopPlay, d * 1000 + 150);
 }
 
 function stopPlay() {
-  if (!G.playing) return; // już zatrzymane
+  if (!G.playing) return;
   G.playing = false;
-  clearTimeout(G.playTimer);
-  G.playTimer = null;
-
-  // Zatrzymaj audio
+  clearTimeout(G.playTimer); G.playTimer = null;
   try { aud.pause(); } catch(e) {}
   pauseSC();
-
   document.getElementById('vinyl').classList.remove('spin');
   setWave(false);
-
   const d = dur();
   const btn = document.getElementById('playbtn');
   btn.disabled = false;
   btn.textContent = '▶ ZAGRAJ PONOWNIE (' + d + 's)';
-
-  // Odblokuj wyszukiwanie i potwierdzenie
   document.getElementById('srch').disabled = false;
   document.getElementById('bconf').disabled = false;
 }
 
 function animBar(d) {
   const b = document.getElementById('durbar');
-  b.style.transition = 'none';
-  b.style.width = '0%';
+  b.style.transition = 'none'; b.style.width = '0%';
   requestAnimationFrame(() => requestAnimationFrame(() => {
-    b.style.transition = 'width ' + d + 's linear';
-    b.style.width = '100%';
+    b.style.transition = 'width ' + d + 's linear'; b.style.width = '100%';
   }));
 }
 
@@ -659,9 +717,7 @@ function setWave(on) {
 // ══════════════════════════════════════
 //  GAME LOGIC
 // ══════════════════════════════════════
-function availableSongs() {
-  return G.songs.filter(s => s.type === 'sc' || G.mp3Blobs[s.id]);
-}
+function availableSongs() { return G.songs.filter(s => s.type === 'sc' || G.mp3Blobs[s.id]); }
 function pickSong() {
   let pool = availableSongs().filter(s => !G.played.has(s.id));
   if (!pool.length) { G.played.clear(); pool = availableSongs(); }
@@ -670,21 +726,17 @@ function pickSong() {
 }
 
 function startGame() {
-  // Zatrzymaj poprzednie odtwarzanie i wyczyść SC widget
-  clearTimeout(G.playTimer);
-  G.playTimer = null;
-  G.playing = false;
+  clearTimeout(G.playTimer); G.playTimer = null; G.playing = false;
   try { aud.pause(); } catch(e) {}
-  stopSCFully(); // przy zmianie piosenki zawsze pełny reset
+  stopSCFully();
 
   G.current = pickSong();
   if (!G.current) { renderEmpty(); return; }
   G.played.add(G.current.id);
-  G.attempt = 0; G.results = []; G.gameOver = false; G.guess = null;
+  G.attempt = 0; G.results = []; G.guessLog = []; G.gameOver = false; G.guess = null;
 
   const btn = document.getElementById('playbtn');
-  btn.textContent = '▶ GRAJ FRAGMENT';
-  btn.disabled = false;
+  btn.textContent = '▶ GRAJ FRAGMENT'; btn.disabled = false;
   document.getElementById('srch').value = '';
   document.getElementById('srch').disabled = true;
   document.getElementById('bconf').disabled = true;
@@ -692,11 +744,11 @@ function startGame() {
   document.getElementById('durbar').style.width = '0%';
   document.getElementById('res-area').style.display = 'none';
   document.getElementById('game-area').style.display = 'block';
+  document.getElementById('guesses-wrap').style.display = 'none';
+  document.getElementById('guesses-body').innerHTML = '';
   setWave(false);
   document.getElementById('vinyl').classList.remove('spin');
   renderDots(); renderClue();
-
-  // Preload SC widget w tle
   if (G.current.type === 'sc') preloadSC(G.current.src);
 }
 
@@ -735,6 +787,70 @@ function renderClue() {
 
 function initials(n) { return n.split(' ').map(w => w[0] || '').join('').toUpperCase(); }
 
+// ── TABELKA PRÓB ──────────────────────────────────
+function addGuessRow(logEntry, rowNum) {
+  const wrap = document.getElementById('guesses-wrap');
+  const tbody = document.getElementById('guesses-body');
+  wrap.style.display = 'block';
+
+  const tr = document.createElement('tr');
+
+  if (logEntry.type === 'skip') {
+    tr.className = 'gt-skip-row';
+    tr.innerHTML = `
+      <td class="gt-num">${rowNum}</td>
+      <td class="gt-icon">—</td>
+      <td colspan="2" style="color:var(--text3);font-style:italic">Pominięto</td>
+    `;
+  } else {
+    const isHit = logEntry.result === 'hit';
+    const isMiss = logEntry.result === 'miss';
+    tr.className = 'gt-row';
+    tr.innerHTML = `
+      <td class="gt-num">${rowNum}</td>
+      <td class="gt-icon">${isHit ? '✅' : '❌'}</td>
+      <td>
+        <div class="gt-title">${logEntry.song.title}</div>
+        <div class="gt-artist">${logEntry.song.artist}</div>
+      </td>
+      <td class="gt-status ${isHit ? 'hit' : 'miss'}">${isHit ? 'TRAFIONE' : 'PUDŁO'}</td>
+    `;
+  }
+  tbody.appendChild(tr);
+}
+
+function renderGuessTable() {
+  // Pełny przerysuj (używany w renderResult do wbudowania w wynik)
+  if (!G.guessLog.length) return '';
+  const rows = G.guessLog.map((entry, i) => {
+    if (entry.type === 'skip') {
+      return `<tr class="gt-skip-row">
+        <td class="gt-num">${i + 1}</td>
+        <td class="gt-icon">—</td>
+        <td colspan="2" style="color:var(--text3);font-style:italic">Pominięto</td>
+      </tr>`;
+    }
+    const isHit = entry.result === 'hit';
+    return `<tr class="gt-row">
+      <td class="gt-num">${i + 1}</td>
+      <td class="gt-icon">${isHit ? '✅' : '❌'}</td>
+      <td>
+        <div class="gt-title">${entry.song.title}</div>
+        <div class="gt-artist">${entry.song.artist}</div>
+      </td>
+      <td class="gt-status ${isHit ? 'hit' : 'miss'}">${isHit ? 'TRAFIONE' : 'PUDŁO'}</td>
+    </tr>`;
+  }).join('');
+  return `
+    <div class="res-guesses">
+      <div class="res-guesses-title">TWOJE PRÓBY</div>
+      <table class="guesses-table" style="width:100%">
+        <tbody>${rows}</tbody>
+      </table>
+    </div>`;
+}
+
+// ── SEARCH / SELECT ────────────────────────────────
 function onSearch(val) {
   G.guess = null;
   const dd = document.getElementById('dd');
@@ -756,8 +872,9 @@ function onKey(e) { if (e.key === 'Enter') doConfirm(); }
 
 function doSkip() {
   if (G.gameOver) return;
-  // Jeśli gra, zatrzymaj — ale nie blokuj skipowania
   if (G.playing) stopPlay();
+  G.guessLog.push({ type: 'skip', result: 'skip' });
+  addGuessRow({ type: 'skip' }, G.guessLog.length);
   G.results[G.attempt] = 'skp'; G.attempt++;
   renderDots(); renderClue();
   checkEnd(false);
@@ -766,14 +883,16 @@ function doSkip() {
 function doConfirm() {
   if (G.gameOver || !G.guess) {
     if (!G.guess) {
-      document.getElementById('srch').style.outline = '2px solid var(--red)';
+      document.getElementById('srch').style.outline = '2px solid var(--col-miss)';
       setTimeout(() => document.getElementById('srch').style.outline = '', 700);
     }
     return;
   }
-  // Zatrzymaj jeśli gra
   if (G.playing) stopPlay();
   const ok = G.guess.id === G.current.id;
+  const logEntry = { type: 'guess', song: { title: G.guess.title, artist: G.guess.artist }, result: ok ? 'hit' : 'miss' };
+  G.guessLog.push(logEntry);
+  addGuessRow(logEntry, G.guessLog.length);
   G.results[G.attempt] = ok ? 'hit' : 'mis'; G.attempt++;
   renderDots(); renderClue();
   document.getElementById('srch').value = ''; G.guess = null;
@@ -783,10 +902,8 @@ function doConfirm() {
 
 function checkEnd(ok) {
   if (!ok && G.attempt < G.maxAttempts) {
-    // Ustaw tekst przycisku z nową długością fragmentu
     const d = dur();
     document.getElementById('playbtn').textContent = '▶ ZAGRAJ PONOWNIE (' + d + 's)';
-    // Zablokuj wyszukiwanie aż do następnego odtworzenia
     document.getElementById('srch').disabled = true;
     document.getElementById('srch').value = '';
     document.getElementById('bconf').disabled = true;
@@ -806,17 +923,21 @@ function checkEnd(ok) {
 
 function renderResult(ok) {
   stopPlay();
+  // Ukryj tabelkę prób nad bieżącą grą — pojawi się wbudowana w wynik
+  document.getElementById('guesses-wrap').style.display = 'none';
   document.getElementById('game-area').style.display = 'none';
   const r = document.getElementById('res-area'); r.style.display = 'block';
   const pts = G.history[0]?.pts || 0;
-  r.innerHTML = `<div class="rescard">
-    <div class="resi">${ok ? '🏆' : '💀'}</div>
-    <div class="ress ${ok ? 'win' : 'lose'}">${ok ? 'TRAFIONY!' : 'MISS!'}</div>
-    <div class="rest">${G.current.title}</div>
-    <div class="resa">${G.current.artist} · ${G.current.year}</div>
-    <div class="resp">${ok ? '+' + pts + ' punktów &nbsp;|&nbsp; ' : ''} Próba ${G.attempt}</div>
-  </div>
-  <button class="bnext" onclick="startGame()">NASTĘPNA PIOSENKA →</button>`;
+  r.innerHTML = `
+    <div class="rescard">
+      <div class="resi">${ok ? '🏆' : '💀'}</div>
+      <div class="ress ${ok ? 'win' : 'lose'}">${ok ? 'TRAFIONY!' : 'MISS!'}</div>
+      <div class="rest">${G.current.title}</div>
+      <div class="resa">${G.current.artist} · ${G.current.year}</div>
+      <div class="resp">${ok ? '+' + pts + ' punktów &nbsp;|&nbsp; ' : ''}Próba ${G.attempt}</div>
+    </div>
+    ${renderGuessTable()}
+    <button class="bnext" onclick="startGame()">NASTĘPNA PIOSENKA →</button>`;
 }
 
 function setMode(m, el) {
@@ -839,9 +960,7 @@ function swTab(tab, el) {
 function swTabDirect(tab) {
   curTab = tab;
   ['lista', 'mp3', 'sc'].forEach(t => { document.getElementById('tab-' + t).style.display = t === tab ? 'block' : 'none'; });
-  document.querySelectorAll('.atb').forEach((b, i) => {
-    b.classList.toggle('on', ['lista', 'mp3', 'sc'][i] === tab);
-  });
+  document.querySelectorAll('.atb').forEach((b, i) => { b.classList.toggle('on', ['lista', 'mp3', 'sc'][i] === tab); });
   renderAdmTab(tab);
 }
 function renderAdmTab(tab) {
@@ -895,7 +1014,7 @@ function delSong(id) {
   saveSongs(); renderLista(); showToast('Usunięto');
 }
 function clearAll() {
-  if (!confirm('Usunąć piosenki dodane ręcznie (MP3/SC)?\nPiosenki z bazy songs.js pozostaną.')) return;
+  if (!confirm('Usunąć piosenki dodane ręcznie?\nPiosenki z bazy songs.js pozostaną.')) return;
   const dbIds = new Set((window.SONGS_DB || []).map(s => s.id));
   G.songs.filter(s => !dbIds.has(s.id)).forEach(s => {
     if (G.mp3Blobs[s.id]) { URL.revokeObjectURL(G.mp3Blobs[s.id]); delete G.mp3Blobs[s.id]; }
@@ -922,8 +1041,7 @@ function renderMP3Tab() {
     <div id="mp3-queue"></div>
     <button class="btnq" id="btnq" style="display:none" onclick="saveMP3Queue()">✓ ZAPISZ WSZYSTKIE DO GRY</button>
     <div style="font-size:11px;color:var(--text3);margin-top:8px;line-height:1.7">
-      ⚠ Pliki MP3 są przechowywane tylko w tej sesji przeglądarki.<br>
-      Po zamknięciu karty trzeba wgrać je ponownie.
+      ⚠ Pliki MP3 są przechowywane tylko w tej sesji przeglądarki.<br>Po zamknięciu karty trzeba wgrać je ponownie.
     </div>
   `;
   renderMP3Queue();
@@ -980,8 +1098,10 @@ function saveMP3Queue() {
 function renderSCTab() {
   document.getElementById('tab-sc').innerHTML = `
     <div class="scform">
-      <div class="frow"><div class="fg"><label>Tytuł *</label><input id="sc-title" type="text" placeholder="np. HUMBLE."/></div>
-      <div class="fg"><label>Artysta *</label><input id="sc-artist" type="text" placeholder="np. Kendrick Lamar"/></div></div>
+      <div class="frow">
+        <div class="fg"><label>Tytuł *</label><input id="sc-title" type="text" placeholder="np. HUMBLE."/></div>
+        <div class="fg"><label>Artysta *</label><input id="sc-artist" type="text" placeholder="np. Kendrick Lamar"/></div>
+      </div>
       <div class="frow"><div class="fg"><label>Rok</label><input id="sc-year" type="number" placeholder="${new Date().getFullYear()}"/></div></div>
       <div class="frow full"><div class="fg"><label>Link SoundCloud *</label>
         <input id="sc-src" type="text" placeholder="https://soundcloud.com/artysta/tytul-piosenki"/>
@@ -1035,7 +1155,7 @@ function renderStatsPanel() {
       <div class="sbox"><div class="v">${pct}%</div><div class="l">Trafność</div></div>
     </div>
     <div style="font-size:12px;color:var(--text3);text-align:center;padding:10px 0 14px">
-      Najdłuższa seria: <span style="color:var(--gold);font-weight:700">${bestStreak}</span>
+      Najdłuższa seria: <span style="color:var(--accent);font-weight:700">${bestStreak}</span>
     </div>
     <div style="font-size:13px;font-weight:700;color:var(--text2);margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--border)">
       HISTORIA OSTATNICH RUND
