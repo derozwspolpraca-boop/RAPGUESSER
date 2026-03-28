@@ -26,9 +26,7 @@ window.ALBUMS_DB = [
       { id: "ZL5_12", title: "PENTHOUSE 2", artist: "Sentino, Koneser, BNP", year: 2026, type: "sc", src: "https://soundcloud.com/karzeu/sentino-x-koneser-penthouse-1" },
       { id: "ZL5_13", title: "OSTATNI RAZ", artist: "Sentino, BNP, Kaz Bałagane", year: 2026, type: "sc", src: "https://soundcloud.com/juzekkk/ostatni-raz-sentino" },
       { id: "ZL5_14", title: "NO I CO", artist: "Sentino, Koneser, BNP", year: 2026, type: "sc", src: "https://soundcloud.com/juzekkk/no-i-co-sentino" },
-      
-      
-  },
+     ],
   // ────────────────────────────────────────────────────
   // SZABLON — skopiuj i wypełnij:
   // {
@@ -44,4 +42,4 @@ window.ALBUMS_DB = [
   //   ]
   // },
   // ────────────────────────────────────────────────────
-];
+  };
