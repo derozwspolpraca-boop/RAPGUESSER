@@ -119,129 +119,129 @@ const SONGS_DB = [
   },
   
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0010',
+    title: 'Jestem Śliczny',
+    artist: 'Rusina',
+    year: 2022,
     type: 'sc',
-    src: ''
+    src: 'https://soundcloud.com/yilzwbakltwt/rusina-jestem-sliczny'
   },
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0011',
+    title: 'Half Dead',
+    artist: 'Quebonafide, ReTo',
+    year: 2017,
     type: 'sc',
-    src: ''
+    src: 'https://soundcloud.com/user-250223982/quebonafide-ft-reto-half-dead'
   },
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0012',
+    title: 'Jedno Życiehttps://soundcloud.com/pozdroigi/young-igi-thc-ftwlodi-prod-shad0w-x-hubi',
+    artist: 'Blacha',
+    year: 2020,
     type: 'sc',
-    src: ''
+    src: 'https://soundcloud.com/user-496883271/blacha-jedno-zycie'
   },
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0013',
+    title: 'THC',
+    artist: 'Young Igi, Włodi',
+    year: 2019,
     type: 'sc',
-    src: ''
+    src: 'https://soundcloud.com/pozdroigi/young-igi-thc-ftwlodi-prod-shad0w-x-hubi'
   },
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0014',
+    title: 'Bad Boy',
+    artist: 'Kubi Producent, Beteo, ReTo, Siles',
+    year: 2018,
     type: 'sc',
-    src: ''
+    src: 'https://soundcloud.com/pmhcqz8ersxj/kubi-producent-bad-boy-ft-beteo-reto-siles-1'
   },
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0015',
+    title: 'bb',
+    artist: 'Zeamsone',
+    year: 2018,
     type: 'sc',
-    src: ''
+    src: 'https://soundcloud.com/pawelekhehe/zeamsone-bb'
   },
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0016',
+    title: 'Zimna noc i szybkie auta',
+    artist: 'SB Maffija',
+    year: 2020,
     type: 'sc',
-    src: ''
+    src: 'https://soundcloud.com/user-482107184-920513649/zimna-noc-i-szybki'
   },
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0017',
+    title: 'BIERNIK ( Kogo ? Co ?)',
+    artist: 'Dj Decks, WoLa, Mata',
+    year: 2022,
     type: 'sc',
-    src: ''
+    src: 'https://soundcloud.com/julia-wolna-574827105/dj-decks-mata-wola-biernik'
   },
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0018',
+    title: '300 BANIEK',
+    artist: 'Otsochodzi, OKI',
+    year: 2025,
     type: 'sc',
-    src: ''
+    src: 'https://soundcloud.com/fifi-54979647/otsochodzi-x-oki-300-baniek'
   },
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0019',
+    title: 'WRAK',
+    artist: 'OKI',
+    year: 2024,
     type: 'sc',
-    src: ''
+    src: 'https://soundcloud.com/wiktor122/oki-wrak'
   },
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0020',
+    title: 'WODA SODOWA',
+    artist: 'OKI',
+    year: 2024,
     type: 'sc',
-    src: ''
+    src: 'https://soundcloud.com/wiktor122/oki-woda-sodowa'
+  },
+https://soundcloud.com/wiktor122/young-igi-ma-e-krople-1?in=wiktor122/sets/young-igi-notatki-z-marginesu
+  {
+    id: 'sc_0021',
+    title: 'GUGU X 2115',
+    artist: '2115, Szpaku, Chivas',
+    year: 2022,
+    type: 'sc',
+    src: 'https://soundcloud.com/wiktor122/2115-gugu-x-2115-ft-szpaku-chivas'
   },
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0022',
+    title: 'TERAZ ALBO NIGDY',
+    artist: '2115, Young Multi,',
+    year: 2022,
     type: 'sc',
-    src: ''
+    src: 'https://soundcloud.com/wiktor122/2115-teraz-albo-nigdy-ft-young-multi'
   },
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0023',
+    title: 'Małe Krople',
+    artist: 'Young Igi',
+    year: 2022,
     type: 'sc',
-    src: ''
-  },
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    src: 'https://soundcloud.com/wiktor122/young-igi-ma-e-krople-1'
   },
 
   {
