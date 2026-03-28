@@ -219,15 +219,6 @@ const SONGS_DB = [
 
   {
     id: 'sc_0021',
-    title: 'GUGU X 2115',
-    artist: '2115, Szpaku, Chivas',
-    year: 2022,
-    type: 'sc',
-    src: 'https://soundcloud.com/wiktor122/2115-gugu-x-2115-ft-szpaku-chivas'
-  },
-
-  {
-    id: 'sc_0022',
     title: 'TERAZ ALBO NIGDY',
     artist: '2115, Young Multi,',
     year: 2022,
@@ -236,7 +227,7 @@ const SONGS_DB = [
   },
 
   {
-    id: 'sc_0023',
+    id: 'sc_0022',
     title: 'Małe Krople',
     artist: 'Young Igi',
     year: 2022,
