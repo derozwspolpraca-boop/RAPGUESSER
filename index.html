@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>RAPGUESSER 2</title>
+<title>RAPGUESSER</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -18,10 +18,8 @@
 html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--s1)}::-webkit-scrollbar-thumb{background:var(--gold2);border-radius:3px}
 
-/* LAYOUT */
 #app{max-width:680px;margin:0 auto;padding:0 14px;display:flex;flex-direction:column;min-height:100vh}
 
-/* HEADER */
 .header{display:flex;align-items:center;justify-content:space-between;padding:18px 0 12px;border-bottom:1px solid var(--border)}
 .logo{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:2px;color:var(--gold);line-height:1}
 .logo small{display:block;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:4px;color:var(--text3);font-weight:600}
@@ -29,33 +27,28 @@ html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);c
 .hbtn{background:var(--s2);border:1px solid var(--border);border-radius:8px;padding:7px 11px;cursor:pointer;color:var(--text2);font-size:13px;font-weight:600;transition:all .2s;font-family:'Barlow',sans-serif}
 .hbtn:hover{border-color:var(--gold);color:var(--gold)}
 
-/* SCORES */
 .scorebar{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px 0}
 .sc{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:9px;text-align:center}
 .sc .v{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--gold);line-height:1.1}
 .sc .l{font-size:11px;color:var(--text3);letter-spacing:1px;text-transform:uppercase;margin-top:2px}
 
-/* MODE TABS */
 .mtabs{display:flex;gap:3px;background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:3px;margin-bottom:14px}
 .mt{flex:1;padding:8px 4px;border:none;background:transparent;color:var(--text2);font-size:11px;font-weight:700;cursor:pointer;border-radius:7px;transition:all .2s;font-family:'Barlow',sans-serif;text-align:center;line-height:1.3}
 .mt.on{background:var(--gold);color:#000}
 .mt:hover:not(.on){color:var(--text)}
 
-/* VINYL */
 .vinyl-wrap{display:flex;justify-content:center;padding:16px 0 8px;position:relative}
 .vinyl{width:126px;height:126px;border-radius:50%;background:conic-gradient(from 0deg,#111 0%,#1a1a1a 15%,#ffffff 17%,#1a1a1a 19%,#111 35%,#cccccc 50%,#111 52%,#1a1a1a 75%,#333 90%,#111 100%);box-shadow:0 0 0 3px #2a2a2a,0 0 0 6px #111,0 0 28px rgba(255,255,255,.18);position:relative;transition:all .3s}
 .vinyl.spin{animation:vspin 2.2s linear infinite}
 .vinyl::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:26px;height:26px;border-radius:50%;background:radial-gradient(circle,#ffffff,#aaaaaa);box-shadow:0 0 8px rgba(255,255,255,.5)}
 @keyframes vspin{to{transform:rotate(360deg)}}
 
-/* WAVEFORM */
 .wf{display:flex;align-items:flex-end;justify-content:center;gap:3px;height:36px;margin-bottom:10px;opacity:.35;transition:opacity .3s}
 .wf.on{opacity:1}
 .wb{width:4px;background:var(--gold);border-radius:2px 2px 0 0;height:4px;transition:height .08s}
 .wb.p{animation:wpulse .55s ease-in-out infinite}
 @keyframes wpulse{0%,100%{height:4px}50%{height:30px}}
 
-/* ATTEMPTS */
 .arow{display:flex;gap:6px;justify-content:center;margin:4px 0 12px}
 .ad{width:38px;height:38px;border-radius:8px;border:2px solid var(--s4);background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .3s;flex-shrink:0}
 .ad.cur{border-color:var(--gold);box-shadow:0 0 14px rgba(245,200,66,.3);animation:adglow 1.1s ease-in-out infinite}
@@ -64,22 +57,18 @@ html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);c
 .ad.skp{border-color:var(--text3);background:var(--s1)}
 @keyframes adglow{0%,100%{box-shadow:0 0 8px rgba(245,200,66,.2)}50%{box-shadow:0 0 20px rgba(245,200,66,.5)}}
 
-/* CLUE */
 .clue{background:var(--s2);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:0 var(--r) var(--r) 0;padding:9px 13px;font-size:13px;color:var(--text2);margin-bottom:11px;min-height:38px}
 .clue strong{color:var(--gold)}
 
-/* PLAY BTN */
 .playbtn{width:100%;padding:14px;background:var(--gold);border:none;border-radius:var(--r);font-family:'Bebas Neue',sans-serif;font-size:21px;letter-spacing:2px;color:#000;cursor:pointer;transition:all .2s;margin-bottom:5px;position:relative;overflow:hidden}
 .playbtn:after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.14) 0%,transparent 55%)}
 .playbtn:hover{background:#ffe566;transform:translateY(-1px);box-shadow:0 6px 22px rgba(245,200,66,.3)}
 .playbtn:active{transform:none}
 .playbtn:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none}
 
-/* DUR BAR */
 .durbar{background:var(--s3);border-radius:3px;height:4px;margin:0 0 13px;overflow:hidden}
 .durfill{height:100%;background:linear-gradient(90deg,var(--gold2),var(--gold));width:0%;border-radius:3px}
 
-/* SEARCH */
 .srchwrap{position:relative;margin-bottom:9px}
 .srchinp{width:100%;padding:12px 15px;background:var(--s2);border:1.5px solid var(--border);border-radius:var(--r);color:var(--text);font-size:14px;font-family:'Barlow',sans-serif;outline:none;transition:border-color .2s}
 .srchinp:focus{border-color:var(--gold2)}
@@ -93,7 +82,6 @@ html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);c
 .di .dt{font-size:14px;font-weight:600}
 .di .da{font-size:12px;color:var(--text2);margin-top:1px}
 
-/* ACTION ROW */
 .actrow{display:flex;gap:8px;margin-bottom:16px}
 .bskip{flex:1;padding:11px;background:var(--s2);border:1.5px solid var(--border);border-radius:var(--r);color:var(--text2);font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Barlow',sans-serif}
 .bskip:hover{border-color:var(--text3);color:var(--text)}
@@ -101,7 +89,6 @@ html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);c
 .bconf:hover{background:var(--gold);color:#000}
 .bconf:disabled{opacity:.35;pointer-events:none}
 
-/* RESULT */
 .rescard{background:var(--s2);border:1px solid var(--border2);border-radius:14px;padding:22px;text-align:center;margin-bottom:12px;animation:fadeup .35s ease}
 @keyframes fadeup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 .resi{font-size:50px;margin-bottom:6px}
@@ -113,15 +100,10 @@ html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);c
 .bnext{width:100%;padding:13px;background:var(--gold);border:none;border-radius:var(--r);font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:#000;cursor:pointer;transition:all .2s}
 .bnext:hover{background:#ffe566;box-shadow:0 4px 18px rgba(245,200,66,.3);transform:translateY(-1px)}
 
-/* EMPTY */
 .empty{text-align:center;padding:40px 20px;color:var(--text3)}
 .empty .ei{font-size:44px;margin-bottom:12px}
 .empty p{font-size:14px;line-height:1.7}
-.empty .eq{color:var(--gold);cursor:pointer;text-decoration:underline}
 
-/* ══════════════════════════════
-   MODAL HASŁA
-══════════════════════════════ */
 .pw-ov{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:600;display:flex;align-items:center;justify-content:center;padding:20px}
 .pw-ov.hidden{display:none}
 .pw-box{background:var(--s1);border:1px solid var(--border2);border-radius:18px;padding:36px 32px;width:100%;max-width:360px;text-align:center;animation:fadeup .3s ease}
@@ -136,9 +118,6 @@ html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);c
 .pw-btn:hover{background:#ffe566;transform:translateY(-1px)}
 .pw-err{font-size:12px;color:var(--red);height:18px;margin-top:4px;transition:opacity .2s}
 
-/* ══════════════════════════════
-   PANEL STATYSTYK UŻYTKOWNIKA
-══════════════════════════════ */
 .stats-ov{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:500;display:none;overflow-y:auto}
 .stats-ov.open{display:block}
 .stats-panel{max-width:680px;margin:0 auto;background:var(--s1);min-height:100vh;padding:18px 16px}
@@ -146,9 +125,6 @@ html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);c
 .stats-title{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--gold);letter-spacing:2px}
 .stats-note{font-size:11px;color:var(--text3);line-height:1.6;text-align:center;padding:8px 0 14px;border-bottom:1px solid var(--border);margin-bottom:16px}
 
-/* ══════════════════════════════
-   ADMIN PANEL
-══════════════════════════════ */
 .adm-ov{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:500;display:none;overflow-y:auto}
 .adm-ov.open{display:block}
 .adm-panel{max-width:720px;margin:0 auto;background:var(--s1);min-height:100vh;padding:18px 16px}
@@ -161,7 +137,6 @@ html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);c
 .atb{flex:1;padding:8px 4px;border:none;background:transparent;color:var(--text2);font-size:12px;font-weight:700;cursor:pointer;border-radius:7px;transition:all .2s;font-family:'Barlow',sans-serif}
 .atb.on{background:var(--gold);color:#000}
 
-/* DRAG DROP ZONE */
 .dropzone{border:2px dashed var(--border2);border-radius:14px;padding:32px 20px;text-align:center;transition:all .3s;cursor:pointer;margin-bottom:14px;position:relative}
 .dropzone.over{border-color:var(--gold);background:rgba(245,200,66,.05);transform:scale(1.01)}
 .dropzone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
@@ -169,7 +144,6 @@ html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);c
 .dropzone .di-title{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px;color:var(--gold);margin-bottom:4px}
 .dropzone .di-sub{font-size:12px;color:var(--text3);line-height:1.6}
 
-/* MP3 QUEUE */
 .mp3q{display:flex;flex-direction:column;gap:5px;max-height:260px;overflow-y:auto;margin-bottom:12px}
 .mp3item{background:var(--s2);border:1px solid var(--border);border-radius:8px;padding:9px 12px;display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}
 .mp3item input{background:var(--s3);border:1px solid var(--border);border-radius:6px;padding:5px 8px;color:var(--text);font-size:12px;font-family:'Barlow',sans-serif;outline:none;width:100%}
@@ -182,7 +156,6 @@ html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);c
 .btnq{width:100%;padding:11px;background:var(--gold);border:none;border-radius:8px;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:1px;color:#000;cursor:pointer;transition:all .2s}
 .btnq:hover{background:#ffe566}
 
-/* SC FORM */
 .scform{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:14px;margin-bottom:12px}
 .frow{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:9px}
 .frow.full{grid-template-columns:1fr}
@@ -194,7 +167,6 @@ html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);c
 .btnadd:hover{background:#ffe566}
 .sc-hint{font-size:11px;color:var(--text3);line-height:1.7;padding:6px 0}
 
-/* SONGS LIST */
 .slist{display:flex;flex-direction:column;gap:5px;max-height:420px;overflow-y:auto;padding-right:3px}
 .sitem{background:var(--s2);border:1px solid var(--border);border-radius:8px;padding:9px 12px;display:flex;align-items:center;gap:9px}
 .si-n{font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--text3);width:26px;flex-shrink:0;text-align:right}
@@ -208,7 +180,6 @@ html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);c
 .sdel{background:none;border:none;color:var(--text3);cursor:pointer;font-size:15px;padding:3px;transition:color .2s;flex-shrink:0}
 .sdel:hover{color:var(--red)}
 
-/* STATS & HISTORY */
 .sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
 .sbox{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:12px;text-align:center}
 .sbox .v{font-family:'Bebas Neue',sans-serif;font-size:30px;color:var(--gold)}
@@ -229,7 +200,6 @@ html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);c
 .butil:hover{background:var(--s4)}
 .butil.danger{border-color:rgba(255,63,63,.35);color:var(--red)}
 
-/* DB INFO BOX */
 .db-info{background:rgba(79,195,247,.07);border:1px solid rgba(79,195,247,.2);border-radius:var(--r);padding:12px 14px;font-size:12px;color:var(--blue);line-height:1.7;margin-bottom:14px}
 .db-info strong{color:var(--blue)}
 
@@ -246,8 +216,8 @@ footer{text-align:center;padding:18px 0;color:var(--text3);font-size:11px;border
   <div class="header">
     <div class="logo">RAPGUESSER<small>HIP-HOP</small></div>
     <div class="hbtns">
-      <button class="hbtn" onclick="tryOpenAdmin('lista')">⚙ ADMIN</button>
-      <button class="hbtn" onclick="openStats()">📊 STATYSTYKI</button>
+      <button class="hbtn" onclick="tryOpenAdmin('lista')">LOGOWANIE</button>
+      <button class="hbtn" onclick="openStats()">STATYSTYKI</button>
     </div>
   </div>
 
@@ -293,10 +263,9 @@ footer{text-align:center;padding:18px 0;color:var(--text3);font-size:11px;border
   <footer>RAPGUESSER — 2026</footer>
 </div>
 
-<!-- hidden audio -->
 <audio id="aud" preload="auto"></audio>
 
-<!-- ══════ MODAL HASŁA ══════ -->
+<!-- MODAL HASŁA -->
 <div class="pw-ov hidden" id="pw-modal">
   <div class="pw-box">
     <div class="pw-icon">🔒</div>
@@ -309,11 +278,11 @@ footer{text-align:center;padding:18px 0;color:var(--text3);font-size:11px;border
   </div>
 </div>
 
-<!-- ══════ PANEL STATYSTYK ══════ -->
+<!-- PANEL STATYSTYK -->
 <div class="stats-ov" id="stats-panel">
   <div class="stats-panel">
     <div class="stats-hdr">
-      <div class="stats-title">📊 TWOJE STATYSTYKI</div>
+      <div class="stats-title">TWOJE STATYSTYKI</div>
       <button class="cbtn" onclick="closeStats()">✕ ZAMKNIJ</button>
     </div>
     <div class="stats-note">
@@ -323,7 +292,7 @@ footer{text-align:center;padding:18px 0;color:var(--text3);font-size:11px;border
   </div>
 </div>
 
-<!-- ══════ ADMIN PANEL ══════ -->
+<!-- ADMIN PANEL -->
 <div class="adm-ov" id="adm">
   <div class="adm-panel">
     <div class="adm-hdr">
@@ -343,34 +312,26 @@ footer{text-align:center;padding:18px 0;color:var(--text3);font-size:11px;border
 
 <div class="toast" id="toast"></div>
 
-<!-- Zewnętrzna baza piosenek -->
 <script src="songs.js"></script>
 
 <script>
 // ══════════════════════════════════════
 //  HASŁO ADMINA
-//  ⚠ ZMIEŃ TO HASŁO NA SWOJE!
 // ══════════════════════════════════════
 const ADMIN_PASSWORD = 'Pijeciejaksok';
-
-// Klucz sesji — zalogowanie trzymane do zamknięcia karty
 const SESSION_KEY = 'rg_admin_auth';
 let adminUnlocked = sessionStorage.getItem(SESSION_KEY) === '1';
 let pendingAdminTab = 'lista';
 
 function tryOpenAdmin(tab) {
   pendingAdminTab = tab || 'lista';
-  if (adminUnlocked) {
-    openAdmin(pendingAdminTab);
-  } else {
-    document.getElementById('pw-inp').value = '';
-    document.getElementById('pw-err').textContent = '\u00a0';
-    document.getElementById('pw-inp').classList.remove('err');
-    document.getElementById('pw-modal').classList.remove('hidden');
-    setTimeout(() => document.getElementById('pw-inp').focus(), 80);
-  }
+  if (adminUnlocked) { openAdmin(pendingAdminTab); return; }
+  document.getElementById('pw-inp').value = '';
+  document.getElementById('pw-err').textContent = '\u00a0';
+  document.getElementById('pw-inp').classList.remove('err');
+  document.getElementById('pw-modal').classList.remove('hidden');
+  setTimeout(() => document.getElementById('pw-inp').focus(), 80);
 }
-
 function checkPw() {
   const val = document.getElementById('pw-inp').value;
   if (val === ADMIN_PASSWORD) {
@@ -387,8 +348,6 @@ function checkPw() {
     inp.focus();
   }
 }
-
-// Zamknij modal hasła klikając poza nim
 document.getElementById('pw-modal').addEventListener('click', function(e) {
   if (e.target === this) this.classList.add('hidden');
 });
@@ -396,459 +355,508 @@ document.getElementById('pw-modal').addEventListener('click', function(e) {
 // ══════════════════════════════════════
 //  STATE
 // ══════════════════════════════════════
-const DURS = [0.5,1,2,4,7,11];
+const DURS = [0.5, 1, 2, 4, 7, 11];
 let G = {
-  songs:[],
-  mp3Blobs:{},
-  current:null,
-  attempt:0,maxAttempts:6,results:[],
-  score:0,streak:0,total:0,
-  gameOver:false,playing:false,guess:null,
-  played:new Set(),history:[],mode:'classic',
-  playTimer:null,
-  mp3Queue:[],
+  songs: [], mp3Blobs: {}, current: null,
+  attempt: 0, maxAttempts: 6, results: [],
+  score: 0, streak: 0, total: 0,
+  gameOver: false, playing: false, guess: null,
+  played: new Set(), history: [], mode: 'classic',
+  playTimer: null, mp3Queue: [],
 };
 
-function dur(){return DURS[Math.min(G.attempt,DURS.length-1)];}
+function dur() { return DURS[Math.min(G.attempt, DURS.length - 1)]; }
 
 // ══════════════════════════════════════
 //  ŁADOWANIE BAZY Z songs.js
 // ══════════════════════════════════════
 function loadSongsDB() {
   if (typeof window.SONGS_DB !== 'undefined' && Array.isArray(window.SONGS_DB)) {
-    // Dodaj piosenki z bazy (unikaj duplikatów po id)
     const existingIds = new Set(G.songs.map(s => s.id));
     let added = 0;
     window.SONGS_DB.forEach(song => {
-      if (!existingIds.has(song.id)) {
-        G.songs.push(song);
-        existingIds.add(song.id);
-        added++;
-      }
+      if (!existingIds.has(song.id)) { G.songs.push(song); existingIds.add(song.id); added++; }
     });
-    if (added > 0) {
-      console.log('[RAPGUESSER] Załadowano ' + added + ' piosenek z songs.js');
-    }
+    if (added > 0) console.log('[RAPGUESSER] Załadowano ' + added + ' piosenek z songs.js');
   } else {
-    console.warn('[RAPGUESSER] Brak pliku songs.js lub pusta baza. Dodaj piosenki w songs.js!');
+    console.warn('[RAPGUESSER] Brak pliku songs.js lub pusta baza.');
   }
 }
 
 // ══════════════════════════════════════
 //  STORAGE
 // ══════════════════════════════════════
-function loadAll(){
-  try{
-    const s=localStorage.getItem('hq2_songs');
-    if(s) G.songs=JSON.parse(s);
-    const st=localStorage.getItem('hq2_stats');
-    if(st){const d=JSON.parse(st);G.score=d.s||0;G.streak=d.k||0;G.total=d.t||0;}
-    const h=localStorage.getItem('hq2_hist');
-    if(h) G.history=JSON.parse(h);
-  }catch(e){}
-  // Załaduj bazę z songs.js (zewnętrzny plik)
+function loadAll() {
+  try {
+    const s = localStorage.getItem('hq2_songs');
+    if (s) G.songs = JSON.parse(s);
+    const st = localStorage.getItem('hq2_stats');
+    if (st) { const d = JSON.parse(st); G.score = d.s || 0; G.streak = d.k || 0; G.total = d.t || 0; }
+    const h = localStorage.getItem('hq2_hist');
+    if (h) G.history = JSON.parse(h);
+  } catch(e) {}
   loadSongsDB();
   updateHUD();
 }
-function saveSongs(){
-  const toSave=G.songs.map(s=>({id:s.id,title:s.title,artist:s.artist,year:s.year,type:s.type,src:s.type==='sc'?s.src:'__local__'}));
-  try{localStorage.setItem('hq2_songs',JSON.stringify(toSave));}catch(e){showToast('Baza za duża dla localStorage – eksportuj JSON',true);}
-  document.getElementById('bcnt').textContent=G.songs.length;
+function saveSongs() {
+  const toSave = G.songs.map(s => ({ id: s.id, title: s.title, artist: s.artist, year: s.year, type: s.type, src: s.type === 'sc' ? s.src : '__local__' }));
+  try { localStorage.setItem('hq2_songs', JSON.stringify(toSave)); } catch(e) { showToast('Baza za duża dla localStorage', true); }
+  document.getElementById('bcnt').textContent = G.songs.length;
 }
-function saveStats(){
-  localStorage.setItem('hq2_stats',JSON.stringify({s:G.score,k:G.streak,t:G.total}));
-  localStorage.setItem('hq2_hist',JSON.stringify(G.history.slice(-100)));
+function saveStats() {
+  localStorage.setItem('hq2_stats', JSON.stringify({ s: G.score, k: G.streak, t: G.total }));
+  localStorage.setItem('hq2_hist', JSON.stringify(G.history.slice(-100)));
 }
-function updateHUD(){
-  document.getElementById('sc-pts').textContent=G.score;
-  document.getElementById('sc-str').textContent=G.streak;
-  document.getElementById('sc-tot').textContent=G.total;
-  document.getElementById('bcnt').textContent=G.songs.length;
+function updateHUD() {
+  document.getElementById('sc-pts').textContent = G.score;
+  document.getElementById('sc-str').textContent = G.streak;
+  document.getElementById('sc-tot').textContent = G.total;
+  document.getElementById('bcnt').textContent = G.songs.length;
 }
 
 // ══════════════════════════════════════
-//  AUDIO
+//  AUDIO — MP3
 // ══════════════════════════════════════
-const aud=document.getElementById('aud');
-
-function playFrag(){
-  if(G.gameOver||G.playing) return;
-  if(!G.current){showToast('Brak piosenek! Dodaj je w panelu admina',true);return;}
-  const song=G.current;
-  if(song.type==='mp3'&&!G.mp3Blobs[song.id]){
-    showToast('⚠ Ten plik MP3 nie jest dostępny w tej sesji. Wgraj go ponownie.',true);
-    return;
-  }
-  G.playing=true;
-  const btn=document.getElementById('playbtn');
-  btn.disabled=true; btn.textContent='⏸ GRANIE...';
-  document.getElementById('vinyl').classList.add('spin');
-  setWave(true);
-  const d=dur();
-  animBar(d);
-
-  if(song.type==='mp3'){
-    const blobUrl=G.mp3Blobs[song.id];
-    aud.src=blobUrl;
-    aud.currentTime=0;
-    aud.play().catch(e=>{showToast('Błąd odtwarzania MP3',true);stopPlay();});
-    // MP3 startuje natychmiast
-    btn.textContent='⏸ GRANIE...';
-    setWave(true);
-    animBar(d);
-    G.playTimer=setTimeout(stopPlay, d*1000+200);							   								 
-  } else {
-    // SC — timer i pasek startują dopiero gdy faktycznie zacznie grać
-    playSC(song.src, d, ()=>{
-      if(!G.playing) return; // użytkownik zdążył zatrzymać
-      btn.textContent='⏸ GRANIE...';
-      setWave(true);
-      animBar(d);
-      clearTimeout(G.playTimer);
-      G.playTimer=setTimeout(stopPlay, d*1000+200);
-    });
-  }
-  G.playTimer=setTimeout(stopPlay, d*1000+200);
-}
-
-function stopPlay(){
-  G.playing=false;
-  clearTimeout(G.playTimer);
-  aud.pause();
-  pauseSC();
-  document.getElementById('vinyl').classList.remove('spin');
-  setWave(false);
-  const d=dur();
-  const btn=document.getElementById('playbtn');
-  btn.disabled=false;
-  btn.textContent='▶ ZAGRAJ PONOWNIE ('+(d>=1?d+'s':d+'s')+')';
-  document.getElementById('srch').disabled=false;
-  document.getElementById('bconf').disabled=false;
-}
-
-function animBar(d){
-  const b=document.getElementById('durbar');
-  b.style.transition='none';b.style.width='0%';
-  requestAnimationFrame(()=>requestAnimationFrame(()=>{
-    b.style.transition='width '+d+'s linear';b.style.width='100%';
-  }));
-}
-
-function setWave(on){
-  const wf=document.getElementById('wf');
-  wf.classList.toggle('on',on);
-  document.querySelectorAll('.wb').forEach((b,i)=>{
-    if(on){b.classList.add('p');b.style.animationDelay=(i*0.06)+'s';}
-    else{b.classList.remove('p');b.style.height='4px';}
-  });
-}
+const aud = document.getElementById('aud');
 
 // ══════════════════════════════════════
 //  SOUNDCLOUD WIDGET
+//  NAPRAWIONE: osobny playToken zapobiega
+//  wyścigom między kolejnymi play()
 // ══════════════════════════════════════
-let scWidget=null;
-let scIframe=null;
-let scCurrentSrc=null;
-															
+let scWidget = null;
+let scIframe = null;
+let scLoadedSrc = null;   // src aktualnie załadowany w iframe
+let scReady = false;      // czy widget jest gotowy (READY event odpalił)
+let scPlayToken = 0;      // unikalny token dla każdego wywołania play — anuluje poprzednie callbacki
 
-function getSCIframe(){
-  if(!scIframe){
-    scIframe=document.createElement('iframe');
-    scIframe.id='sc-iframe';
-    scIframe.style.cssText='position:fixed;bottom:-9999px;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;border:none';
-    scIframe.allow='autoplay';
+function getSCIframe() {
+  if (!scIframe) {
+    scIframe = document.createElement('iframe');
+    scIframe.id = 'sc-iframe';
+    scIframe.style.cssText = 'position:fixed;bottom:-9999px;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;border:none';
+    scIframe.allow = 'autoplay';
     document.body.appendChild(scIframe);
   }
   return scIframe;
 }
 
-function loadSCApi(cb){
-  if(window.SC){cb();return;}
-  const s=document.createElement('script');
-  s.src='https://w.soundcloud.com/player/api.js';
-  s.onload=cb;
+function loadSCApi(cb) {
+  if (window.SC) { cb(); return; }
+  const s = document.createElement('script');
+  s.src = 'https://w.soundcloud.com/player/api.js';
+  s.onload = cb;
   document.head.appendChild(s);
 }
 
-														   
-// Preload — ładuje iframe w tle, cicho, auto_play=false
-// Wywołaj to zaraz po wybraniu piosenki żeby widget zdążył się załadować
-function preloadSC(src){
-  const iframe=getSCIframe();
-  scCurrentSrc=src;
-  scReady=false;
-  scWidget=null;
-  const embedUrl='https://w.soundcloud.com/player/?url='+encodeURIComponent(src)
-    +'&auto_play=false&buying=false&sharing=false&download=false'
-    +'&show_artwork=false&show_playcount=false&show_user=false&hide_related=true';
-  iframe.src=embedUrl;
-  loadSCApi(()=>{
-    // Poczekaj aż iframe się załaduje
-    const tryBind=()=>{
-      if(scCurrentSrc!==src) return;
-      try{
-        scWidget=window.SC.Widget(iframe);
-        scWidget.bind(window.SC.Widget.Events.READY,()=>{
-          if(scCurrentSrc===src) scReady=true;
+// Preload — ładuje widget w tle bez auto_play
+function preloadSC(src) {
+  if (scLoadedSrc === src && scReady) return; // już załadowany
+  const iframe = getSCIframe();
+  scLoadedSrc = src;
+  scReady = false;
+  scWidget = null;
+  scPlayToken++; // anuluj poprzednie
+
+  const embedUrl = 'https://w.soundcloud.com/player/?url=' + encodeURIComponent(src)
+    + '&auto_play=false&buying=false&sharing=false&download=false'
+    + '&show_artwork=false&show_playcount=false&show_user=false&hide_related=true';
+  iframe.src = embedUrl;
+
+  loadSCApi(() => {
+    const tryBind = () => {
+      if (scLoadedSrc !== src) return;
+      try {
+        scWidget = window.SC.Widget(iframe);
+        scWidget.bind(window.SC.Widget.Events.READY, () => {
+          if (scLoadedSrc === src) {
+            scReady = true;
+            console.log('[SC] Widget gotowy dla:', src);
+          }
         });
-      }catch(e){
-        setTimeout(tryBind, 300);
+      } catch(e) {
+        setTimeout(tryBind, 400);
       }
     };
-    setTimeout(tryBind, 500);
+    setTimeout(tryBind, 600);
   });
 }
-																				 
-function playSC(src, d){
-  const iframe=getSCIframe();
-				   
-				
-				
-  const embedUrl='https://w.soundcloud.com/player/?url='+encodeURIComponent(src)
-    +'&auto_play=true&buying=false&sharing=false&download=false'
-    +'&show_artwork=false&show_playcount=false&show_user=false&hide_related=true';
 
-  // Za każdym razem ładujemy świeży iframe z auto_play=true
-  // To omija problem z Widget API i działa niezawodnie
-  scWidget=null;
-  scCurrentSrc=src;
-  iframe.src='about:blank';
-										  
-														 
-											  
-		   
-				
-								 
-	   
-	  
-							 
-	 
- 
+// playSC — odtwarza piosenkę, woła onActualPlay gdy faktycznie zacznie grać
+function playSC(src, onActualPlay) {
+  const iframe = getSCIframe();
+  const token = ++scPlayToken; // unikalny token dla tego wywołania
 
-  setTimeout(()=>{
-    if(scCurrentSrc!==src) return; // piosenka już zmieniona
-    iframe.src=embedUrl;
+  const onPlay = () => {
+    if (scPlayToken !== token) return; // anulowane przez nowszy play
+    if (onActualPlay) onActualPlay();
+  };
 
-    // Równolegle ładujemy Widget API żeby móc zatrzymać
-    loadSCApi(()=>{
-							
-																		   
-						 
-													
-													  
-													  
-															  
-		 
-					  
-			
-																						   
-					
-					   
-																					
-																	
-																					  
-						  
-																				 
-      setTimeout(()=>{
-        if(!window.SC||scCurrentSrc!==src) return;
-        try{
-          scWidget=window.SC.Widget(iframe);
-        }catch(e){}
-      }, 2000);
-    });
-  }, 80);
-		   
+  if (scLoadedSrc === src && scReady && scWidget) {
+    // Widget gotowy — seekTo(0) i play
+    try {
+      scWidget.unbind(window.SC.Widget.Events.PLAY);
+      scWidget.seekTo(0);
+      scWidget.bind(window.SC.Widget.Events.PLAY, () => {
+        scWidget.unbind(window.SC.Widget.Events.PLAY);
+        onPlay();
+      });
+      scWidget.play();
+    } catch(e) {
+      console.warn('[SC] Błąd play na gotowym widgecie, fallback:', e);
+      fallbackSC(src, token, onActualPlay);
+    }
+  } else {
+    // Widget nie gotowy lub inny src — załaduj z auto_play=true
+    fallbackSC(src, token, onActualPlay);
+  }
 }
 
-function pauseSC(){
-						 
-  scCurrentSrc=null;
-  if(scWidget){try{scWidget.pause();}catch(e){}}
-  // Wyczyść iframe żeby na pewno zatrzymać dźwięk
-		
-													
-					   
-			   
-   
-  if(scIframe) scIframe.src='about:blank';
-  scWidget=null;
+function fallbackSC(src, token, onActualPlay) {
+  const iframe = getSCIframe();
+  scLoadedSrc = src;
+  scReady = false;
+  scWidget = null;
+
+  const embedUrl = 'https://w.soundcloud.com/player/?url=' + encodeURIComponent(src)
+    + '&auto_play=true&buying=false&sharing=false&download=false'
+    + '&show_artwork=false&show_playcount=false&show_user=false&hide_related=true';
+  iframe.src = embedUrl;
+
+  // Wiąż widget po załadowaniu i nasłuchuj PLAY event
+  loadSCApi(() => {
+    setTimeout(() => {
+      if (scPlayToken !== token) return;
+      try {
+        scWidget = window.SC.Widget(iframe);
+        scWidget.bind(window.SC.Widget.Events.READY, () => {
+          if (scPlayToken !== token) return;
+          scReady = true;
+          // Już gra (auto_play=true), odpali PLAY event
+        });
+        scWidget.bind(window.SC.Widget.Events.PLAY, () => {
+          if (scPlayToken !== token) return;
+          scWidget.unbind(window.SC.Widget.Events.PLAY);
+          if (onActualPlay) onActualPlay();
+        });
+      } catch(e) {
+        // Widget jeszcze nie gotowy, czekamy i odpalimy callback z timeoutem
+        if (scPlayToken === token && onActualPlay) {
+          setTimeout(() => { if (scPlayToken === token) onActualPlay(); }, 1000);
+        }
+      }
+    }, 500);
+  });
+}
+
+function pauseSC() {
+  scPlayToken++; // anuluj wszelkie oczekujące callbacki
+  if (scWidget) {
+    try {
+      scWidget.unbind(window.SC.Widget.Events.PLAY);
+      scWidget.pause();
+    } catch(e) {}
+  }
+  // NIE czyścimy scLoadedSrc ani scWidget — zostają do ponownego użycia
+  // (seekTo(0) zostanie wywołany przy następnym play)
+}
+
+function stopSCFully() {
+  // Pełne zatrzymanie przy zmianie piosenki
+  scPlayToken++;
+  scLoadedSrc = null;
+  scReady = false;
+  scWidget = null;
+  if (scIframe) scIframe.src = 'about:blank';
+}
+
+// ══════════════════════════════════════
+//  PLAY / STOP
+// ══════════════════════════════════════
+function playFrag() {
+  if (G.gameOver || G.playing) return;
+  if (!G.current) { showToast('Brak piosenek! Dodaj je w panelu admina', true); return; }
+
+  const song = G.current;
+  if (song.type === 'mp3' && !G.mp3Blobs[song.id]) {
+    showToast('⚠ Ten plik MP3 nie jest dostępny. Wgraj go ponownie.', true);
+    return;
+  }
+
+  G.playing = true;
+  const btn = document.getElementById('playbtn');
+  btn.disabled = true;
+  btn.textContent = '⏸ ŁADOWANIE...';
+  document.getElementById('vinyl').classList.add('spin');
+  const d = dur();
+
+  if (song.type === 'mp3') {
+    aud.src = G.mp3Blobs[song.id];
+    aud.currentTime = 0;
+    aud.play().catch(() => { showToast('Błąd odtwarzania MP3', true); stopPlay(); });
+    // MP3 startuje natychmiast
+    onPlayStarted(d);
+  } else {
+    // SC — timer startuje po faktycznym PLAY evencie
+    playSC(song.src, () => {
+      if (!G.playing) return; // użytkownik zdążył zatrzymać
+      onPlayStarted(d);
+    });
+  }
+}
+
+function onPlayStarted(d) {
+  const btn = document.getElementById('playbtn');
+  btn.textContent = '⏸ GRANIE...';
+  setWave(true);
+  animBar(d);
+  clearTimeout(G.playTimer);
+  G.playTimer = setTimeout(stopPlay, d * 1000 + 150);
+}
+
+function stopPlay() {
+  if (!G.playing) return; // już zatrzymane
+  G.playing = false;
+  clearTimeout(G.playTimer);
+  G.playTimer = null;
+
+  // Zatrzymaj audio
+  try { aud.pause(); } catch(e) {}
+  pauseSC();
+
+  document.getElementById('vinyl').classList.remove('spin');
+  setWave(false);
+
+  const d = dur();
+  const btn = document.getElementById('playbtn');
+  btn.disabled = false;
+  btn.textContent = '▶ ZAGRAJ PONOWNIE (' + d + 's)';
+
+  // Odblokuj wyszukiwanie i potwierdzenie
+  document.getElementById('srch').disabled = false;
+  document.getElementById('bconf').disabled = false;
+}
+
+function animBar(d) {
+  const b = document.getElementById('durbar');
+  b.style.transition = 'none';
+  b.style.width = '0%';
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    b.style.transition = 'width ' + d + 's linear';
+    b.style.width = '100%';
+  }));
+}
+
+function setWave(on) {
+  const wf = document.getElementById('wf');
+  wf.classList.toggle('on', on);
+  document.querySelectorAll('.wb').forEach((b, i) => {
+    if (on) { b.classList.add('p'); b.style.animationDelay = (i * 0.06) + 's'; }
+    else { b.classList.remove('p'); b.style.height = '4px'; }
+  });
 }
 
 // ══════════════════════════════════════
 //  GAME LOGIC
 // ══════════════════════════════════════
-function availableSongs(){
-  return G.songs.filter(s=>s.type==='sc'||G.mp3Blobs[s.id]);
+function availableSongs() {
+  return G.songs.filter(s => s.type === 'sc' || G.mp3Blobs[s.id]);
 }
-function pickSong(){
-  let pool=availableSongs().filter(s=>!G.played.has(s.id));
-  if(!pool.length){G.played.clear();pool=availableSongs();}
-  if(!pool.length) return null;
-  return pool[Math.floor(Math.random()*pool.length)];
+function pickSong() {
+  let pool = availableSongs().filter(s => !G.played.has(s.id));
+  if (!pool.length) { G.played.clear(); pool = availableSongs(); }
+  if (!pool.length) return null;
+  return pool[Math.floor(Math.random() * pool.length)];
 }
 
-function startGame(){
-  G.current=pickSong();
-  if(!G.current){renderEmpty();return;}
+function startGame() {
+  // Zatrzymaj poprzednie odtwarzanie i wyczyść SC widget
+  clearTimeout(G.playTimer);
+  G.playTimer = null;
+  G.playing = false;
+  try { aud.pause(); } catch(e) {}
+  stopSCFully(); // przy zmianie piosenki zawsze pełny reset
+
+  G.current = pickSong();
+  if (!G.current) { renderEmpty(); return; }
   G.played.add(G.current.id);
-  G.attempt=0;G.results=[];G.gameOver=false;G.guess=null;G.playing=false;
-  const btn=document.getElementById('playbtn');
-  btn.textContent='▶ GRAJ FRAGMENT';btn.disabled=false;
-  document.getElementById('srch').value='';
-  document.getElementById('srch').disabled=true;
-  document.getElementById('bconf').disabled=true;
+  G.attempt = 0; G.results = []; G.gameOver = false; G.guess = null;
+
+  const btn = document.getElementById('playbtn');
+  btn.textContent = '▶ GRAJ FRAGMENT';
+  btn.disabled = false;
+  document.getElementById('srch').value = '';
+  document.getElementById('srch').disabled = true;
+  document.getElementById('bconf').disabled = true;
   document.getElementById('dd').classList.remove('open');
-  document.getElementById('durbar').style.width='0%';
-  document.getElementById('res-area').style.display='none';
-  document.getElementById('game-area').style.display='block';
+  document.getElementById('durbar').style.width = '0%';
+  document.getElementById('res-area').style.display = 'none';
+  document.getElementById('game-area').style.display = 'block';
   setWave(false);
   document.getElementById('vinyl').classList.remove('spin');
-  renderDots();renderClue();
-																		 
-													 
+  renderDots(); renderClue();
+
+  // Preload SC widget w tle
+  if (G.current.type === 'sc') preloadSC(G.current.src);
 }
 
-function renderEmpty(){
-  document.getElementById('game-area').style.display='none';
-  const r=document.getElementById('res-area');
-  r.style.display='block';
-  r.innerHTML=`<div class="empty"><div class="ei">🎵</div>
-    <p>Brak piosenek w sesji!<br>
-    Otwórz <span class="eq" onclick="tryOpenAdmin('mp3')">ADMIN → Dodaj MP3</span> i wgraj pliki,<br>
-    lub <span class="eq" onclick="tryOpenAdmin('sc')">dodaj linki SoundCloud</span>,<br>
-    lub uzupełnij plik <strong>songs.js</strong>.</p></div>`;
+function renderEmpty() {
+  document.getElementById('game-area').style.display = 'none';
+  const r = document.getElementById('res-area');
+  r.style.display = 'block';
+  r.innerHTML = `<div class="empty"><div class="ei">🎵</div><p>Brak piosenek w sesji!</p></div>`;
 }
 
-const ICONS=['🎤','🎵','🎸','🥁','🎹','🎺'];
-function renderDots(){
-  const row=document.getElementById('arow');row.innerHTML='';
-  const max=Math.min(G.maxAttempts,6);
-  for(let i=0;i<max;i++){
-    const d=document.createElement('div');
-    let c='ad';
-    if(i<G.attempt) c+=' '+(G.results[i]==='hit'?'hit':G.results[i]==='skp'?'skp':'mis');
-    else if(i===G.attempt&&!G.gameOver) c+=' cur';
-    d.className=c;
-    d.textContent=i<G.attempt?(G.results[i]==='hit'?'✓':G.results[i]==='skp'?'—':'✗'):ICONS[i];
+const ICONS = ['🎤', '🎵', '🎸', '🥁', '🎹', '🎺'];
+function renderDots() {
+  const row = document.getElementById('arow'); row.innerHTML = '';
+  const max = Math.min(G.maxAttempts, 6);
+  for (let i = 0; i < max; i++) {
+    const d = document.createElement('div');
+    let c = 'ad';
+    if (i < G.attempt) c += ' ' + (G.results[i] === 'hit' ? 'hit' : G.results[i] === 'skp' ? 'skp' : 'mis');
+    else if (i === G.attempt && !G.gameOver) c += ' cur';
+    d.className = c;
+    d.textContent = i < G.attempt ? (G.results[i] === 'hit' ? '✓' : G.results[i] === 'skp' ? '—' : '✗') : ICONS[i];
     row.appendChild(d);
   }
 }
 
-function renderClue(){
-  const el=document.getElementById('clue');
-  const d=dur();
-  if(G.attempt===0){el.innerHTML='🎧 Naciśnij <strong>GRAJ FRAGMENT</strong> aby zacząć';return;}
-  let h=[];
-  if(G.attempt>=2) h.push('Rok: <strong>'+G.current.year+'</strong>');
-  if(G.attempt>=3) h.push('Inicjały: <strong>'+initials(G.current.artist)+'</strong>');
-  if(G.attempt>=5) h.push('Artysta: <strong>'+G.current.artist+'</strong>');
-  el.innerHTML='⏱ Fragment: <strong>'+d+'s</strong>'+(h.length?' &nbsp;|&nbsp; '+h.join(' | '):'');
+function renderClue() {
+  const el = document.getElementById('clue');
+  const d = dur();
+  if (G.attempt === 0) { el.innerHTML = '🎧 Naciśnij <strong>GRAJ FRAGMENT</strong> aby zacząć'; return; }
+  let h = [];
+  if (G.attempt >= 2) h.push('Rok: <strong>' + G.current.year + '</strong>');
+  if (G.attempt >= 3) h.push('Inicjały: <strong>' + initials(G.current.artist) + '</strong>');
+  if (G.attempt >= 5) h.push('Artysta: <strong>' + G.current.artist + '</strong>');
+  el.innerHTML = '⏱ Fragment: <strong>' + d + 's</strong>' + (h.length ? ' &nbsp;|&nbsp; ' + h.join(' | ') : '');
 }
 
-function initials(n){return n.split(' ').map(w=>w[0]||'').join('').toUpperCase();}
+function initials(n) { return n.split(' ').map(w => w[0] || '').join('').toUpperCase(); }
 
-function onSearch(val){
-  G.guess=null;
-  const dd=document.getElementById('dd');
-  if(!val.trim()){dd.classList.remove('open');return;}
-  const v=val.toLowerCase();
-  const res=G.songs.filter(s=>s.title.toLowerCase().includes(v)||s.artist.toLowerCase().includes(v)).slice(0,10);
-  if(!res.length){dd.classList.remove('open');return;}
-  dd.innerHTML=res.map(s=>`<div class="di" onclick="selSong('${esc(s.id)}')"><div class="dt">${s.title}</div><div class="da">${s.artist} · ${s.year}</div></div>`).join('');
+function onSearch(val) {
+  G.guess = null;
+  const dd = document.getElementById('dd');
+  if (!val.trim()) { dd.classList.remove('open'); return; }
+  const v = val.toLowerCase();
+  const res = G.songs.filter(s => s.title.toLowerCase().includes(v) || s.artist.toLowerCase().includes(v)).slice(0, 10);
+  if (!res.length) { dd.classList.remove('open'); return; }
+  dd.innerHTML = res.map(s => `<div class="di" onclick="selSong('${esc(s.id)}')"><div class="dt">${s.title}</div><div class="da">${s.artist} · ${s.year}</div></div>`).join('');
   dd.classList.add('open');
 }
-function esc(s){return String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'");}
-function selSong(id){
-  const s=G.songs.find(x=>x.id===id);if(!s)return;
-  G.guess=s;
-  document.getElementById('srch').value=s.title+' – '+s.artist;
+function esc(s) { return String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'"); }
+function selSong(id) {
+  const s = G.songs.find(x => x.id === id); if (!s) return;
+  G.guess = s;
+  document.getElementById('srch').value = s.title + ' – ' + s.artist;
   document.getElementById('dd').classList.remove('open');
 }
-function onKey(e){if(e.key==='Enter')doConfirm();}
+function onKey(e) { if (e.key === 'Enter') doConfirm(); }
 
-function doSkip(){
-  if(G.gameOver||G.playing)return;
-  G.results[G.attempt]='skp';G.attempt++;
-  renderDots();renderClue();
+function doSkip() {
+  if (G.gameOver) return;
+  // Jeśli gra, zatrzymaj — ale nie blokuj skipowania
+  if (G.playing) stopPlay();
+  G.results[G.attempt] = 'skp'; G.attempt++;
+  renderDots(); renderClue();
   checkEnd(false);
 }
-function doConfirm(){
-  if(G.gameOver||!G.guess){
-    if(!G.guess){document.getElementById('srch').style.outline='2px solid var(--red)';setTimeout(()=>document.getElementById('srch').style.outline='',700);}
+
+function doConfirm() {
+  if (G.gameOver || !G.guess) {
+    if (!G.guess) {
+      document.getElementById('srch').style.outline = '2px solid var(--red)';
+      setTimeout(() => document.getElementById('srch').style.outline = '', 700);
+    }
     return;
   }
-  const ok=G.guess.id===G.current.id;
-  G.results[G.attempt]=ok?'hit':'mis';G.attempt++;
-  renderDots();renderClue();
-  document.getElementById('srch').value='';G.guess=null;
+  // Zatrzymaj jeśli gra
+  if (G.playing) stopPlay();
+  const ok = G.guess.id === G.current.id;
+  G.results[G.attempt] = ok ? 'hit' : 'mis'; G.attempt++;
+  renderDots(); renderClue();
+  document.getElementById('srch').value = ''; G.guess = null;
   document.getElementById('dd').classList.remove('open');
   checkEnd(ok);
 }
-function checkEnd(ok){
-  if(!ok&&G.attempt<G.maxAttempts){
-    document.getElementById('playbtn').textContent='▶ ZAGRAJ PONOWNIE ('+dur()+'s)';
+
+function checkEnd(ok) {
+  if (!ok && G.attempt < G.maxAttempts) {
+    // Ustaw tekst przycisku z nową długością fragmentu
+    const d = dur();
+    document.getElementById('playbtn').textContent = '▶ ZAGRAJ PONOWNIE (' + d + 's)';
+    // Zablokuj wyszukiwanie aż do następnego odtworzenia
+    document.getElementById('srch').disabled = true;
+    document.getElementById('srch').value = '';
+    document.getElementById('bconf').disabled = true;
     return;
   }
-  G.gameOver=true;G.total++;
-  if(ok){const pts=Math.max(150-(G.attempt-1)*20,10);G.score+=pts;G.streak++;G.history.unshift({title:G.current.title,artist:G.current.artist,won:true,pts,att:G.attempt,d:new Date().toLocaleDateString('pl')});}
-  else{G.streak=0;G.history.unshift({title:G.current.title,artist:G.current.artist,won:false,pts:0,att:G.attempt,d:new Date().toLocaleDateString('pl')});}
-  updateHUD();saveStats();renderResult(ok);
+  G.gameOver = true; G.total++;
+  if (ok) {
+    const pts = Math.max(150 - (G.attempt - 1) * 20, 10);
+    G.score += pts; G.streak++;
+    G.history.unshift({ title: G.current.title, artist: G.current.artist, won: true, pts, att: G.attempt, d: new Date().toLocaleDateString('pl') });
+  } else {
+    G.streak = 0;
+    G.history.unshift({ title: G.current.title, artist: G.current.artist, won: false, pts: 0, att: G.attempt, d: new Date().toLocaleDateString('pl') });
+  }
+  updateHUD(); saveStats(); renderResult(ok);
 }
-function renderResult(ok){
+
+function renderResult(ok) {
   stopPlay();
-  document.getElementById('game-area').style.display='none';
-  const r=document.getElementById('res-area');r.style.display='block';
-  const pts=G.history[0]?.pts||0;
-  r.innerHTML=`<div class="rescard">
-    <div class="resi">${ok?'🏆':'💀'}</div>
-    <div class="ress ${ok?'win':'lose'}">${ok?'TRAFIONY!':'MISS!'}</div>
+  document.getElementById('game-area').style.display = 'none';
+  const r = document.getElementById('res-area'); r.style.display = 'block';
+  const pts = G.history[0]?.pts || 0;
+  r.innerHTML = `<div class="rescard">
+    <div class="resi">${ok ? '🏆' : '💀'}</div>
+    <div class="ress ${ok ? 'win' : 'lose'}">${ok ? 'TRAFIONY!' : 'MISS!'}</div>
     <div class="rest">${G.current.title}</div>
     <div class="resa">${G.current.artist} · ${G.current.year}</div>
-    <div class="resp">${ok?'+'+pts+' punktów &nbsp;|&nbsp; ':''} Próba ${G.attempt}</div>
+    <div class="resp">${ok ? '+' + pts + ' punktów &nbsp;|&nbsp; ' : ''} Próba ${G.attempt}</div>
   </div>
   <button class="bnext" onclick="startGame()">NASTĘPNA PIOSENKA →</button>`;
 }
 
-function setMode(m,el){
-  G.mode=m;
-  G.maxAttempts=m==='blitz'?3:m==='chill'?9999:6;
-  document.querySelectorAll('.mt').forEach(b=>b.classList.remove('on'));el.classList.add('on');
+function setMode(m, el) {
+  G.mode = m;
+  G.maxAttempts = m === 'blitz' ? 3 : m === 'chill' ? 9999 : 6;
+  document.querySelectorAll('.mt').forEach(b => b.classList.remove('on')); el.classList.add('on');
   startGame();
 }
 
 // ══════════════════════════════════════
 //  ADMIN PANEL
 // ══════════════════════════════════════
-let curTab='lista';
-function openAdmin(tab){document.getElementById('adm').classList.add('open');swTabDirect(tab||'lista');}
-function closeAdmin(){document.getElementById('adm').classList.remove('open');}
-function swTab(tab,el){
-  document.querySelectorAll('.atb').forEach(b=>b.classList.remove('on'));el.classList.add('on');
+let curTab = 'lista';
+function openAdmin(tab) { document.getElementById('adm').classList.add('open'); swTabDirect(tab || 'lista'); }
+function closeAdmin() { document.getElementById('adm').classList.remove('open'); }
+function swTab(tab, el) {
+  document.querySelectorAll('.atb').forEach(b => b.classList.remove('on')); el.classList.add('on');
   swTabDirect(tab);
 }
-function swTabDirect(tab){
-  curTab=tab;
-  ['lista','mp3','sc'].forEach(t=>{document.getElementById('tab-'+t).style.display=t===tab?'block':'none';});
-  document.querySelectorAll('.atb').forEach((b,i)=>{
-    b.classList.toggle('on',['lista','mp3','sc'][i]===tab);
+function swTabDirect(tab) {
+  curTab = tab;
+  ['lista', 'mp3', 'sc'].forEach(t => { document.getElementById('tab-' + t).style.display = t === tab ? 'block' : 'none'; });
+  document.querySelectorAll('.atb').forEach((b, i) => {
+    b.classList.toggle('on', ['lista', 'mp3', 'sc'][i] === tab);
   });
   renderAdmTab(tab);
 }
-function renderAdmTab(tab){
-  if(tab==='lista') renderLista();
-  else if(tab==='mp3') renderMP3Tab();
-  else if(tab==='sc') renderSCTab();
+function renderAdmTab(tab) {
+  if (tab === 'lista') renderLista();
+  else if (tab === 'mp3') renderMP3Tab();
+  else if (tab === 'sc') renderSCTab();
 }
 
-// ── LISTA ──
-let filt='';
-function renderLista(){
-  const dbCnt=(typeof window.SONGS_DB!=='undefined')?window.SONGS_DB.length:0;
-  const mp3cnt=G.songs.filter(s=>s.type==='mp3').length;
-  const sccnt=G.songs.filter(s=>s.type==='sc').length;
-  const mp3active=Object.keys(G.mp3Blobs).length;
-  const filtered=G.songs.filter(s=>s.title.toLowerCase().includes(filt.toLowerCase())||s.artist.toLowerCase().includes(filt.toLowerCase()));
-  document.getElementById('tab-lista').innerHTML=`
+let filt = '';
+function renderLista() {
+  const dbCnt = (typeof window.SONGS_DB !== 'undefined') ? window.SONGS_DB.length : 0;
+  const sccnt = G.songs.filter(s => s.type === 'sc').length;
+  const mp3active = Object.keys(G.mp3Blobs).length;
+  const filtered = G.songs.filter(s => s.title.toLowerCase().includes(filt.toLowerCase()) || s.artist.toLowerCase().includes(filt.toLowerCase()));
+  document.getElementById('tab-lista').innerHTML = `
     <div class="db-info">
       📁 <strong>songs.js</strong> — zewnętrzna baza piosenek<br>
       Załadowano z pliku: <strong>${dbCnt} piosenek</strong> · Edytuj plik <code>songs.js</code> aby dodać więcej.
@@ -861,18 +869,18 @@ function renderLista(){
     <input class="sfilt" type="text" placeholder="🔍 Szukaj..." value="${filt}" oninput="filt=this.value;renderLista()"/>
     <div class="cnt">${filtered.length} z ${G.songs.length} piosenek</div>
     <div class="slist">
-      ${filtered.length===0?'<div class="empty" style="padding:20px"><div class="ei">🔍</div><p>Brak wyników</p></div>':''}
-      ${filtered.map((s,i)=>{
-        const fromDb=typeof window.SONGS_DB!=='undefined'&&window.SONGS_DB.some(x=>x.id===s.id);
-        const active=s.type==='sc'||(s.type==='mp3'&&G.mp3Blobs[s.id]);
-        return `<div class="sitem" style="${!active?'opacity:.45':''}">
-          <div class="si-n">${i+1}</div>
+      ${filtered.length === 0 ? '<div class="empty" style="padding:20px"><div class="ei">🔍</div><p>Brak wyników</p></div>' : ''}
+      ${filtered.map((s, i) => {
+        const fromDb = typeof window.SONGS_DB !== 'undefined' && window.SONGS_DB.some(x => x.id === s.id);
+        const active = s.type === 'sc' || (s.type === 'mp3' && G.mp3Blobs[s.id]);
+        return `<div class="sitem" style="${!active ? 'opacity:.45' : ''}">
+          <div class="si-n">${i + 1}</div>
           <div class="si-inf">
             <div class="si-t">${s.title}</div>
-            <div class="si-a">${s.artist} · ${s.year}${!active?' · ⚠ niedostępna w tej sesji':''}</div>
+            <div class="si-a">${s.artist} · ${s.year}${!active ? ' · ⚠ niedostępna w tej sesji' : ''}</div>
           </div>
-          <div class="badge ${fromDb?'db':s.type}">${fromDb?'DB':s.type==='mp3'?'MP3':'SC'}</div>
-          ${!fromDb?`<button class="sdel" onclick="delSong('${esc(s.id)}')">🗑</button>`:'<div style="width:24px"></div>'}
+          <div class="badge ${fromDb ? 'db' : s.type}">${fromDb ? 'DB' : s.type === 'mp3' ? 'MP3' : 'SC'}</div>
+          ${!fromDb ? `<button class="sdel" onclick="delSong('${esc(s.id)}')">🗑</button>` : '<div style="width:24px"></div>'}
         </div>`;
       }).join('')}
     </div>
@@ -880,32 +888,31 @@ function renderLista(){
     <button class="butil danger" onclick="clearAll()">🗑 Wyczyść bazę (tylko dodane ręcznie)</button>
   `;
 }
-function delSong(id){
-  if(!confirm('Usunąć?'))return;
-  G.songs=G.songs.filter(s=>s.id!==id);
-  if(G.mp3Blobs[id]){URL.revokeObjectURL(G.mp3Blobs[id]);delete G.mp3Blobs[id];}
-  saveSongs();renderLista();showToast('Usunięto');
+function delSong(id) {
+  if (!confirm('Usunąć?')) return;
+  G.songs = G.songs.filter(s => s.id !== id);
+  if (G.mp3Blobs[id]) { URL.revokeObjectURL(G.mp3Blobs[id]); delete G.mp3Blobs[id]; }
+  saveSongs(); renderLista(); showToast('Usunięto');
 }
-function clearAll(){
-  if(!confirm('Usunąć piosenki dodane ręcznie (MP3/SC)?\nPiosenki z bazy songs.js pozostaną.'))return;
-  const dbIds=new Set((window.SONGS_DB||[]).map(s=>s.id));
-  G.songs.filter(s=>!dbIds.has(s.id)).forEach(s=>{
-    if(G.mp3Blobs[s.id]){URL.revokeObjectURL(G.mp3Blobs[s.id]);delete G.mp3Blobs[s.id];}
+function clearAll() {
+  if (!confirm('Usunąć piosenki dodane ręcznie (MP3/SC)?\nPiosenki z bazy songs.js pozostaną.')) return;
+  const dbIds = new Set((window.SONGS_DB || []).map(s => s.id));
+  G.songs.filter(s => !dbIds.has(s.id)).forEach(s => {
+    if (G.mp3Blobs[s.id]) { URL.revokeObjectURL(G.mp3Blobs[s.id]); delete G.mp3Blobs[s.id]; }
   });
-  G.songs=G.songs.filter(s=>dbIds.has(s.id));
-  saveSongs();renderLista();showToast('Wyczyszczono ręcznie dodane');
+  G.songs = G.songs.filter(s => dbIds.has(s.id));
+  saveSongs(); renderLista(); showToast('Wyczyszczono ręcznie dodane');
 }
-function exportJSON(){
-  const d=JSON.stringify(G.songs.map(s=>({title:s.title,artist:s.artist,year:s.year,type:s.type,src:s.type==='sc'?s.src:'[lokalny plik]'})),null,2);
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(new Blob([d],{type:'application/json'}));
-  a.download='rapguesser-songs.json';a.click();
+function exportJSON() {
+  const d = JSON.stringify(G.songs.map(s => ({ title: s.title, artist: s.artist, year: s.year, type: s.type, src: s.type === 'sc' ? s.src : '[lokalny plik]' })), null, 2);
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([d], { type: 'application/json' }));
+  a.download = 'rapguesser-songs.json'; a.click();
   showToast('Wyeksportowano');
 }
 
-// ── MP3 TAB ──
-function renderMP3Tab(){
-  document.getElementById('tab-mp3').innerHTML=`
+function renderMP3Tab() {
+  document.getElementById('tab-mp3').innerHTML = `
     <div class="dropzone" id="dz" ondragover="dzOver(event)" ondragleave="dzLeave()" ondrop="dzDrop(event)">
       <input type="file" accept="audio/mp3,audio/mpeg,audio/*" multiple onchange="onFilesPicked(this.files)"/>
       <div class="di-icon">🎵</div>
@@ -916,33 +923,31 @@ function renderMP3Tab(){
     <button class="btnq" id="btnq" style="display:none" onclick="saveMP3Queue()">✓ ZAPISZ WSZYSTKIE DO GRY</button>
     <div style="font-size:11px;color:var(--text3);margin-top:8px;line-height:1.7">
       ⚠ Pliki MP3 są przechowywane tylko w tej sesji przeglądarki.<br>
-      Po zamknięciu karty trzeba wgrać je ponownie.<br>
-      Metadane (tytuł, artysta) są zapisywane na stałe.
+      Po zamknięciu karty trzeba wgrać je ponownie.
     </div>
   `;
   renderMP3Queue();
 }
-function dzOver(e){e.preventDefault();document.getElementById('dz').classList.add('over');}
-function dzLeave(){document.getElementById('dz').classList.remove('over');}
-function dzDrop(e){e.preventDefault();dzLeave();onFilesPicked(e.dataTransfer.files);}
-function onFilesPicked(files){
-  Array.from(files).forEach(f=>{
-    if(!f.type.includes('audio'))return;
-    const tmpId='tmp_'+Date.now()+'_'+Math.random().toString(36).slice(2);
-    const name=f.name.replace(/\.[^.]+$/,'');
-    let title=name,artist='';
-    const sep=name.match(/[-–—_]/);
-    if(sep){const p=name.split(sep[0]);artist=p[0].trim();title=p.slice(1).join(sep[0]).trim();}
-    G.mp3Queue.push({file:f,title,artist,year:new Date().getFullYear(),tmpId});
+function dzOver(e) { e.preventDefault(); document.getElementById('dz').classList.add('over'); }
+function dzLeave() { document.getElementById('dz').classList.remove('over'); }
+function dzDrop(e) { e.preventDefault(); dzLeave(); onFilesPicked(e.dataTransfer.files); }
+function onFilesPicked(files) {
+  Array.from(files).forEach(f => {
+    if (!f.type.includes('audio')) return;
+    const name = f.name.replace(/\.[^.]+$/, '');
+    let title = name, artist = '';
+    const sep = name.match(/[-–—_]/);
+    if (sep) { const p = name.split(sep[0]); artist = p[0].trim(); title = p.slice(1).join(sep[0]).trim(); }
+    G.mp3Queue.push({ file: f, title, artist, year: new Date().getFullYear() });
   });
   renderMP3Queue();
 }
-function renderMP3Queue(){
-  const el=document.getElementById('mp3-queue');if(!el)return;
-  const btnq=document.getElementById('btnq');
-  if(!G.mp3Queue.length){el.innerHTML='';if(btnq)btnq.style.display='none';return;}
-  if(btnq)btnq.style.display='block';
-  el.innerHTML=`<div class="mp3q">${G.mp3Queue.map((item,i)=>`
+function renderMP3Queue() {
+  const el = document.getElementById('mp3-queue'); if (!el) return;
+  const btnq = document.getElementById('btnq');
+  if (!G.mp3Queue.length) { el.innerHTML = ''; if (btnq) btnq.style.display = 'none'; return; }
+  if (btnq) btnq.style.display = 'block';
+  el.innerHTML = `<div class="mp3q">${G.mp3Queue.map((item, i) => `
     <div class="mp3item">
       <div>
         <div class="mp3-name">📁 ${item.file.name}</div>
@@ -956,26 +961,24 @@ function renderMP3Queue(){
     </div>
   `).join('')}</div>`;
 }
-function removeFromQueue(i){G.mp3Queue.splice(i,1);renderMP3Queue();}
-function saveMP3Queue(){
-  let added=0;
-  G.mp3Queue.forEach(item=>{
-    if(!item.title||!item.artist){return;}
-    const id=Date.now().toString(36)+'_'+Math.random().toString(36).slice(2);
-    const blobUrl=URL.createObjectURL(item.file);
-    G.mp3Blobs[id]=blobUrl;
-    G.songs.push({id,title:item.title,artist:item.artist,year:item.year,type:'mp3',src:'__local__'});
+function removeFromQueue(i) { G.mp3Queue.splice(i, 1); renderMP3Queue(); }
+function saveMP3Queue() {
+  let added = 0;
+  G.mp3Queue.forEach(item => {
+    if (!item.title || !item.artist) return;
+    const id = Date.now().toString(36) + '_' + Math.random().toString(36).slice(2);
+    G.mp3Blobs[id] = URL.createObjectURL(item.file);
+    G.songs.push({ id, title: item.title, artist: item.artist, year: item.year, type: 'mp3', src: '__local__' });
     added++;
   });
-  G.mp3Queue=[];
-  saveSongs();updateHUD();
-  showToast('Dodano '+added+' piosenek MP3!');
+  G.mp3Queue = [];
+  saveSongs(); updateHUD();
+  showToast('Dodano ' + added + ' piosenek MP3!');
   renderMP3Tab();
 }
 
-// ── SOUNDCLOUD TAB ──
-function renderSCTab(){
-  document.getElementById('tab-sc').innerHTML=`
+function renderSCTab() {
+  document.getElementById('tab-sc').innerHTML = `
     <div class="scform">
       <div class="frow"><div class="fg"><label>Tytuł *</label><input id="sc-title" type="text" placeholder="np. HUMBLE."/></div>
       <div class="fg"><label>Artysta *</label><input id="sc-artist" type="text" placeholder="np. Kendrick Lamar"/></div></div>
@@ -994,39 +997,34 @@ function renderSCTab(){
     </div>
   `;
 }
-function addSC(){
-  const title=document.getElementById('sc-title').value.trim();
-  const artist=document.getElementById('sc-artist').value.trim();
-  const year=parseInt(document.getElementById('sc-year').value)||new Date().getFullYear();
-  const src=document.getElementById('sc-src').value.trim();
-  if(!title||!artist||!src){showToast('Wypełnij wymagane pola!',true);return;}
-  if(!src.includes('soundcloud.com')){showToast('To nie jest link SoundCloud!',true);return;}
-  const id=Date.now().toString(36)+'sc';
-  G.songs.push({id,title,artist,year,type:'sc',src});
-  saveSongs();updateHUD();showToast('Dodano: '+title);
-  document.getElementById('sc-title').value='';
-  document.getElementById('sc-artist').value='';
-  document.getElementById('sc-src').value='';
+function addSC() {
+  const title = document.getElementById('sc-title').value.trim();
+  const artist = document.getElementById('sc-artist').value.trim();
+  const year = parseInt(document.getElementById('sc-year').value) || new Date().getFullYear();
+  const src = document.getElementById('sc-src').value.trim();
+  if (!title || !artist || !src) { showToast('Wypełnij wymagane pola!', true); return; }
+  if (!src.includes('soundcloud.com')) { showToast('To nie jest link SoundCloud!', true); return; }
+  const id = Date.now().toString(36) + 'sc';
+  G.songs.push({ id, title, artist, year, type: 'sc', src });
+  saveSongs(); updateHUD(); showToast('Dodano: ' + title);
+  document.getElementById('sc-title').value = '';
+  document.getElementById('sc-artist').value = '';
+  document.getElementById('sc-src').value = '';
 }
 
 // ══════════════════════════════════════
-//  PANEL STATYSTYK UŻYTKOWNIKA
+//  PANEL STATYSTYK
 // ══════════════════════════════════════
-function openStats(){
-  renderStatsPanel();
-  document.getElementById('stats-panel').classList.add('open');
-}
-function closeStats(){
-  document.getElementById('stats-panel').classList.remove('open');
-}
-function renderStatsPanel(){
-  const wins=G.history.filter(h=>h.won).length;
-  const tot=G.history.length;
-  const pct=tot?Math.round(wins/tot*100):0;
-  const bestStreak=G.history.reduce((acc,_,i,arr)=>{
-    let cur=0;for(let j=i;j<arr.length&&arr[j].won;j++)cur++;return Math.max(acc,cur);
-  },0);
-  document.getElementById('stats-content').innerHTML=`
+function openStats() { renderStatsPanel(); document.getElementById('stats-panel').classList.add('open'); }
+function closeStats() { document.getElementById('stats-panel').classList.remove('open'); }
+function renderStatsPanel() {
+  const wins = G.history.filter(h => h.won).length;
+  const tot = G.history.length;
+  const pct = tot ? Math.round(wins / tot * 100) : 0;
+  const bestStreak = G.history.reduce((acc, _, i, arr) => {
+    let cur = 0; for (let j = i; j < arr.length && arr[j].won; j++) cur++; return Math.max(acc, cur);
+  }, 0);
+  document.getElementById('stats-content').innerHTML = `
     <div class="sgrid" style="grid-template-columns:repeat(2,1fr);margin-bottom:10px">
       <div class="sbox"><div class="v">${G.score}</div><div class="l">Punkty łącznie</div></div>
       <div class="sbox"><div class="v">${G.streak}</div><div class="l">Aktualna seria 🔥</div></div>
@@ -1043,38 +1041,40 @@ function renderStatsPanel(){
       HISTORIA OSTATNICH RUND
     </div>
     <div class="hlist">
-      ${!G.history.length?`<div class="empty" style="padding:24px"><div class="ei">🎵</div><p>Brak historii – zacznij grać!</p></div>`:''}
-      ${G.history.slice(0,60).map(h=>`
+      ${!G.history.length ? `<div class="empty" style="padding:24px"><div class="ei">🎵</div><p>Brak historii – zacznij grać!</p></div>` : ''}
+      ${G.history.slice(0, 60).map(h => `
         <div class="hitem">
-          <div class="hico">${h.won?'🏆':'💀'}</div>
+          <div class="hico">${h.won ? '🏆' : '💀'}</div>
           <div class="hinf">
             <div class="ht">${h.title}</div>
             <div class="hs">${h.artist} · ${h.d} · próba ${h.att}</div>
           </div>
-          ${h.won?`<div class="hpts">+${h.pts}</div>`:`<div class="hpts" style="color:var(--text3)">—</div>`}
+          ${h.won ? `<div class="hpts">+${h.pts}</div>` : `<div class="hpts" style="color:var(--text3)">—</div>`}
         </div>
       `).join('')}
     </div>
     <button class="butil danger" style="margin-top:14px" onclick="clearMyStats()">🗑 Wyczyść moje statystyki</button>
   `;
 }
-function clearMyStats(){
-  if(!confirm('Wyczyścić swoją historię i statystyki?'))return;
-  G.history=[];G.score=0;G.streak=0;G.total=0;
-  saveStats();updateHUD();renderStatsPanel();showToast('Wyczyszczono statystyki');
+function clearMyStats() {
+  if (!confirm('Wyczyścić swoją historię i statystyki?')) return;
+  G.history = []; G.score = 0; G.streak = 0; G.total = 0;
+  saveStats(); updateHUD(); renderStatsPanel(); showToast('Wyczyszczono statystyki');
 }
 
-// ── TOAST ──
-let toastT=null;
-function showToast(msg,err=false){
-  const t=document.getElementById('toast');
-  t.textContent=msg;t.className='toast'+(err?' err':'');
+// ══════════════════════════════════════
+//  TOAST
+// ══════════════════════════════════════
+let toastT = null;
+function showToast(msg, err = false) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.className = 'toast' + (err ? ' err' : '');
   clearTimeout(toastT);
-  requestAnimationFrame(()=>t.classList.add('show'));
-  toastT=setTimeout(()=>t.classList.remove('show'),2800);
+  requestAnimationFrame(() => t.classList.add('show'));
+  toastT = setTimeout(() => t.classList.remove('show'), 2800);
 }
 
-document.addEventListener('click',e=>{if(!e.target.closest('.srchwrap'))document.getElementById('dd').classList.remove('open');});
+document.addEventListener('click', e => { if (!e.target.closest('.srchwrap')) document.getElementById('dd').classList.remove('open'); });
 
 // ── INIT ──
 loadAll();
