@@ -7,12 +7,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet"/>
 <style>
 :root {
-  --bg:    #0c0c14;
+  --bg:    #121112;
   --s1:    #0e0e1c;
   --s2:    #151524;
   --s3:    #1c1c2e;
   --s4:    #232338;
-  --accent:       #ff4f98;
+  --accent:       #fcb4d4;
   --accent-hover: #ffffff;
   --accent-text:  #000000;
   --accent2:      #ccaa30;
@@ -829,12 +829,10 @@ function playFrag() {
   const d = dur();
   if (song.type === 'mp3') {
     aud.src = G.mp3Blobs[song.id]; aud.currentTime = 0;
-    aud.play().catch(() => { showToast('Błąd odtwarzania MP3', true); stopPlay(); });
-    onPlayStarted(d);
+    aud.play().then(() => { onPlayStarted(d); }).catch(() => { showToast('Błąd odtwarzania MP3', true); stopPlay(); });
   } else if (song.type === 'url' || song.type === 'file') {
     aud.src = song.src; aud.currentTime = 0;
-    aud.play().catch(() => { showToast('Błąd odtwarzania — sprawdź ścieżkę pliku', true); stopPlay(); });
-    onPlayStarted(d);
+    aud.play().then(() => { onPlayStarted(d); }).catch(() => { showToast('Błąd odtwarzania — sprawdź ścieżkę pliku', true); stopPlay(); });
   } else {
     playSC(song.src, () => { if (!G.playing) return; onPlayStarted(d); });
   }
