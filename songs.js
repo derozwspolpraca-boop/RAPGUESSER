@@ -40,10 +40,10 @@ const SONGS_DB = [
   {
     id: 'sc_0001',
     title: 'Fantazje',
-    artist: 'MIU, Bedoes 2115, Pezet',
+    artist: 'MIÜ, Bedoes 2115, Pezet',
     year: 2026,
     type: 'sc',
-    src: 'https://soundcloud.com/szydlik-jakub/miue-ft-pezet-bedoes-2115'
+    src: 'https://soundcloud.com/szydlik-jakub/MIÜe-ft-pezet-bedoes-2115'
   },
 
   {
@@ -614,327 +614,327 @@ const SONGS_DB = [
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0065',
+    title: 'Menago',
+    artist: 'PlanBe, Otsochodzi',
+    year: 2019,
     type: 'sc',
-    src: ''
+    src: 'https://soundcloud.com/kacper-gawe-ko/planbe-ft-otsochodzi-menago'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0066',
+    title: '05:05',
+    artist: 'Bedoes 2115, Kubi Producent',
+    year: 2018,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/05_05.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0067',
+    title: 'Baba Hassan',
+    artist: 'PUSHER, OSKA030',
+    year: 2020,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/Baba%20Hassan.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0068',
+    title: 'ASPARTAM',
+    artist: 'Quebonafide, Mata',
+    year: 2020,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/ASPARTAM_spotdown.org.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0069',
+    title: 'BEEF',
+    artist: 'White Widow',
+    year: 2022,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/BEEF.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0070',
+    title: 'Bez Zarzutów',
+    artist: 'Hodak, schafter',
+    year: 2021,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/Bez%20Zarzut%C3%B3w.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0071',
+    title: 'Będę Prezydentem',
+    artist: 'Mata',
+    year: 2026,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/B%C4%98D%C4%98%20PREZYDENTEM%20_)_spotdown.org.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0072',
+    title: 'California',
+    artist: 'White 2115',
+    year: 2018,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/California.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0073',
+    title: 'Euforia',
+    artist: 'Otsochodzi',
+    year: 2019,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/Euforia.mp3'
   }, 
 
     {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0074',
+    title: 'FREAKY',
+    artist: 'Mata, Fagata',
+    year: 2026,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/FREAKY_spotdown.org.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0075',
+    title: 'NIE CHCĘ WRACAĆ',
+    artist: 'Fukaj, Hubert.',
+    year: 2025,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/NIE%20CHC%C4%98%20WRACA%C4%86_spotdown.org.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0076',
+    title: 'Floyd Mayweather',
+    artist: 'Żabson',
+    year: 2019,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/Floyd%20Mayweather.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0077',
+    title: 'GOMBAO 33',
+    artist: 'Mata, Wyguś, Szczepan, Adam',
+    year: 2019,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/GOMBAO%2033_spotdown.org.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0078',
+    title: 'Głowa rodziny',
+    artist: 'Białas, Lanek',
+    year: 2022,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/G%C5%82owa%20rodziny.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0079',
+    title: 'KAMIKAZE',
+    artist: 'Mata, Skolim, Khaid',
+    year: 2025,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/KAMIKAZE_spotdown.org.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0080',
+    title: 'Kulig',
+    artist: 'Kaz Bałagane',
+    year: 2016,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/Kulig_spotdown.org.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0081',
+    title: 'Mówiłas',
+    artist: 'Young Igi',
+    year: 2017,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/M%C3%B3wi%C5%82a%C5%9B.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0082',
+    title: 'NICKI',
+    artist: 'Trill Pem, Wac Toja',
+    year: 2020,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/NICKI.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0083',
+    title: 'Narcyz',
+    artist: 'Chivas',
+    year: 2022,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/Narcyz.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0084',
+    title: 'Nie ma raju bez węża',
+    artist: 'SB Maffija',
+    year: 2020,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/Nie%20ma%20raju%20bez%20w%C4%99%C5%BCa.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0085',
+    title: 'nie pytaj co brałem',
+    artist: 'Alan',
+    year: 2022,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/Nie%20pytaj%20co%20bra%C5%82em.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0086',
+    title: 'OSZUKAJ PRZEZNACZENIE',
+    artist: 'yung adisz',
+    year: 2022,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/OSZUKAJ%20PRZEZNACZENIE.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0087',
+    title: 'Palma de mallorca',
+    artist: 'Mata, Żabson',
+    year: 2025,
+    type: 'url',
+    src: 'https://dash.cloudflare.com/3dcf76cc2fee43f77d679726c0ee1a59/r2/default/buckets/rapguesser/objects/PALMA%20DE%20MALLORCA_spotdown.org.mp3/details'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0088',
+    title: 'Sam',
+    artist: 'Waima',
+    year: 2022,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/Sam.mp3'
   }, 
 
     {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0089',
+    title: 'San Andreas',
+    artist: 'Zeamsone',
+    year: 2018,
+    type: 'url',
+    src: 'https://dash.cloudflare.com/3dcf76cc2fee43f77d679726c0ee1a59/r2/default/buckets/rapguesser/objects/San%20Andreas.mp3/details'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0090',
+    title: 'Schodki',
+    artist: 'Mata',
+    year: 2019,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/Schodki_spotdown.org.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0091',
+    title: 'Sexoholik',
+    artist: 'Żabson',
+    year: 2020,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/Sexoholik.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0092',
+    title: 'Szafir',
+    artist: 'Mata',
+    year: 2021,
+    type: 'url',
+    src: 'https://dash.cloudflare.com/3dcf76cc2fee43f77d679726c0ee1a59/r2/default/buckets/rapguesser/objects/Szafir_spotdown.org.mp3/details?cursors=JTVCJTIyMS1KVGRDSlRJeWRpVXlNaVV6UVRFbE1rTWxNakp6ZEdGeWRFRm1kR1Z5SlRJeUpUTkJKVEl5VTJGdUpUSXdRVzVrY21WaGN5NXRjRE1sTWpJbE1rTWxNakoxZFdsa0pUSXlKVE5CSlRJeU4yVTJNbU0wWW1JM09HVmhaR1V4TWpjNVpEZzFZbVZrWTJZMU9EQm1OR1lsTWpJbE4wUSUzRCUyMIÜ1RA%3D%3D'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0093',
+    title: 'Szmata',
+    artist: 'Mata',
+    year: 2021,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/Szmata_spotdown.org.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0094',
+    title: 'Tarcho Terror',
+    artist: 'Otsochodzi',
+    year: 2022,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/Tarcho%20Terror.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0095',
+    title: 'Trójkat Bermudzki',
+    artist: 'Sentino, Nitro, MASNY BEN',
+    year: 2022,
+    type: 'url',
+    src: 'https://dash.cloudflare.com/3dcf76cc2fee43f77d679726c0ee1a59/r2/default/buckets/rapguesser/objects/Tr%C3%B3jk%C4%85t%20Bermudzki.mp3/details?cursors=JTVCJTIyMS1KVGRDSlRJeWRpVXlNaVV6UVRFbE1rTWxNakp6ZEdGeWRFRm1kR1Z5SlRJeUpUTkJKVEl5VTJGdUpUSXdRVzVrY21WaGN5NXRjRE1sTWpJbE1rTWxNakoxZFdsa0pUSXlKVE5CSlRJeU4yVTJNbU0wWW1JM09HVmhaR1V4TWpjNVpEZzFZbVZrWTJZMU9EQm1OR1lsTWpJbE4wUSUzRCUyMIÜ1RA%3D%3D'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0096',
+    title: 'UA',
+    artist: 'ReTo',
+    year: 2018,
+    type: 'url',
+    src: 'https://dash.cloudflare.com/3dcf76cc2fee43f77d679726c0ee1a59/r2/default/buckets/rapguesser/objects/UA.mp3/details?cursors=JTVCJTIyMS1KVGRDSlRJeWRpVXlNaVV6UVRFbE1rTWxNakp6ZEdGeWRFRm1kR1Z5SlRJeUpUTkJKVEl5VTJGdUpUSXdRVzVrY21WaGN5NXRjRE1sTWpJbE1rTWxNakoxZFdsa0pUSXlKVE5CSlRJeU4yVTJNbU0wWW1JM09HVmhaR1V4TWpjNVpEZzFZbVZrWTJZMU9EQm1OR1lsTWpJbE4wUSUzRCUyMIÜ1RA%3D%3D'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0097',
+    title: 'Wiking',
+    artist: 'Sarius',
+    year: 2018,
+    type: 'url',
+    src: 'https://dash.cloudflare.com/3dcf76cc2fee43f77d679726c0ee1a59/r2/default/buckets/rapguesser/objects/Wiking.mp3/details?cursors=JTVCJTIyMS1KVGRDSlRJeWRpVXlNaVV6UVRFbE1rTWxNakp6ZEdGeWRFRm1kR1Z5SlRJeUpUTkJKVEl5VTJGdUpUSXdRVzVrY21WaGN5NXRjRE1sTWpJbE1rTWxNakoxZFdsa0pUSXlKVE5CSlRJeU4yVTJNbU0wWW1JM09HVmhaR1V4TWpjNVpEZzFZbVZrWTJZMU9EQm1OR1lsTWpJbE4wUSUzRCUyMIÜ1RA%3D%3D'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0098',
+    title: 'candy.doll',
+    artist: 'schafter',
+    year: 2018,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/candy.doll.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0099',
+    title: 'dopóki się nie znüdzisz',
+    artist: 'MIÜ, Zalia',
+    year: 2025,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/dop%C3%B3ki%20si%C4%99%20nie%20zn%C3%BCdzisz_spotdown.org.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
+    id: 'sc_0100',
+    title: 'ŚWIATTOMÓJPLACZABAW',
+    artist: 'Quebonafide, Sentino',
+    year: 2020,
+    type: 'url',
+    src: 'https://dash.cloudflare.com/3dcf76cc2fee43f77d679726c0ee1a59/r2/default/buckets/rapguesser/objects/%C5%9AWIATTOM%C3%93JPLACZABAW.mp3/details?cursors=JTVCJTIyMS1KVGRDSlRJeWRpVXlNaVV6UVRFbE1rTWxNakp6ZEdGeWRFRm1kR1Z5SlRJeUpUTkJKVEl5VTJGdUpUSXdRVzVrY21WaGN5NXRjRE1sTWpJbE1rTWxNakoxZFdsa0pUSXlKVE5CSlRJeU4yVTJNbU0wWW1JM09HVmhaR1V4TWpjNVpEZzFZbVZrWTJZMU9EQm1OR1lsTWpJbE4wUSUzRCUyMiU1RA%3D%3D'
   },  
 
   {
