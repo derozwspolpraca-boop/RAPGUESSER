@@ -52,6 +52,16 @@ window.ALBUMS_DB = [
       { id: "soma05_15", title: "Soma", artist: "Taconafide, Taco Hemingway, Quebonafide", year: 2018, type: "sc", src: "https://soundcloud.com/taconafide-2020/soma-2020" },
     ]
   },
+  {
+    id: "album_test",
+    title: "TESTONAFIDE",
+    artist: "TESTONAFIDE",
+    year: 2026,
+    cover: "https://t2.genius.com/unsafe/300x300/https%3A%2F%2Fimages.genius.com%2F88db668ada515bc3fe38932c3e0ce112.1000x1000x1.png",
+    songs: [
+      { id: "test_01", title: "TEST", artist: "TESTONAFIDE", year: 2026, type: "url", src: "https://open.spotify.com/embed/track/5yvUfAGPKCWFgayskmYlfD" },
+    ]
+  },
   // ────────────────────────────────────────────────────
   // SZABLON — skopiuj i wypełnij:
   // {
