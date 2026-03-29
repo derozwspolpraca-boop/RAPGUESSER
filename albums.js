@@ -89,15 +89,15 @@ window.ALBUMS_DB = [
     cover: "https://ecsmedia.pl/c/plesn-b-iext200801862.jpg",
     songs: [
       { id: "plesn_01", title: "ZAKAS", artist: "Guzior", year: 2020, type: "url", src: "https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/plesn/1.%20ZAKAS.mp3" },
-	  { id: "plesn_02", title: "BLUEBERRY", artist: "Guzior", year: 2020, type: "url", src: "https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/plesn/2.%20BLUEBERRY.mp3" }
-	  { id: "plesn_03", title: "TRAPSTAR", artist: "Guzior", year: 2020, type: "url", src: "https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/plesn/3.%20TRAPSTAR.mp3" }
-	  { id: "plesn_04", title: "BOILER ROOM", artist: "Guzior, Kukon", year: 2020, type: "url", src: "https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/plesn/4.%20BOILER%20ROOM.mp3" }
-	  { id: "plesn_05", title: "WTC", artist: "Guzior", year: 2020, type: "url", src: "https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/plesn/5.%20WTC.mp3" }
-	  { id: "plesn_06", title: "FALA", artist: "Guzior, Oskar83", year: 2020, type: "url", src: "https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/plesn/6.%20FALA.mp3" }
-	  { id: "plesn_07", title: "2018", artist: "Guzior", year: 2020, type: "url", src: "https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/plesn/7.%202018.mp3" }
-	  { id: "plesn_08", title: "KUSHKOMA", artist: "Guzior", year: 2020, type: "url", src: "https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/plesn/8.%20KUSHKOMA.mp3" }
-	  { id: "plesn_09", title: "Sowa", artist: "Guzior, Szpaku", year: 2020, type: "url", src: "https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/plesn/9.%20Sowa.mp3" }
-	  { id: "plesn_10", title: "FALA - Sequel", artist: "Guzior", year: 2020, type: "url", src: "https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/plesn/10.%20FALA%20-%20Sequel.mp3" }
+	  { id: "plesn_02", title: "BLUEBERRY", artist: "Guzior", year: 2020, type: "url", src: "https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/plesn/2.%20BLUEBERRY.mp3" },
+	  { id: "plesn_03", title: "TRAPSTAR", artist: "Guzior", year: 2020, type: "url", src: "https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/plesn/3.%20TRAPSTAR.mp3" },
+	  { id: "plesn_04", title: "BOILER ROOM", artist: "Guzior, Kukon", year: 2020, type: "url", src: "https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/plesn/4.%20BOILER%20ROOM.mp3" },
+	  { id: "plesn_05", title: "WTC", artist: "Guzior", year: 2020, type: "url", src: "https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/plesn/5.%20WTC.mp3" },
+	  { id: "plesn_06", title: "FALA", artist: "Guzior, Oskar83", year: 2020, type: "url", src: "https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/plesn/6.%20FALA.mp3" },
+	  { id: "plesn_07", title: "2018", artist: "Guzior", year: 2020, type: "url", src: "https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/plesn/7.%202018.mp3" },
+	  { id: "plesn_08", title: "KUSHKOMA", artist: "Guzior", year: 2020, type: "url", src: "https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/plesn/8.%20KUSHKOMA.mp3" },
+	  { id: "plesn_09", title: "Sowa", artist: "Guzior, Szpaku", year: 2020, type: "url", src: "https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/plesn/9.%20Sowa.mp3" },
+	  { id: "plesn_10", title: "FALA - Sequel", artist: "Guzior", year: 2020, type: "url", src: "https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/plesn/10.%20FALA%20-%20Sequel.mp3" },
     ]
   },  
   // ────────────────────────────────────────────────────
