@@ -813,7 +813,7 @@ function songIsAvailable(song) {
   if (song.type === 'mp3') return !!G.mp3Blobs[song.id];
   if (song.type === 'url') return !!song.src;
   if (song.type === 'file') return !!song.src;
-  if (song.type === 'sc') return !!song.src;
+  if (song.type === 'sc') return false; // SC wyłączone
   return false;
 }
 
@@ -829,12 +829,15 @@ function playFrag() {
   const d = dur();
   if (song.type === 'mp3') {
     aud.src = G.mp3Blobs[song.id]; aud.currentTime = 0;
-    aud.play().then(() => { onPlayStarted(d); }).catch(() => { showToast('Błąd odtwarzania MP3', true); stopPlay(); });
+    aud.play().catch(() => { showToast('Błąd odtwarzania MP3', true); stopPlay(); });
+    onPlayStarted(d);
   } else if (song.type === 'url' || song.type === 'file') {
     aud.src = song.src; aud.currentTime = 0;
-    aud.play().then(() => { onPlayStarted(d); }).catch(() => { showToast('Błąd odtwarzania — sprawdź ścieżkę pliku', true); stopPlay(); });
+    aud.play().catch(() => { showToast('Błąd odtwarzania — sprawdź ścieżkę pliku', true); stopPlay(); });
+    onPlayStarted(d);
   } else {
-    playSC(song.src, () => { if (!G.playing) return; onPlayStarted(d); });
+    // SC wyłączone
+    showToast('SoundCloud wyłączone — użyj URL z R2', true); stopPlay();
   }
 }
 
@@ -1646,7 +1649,7 @@ function renderURLTab() {
           <select id="u-type" onchange="updateUrlHint()">
             <option value="file">📁 Plik lokalny (.mp3 w folderze)</option>
             <option value="url">🔗 URL (hosting MP3)</option>
-            <option value="sc">☁ SoundCloud</option>
+            <!-- <option value="sc">☁ SoundCloud</option> SC wyłączone -->
           </select>
         </div>
       </div>
