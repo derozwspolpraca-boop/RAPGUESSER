@@ -1135,8 +1135,7 @@ function renderClue() {
   const d = dur();
   if (G.attempt === 0) { el.innerHTML = '🎧 Naciśnij <strong>GRAJ FRAGMENT</strong> aby zacząć'; return; }
   let h = [];
-  if (G.attempt >= 2) h.push('Rok: <strong>' + G.current.year + '</strong>');
-  if (G.attempt >= 3) h.push('Inicjały: <strong>' + initials(G.current.artist) + '</strong>');
+  if (G.attempt >= 2) h.push('Inicjały: <strong>' + initials(G.current.artist) + '</strong>');
   if (G.attempt >= 5) h.push('Artysta: <strong>' + G.current.artist + '</strong>');
   el.innerHTML = '⏱ Fragment: <strong>' + d + 's</strong>' + (h.length ? ' &nbsp;|&nbsp; ' + h.join(' | ') : '');
 }
