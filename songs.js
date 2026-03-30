@@ -39,173 +39,173 @@ const SONGS_DB = [
 
   {
     id: 'sc_0001',
-    title: 'Fantazje',
-    artist: 'MIÜ, Bedoes 2115, Pezet',
-    year: 2026,
-    type: 'sc',
-    src: 'https://soundcloud.com/szydlik-jakub/MIÜe-ft-pezet-bedoes-2115'
+    title: 'Klękaj przed panem',
+    artist: 'Białas, Słoń',
+    year: 2021,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Kl%C4%99kaj%20przed%20panem%20Bia%C5%82as%202021-12-14.mp3'
   },
 
   {
     id: 'sc_0002',
-    title: 'Penthouse 2',
-    artist: 'Sentino, Koneser',
-    year: 2026,
-    type: 'sc',
-    src: 'https://soundcloud.com/karzeu/sentino-x-koneser-penthouse-1'
+    title: 'Buduje zamek',
+    artist: 'Malik Montana, Asster',
+    year: 2023,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Buduje%20zamek%20Malik%20Montana%202023-03-10.mp3'
   },
   
   {
     id: 'sc_0003',
-    title: 'Rainman',
-    artist: 'Tymek, Trill Pem, Tede',
-    year: 2019,
-    type: 'sc',
-    src: 'https://soundcloud.com/user-452641235-916715741/1-rainman'
+    title: 'Tańcz ze mną',
+    artist: 'ReTo',
+    year: 2023,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Ta%C5%84cz%20ze%20mn%C4%85%20ReTo%202023-02-24.mp3'
   },  
   
   {
     id: 'sc_0004',
-    title: 'NOWE CIOCIE',
-    artist: 'Rydawarrior',
-    year: 2026,
-    type: 'sc',
-    src: 'https://soundcloud.com/leslixe/nowe-ciocie-rydawarrior'
+    title: 'BALLADA O SAMOTNOŚCI (vlone)',
+    artist: 'Young Multi',
+    year: 2021,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/BALLADA%20O%20SAMOTNO%C5%9ACI%20(vlone)%20Young%20Multi%202021-12-17.mp3'
   },   
 
   {
     id: 'sc_0005',
-    title: 'Wiem co to ból',
-    artist: 'Quebonafide, Sentino, Kaz Bałagane',
-    year: 2026,
-    type: 'sc',
-    src: 'https://soundcloud.com/karzeu/11999e4f-d447-4cd8-ae65-45d7e19fe379'
+    title: 'BEZ SERCA',
+    artist: 'Young Multi, Miszel, matiskater',
+    year: 2021,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/BEZ%20SERCA%20Young%20Multi%202021-12-17.mp3'
   },
 
   {
     id: 'sc_0006',
-    title: 'INTRO',
-    artist: 'Vkie',
-    year: 2024,
-    type: 'sc',
-    src: 'https://soundcloud.com/ciastwo1337/vkie-intro'
+    title: 'Bitch, Please',
+    artist: 'Hodak',
+    year: 2021,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Bitch%2C%20Please%20Hodak%202021-06-10.mp3'
   },    
   
   {
     id: 'sc_0007',
-    title: 'FPS',
-    artist: 'Bedoes 2115, Lanek',
-    year: 2019,
-    type: 'sc',
-    src: 'https://soundcloud.com/user-717001874/bedoes-lanek-fps'
+    title: 'Blueface',
+    artist: 'Kaz Bałagane',
+    year: 2021,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Blueface%20Kaz%20Ba%C5%82agane%202021-08-27.mp3'
   },
 
   {
     id: 'sc_0008',
-    title: 'NA ROGU',
-    artist: 'Rusina',
-    year: 2024,
-    type: 'sc',
-    src: 'https://soundcloud.com/fifi-54979647/rusina-na-rogu'
+    title: 'Bogowie nie krwawią',
+    artist: 'ReTo, Białas',
+    year: 2023,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Bogowie%20nie%20krwawi%C4%85%20ReTo%202023-02-24.mp3'
   },
 
   {
     id: 'sc_0009',
-    title: 'Dzień Kota',
-    artist: 'Włodar',
-    year: 2023,
-    type: 'sc',
-    src: 'https://soundcloud.com/muzanapierdala/wlodar-dzien-kota'
+    title: 'BŁĄD W SYMULACJI',
+    artist: 'White Widow, Pako',
+    year: 2022,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/B%C5%81%C4%84D%20W%20SYMULACJI%20White%20Widow%202022-10-28.mp3'
   },
   
   {
     id: 'sc_0010',
-    title: 'Jestem Śliczny',
-    artist: 'Rusina',
+    title: 'COOKIN UP',
+    artist: 'White Widow',
     year: 2022,
-    type: 'sc',
-    src: 'https://soundcloud.com/yilzwbakltwt/rusina-jestem-sliczny'
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/COOKIN%20UP%20White%20Widow%202022-10-28.mp3'
   },
 
   {
     id: 'sc_0011',
-    title: 'Half Dead',
-    artist: 'Quebonafide, ReTo',
-    year: 2017,
-    type: 'sc',
-    src: 'https://soundcloud.com/user-250223982/quebonafide-ft-reto-half-dead'
+    title: 'Comme Des Garçons',
+    artist: 'Chivas',
+    year: 2021,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Comme%20Des%20Gar%C3%A7ons%20Chivas%202021-05-21.mp3'
   },
 
   {
     id: 'sc_0012',
-    title: 'Jedno Życie',
-    artist: 'Blacha',
-    year: 2020,
-    type: 'sc',
-    src: 'https://soundcloud.com/user-496883271/blacha-jedno-zycie'
+    title: 'Droga krzyżowa',
+    artist: 'Kabe, Miszel',
+    year: 2022,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Droga%20krzy%C5%BCowa%20Kabe%202022-12-30.mp3'
   },
 
   {
     id: 'sc_0013',
-    title: 'THC',
-    artist: 'Young Igi, Włodi',
-    year: 2019,
-    type: 'sc',
-    src: 'https://soundcloud.com/pozdroigi/young-igi-thc-ftwlodi-prod-shad0w-x-hubi'
+    title: 'Faka',
+    artist: 'Mata',
+    year: 2021,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Faka%20Mata%202021-10-01.mp3'
   },
 
   {
     id: 'sc_0014',
-    title: 'Bad Boy',
-    artist: 'Kubi Producent, Beteo, ReTo, Siles',
-    year: 2018,
-    type: 'sc',
-    src: 'https://soundcloud.com/pmhcqz8ersxj/kubi-producent-bad-boy-ft-beteo-reto-siles-1'
+    title: 'Frugo',
+    artist: 'Diho',
+    year: 2019,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Frugo%20Diho%202019-01-28.mp3'
   },
 
   {
     id: 'sc_0015',
-    title: 'bb',
-    artist: 'Zeamsone',
-    year: 2018,
-    type: 'sc',
-    src: 'https://soundcloud.com/pawelekhehe/zeamsone-bb'
+    title: 'GO!',
+    artist: 'Rusina',
+    year: 2022,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/GO!%20Rusina%202022-04-28.mp3'
   },
 
   {
     id: 'sc_0016',
-    title: 'Zimna noc i szybkie auta',
-    artist: 'SB Maffija',
-    year: 2020,
-    type: 'sc',
-    src: 'https://soundcloud.com/user-482107184-920513649/zimna-noc-i-szybki'
+    title: 'GTA',
+    artist: 'ReTo',
+    year: 2023,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/GTA%20ReTo%202023-02-24.mp3'
   },
 
   {
     id: 'sc_0017',
-    title: 'BIERNIK ( Kogo ? Co ?)',
-    artist: 'Dj Decks, WoLa, Mata',
-    year: 2022,
-    type: 'sc',
-    src: 'https://soundcloud.com/julia-wolna-574827105/dj-decks-mata-wola-biernik'
+    title: 'God Mode',
+    artist: 'Żabson, Malik Montana',
+    year: 2023,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/God%20Mode%20%C5%BBabson%202023-03-30.mp3'
   },
 
   {
     id: 'sc_0018',
-    title: '300 BANIEK',
-    artist: 'Otsochodzi, OKI',
-    year: 2025,
-    type: 'sc',
-    src: 'https://soundcloud.com/fifi-54979647/otsochodzi-x-oki-300-baniek'
+    title: 'HIGH RIGHT NOW',
+    artist: 'Zeamsone',
+    year: 2022,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/HIGH%20RIGHT%20NOW%20Zeamsone%202022-07-28.mp3'
   },
 
   {
     id: 'sc_0019',
-    title: 'Małe Krople',
-    artist: 'Young Igi',
-    year: 2022,
-    type: 'sc',
-    src: 'https://soundcloud.com/wiktor122/young-igi-ma-e-krople-1'
+    title: 'Jungle Boyz',
+    artist: 'Malik Montana',
+    year: 2019,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Jungle%20Boyz%20Malik%20Montana%202019-09-27.mp3'
   },
 
   {
@@ -219,173 +219,173 @@ const SONGS_DB = [
 
   {
     id: 'sc_0021',
-    title: 'Bruce',
-    artist: '2115',
-    year: 2022,
-    type: 'sc',
-    src: 'https://soundcloud.com/whj2ovmypucr/2115-bruce'
+    title: 'KILLA',
+    artist: 'Trill Pem, Wac Toja',
+    year: 2021,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/KILLA%20Trill%20Pem%202021-08-18.mp3'
   },
 
   {
     id: 'sc_0022',
-    title: '8 Kobiet (Remix)',
-    artist: 'Taconafide, Bedoes 2115',
-    year: 2018,
-    type: 'sc',
-    src: 'https://soundcloud.com/taconafide-2020/8-kobiet-remix-feat-bedoes'
+    title: 'KWAŚNY DIESEL NIE BENZYNA',
+    artist: 'matiskater, Acidstanek',
+    year: 2021,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/KWA%C5%9ANY%20DIESEL%20NIE%20BENZYNA%20matiskater%202021-10-29.mp3'
   },
 
   {
     id: 'sc_0023',
-    title: 'Alien',
-    artist: 'Sobel',
-    year: 2021,
-    type: 'sc',
-    src: 'https://soundcloud.com/user-232175118/sciezka-dzwiekowa-1'
+    title: 'Karate Kid',
+    artist: 'Białas, Malik Montana',
+    year: 2018,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Karate%20Kid%20Bia%C5%82as%202018-10-04.mp3'
   },
 
   {
     id: 'sc_0024',
-    title: 'Zapytaj o mnie',
-    artist: 'Sentino, Malik Montana',
-    year: 2017,
-    type: 'sc',
-    src: 'https://soundcloud.com/user-232175118/sentino-x-malik-montana-zapytaj-o-mnie-prod-graczyk'
+    title: 'Koala Party',
+    artist: 'Kukon, Młody Koala',
+    year: 2022,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Koala%20Party%20Kukon%202022-06-23.mp3'
   },
 
   {
     id: 'sc_0025',
-    title: 'Modelki',
-    artist: 'Young Multi, Aleshen',
-    year: 2019,
-    type: 'sc',
-    src: 'https://soundcloud.com/user-232175118/young-multi-fast-life-sharky-ft-aleshen-modelki'
+    title: 'LAXJFK',
+    artist: 'Jan-Rapowanie, Kinny Zimmer',
+    year: 2022,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/LAXJFK%20Jan-Rapowanie%202022-03-11.mp3'
   },
 
   {
     id: 'sc_0026',
-    title: 'Janosik',
-    artist: 'Bedoes 2115, Golec Uorkiesta, Kubi Producent',
-    year: 2018,
-    type: 'sc',
-    src: 'https://soundcloud.com/user-834974050/bedoes-kubi-producent-ft-golec-uorkiestra-janosik'
+    title: 'London Rain',
+    artist: 'Kukon, Kaz Bałagane',
+    year: 2022,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/London%20Rain%20Kukon%202022-06-23.mp3'
   },
 
   {
     id: 'sc_0027',
-    title: 'Morgan',
-    artist: 'White 2115',
-    year: 2020,
-    type: 'sc',
-    src: 'https://soundcloud.com/user-813643183/white-2115-morgan'
+    title: 'Luty',
+    artist: 'Otsochodzi',
+    year: 2022,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Luty%20Otsochodzi%202022-08-04.mp3'
   },
 
   {
     id: 'sc_0028',
-    title: 'Prometazyna',
-    artist: 'SB Maffija',
-    year: 2022,
-    type: 'sc',
-    src: 'https://soundcloud.com/user-401363216/sb-maffija-prometazyna'
+    title: 'Matrioszki',
+    artist: 'Kukon',
+    year: 2021,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Matrioszki%20Kukon%202021-08-09.mp3'
   },
 
   {
     id: 'sc_0029',
-    title: 'Święto ogródka',
-    artist: 'Białas, White 2115',
-    year: 2021,
-    type: 'sc',
-    src: 'https://soundcloud.com/user-439528941/bialas-white-2115-swieto-ogrodka'
+    title: 'Mówiłaś',
+    artist: 'Young Igi',
+    year: 2017,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/M%C3%B3wi%C5%82a%C5%9B%20Young%20Igi%202017-10-23.mp3'
   },  
 
   {
     id: 'sc_0030',
-    title: 'Trapczan',
-    artist: 'Żabson',
-    year: 2021,
-    type: 'sc',
-    src: 'https://soundcloud.com/user-235359296-295267940/zabson-trapczan'
+    title: 'OMDB',
+    artist: 'Malik Montana, Szamz',
+    year: 2023,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/OMDB%20Malik%20Montana%202023-03-10.mp3'
   },  
 
   {
     id: 'sc_0031',
-    title: 'Delfin',
-    artist: 'Bedoes 2115, Kubi Producent, Koldi, Young Multi, Beteo',
-    year: 2018,
-    type: 'sc',
-    src: 'https://soundcloud.com/user-834974050/bedoes-kubi-producent-ft-koldi-young-multi-beteo-delfin'
+    title: 'Oh No!',
+    artist: 'Hodak',
+    year: 2021,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Oh%20No!%20Hodak%202021-06-10.mp3'
   },  
 
   {
     id: 'sc_0032',
-    title: '911',
-    artist: 'Malik Montana, OG ENZO',
-    year: 2024,
-    type: 'sc',
-    src: 'https://soundcloud.com/malik-montana-sc/911-og-enzo'
+    title: 'Omerta',
+    artist: 'Hodak, Avi',
+    year: 2020,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Omerta%20Hodak%202020-03-05.mp3'
   },  
 
   {
     id: 'sc_0033',
-    title: 'Ciapakwybujany',
-    artist: 'GM2L, Malik Montana, Kazior, Alberto',
+    title: 'Owboy',
+    artist: 'ReTo',
     year: 2023,
-    type: 'sc',
-    src: 'https://soundcloud.com/sebastian569211146/gm2l-ciapakwybujany'
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Owboy%20ReTo%202023-02-24.mp3'
   },  
 
   {
     id: 'sc_0034',
-    title: '7 5 0',
-    artist: 'Malik Montana, Milonair, Bonez MC',
-    year: 2019,
-    type: 'sc',
-    src: 'https://soundcloud.com/user-13830273/7-5-0a'
+    title: 'POL Smoke',
+    artist: 'Taco Hemingway',
+    year: 2020,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/POL%20Smoke%20Taco%20Hemingway%202020-08-28.mp3'
   },  
 
   {
     id: 'sc_0035',
-    title: 'Rundki',
-    artist: 'Malik Montana, Diho, Alberto, Bibić',
-    year: 2020,
-    type: 'sc',
-    src: 'https://soundcloud.com/user-975522081/malik-montana-rundki-feat-dihoalbertobibic-prodby-oil-beatz'
+    title: 'POLAND REMIX',
+    artist: 'Young Multi',
+    year: 2022,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/POLAND%20REMIX%20Young%20Multi%202022-11-10.mp3'
   },  
 
   {
     id: 'sc_0036',
-    title: 'Robię Yeah',
-    artist: 'Malik Montana, K Koke',
-    year: 2019,
-    type: 'sc',
-    src: 'https://soundcloud.com/user-142672074/robie-yeah'
+    title: 'Paczkomat',
+    artist: 'Otsochodzi, Pako, Szopeen',
+    year: 2022,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Paczkomat%20Otsochodzi%202022-08-04.mp3'
   },  
 
   {
     id: 'sc_0037',
-    title: 'PUK PUK',
-    artist: 'BROKIES,',
-    year: 2025,
-    type: 'sc',
-    src: 'https://soundcloud.com/blyashblyat/brokies-puk-puk'
+    title: 'Palenie Zabija',
+    artist: 'Chivas',
+    year: 2021,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Palenie%20Zabija%20Chivas%202021-05-20.mp3'
   },  
 
   {
     id: 'sc_0038',
-    title: 'TRAPOLLO',
-    artist: 'Żabson',
-    year: 2018,
-    type: 'sc',
-    src: 'https://soundcloud.com/stasiu-opona/zabson-trapollo'
+    title: 'Palm Angels',
+    artist: 'Zeamsone',
+    year: 2022,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Palm%20Angels%20Zeamsone%202022-07-28.mp3'
   },  
 
   {
     id: 'sc_0039',
-    title: 'Superman',
-    artist: 'Kubi Producent, Żabson, Young Multi',
-    year: 2018,
-    type: 'sc',
-    src: 'https://soundcloud.com/yennefer-z-vengerbergu-w3/kubi-producent-superman-ft-zabson-young-multi'
+    title: 'Panta Rhei',
+    artist: 'ReTo',
+    year: 2023,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Panta%20Rhei%20ReTo%202023-02-24.mp3'
   },  
 
   {
@@ -393,134 +393,134 @@ const SONGS_DB = [
     title: 'Mów',
     artist: 'Otsochodzi',
     year: 2019,
-    type: 'sc',
+    type: 'url',
     src: 'https://soundcloud.com/otsochodzi-unofficial/otsochodzi-mow'
   },  
 
   {
     id: 'sc_0041',
-    title: 'Piotruś Pan',
-    artist: 'ReTo',
+    title: 'Prawdziwy trap',
+    artist: '2018',
     year: 2016,
-    type: 'sc',
-    src: 'https://soundcloud.com/daniel_rozniata/reto-piotrus-pan-damn'
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Prawdziwy%20trap%20Bia%C5%82as%202018-10-05.mp3'
   },  
 
   {
     id: 'sc_0042',
-    title: 'ICE',
-    artist: 'Trill Pem',
-    year: 2021,
-    type: 'sc',
-    src: 'https://soundcloud.com/user-835647821-522196098/trill-pem-ice-prod-xthauun-1'
+    title: 'Prometazyna',
+    artist: 'SB Maffija',
+    year: 2022,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Prometazyna%20SB%20Maffija%202022-01-28.mp3'
   },  
 
   {
     id: 'sc_0043',
-    title: 'Moonrock',
-    artist: 'Kaz Bałagane, Szpaku',
+    title: 'Pumba ',
+    artist: 'ReTo, Kaz Bałagane, Kabe',
     year: 2023,
-    type: 'sc',
-    src: 'https://soundcloud.com/sl3cu4lipli6/kaz-balagane-feat-szpaku-moonrock'
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Pumba%20ReTo%202023-02-24.mp3'
   },  
 
     {
     id: 'sc_0044',
-    title: 'OXA',
-    artist: 'Kizo, Pusher',
-    year: 2021,
-    type: 'sc',
-    src: 'https://soundcloud.com/kapelaa/kizo-oxa-featpusher-2'
+    title: 'RIDE WITH MY BOYS',
+    artist: 'White Widow',
+    year: 2022,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/RIDE%20WITH%20MY%20BOYS%20White%20Widow%202022-10-28.mp3'
   },  
 
   {
     id: 'sc_0045',
-    title: 'ŻYCIA SCHEMAT',
-    artist: 'Gruby AK47, Zeju POG',
-    year: 2022,
-    type: 'sc',
-    src: 'https://soundcloud.com/no0ne7/gruby-ak47-x-zeju-pog-ycia-schemat-edit-audio'
+    title: 'STILO',
+    artist: 'matiskater',
+    year: 2021,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/STILO%20matiskater%202021-01-04.mp3'
   },  
 
   {
     id: 'sc_0046',
-    title: 'Alcantara',
-    artist: 'Avi, Kukon',
-    year: 2025,
-    type: 'sc',
-    src: 'https://soundcloud.com/igorblyatt/avi-x-kukon-alcantara'
+    title: 'Sheraton Kopenhaga',
+    artist: 'Kukon',
+    year: 2020,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Sheraton%20Kopenhaga%20Kukon%202020-12-25.mp3'
   },  
 
   {
     id: 'sc_0047',
-    title: 'HOOD ANGEL',
-    artist: 'Żabson, Beteo, BENITO TUZZA',
-    year: 2020,
-    type: 'sc',
-    src: 'https://soundcloud.com/yennefer-z-vengerbergu-w3/zabson-hood-angel-feat-beteo-benito-tuzza'
+    title: 'Sonic Skit',
+    artist: 'OKI',
+    year: 2022,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Sonic%20Skit%20OKI%202022-06-09.mp3'
   },  
 
   {
     id: 'sc_0048',
-    title: 'Wasabi',
-    artist: 'Deemz, Reto, Żabson',
-    year: 2021,
-    type: 'sc',
-    src: 'https://soundcloud.com/user-284385261/deemz-reto-zabson-wasabi-1'
+    title: 'TERAZ ALBO NIGDY',
+    artist: '2115, Young Multi',
+    year: 2022,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/TERAZ%20ALBO%20NIGDY%202115%202022-12-16.mp3'
   },  
 
   {
     id: 'sc_0049',
-    title: '21 GRAMÓW',
-    artist: 'Zeamsone',
+    title: 'Teleport',
+    artist: 'Janusz Walczuk, Waima, Premixm, Diffi, Xad, yezusslime',
     year: 2023,
-    type: 'sc',
-    src: 'https://soundcloud.com/jacobbb_toja/zeamsone-21-gramow-prod-zeamsone'
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Teleport%20Janusz%20Walczuk%202023-01-27.mp3'
   },  
 
   {
     id: 'sc_0050',
-    title: 'WINO',
-    artist: 'Szpaku, Dziarma',
-    year: 2021,
-    type: 'sc',
-    src: 'https://soundcloud.com/user-968333575/06-wino-feat-dziarma-2'
+    title: 'Trap II',
+    artist: 'Young Multi',
+    year: 2018,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Trap%20II%20Young%20Multi%202018-11-23.mp3'
   },  
 
   {
     id: 'sc_0051',
-    title: 'Ból',
-    artist: 'Deemz, Białas, Szpaku',
-    year: 2018,
-    type: 'sc',
-    src: 'https://soundcloud.com/yennefer-z-vengerbergu-w3/bol'
+    title: 'Trash',
+    artist: 'Chivas',
+    year: 2019,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Trash%20Chivas%202019-09-30.mp3'
   },  
 
   {
     id: 'sc_0052',
-    title: 'Choć nie widać na zewnątrz',
-    artist: 'White 2115, Bedoes 2115',
-    year: 2024,
-    type: 'sc',
-    src: 'https://soundcloud.com/yennefer-z-vengerbergu-w3/white-2115-choc-nie-widac-na-zewnatrz-ft-bedoes-2115'
+    title: '8 Kobiet',
+    artist: 'Taconafide, Taco Hemingway, Quebonafide',
+    year: 2018,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/SOMA05/8%20kobiet%20TACONAFIDE%202018-04-13.mp3'
   },  
 
   {
     id: 'sc_0053',
-    title: 'FUTURAMA 3',
-    artist: 'Quebonafide',
-    year: 2024,
-    type: 'sc',
-    src: 'https://soundcloud.com/yennefer-z-vengerbergu-w3/futurama-3'
+    title: 'Art-B',
+    artist: 'Taconafide, Taco Hemingway, Quebonafide',
+    year: 2018,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/SOMA05/Art-B%20TACONAFIDE%202018-04-13.mp3'
   },  
 
   {
     id: 'sc_0054',
-    title: 'SOBOTA WIECZÓR',
-    artist: 'Young Leosia, Jacuś',
-    year: 2024,
-    type: 'sc',
-    src: 'https://soundcloud.com/yennefer-z-vengerbergu-w3/young-leosia-sobota-wieczor-ft-jacus'
+    title: 'Ekodiesel',
+    artist: 'Taconafide, Taco Hemingway, Quebonafide',
+    year: 2018,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/SOMA05/Ekodiesel%20TACONAFIDE%202018-04-13.mp3'
   },  
 
   {
@@ -528,53 +528,53 @@ const SONGS_DB = [
     title: 'Tesla Sport Carbon',
     artist: 'Żabson',
     year: 2023,
-    type: 'sc',
-    src: 'https://soundcloud.com/yennefer-z-vengerbergu-w3/zabson-tesla-sport-carbon'
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Tesla%20Sport%20Carbon%20%C5%BBabson%202023-03-30.mp3'
   },  
 
   {
     id: 'sc_0056',
-    title: 'Sidehoe',
-    artist: 'Żabson, Bedoes 2115',
-    year: 2023,
-    type: 'sc',
-    src: 'https://soundcloud.com/yennefer-z-vengerbergu-w3/sidehoe7'
+    title: 'Giro d’Italia',
+    artist: 'Taconafide, Taco Hemingway, Quebonafide',
+    year: 2018,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/SOMA05/Giro%20d%E2%80%99Italia%20TACONAFIDE%202018-04-13.mp3'
   },  
 
   {
     id: 'sc_0057',
-    title: 'Intro Do Płyty Mojego Życia',
-    artist: 'Kuqe 2115',
-    year: 2024,
-    type: 'sc',
-    src: 'https://soundcloud.com/yennefer-z-vengerbergu-w3/kuqe-2115-intro-do-plyty-mojego-zycia'
+    title: 'Metallica 808',
+    artist: 'Taconafide, Taco Hemingway, Quebonafide',
+    year: 2018,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/SOMA05/Metallica%20808%20TACONAFIDE%202018-04-13.mp3'
   },  
 
   {
     id: 'sc_0058',
-    title: 'Double Match',
-    artist: 'Young Leosia, bambi',
-    year: 2024,
-    type: 'sc',
-    src: 'https://soundcloud.com/yennefer-z-vengerbergu-w3/young-leosia-bambi-double-match'
+    title: 'Mleko & miód',
+    artist: 'Taconafide, Taco Hemingway, Quebonafide',
+    year: 2018,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/SOMA05/Mleko%20%26%20mi%C3%B3d%20TACONAFIDE%202018-04-13.mp3'
   }, 
 
     {
     id: 'sc_0059',
-    title: 'CHINATOWN',
-    artist: 'Kali, Paluch, Żabson',
-    year: 2019,
-    type: 'sc',
-    src: 'https://soundcloud.com/yennefer-z-vengerbergu-w3/kali-chinatown-feat-paluch-zabson'
+    title: 'Tamagotchi',
+    artist: 'Taconafide, Taco Hemingway, Quebonafide',
+    year: 2018,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/SOMA05/Tamagotchi%20TACONAFIDE%202018-04-13.mp3'
   },  
 
   {
     id: 'sc_0060',
-    title: 'GUCCI MANE',
-    artist: 'Deemz, Bedoes 2115, Young Multi',
-    year: 2018,
-    type: 'sc',
-    src: 'https://soundcloud.com/yennefer-z-vengerbergu-w3/deemz-x-bedoes-x-young-multi-gucci-mane'
+    title: 'KURWY CHCĄ SENTO',
+    artist: 'Sentino, Popek',
+    year: 2026,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/ZL5/KURWY%20CHC%C4%84%20SENTO.mp3'
   },  
 
   {
@@ -582,44 +582,44 @@ const SONGS_DB = [
     title: 'Supersize',
     artist: 'Żabson, Kronkel Dom',
     year: 2023,
-    type: 'sc',
-    src: 'https://soundcloud.com/yennefer-z-vengerbergu-w3/zabson-supersize-feat-kronkel-dom'
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Supersize%20%C5%BBabson%202023-03-30.mp3'
   },  
 
   {
     id: 'sc_0062',
-    title: 'Jesień',
-    artist: 'Quebonafide',
-    year: 2020,
-    type: 'sc',
-    src: 'https://soundcloud.com/yennefer-z-vengerbergu-w3/quebonafide-jesien'
+    title: 'FANTASTYCZNY',
+    artist: 'Sentino',
+    year: 2026,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/ZL5/FANTASTYCZNY%20Sentino%202026-03-11.mp3'
   },  
 
   {
     id: 'sc_0063',
-    title: 'Anioł Stróż',
-    artist: 'Szpaku',
-    year: 2024,
-    type: 'sc',
-    src: 'https://soundcloud.com/gugu-label/aniol-stroz'
+    title: 'PENTHOUSE 2',
+    artist: 'Sentino, Koneser',
+    year: 2026,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/ZL5/PENTHOUSE%202%20Sentino%202026-03-11.mp3'
   },  
 
   {
     id: 'sc_0064',
-    title: 'Nie boję się jutra',
-    artist: 'ReTo',
-    year: 2024,
-    type: 'sc',
-    src: 'https://soundcloud.com/mateusz-bramorski-138323202/reto-nie-boj-si-jutra-prod'
+    title: 'WAWA022',
+    artist: 'Sentino, Diho',
+    year: 2026,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/ZL5/WAWA022%20Sentino%202026-03-11.mp3'
   },  
 
   {
     id: 'sc_0065',
-    title: 'Menago',
-    artist: 'PlanBe, Otsochodzi',
-    year: 2019,
-    type: 'sc',
-    src: 'https://soundcloud.com/kacper-gawe-ko/planbe-ft-otsochodzi-menago'
+    title: 'OSTATNI RAZ',
+    artist: 'Sentino, Kaz Bałagane',
+    year: 2026,
+    type: 'url',
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/ZL5/OSTATNI%20RAZ%20Sentino%202026-03-11.mp3'
   },  
 
   {
@@ -942,7 +942,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -951,7 +951,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -960,142 +960,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
-    src: ''
-  }, 
-
-    {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   }, 
 
@@ -1104,7 +969,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1113,7 +978,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1122,7 +987,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1131,7 +996,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1140,7 +1005,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1149,7 +1014,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1158,7 +1023,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1167,7 +1032,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1176,7 +1041,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1185,7 +1050,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1194,7 +1059,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1203,7 +1068,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1212,7 +1077,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1221,7 +1086,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1230,142 +1095,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
-    src: ''
-  }, 
-
-    {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   }, 
 
@@ -1374,7 +1104,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1383,7 +1113,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1392,7 +1122,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1401,7 +1131,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1410,7 +1140,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1419,7 +1149,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1428,7 +1158,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1437,7 +1167,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1446,7 +1176,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1455,7 +1185,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1464,7 +1194,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1473,7 +1203,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1482,7 +1212,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1491,7 +1221,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1500,142 +1230,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
-    src: ''
-  }, 
-
-    {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   }, 
 
@@ -1644,7 +1239,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1653,7 +1248,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1662,7 +1257,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1671,7 +1266,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1680,7 +1275,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1689,7 +1284,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1698,7 +1293,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1707,7 +1302,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1716,7 +1311,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1725,7 +1320,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1734,7 +1329,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1743,7 +1338,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1752,7 +1347,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1761,7 +1356,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1770,142 +1365,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
-    src: ''
-  }, 
-
-    {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   }, 
 
@@ -1914,7 +1374,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1923,7 +1383,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1932,7 +1392,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1941,7 +1401,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1950,7 +1410,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1959,7 +1419,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1968,7 +1428,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1977,7 +1437,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1986,7 +1446,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -1995,7 +1455,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2004,7 +1464,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2013,7 +1473,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2022,7 +1482,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2031,7 +1491,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2040,142 +1500,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
-    src: ''
-  }, 
-
-    {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   }, 
 
@@ -2184,7 +1509,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2193,7 +1518,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2202,7 +1527,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2211,7 +1536,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2220,7 +1545,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2229,7 +1554,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2238,7 +1563,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2247,7 +1572,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2256,7 +1581,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2265,7 +1590,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2274,7 +1599,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2283,7 +1608,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2292,7 +1617,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2301,7 +1626,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2310,142 +1635,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
-    src: ''
-  }, 
-
-    {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   }, 
 
@@ -2454,7 +1644,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2463,7 +1653,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2472,7 +1662,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2481,7 +1671,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2490,7 +1680,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2499,7 +1689,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2508,7 +1698,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2517,7 +1707,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2526,7 +1716,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2535,7 +1725,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2544,7 +1734,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2553,7 +1743,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2562,7 +1752,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2571,7 +1761,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2580,7 +1770,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   }, 
 
@@ -2589,7 +1779,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2598,7 +1788,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2607,7 +1797,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2616,7 +1806,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2625,7 +1815,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2634,7 +1824,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2643,7 +1833,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2652,7 +1842,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2661,7 +1851,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2670,7 +1860,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2679,7 +1869,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2688,7 +1878,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2697,7 +1887,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2706,7 +1896,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2715,7 +1905,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   }, 
 
@@ -2724,7 +1914,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2733,7 +1923,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2742,7 +1932,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2751,7 +1941,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2760,7 +1950,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2769,7 +1959,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2778,7 +1968,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2787,7 +1977,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2796,7 +1986,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2805,7 +1995,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2814,7 +2004,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2823,7 +2013,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2832,7 +2022,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2841,7 +2031,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2850,7 +2040,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   }, 
 
@@ -2859,7 +2049,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2868,7 +2058,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2877,7 +2067,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2886,7 +2076,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2895,7 +2085,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2904,7 +2094,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2913,7 +2103,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2922,7 +2112,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2931,7 +2121,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2940,7 +2130,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2949,7 +2139,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2958,7 +2148,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2967,7 +2157,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2976,7 +2166,7 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
     src: ''
   },  
 
@@ -2985,7 +2175,817 @@ const SONGS_DB = [
     title: '',
     artist: '',
     year: 202,
-    type: 'sc',
+    type: 'url',
+    src: ''
+  }, 
+
+    {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  }, 
+
+    {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  }, 
+
+    {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  }, 
+
+    {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  }, 
+
+    {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  }, 
+
+    {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
+    src: ''
+  },  
+
+  {
+    id: 'sc_0006',
+    title: '',
+    artist: '',
+    year: 202,
+    type: 'url',
     src: ''
   }, 
   
@@ -2996,7 +2996,7 @@ const SONGS_DB = [
   //   title: 'Tytuł Piosenki',
   //   artist: 'Nazwa Artysty',
   //   year: 2023,
-  //   type: 'sc',
+  //   type: 'url',
   //   src: 'https://soundcloud.com/artysta/tytul'
   // },
 
