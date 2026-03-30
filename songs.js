@@ -817,7 +817,7 @@ const SONGS_DB = [
     artist: 'Mata, Żabson',
     year: 2025,
     type: 'url',
-    src: 'https://dash.cloudflare.com/3dcf76cc2fee43f77d679726c0ee1a59/r2/default/buckets/rapguesser/objects/PALMA%20DE%20MALLORCA_spotdown.org.mp3/details'
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/PALMA%20DE%20MALLORCA_spotdown.org.mp3'
   },  
 
   {
@@ -835,7 +835,7 @@ const SONGS_DB = [
     artist: 'Zeamsone',
     year: 2018,
     type: 'url',
-    src: 'https://dash.cloudflare.com/3dcf76cc2fee43f77d679726c0ee1a59/r2/default/buckets/rapguesser/objects/San%20Andreas.mp3/details'
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/San%20Andreas.mp3'
   },  
 
   {
@@ -862,7 +862,7 @@ const SONGS_DB = [
     artist: 'Mata',
     year: 2021,
     type: 'url',
-    src: 'https://dash.cloudflare.com/3dcf76cc2fee43f77d679726c0ee1a59/r2/default/buckets/rapguesser/objects/Szafir_spotdown.org.mp3/details?cursors=JTVCJTIyMS1KVGRDSlRJeWRpVXlNaVV6UVRFbE1rTWxNakp6ZEdGeWRFRm1kR1Z5SlRJeUpUTkJKVEl5VTJGdUpUSXdRVzVrY21WaGN5NXRjRE1sTWpJbE1rTWxNakoxZFdsa0pUSXlKVE5CSlRJeU4yVTJNbU0wWW1JM09HVmhaR1V4TWpjNVpEZzFZbVZrWTJZMU9EQm1OR1lsTWpJbE4wUSUzRCUyMIÜ1RA%3D%3D'
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/Szafir_spotdown.org.mp3'
   },  
 
   {
@@ -889,7 +889,7 @@ const SONGS_DB = [
     artist: 'Sentino, Nitro, MASNY BEN',
     year: 2022,
     type: 'url',
-    src: 'https://dash.cloudflare.com/3dcf76cc2fee43f77d679726c0ee1a59/r2/default/buckets/rapguesser/objects/Tr%C3%B3jk%C4%85t%20Bermudzki.mp3/details?cursors=JTVCJTIyMS1KVGRDSlRJeWRpVXlNaVV6UVRFbE1rTWxNakp6ZEdGeWRFRm1kR1Z5SlRJeUpUTkJKVEl5VTJGdUpUSXdRVzVrY21WaGN5NXRjRE1sTWpJbE1rTWxNakoxZFdsa0pUSXlKVE5CSlRJeU4yVTJNbU0wWW1JM09HVmhaR1V4TWpjNVpEZzFZbVZrWTJZMU9EQm1OR1lsTWpJbE4wUSUzRCUyMIÜ1RA%3D%3D'
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/Tr%C3%B3jk%C4%85t%20Bermudzki.mp3'
   },  
 
   {
@@ -898,7 +898,7 @@ const SONGS_DB = [
     artist: 'ReTo',
     year: 2018,
     type: 'url',
-    src: 'https://dash.cloudflare.com/3dcf76cc2fee43f77d679726c0ee1a59/r2/default/buckets/rapguesser/objects/UA.mp3/details?cursors=JTVCJTIyMS1KVGRDSlRJeWRpVXlNaVV6UVRFbE1rTWxNakp6ZEdGeWRFRm1kR1Z5SlRJeUpUTkJKVEl5VTJGdUpUSXdRVzVrY21WaGN5NXRjRE1sTWpJbE1rTWxNakoxZFdsa0pUSXlKVE5CSlRJeU4yVTJNbU0wWW1JM09HVmhaR1V4TWpjNVpEZzFZbVZrWTJZMU9EQm1OR1lsTWpJbE4wUSUzRCUyMIÜ1RA%3D%3D'
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/UA.mp3'
   },  
 
   {
@@ -907,7 +907,7 @@ const SONGS_DB = [
     artist: 'Sarius',
     year: 2018,
     type: 'url',
-    src: 'https://dash.cloudflare.com/3dcf76cc2fee43f77d679726c0ee1a59/r2/default/buckets/rapguesser/objects/Wiking.mp3/details?cursors=JTVCJTIyMS1KVGRDSlRJeWRpVXlNaVV6UVRFbE1rTWxNakp6ZEdGeWRFRm1kR1Z5SlRJeUpUTkJKVEl5VTJGdUpUSXdRVzVrY21WaGN5NXRjRE1sTWpJbE1rTWxNakoxZFdsa0pUSXlKVE5CSlRJeU4yVTJNbU0wWW1JM09HVmhaR1V4TWpjNVpEZzFZbVZrWTJZMU9EQm1OR1lsTWpJbE4wUSUzRCUyMIÜ1RA%3D%3D'
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/Wiking.mp3'
   },  
 
   {
@@ -934,7 +934,7 @@ const SONGS_DB = [
     artist: 'Quebonafide, Sentino',
     year: 2020,
     type: 'url',
-    src: 'https://dash.cloudflare.com/3dcf76cc2fee43f77d679726c0ee1a59/r2/default/buckets/rapguesser/objects/%C5%9AWIATTOM%C3%93JPLACZABAW.mp3/details?cursors=JTVCJTIyMS1KVGRDSlRJeWRpVXlNaVV6UVRFbE1rTWxNakp6ZEdGeWRFRm1kR1Z5SlRJeUpUTkJKVEl5VTJGdUpUSXdRVzVrY21WaGN5NXRjRE1sTWpJbE1rTWxNakoxZFdsa0pUSXlKVE5CSlRJeU4yVTJNbU0wWW1JM09HVmhaR1V4TWpjNVpEZzFZbVZrWTJZMU9EQm1OR1lsTWpJbE4wUSUzRCUyMiU1RA%3D%3D'
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/%C5%9AWIATTOM%C3%93JPLACZABAW.mp3'
   },  
 
   {
