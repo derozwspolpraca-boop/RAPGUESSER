@@ -1286,7 +1286,7 @@ function renderResult(ok) {
       <div class="resi">${ok ? '🏆' : '💀'}</div>
       <div class="ress ${ok ? 'win' : 'lose'}">${ok ? 'TRAFIONY!' : 'MISS!'}</div>
       <div class="rest">${G.current.title}</div>
-      <div class="resa">${G.current.artist} · ${G.current.year}</div>
+      <div class="resa">${G.current.artist}</div>
       <div class="resp">${ok ? '+' + pts + ' punktów &nbsp;|&nbsp; ' : ''}Próba ${G.attempt}</div>
     </div>
     ${renderGuessTable()}
