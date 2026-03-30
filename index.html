@@ -12,7 +12,7 @@
   --s2:    #151524;
   --s3:    #1c1c2e;
   --s4:    #232338;
-  --accent:       #a6fff6;
+  --accent:       #fcb4d4;
   --accent-hover: #ffffff;
   --accent-text:  #000000;
   --accent2:      #ccaa30;
@@ -31,30 +31,30 @@
 }
 
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html,body{height:100%;font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);overflow:hidden;-webkit-font-smoothing:antialiased}
+html,body{min-height:100%;font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--s1)}::-webkit-scrollbar-thumb{background:var(--accent2);border-radius:3px}
 
-/* ── LAYOUT ── */
-#app{
-  max-width:960px;margin:0 auto;padding:0 16px;
-  height:100vh;overflow:hidden;
-  display:grid;
-  grid-template-rows:auto auto auto 1fr;
-  grid-template-columns:1fr;
-}
+#app{max-width:620px;margin:0 auto;padding:0 12px;display:flex;flex-direction:column;min-height:100vh}
 
-/* Desktop two-column layout */
+/* ── DESKTOP TWO-COLUMN ── */
 @media(min-width:800px){
   #app{
-    grid-template-columns:300px 1fr;
-    grid-template-rows:auto auto 1fr;
-    column-gap:20px;
+    max-width:980px;
+    display:grid;
+    grid-template-columns:340px 1fr;
+    grid-template-rows:auto auto auto 1fr;
+    column-gap:24px;
+    height:100vh;
+    overflow:hidden;
+    padding:0 24px;
   }
-  .header      { grid-column:1/-1; }
-  .scorebar    { grid-column:1/-1; }
-  .mtabs       { grid-column:1/-1; }
-  .left-col    { grid-column:1; overflow-y:auto; overflow-x:hidden; padding-right:4px; }
-  .right-col   { grid-column:2; overflow-y:auto; overflow-x:hidden; display:flex;flex-direction:column; }
+  .header   { grid-column:1/-1; }
+  .scorebar { grid-column:1/-1; }
+  .mtabs    { grid-column:1/-1; }
+  .left-col { grid-column:1; grid-row:4; overflow-y:auto; padding-bottom:16px; scrollbar-width:thin; }
+  .right-col{ grid-column:2; grid-row:4; overflow-y:auto; padding-bottom:16px; scrollbar-width:thin; display:flex; flex-direction:column; }
+  html,body { overflow:hidden; height:100%; }
+  footer { grid-column:1/-1; }
 }
 
 /* HEADER */
@@ -172,6 +172,13 @@ html,body{height:100%;font-family:'Barlow',sans-serif;background:var(--bg);color
 .playbtn:hover{background:var(--accent-hover);transform:translateY(-1px)}
 .playbtn:active{transform:scale(.98);opacity:.9}
 .playbtn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.playbtn.on-fire{background:linear-gradient(135deg,#ff6b35,#f7c948,var(--accent));box-shadow:0 0 20px rgba(247,180,72,.45);animation:firepulse 1.8s ease-in-out infinite}
+@keyframes firepulse{0%,100%{box-shadow:0 0 16px rgba(247,180,72,.35)}50%{box-shadow:0 0 32px rgba(255,107,53,.6)}}
+
+/* KEYBOARD HINT */
+.kb-hint{display:none;text-align:center;font-size:10px;color:var(--text3);margin-bottom:6px;letter-spacing:.5px}
+@media(min-width:800px){.kb-hint{display:block}}
+.kb{display:inline-block;background:var(--s3);border:1px solid var(--border2);border-radius:4px;padding:1px 6px;font-size:10px;font-family:monospace;color:var(--text2);margin:0 2px}
 
 /* DUR BAR */
 .durbar{background:var(--s3);border-radius:3px;height:3px;margin:0 0 11px;overflow:hidden}
@@ -358,100 +365,6 @@ html,body{height:100%;font-family:'Barlow',sans-serif;background:var(--bg);color
 .toast.err{color:var(--col-miss);border-color:rgba(255,63,63,.35)}
 
 footer{text-align:center;padding:16px 0;color:var(--text3);font-size:10px;border-top:1px solid var(--border);margin-top:auto}
-/* ── ALBUM PICKER OVERLAY ── */
-.album-picker-ov{
-  position:fixed;inset:0;z-index:400;
-  background:rgba(0,0,0,.82);
-  display:flex;align-items:stretch;justify-content:center;
-  backdrop-filter:blur(6px);
-  animation:fadeIn .22s ease;
-}
-.album-picker-ov.hidden{display:none}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-
-.album-picker-panel{
-  background:var(--s1);
-  width:100%;max-width:720px;
-  display:flex;flex-direction:column;
-  overflow:hidden;
-}
-@media(min-width:600px){
-  .album-picker-panel{border-radius:0 0 18px 18px;margin-top:0;max-height:100vh;}
-}
-
-.album-picker-hdr{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:16px 18px 12px;
-  border-bottom:1px solid var(--border);
-  flex-shrink:0;
-}
-.album-picker-title{
-  font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;
-  color:var(--col-album);
-}
-.album-picker-close{
-  background:var(--s3);border:1px solid var(--border);border-radius:7px;
-  padding:6px 12px;cursor:pointer;color:var(--text2);font-size:12px;font-weight:600;
-  transition:all .2s;font-family:'Barlow',sans-serif;
-}
-.album-picker-close:hover{border-color:var(--col-miss);color:var(--col-miss)}
-
-.album-picker-search{
-  padding:12px 18px 10px;flex-shrink:0;
-  border-bottom:1px solid var(--border);
-}
-.album-picker-inp{
-  width:100%;padding:10px 14px;
-  background:var(--s2);border:1.5px solid var(--border);border-radius:var(--r);
-  color:var(--text);font-size:14px;font-family:'Barlow',sans-serif;
-  outline:none;transition:border-color .2s;-webkit-appearance:none;
-}
-.album-picker-inp:focus{border-color:var(--col-album)}
-.album-picker-inp::placeholder{color:var(--text3)}
-.album-picker-count{font-size:10px;color:var(--text3);margin-top:6px;}
-
-.album-picker-grid-wrap{
-  flex:1;overflow-y:auto;padding:14px 18px 20px;
-  -webkit-overflow-scrolling:touch;
-}
-.album-picker-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(130px,1fr));
-  gap:12px;
-}
-@media(min-width:600px){
-  .album-picker-grid{grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:14px;}
-}
-
-.alb-card{
-  background:var(--s2);border:1.5px solid var(--border);border-radius:12px;
-  overflow:hidden;cursor:pointer;transition:all .22s;
-  display:flex;flex-direction:column;
-}
-.alb-card:hover,.alb-card:active{
-  border-color:var(--col-album);
-  transform:translateY(-3px);
-  box-shadow:0 8px 24px rgba(184,76,227,.25);
-}
-.alb-card-img{
-  width:100%;aspect-ratio:1/1;object-fit:cover;display:block;
-  background:var(--s3);
-}
-.alb-card-img-ph{
-  width:100%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;
-  font-size:40px;background:linear-gradient(135deg,var(--s3),var(--s4));
-}
-.alb-card-info{padding:8px 9px 10px;flex:1;}
-.alb-card-title{font-size:12px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--text);}
-.alb-card-artist{font-size:10px;color:var(--text2);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.alb-card-cnt{font-size:9px;color:var(--col-album);margin-top:3px;font-weight:600;}
-
-.album-picker-empty{
-  text-align:center;padding:40px 20px;color:var(--text3);
-  grid-column:1/-1;
-}
-.album-picker-empty .ei{font-size:40px;margin-bottom:10px;}
-
 
 /* DAILY MODE */
 .daily-card{background:linear-gradient(135deg,var(--s2) 0%,#1a0a2e 100%);border:1px solid rgba(184,76,227,.35);border-radius:14px;padding:22px 18px;text-align:center;margin-bottom:12px;animation:fadeup .35s ease;position:relative;overflow:hidden}
@@ -481,40 +394,6 @@ footer{text-align:center;padding:16px 0;color:var(--text3);font-size:10px;border
   .ad{width:32px;height:32px;font-size:12px}
   .playbtn{font-size:18px}
 }
-
-/* Mobile: restore normal scroll */
-@media(max-width:799px){
-  html,body{height:auto;overflow:auto;}
-  #app{
-    height:auto;overflow:visible;
-    display:flex;flex-direction:column;
-    min-height:100vh;
-    padding:0 12px;
-  }
-  .left-col,.right-col{overflow:visible;}
-  .right-col{display:flex;flex-direction:column;}
-}
-@media(min-width:800px){
-  .left-col{
-    height:100%;
-    padding-bottom:12px;
-    scrollbar-width:thin;
-  }
-  .right-col{
-    height:100%;
-    padding-bottom:12px;
-    scrollbar-width:thin;
-  }
-  /* Make the grid rows proper */
-  #app{
-    height:100vh;
-    grid-template-rows:auto auto auto 1fr;
-  }
-  .left-col, .right-col {
-    grid-row: 4;
-    overflow-y: auto;
-  }
-}
 </style>
 </head>
 <body>
@@ -534,7 +413,7 @@ footer{text-align:center;padding:16px 0;color:var(--text3);font-size:10px;border
   </div>
 
   <div class="mtabs">
-    <button class="mt on" onclick="setMode('classic',this)">🎯 Zwykły<br><span style="font-size:9px;font-weight:400">6 prób</span></button>
+    <button class="mt on" onclick="setMode('classic',this)">🎯 Klasyczny<br><span style="font-size:9px;font-weight:400">6 prób</span></button>
     <button class="mt" id="daily-tab-btn" onclick="setMode('daily',this)">📅 Daily<br><span style="font-size:9px;font-weight:400" id="daily-tab-sub">1000 pkt</span></button>
     <button class="mt album-tab" onclick="setMode('album',this)">💿 Album<br><span style="font-size:9px;font-weight:400" id="album-tab-sub">zgadnij skład</span></button>
   </div>
@@ -557,7 +436,6 @@ footer{text-align:center;padding:16px 0;color:var(--text3);font-size:10px;border
       <img class="album-cover-img" id="album-cover-img" src="" alt="" style="display:none" onerror="this.style.display='none';document.getElementById('album-cover-placeholder').style.display='flex'"/>
     </div>
 
-    <div style="width:80px;flex-shrink:0"></div>
   </div>
 
   <!-- ALBUM STRIP (pokazuje się w trybie album) -->
@@ -592,9 +470,9 @@ footer{text-align:center;padding:16px 0;color:var(--text3);font-size:10px;border
   </div>
 
   <div class="clue" id="clue">🎧 Naciśnij <strong>GRAJ FRAGMENT</strong> aby zacząć</div>
+  <div class="kb-hint"><span class="kb">Spacja</span> graj &nbsp;·&nbsp; <span class="kb">Enter</span> potwierdź &nbsp;·&nbsp; <span class="kb">Tab</span> pomiń</div>
   <button class="playbtn" id="playbtn" onclick="playFrag()">▶ GRAJ FRAGMENT</button>
   <div class="durbar"><div class="durfill" id="durbar"></div></div>
-
   </div><!-- /left-col -->
 
   <div class="right-col">
@@ -621,7 +499,7 @@ footer{text-align:center;padding:16px 0;color:var(--text3);font-size:10px;border
   <footer style="grid-column:1/-1">RAPGUESSER — 2026</footer>
 </div>
 
-<audio id="aud" preload="auto"></audio>
+<audio id="aud" preload="auto" playsinline webkit-playsinline></audio>
 
 <!-- MODAL HASŁA -->
 <div class="pw-ov hidden" id="pw-modal">
@@ -665,26 +543,6 @@ footer{text-align:center;padding:16px 0;color:var(--text3);font-size:10px;border
     <div id="tab-albumy" style="display:none"></div>
     <div id="tab-mp3" style="display:none"></div>
     <div id="tab-url" style="display:none"></div>
-  </div>
-</div>
-
-
-<!-- ALBUM PICKER OVERLAY -->
-<div class="album-picker-ov hidden" id="album-picker-ov">
-  <div class="album-picker-panel">
-    <div class="album-picker-hdr">
-      <div class="album-picker-title">💿 WYBIERZ ALBUM</div>
-      <button class="album-picker-close" onclick="closeAlbumPicker()">✕ ZAMKNIJ</button>
-    </div>
-    <div class="album-picker-search">
-      <input class="album-picker-inp" id="album-picker-inp" type="text"
-        placeholder="🔍 Szukaj po artyście lub tytule..."
-        oninput="filterAlbumPicker(this.value)" autocomplete="off"/>
-      <div class="album-picker-count" id="album-picker-count"></div>
-    </div>
-    <div class="album-picker-grid-wrap">
-      <div class="album-picker-grid" id="album-picker-grid"></div>
-    </div>
   </div>
 </div>
 
@@ -891,6 +749,9 @@ function updateHUD() {
   document.getElementById('sc-tot').textContent = G.total;
   document.getElementById('bcnt').textContent = G.songs.length;
   updateAlbumAdminCount();
+  // Fire effect on play button when streak >= 3
+  const btn = document.getElementById('playbtn');
+  if (btn) btn.classList.toggle('on-fire', G.streak >= 3);
 }
 
 // ══════════════════════════════════════
@@ -1003,15 +864,12 @@ function playFrag() {
   const d = dur();
   if (song.type === 'mp3') {
     aud.src = G.mp3Blobs[song.id]; aud.currentTime = 0;
-    aud.play().catch(() => { showToast('Błąd odtwarzania MP3', true); stopPlay(); });
-    onPlayStarted(d);
+    aud.play().then(() => { onPlayStarted(d); }).catch(() => { showToast('Błąd odtwarzania MP3', true); stopPlay(); });
   } else if (song.type === 'url' || song.type === 'file') {
     aud.src = song.src; aud.currentTime = 0;
-    aud.play().catch(() => { showToast('Błąd odtwarzania — sprawdź ścieżkę pliku', true); stopPlay(); });
-    onPlayStarted(d);
+    aud.play().then(() => { onPlayStarted(d); }).catch(() => { stopPlay(); });
   } else {
-    // SC wyłączone
-    showToast('SoundCloud wyłączone — użyj URL z R2', true); stopPlay();
+    playSC(song.src, () => { if (!G.playing) return; onPlayStarted(d); });
   }
 }
 
@@ -1057,7 +915,7 @@ function setWave(on) {
 //  CLASSIC / DAILY GAME LOGIC
 // ══════════════════════════════════════
 function availableSongs() {
-  return G.songs.filter(s => s.type === 'sc' || s.type === 'url' || s.type === 'file' || G.mp3Blobs[s.id]);
+  return G.songs.filter(s => (s.type === 'url' || s.type === 'file' || G.mp3Blobs[s.id]));
 }
 function pickSong() {
   let pool = availableSongs().filter(s => !G.played.has(s.id));
@@ -1318,79 +1176,15 @@ function pickAlbum() {
 }
 
 function startAlbumMode() {
-  // Stop any playing audio first
   clearTimeout(G.playTimer); G.playTimer = null; G.playing = false;
   try { aud.pause(); aud.src = ''; } catch(e) {}
   stopSCFully();
 
-  const albums = availableAlbums();
-  if (!albums.length) { renderEmptyAlbum(); return; }
-
-  // Open album picker overlay
-  openAlbumPicker();
-}
-
-function openAlbumPicker() {
-  const ov = document.getElementById('album-picker-ov');
-  ov.classList.remove('hidden');
-  document.getElementById('album-picker-inp').value = '';
-  renderAlbumPickerGrid(availableAlbums());
-  setTimeout(() => document.getElementById('album-picker-inp').focus(), 120);
-}
-
-function closeAlbumPicker() {
-  document.getElementById('album-picker-ov').classList.add('hidden');
-  // If no album was selected yet and we were in album mode, go back to classic
-  if (!G.currentAlbum && G.mode === 'album') {
-    G.mode = 'classic';
-    document.querySelectorAll('.mt').forEach(b => b.classList.remove('on'));
-    document.querySelector('.mt').classList.add('on');
-    startGame();
+  const album = pickAlbum();
+  if (!album) {
+    renderEmptyAlbum(); return;
   }
-}
-
-function filterAlbumPicker(val) {
-  const v = val.toLowerCase().trim();
-  const all = availableAlbums();
-  const filtered = v
-    ? all.filter(a => a.title.toLowerCase().includes(v) || a.artist.toLowerCase().includes(v))
-    : all;
-  renderAlbumPickerGrid(filtered);
-}
-
-function renderAlbumPickerGrid(albums) {
-  const grid = document.getElementById('album-picker-grid');
-  const cnt  = document.getElementById('album-picker-count');
-  const all  = availableAlbums();
-  cnt.textContent = albums.length + ' z ' + all.length + ' albumów';
-
-  if (!albums.length) {
-    grid.innerHTML = '<div class="album-picker-empty"><div class="ei">🔍</div><p>Brak wyników</p></div>';
-    return;
-  }
-
-  grid.innerHTML = albums.map(a => {
-    const imgHtml = a.cover
-      ? `<img class="alb-card-img" src="${a.cover}" alt="${escHtml(a.title)}" onerror="this.parentElement.innerHTML='<div class=alb-card-img-ph>💿</div>'">`
-      : `<div class="alb-card-img-ph">💿</div>`;
-    return `<div class="alb-card" onclick="selectAlbumFromPicker('${esc(a.id)}')">
-      ${imgHtml}
-      <div class="alb-card-info">
-        <div class="alb-card-title">${escHtml(a.title)}</div>
-        <div class="alb-card-artist">${escHtml(a.artist)}</div>
-        <div class="alb-card-cnt">${a.songs ? a.songs.length : 0} piosenek · ${a.year}</div>
-      </div>
-    </div>`;
-  }).join('');
-}
-
-function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-
-function selectAlbumFromPicker(albumId) {
-  const album = G.albums.find(a => a.id === albumId);
-  if (!album) return;
-  document.getElementById('album-picker-ov').classList.add('hidden');
-
+  G.albumPlayed.add(album.id);
   G.currentAlbum = album;
   G.albumSongQueue = shuffle(album.songs);
   G.albumSongIdx = 0;
@@ -1511,7 +1305,7 @@ function renderAlbumEnd() {
       <div class="album-end-score-lbl">punktów / ${maxPossible} możliwych (${pct}%)</div>
       <div style="font-size:11px;color:var(--text3);margin-bottom:16px">Zagrane piosenki: ${done} z ${total}</div>
     </div>
-    <button class="bnext-album" onclick="startAlbumMode()">💿 WYBIERZ NOWY ALBUM →</button>
+    <button class="bnext-album" onclick="startAlbumMode()">💿 LOSUJ NOWY ALBUM →</button>
   `;
 }
 
@@ -1887,7 +1681,7 @@ function renderURLTab() {
           <select id="u-type" onchange="updateUrlHint()">
             <option value="file">📁 Plik lokalny (.mp3 w folderze)</option>
             <option value="url">🔗 URL (hosting MP3)</option>
-            <!-- <option value="sc">☁ SoundCloud</option> SC wyłączone -->
+            <option value="sc">☁ SoundCloud</option>
           </select>
         </div>
       </div>
@@ -1998,6 +1792,42 @@ function showToast(msg, err = false) {
 document.addEventListener('click', e => {
   if (!e.target.closest('.srchwrap')) document.getElementById('dd').classList.remove('open');
 });
+
+// ── KEYBOARD SHORTCUTS ──
+document.addEventListener('keydown', e => {
+  // Ignore when typing in inputs
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  // Ignore when modals open
+  if (!document.getElementById('pw-modal').classList.contains('hidden')) return;
+  if (document.getElementById('adm').classList.contains('open')) return;
+  if (document.getElementById('stats-panel').classList.contains('open')) return;
+
+  if (e.code === 'Space') {
+    e.preventDefault();
+    if (!G.gameOver && !G.playing) playFrag();
+  } else if (e.code === 'Tab') {
+    e.preventDefault();
+    if (!G.gameOver) doSkip();
+  } else if (e.code === 'Enter') {
+    if (G.gameOver) {
+      if (G.mode === 'album' && G.albumSongIdx < G.albumSongQueue.length - 1) nextAlbumSong();
+      else if (G.mode !== 'album') startGame();
+    }
+  } else if (e.code === 'KeyS') {
+    document.getElementById('srch').focus();
+  }
+});
+
+// ── MOBILE AUDIO UNLOCK ──
+let audioUnlocked = false;
+function unlockAudio() {
+  if (audioUnlocked) return;
+  audioUnlocked = true;
+  const p = aud.play();
+  if (p) p.then(() => { aud.pause(); aud.currentTime = 0; }).catch(() => {});
+}
+document.addEventListener('touchstart', unlockAudio, { once: true });
+document.addEventListener('click', unlockAudio, { once: true });
 
 // ── INIT ──
 loadAll();
