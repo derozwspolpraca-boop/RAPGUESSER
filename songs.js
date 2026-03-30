@@ -394,14 +394,14 @@ const SONGS_DB = [
     artist: 'Otsochodzi',
     year: 2019,
     type: 'url',
-    src: 'https://soundcloud.com/otsochodzi-unofficial/otsochodzi-mow'
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/M%C3%B3w.mp3'
   },  
 
   {
     id: 'sc_0041',
     title: 'Prawdziwy trap',
-    artist: '2018',
-    year: 2016,
+    artist: 'Białas, Lanek',
+    year: 2018,
     type: 'url',
     src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/DRUGA%20TURA/Prawdziwy%20trap%20Bia%C5%82as%202018-10-05.mp3'
   },  
@@ -417,7 +417,7 @@ const SONGS_DB = [
 
   {
     id: 'sc_0043',
-    title: 'Pumba ',
+    title: 'Pumba',
     artist: 'ReTo, Kaz Bałagane, Kabe',
     year: 2023,
     type: 'url',
@@ -759,11 +759,11 @@ const SONGS_DB = [
 
   {
     id: 'sc_0081',
-    title: 'Mówiłas',
-    artist: 'Young Igi',
+    title: 'Mówili',
+    artist: 'Malik Montana',
     year: 2017,
     type: 'url',
-    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/M%C3%B3wi%C5%82a%C5%9B.mp3'
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/M%C3%93WILI.mp3'
   },  
 
   {
@@ -938,2068 +938,501 @@ const SONGS_DB = [
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0101',
+    title: 'Ona Mówi',
+    artist: '730 Huncho, Malik Montana, Kazior',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Ona%20M%C3%B3wi.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0102',
+    title: 'Ty Teraz Dzwonisz (2:02)',
+    artist: '730 Huncho, Moskal SQU, 730purp',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Ty%20Teraz%20Dzwonisz%20(2_02).mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0103',
+    title: '„Tak to leciało!”',
+    artist: 'Otsochodzi, Taco Hemingway',
+    year: 0000,
     type: 'url',
-    src: ''
-  }, 
-
-    {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  }, 
-
-    {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  }, 
-
-    {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  }, 
-
-    {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  }, 
-
-    {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  }, 
-
-    {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  }, 
-
-    {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  }, 
-
-    {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/%E2%80%9ETak%20to%20lecia%C5%82o!%E2%80%9D.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0104',
+    title: '1DAY IN LA',
+    artist: 'francis, bambi, OKI',
+    year: 0000,
     type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  }, 
-
-    {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  }, 
-
-    {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  }, 
-
-    {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  }, 
-
-    {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
-
-  {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  },  
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/1DAY%20IN%20LA.mp3'
+  },    
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0105',
+    title: '300 BANIEK',
+    artist: 'Otsochodzi, OKI',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/300%20BANIEK.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0106',
+    title: '911',
+    artist: 'Malik Montana, OG ENZO',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/911.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0107',
+    title: '1998 (mam to we krwi)',
+    artist: 'Bedoes 2115, Lanek',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/1998%20(mam%20to%20we%20krwi).mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0108',
+    title: 'AMG',
+    artist: 'Avi, Louis Villain',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/AMG.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0109',
+    title: 'Apollo',
+    artist: 'Avi, Louis Villain, Sarius',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Apollo.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0110',
+    title: 'Atlanta',
+    artist: 'Aleshen',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Atlanta.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0111',
+    title: 'Belly Dance',
+    artist: 'Malik Montana',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Belly%20Dance.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  }, 
-
-    {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0112',
+    title: 'BFF',
+    artist: 'bambi, Young Leosia, PG$',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/BFF.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0113',
+    title: 'Błoto',
+    artist: 'wane',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/B%C5%82oto.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0114',
+    title: 'Bogini',
+    artist: 'Quebonafide',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Bogini.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0115',
+    title: 'Brunetki',
+    artist: 'Kaz Bałagane, Smolasty',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Brunetki.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0116',
+    title: 'CAŁE LATO',
+    artist: 'Sobel',
+    year: 0000,
     type: 'url',
-    src: ''
-  },  
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/CA%C5%81E%20LATO.mp3'
+  },    
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0117',
+    title: 'CHA CHA',
+    artist: 'Sobel',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/CHA%20CHA.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0118',
+    title: 'cotton candy',
+    artist: 'Hubert.',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/cotton%20candy.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0119',
+    title: 'COWABONGA',
+    artist: 'Żabson',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/COWABONGA.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0120',
+    title: 'Dior',
+    artist: 'Malik Montana',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Dior.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0121',
+    title: 'Dom Nad Wodą',
+    artist: 'Pezet, Auer',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Dom%20Nad%20Wod%C4%85.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0122',
+    title: 'Dr. Traphouse',
+    artist: 'Kaz Bałagane, Belmondo',
+    year: 0000,
     type: 'url',
-    src: ''
-  },  
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Dr.%20Traphouse%20(feat.%20Belmondo).mp3'
+  },   
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0123',
+    title: 'DRESSCODE',
+    artist: '2115, Bedoes 2115, White 2115, Taco Hemingway, prześwit',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/DRESSCODE.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0124',
+    title: 'Drive',
+    artist: 'Gibbs, Opał, Jonatan, 4Money',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Drive.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0125',
+    title: 'Hinata',
+    artist: 'Szpaku, Deemz',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Hinata.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  }, 
-
-    {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0126',
+    title: 'Hit Em Up',
+    artist: 'Bedoes 2115',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Hit%20Em%20Up.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0127',
+    title: 'Impreza',
+    artist: 'Sobel',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Impreza.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0128',
+    title: 'Interpol',
+    artist: 'PRO8L3M',
+    year: 0000,
     type: 'url',
-    src: ''
-  },  
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Interpol.mp3'
+  },   
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0129',
+    title: 'Jagodzianki',
+    artist: 'Malik Montana, Mr. Polska',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Jagodzianki.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0130',
+    title: 'Lloret de Mar',
+    artist: 'Mata',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Lloret%20de%20Mar.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0131',
+    title: 'LOLA',
+    artist: 'Żabson',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/LOLA.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0132',
+    title: 'Miniówa',
+    artist: 'Kukon',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Mini%C3%B3wa.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0133',
+    title: 'miü miü',
+    artist: 'MIÜ, Koder, 6YNTHMANE',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/mi%C3%BC%20mi%C3%BC.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0134',
+    title: 'Miyabi',
+    artist: 'PRO8L3M',
+    year: 0000,
     type: 'url',
-    src: ''
-  },  
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Miyabi.mp3'
+  },   
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0135',
+    title: 'Młody Manson',
+    artist: 'Young Multi, Szpaku, Kubi Producent, Lucassi',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/M%C5%82ody%20Manson.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0136',
+    title: 'Molly',
+    artist: 'PRO8L3M',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Molly.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0137',
+    title: 'Multisport',
+    artist: 'Kaz Bałagane, Oskar83, clearmind, Worek',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Multisport.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0138',
+    title: 'Nicea',
+    artist: 'PRO8L3M',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Nicea.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0139',
+    title: 'NORADRENALINA',
+    artist: 'Quebonafide, Sobel, Duit',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/NORADRENALINA.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
-    type: 'url',
-    src: ''
-  }, 
-
-    {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0140',
+    title: 'Papierosy',
+    artist: 'ReTo, SecretRank',
+    year: 0000,
     type: 'url',
-    src: ''
-  },  
-
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Papierosy.mp3'
+  },
+  
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0141',
+    title: 'Patolove',
+    artist: 'Zdechły Osa',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Patolove.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0142',
+    title: 'Plaster',
+    artist: 'Szpaku, Deemz',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Plaster.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0143',
+    title: 'Prawie straciłem głos',
+    artist: 'Chivas',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Prawie%20straci%C5%82em%20g%C5%82os.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0144',
+    title: 'Przester',
+    artist: 'Young Leosia, bambi, PG$, francis',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Przester.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0145',
+    title: 'Przypadkiem',
+    artist: 'OKI, Young Igi, Otsochodzi, OIO, Michał Anioł',
+    year: 0000,
     type: 'url',
-    src: ''
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Przypadkiem.mp3'
   },  
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0146',
+    title: 'SEXTAPE',
+    artist: 'Sobel, OKI, Deemz, Magiera, PSR',
+    year: 0000,
     type: 'url',
-    src: ''
-  },  
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/SEXTAPE.mp3'
+  },     
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0147',
+    title: 'Sophia Loren',
+    artist: 'Tymek, Urbański, Tymoteusz',
+    year: 0000,
     type: 'url',
-    src: ''
-  },  
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Sophia%20Loren.mp3'
+  },   
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0148',
+    title: 'taki mały ja',
+    artist: 'kuqe 2115, francis',
+    year: 0000,
     type: 'url',
-    src: ''
-  },  
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/taki%20ma%C5%82y%20ja.mp3'
+  },   
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0149',
+    title: 'Tenten',
+    artist: 'Wenext, Młody West, wane, Okekel',
+    year: 0000,
     type: 'url',
-    src: ''
-  },  
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Tenten.mp3'
+  },   
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0150',
+    title: 'up! up! up!',
+    artist: 'Mata',
+    year: 0000,
     type: 'url',
-    src: ''
-  },  
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/up!%20up!%20up!.mp3'
+  },   
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0151',
+    title: 'VHS',
+    artist: 'PRO8L3M',
+    year: 0000,
     type: 'url',
-    src: ''
-  },  
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/VHS.mp3'
+  },   
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0152',
+    title: 'W GORĄCEJ WODZIE COMPANY',
+    artist: 'rów babicze',
+    year: 0000,
     type: 'url',
-    src: ''
-  },  
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/W%20GOR%C4%84CEJ%20WODZIE%20COMPANY.mp3'
+  },   
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0153',
+    title: 'Woda Księżycowa',
+    artist: 'Kubi Producent, bambi, Fukaj, stickxr',
+    year: 0000,
     type: 'url',
-    src: ''
-  },  
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Woda%20Ksi%C4%99%C5%BCycowa.mp3'
+  },   
 
   {
-    id: 'sc_0006',
-    title: '',
-    artist: '',
-    year: 202,
+    id: 'sc_0154',
+    title: 'Wschód (lubię zapierdalać)',
+    artist: 'Bedoes 2115, Lanek, Kosa, White 2115',
+    year: 0000,
     type: 'url',
-    src: ''
-  }, 
+    src: 'https://pub-8247d6c452064a33b8f98ab2cc36e7e1.r2.dev/1/Wsch%C3%B3d%20(lubi%C4%99%20zapierdala%C4%87).mp3'
+  },   
   
   // ── TUTAJ DODAWAJ SWOJE PIOSENKI ──
   // Wzór:
-  // {
-  //   id: 'sc_001',              <- unikalny identyfikator, zmień numer
-  //   title: 'Tytuł Piosenki',
-  //   artist: 'Nazwa Artysty',
-  //   year: 2023,
-  //   type: 'url',
-  //   src: 'https://soundcloud.com/artysta/tytul'
-  // },
-
+ // {
+   // id: 'sc_01',
+   // title: '',
+   // artist: '',
+   // year: 0000,
+   // type: 'url',
+   // src: ''
+ // },  
 ];
 
 // ── NIE MODYFIKUJ PONIŻEJ ──
